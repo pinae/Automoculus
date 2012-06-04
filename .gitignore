@@ -25,3 +25,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# Gedit temporary files 
+*~
+
+# Blender copies
+*.blend[1-9]
+
