@@ -1,0 +1,4 @@
+Automoculus
+===========
+
+Camera positioning system
