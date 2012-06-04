@@ -13,7 +13,7 @@ def readLine(filehandle):
 
 beatscriptFile = 'The Mighty Hugo - Testszene.csv'
 prozess = subprocess.Popen(
-    ['/home/jonny/Programmierung/Automoculus - Featurizer/BeatscriptClassifier.sh',
+    ['/home/greff/Programming/Automoculus/BeatscriptClassifier.sh',
      beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 while True:
 #for i in range(0,10):

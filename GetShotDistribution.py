@@ -12,11 +12,11 @@ import sys
 # =============================== Main =========================================
 def main():
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    file = open("/home/jonny/Programmierung/Automoculus - Featurizer/trained_classifiers",'rb')
+    file = open("/home/greff/Programming/Automoculus/trained_classifiers",'rb')
     classifiers = cPickle.Unpickler(file).load()
     file.close()
     try:
-        file = open("/home/jonny/Programmierung/Automoculus - Featurizer/decisionHistory.txt",'r')
+        file = open("/home/greff/Programming/Automoculus/decisionHistory.txt",'r')
         lines = file.readlines()
     except IOError:
         lines = []
@@ -25,7 +25,7 @@ def main():
         decisionHistory.append(SHOT_NAMES[line])
     file.close()
     dist = classifyForDistribution(domain,sys.argv[1],classifiers,decisionHistory)
-    file = open("/home/jonny/Programmierung/Automoculus - Featurizer/decisions.txt",'w')
+    file = open("/home/greff/Programming/Automoculus/decisions.txt",'w')
     diststr = ""
     for value in dist:
         diststr += str(value)+"\t"

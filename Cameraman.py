@@ -40,7 +40,7 @@ class AutomoculusCameraman(bpy.types.Operator):
                 (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])), 'XYZ')
 
         optimizationProcess = subprocess.Popen(
-            ['python', '/home/jonny/Programmierung/Automoculus - Featurizer/PositionProcess.py']
+            ['python', '/home/greff/Programming/Automoculus/PositionProcess.py']
             , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         initStr = target.name + "\t" + linetarget.name + "\t"
         initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
@@ -227,10 +227,10 @@ class AutomoculusCameraman(bpy.types.Operator):
 
         SHOT_NAMES = ["detail", "closeup", "medium_shot", "american_shot", "full_shot", "long_shot",
                       "extreme_long_shot"]
-        beatscriptFile = '/home/jonny/Programmierung/Automoculus - Featurizer/Robots - Quadralogue.csv'
+        beatscriptFile = '/home/greff/Programming/Automoculus/Robots - Dialogue.csv'
         #blockcount = 0
         classificationProcess = subprocess.Popen(
-            ['/home/jonny/Programmierung/Automoculus - Featurizer/BeatscriptClassifier.sh',
+            ['/home/greff/Programming/Automoculus/BeatscriptClassifier.sh',
              beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         camera = bpy.data.scenes['Scene'].camera
         shot = 0

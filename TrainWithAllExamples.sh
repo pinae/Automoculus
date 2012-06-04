@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/jonny/Programmierung/Automoculus\ -\ Featurizer/
+cd /home/greff/Programming/Automoculus/
 python TrainWithAllExamples.py The\ Mighty\ Hugo\ -\ Testszene.csv
