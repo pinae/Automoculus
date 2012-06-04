@@ -28,3 +28,6 @@ pip-log.txt
 
 # Gedit temporary files 
 *~
+
+# Blender copies
+*.blend[1-9]
