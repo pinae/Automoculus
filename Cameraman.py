@@ -8,6 +8,9 @@ import subprocess
 #import random
 #import math
 
+position_process_filename = path.abspath(path.join(project_path, "PositionProcess.py"))
+beatscript_classifier_filename = path.abspath(path.join(project_path, "BeatscriptClassifier.sh"))
+
 class AutomoculusCameraman(bpy.types.Operator):
     bl_idname = "marker.automoculus"
     bl_label = "Automoculus - position camera"
@@ -40,7 +43,7 @@ class AutomoculusCameraman(bpy.types.Operator):
                 (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])), 'XYZ')
 
         optimizationProcess = subprocess.Popen(
-            ['python', '/home/jonny/Programmierung/Automoculus - Featurizer/PositionProcess.py']
+            ['python', position_process_filename]
             , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         initStr = target.name + "\t" + linetarget.name + "\t"
         initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
@@ -227,10 +230,9 @@ class AutomoculusCameraman(bpy.types.Operator):
 
         SHOT_NAMES = ["detail", "closeup", "medium_shot", "american_shot", "full_shot", "long_shot",
                       "extreme_long_shot"]
-        beatscriptFile = '/home/jonny/Programmierung/Automoculus - Featurizer/Robots - Quadralogue.csv'
         #blockcount = 0
         classificationProcess = subprocess.Popen(
-            ['/home/jonny/Programmierung/Automoculus - Featurizer/BeatscriptClassifier.sh',
+            [beatscript_classifier_filename,
              beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         camera = bpy.data.scenes['Scene'].camera
         shot = 0
@@ -251,7 +253,7 @@ class AutomoculusCameraman(bpy.types.Operator):
             lastcut, True)
         setConfiguration(newConfiguration)
         print("Szenenkontext erzeugt.")
-        for frame in range(2, 750):
+        for frame in range(2, frame_end):
             bpy.data.scenes['Scene'].frame_current = frame
             bpy.ops.object.paths_calculate()
             print("Bearbeite Frame No. " + str(bpy.data.scenes['Scene'].frame_current))
