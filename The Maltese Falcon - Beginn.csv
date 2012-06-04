@@ -1,0 +1,148 @@
+#Film:	The Maltese Falcon
+#Scene:	Beginn
+#FPS:	25
+#Context:	
+#EntityList:	place§the buro, person§Sam Spade, object§a cigarette, object§Sam's desk, person§Sam's secretary, object§the door, person§Miss Wonderly, object§the lighter, person§Miles Archer, object§Archer's hat, object§Wonderly's bag, object§100$, 
+0_1	medium_shot	false	introduce	place§the buro	
+0_2	medium_shot	false	introduce	person§Sam Spade	
+0_3	medium_shot	false	introduce	object§a cigarette	
+0_4	medium_shot	false	introduce	object§Sam's desk	
+0_5	medium_shot	false	action	person§Sam Spade	produces	object§a cigarette
+0_6	medium_shot	true	introduce	person§Sam's secretary
+0_7	medium_shot	true	action	person§Sam's secretary	enters	place§the buro
+0_8	medium_shot	false	says	person§Sam Spade	Yes, sweetheart?		person§Sam's secretary
+249_1	long_shot	false	show	person§Sam's secretary	
+249_2	long_shot	false	introduce	object§the door	
+249_3	long_shot	false	expresses	person§Sam's secretary	amusement
+249_4	long_shot	false	says	person§Sam's secretary	A girl wants to see you. Her name is Wonderly		person§Sam Spade
+249_5	long_shot	true	says	person§Sam Spade	bla		person§Sam's secretary
+337_1	closeup	false	says	person§Sam's secretary	I guess so. You want to see her anyway, she's a knockout!		person§Sam Spade
+415_1	medium_shot	false	action	person§Sam Spade	finishes	object§a cigarette
+415_2	medium_shot	false	says	person§Sam Spade	Sure in, Natty darling. Sure in.		person§Sam's secretary
+485_1	long_shot	false	action	person§Sam's secretary	opens	object§the door
+485_2	long_shot	true	introduce	person§Miss Wonderly
+485_3	long_shot	false	says	person§Sam's secretary	Will you come in...		person§Miss Wonderly
+485_4	long_shot	false	show	person§Miss Wonderly	
+485_5	long_shot	false	action	person§Miss Wonderly	enters	place§the buro
+485_6	long_shot	false	says	person§Sam's secretary	... Miss Wonderly		person§Miss Wonderly
+485_7	long_shot	false	expresses	person§Miss Wonderly	reticence
+485_8	long_shot	false	says	person§Miss Wonderly	Thank you.		person§Sam's secretary
+485_9	long_shot	false	action	person§Miss Wonderly	stops in the middle of the	place§the buro
+485_10	long_shot	false	action	person§Sam Spade	stands up	
+765_1	american_shot	false	action	person§Miss Wonderly	shakes hands with	person§Sam Spade
+765_2	american_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+765_3	american_shot	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+765_4	american_shot	false	expresses	person§Sam Spade	seriousness
+765_5	american_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+990_1	medium_shot	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+990_2	medium_shot	false	expresses	person§Miss Wonderly	unsoundness
+990_3	medium_shot	false	introduce	object§the lighter	
+990_4	medium_shot	true	action	person§Sam Spade	lights	object§a cigarette
+990_5	medium_shot	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+1560_1	medium_shot	true	says	person§Miss Wonderly	...bla		person§Sam Spade
+1560_2	medium_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+1625_1	closeup	false	expresses	person§Miss Wonderly	unsoundness
+1625_2	closeup	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+1998_1	medium_shot	true	says	person§Miss Wonderly	...bla		person§Sam Spade
+1998_2	medium_shot	false	expresses	person§Sam Spade	apprehendness
+1998_3	medium_shot	false	action	person§Sam Spade	plays with	object§the lighter
+1998_4	medium_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+2122_1	closeup	false	expresses	person§Miss Wonderly	unsoundness
+2122_2	closeup	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+2311_1	closeup	false	expresses	person§Sam Spade	gauginess
+2311_2	closeup	true	says	person§Miss Wonderly	Bla		person§Sam Spade
+2385_1	closeup	false	expresses	person§Miss Wonderly	unsoundness
+2385_2	closeup	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+2385_3	closeup	true	introduce	person§Miles Archer
+2385_4	closeup	true	action	person§Miles Archer	enters the	place§the buro
+2385_5	closeup	false	action	person§Miss Wonderly	sees	person§Miles Archer
+2867_1	american_shot	false	show	person§Miles Archer	
+2867_2	american_shot	false	introduce	object§Archer's hat	
+2867_3	american_shot	false	action	person§Miles Archer	enters	place§the buro
+2867_4	american_shot	false	action	person§Miles Archer	sees	person§Miss Wonderly
+2867_5	american_shot	false	action	person§Miles Archer	takes off	object§Archer's hat
+2867_6	american_shot	false	says	person§Miles Archer	Oh, excuse me		person§Miss Wonderly	person§Sam Spade
+2953_1	medium_shot	false	action	person§Sam Spade	turns towards	person§Miles Archer
+2953_2	medium_shot	false	says	person§Sam Spade	It's allright, Miles! Come in!		person§Miles Archer
+2995_1	american_shot	true	says	person§Sam Spade	May I introduce to you my partner: Miles Archer.		person§Miss Wonderly
+2995_2	american_shot	false	action	person§Miles Archer	closes	object§the door
+2995_3	american_shot	false	action	person§Miles Archer	walks to	person§Miss Wonderly
+2995_4	american_shot	false	says	person§Sam Spade	Bla		person§Miles Archer
+2995_5	american_shot	false	expresses	person§Miles Archer	coolness
+2995_6	american_shot	false	says	person§Sam Spade	...bla		person§Miles Archer
+2995_7	american_shot	false	says	person§Sam Spade	correct?		person§Miss Wonderly
+2995_8	american_shot	false	says	person§Miss Wonderly	yes		person§Sam Spade
+2995_9	american_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+2995_10	american_shot	true	action	person§Miles Archer	sits down on	object§Sam's desk
+2995_11	american_shot	false	says	person§Miss Wonderly	Bla		person§Sam Spade	person§Miles Archer
+3928_1	american_shot	false	says	person§Miss Wonderly	...bla		person§Sam Spade	person§Miles Archer
+3928_2	american_shot	false	expresses	person§Sam Spade	coolness
+3928_3	american_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+4040_1	closeup	false	expresses	person§Miss Wonderly	commotion
+4040_2	closeup	false	says	person§Miss Wonderly	Bla		person§Miles Archer	person§Sam Spade
+4255_1	american_shot	false	action	person§Miles Archer	leans on	object§Sam's desk
+4255_2	american_shot	false	says	person§Miles Archer	Bla		person§Miss Wonderly
+4255_3	american_shot	false	says	person§Sam Spade	Bla		person§Miles Archer
+4255_4	american_shot	false	says	person§Sam Spade	What does he look like?		person§Miss Wonderly
+4452_1	closeup	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+4641_1	medium_shot	true	says	person§Miss Wonderly	...bla		person§Sam Spade
+4641_2	medium_shot	false	action	person§Sam Spade	writes some notes down	
+4641_3	medium_shot	false	says	person§Sam Spade	What does he do for a living?		person§Miss Wonderly
+4746_1	closeup	false	expresses	person§Miss Wonderly	unsoundness
+4746_2	closeup	false	says	person§Miss Wonderly	I haven't the faintest idea.		person§Sam Spade
+4807_1	medium_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+4807_2	medium_shot	true	says	person§Miss Wonderly	Bla		person§Sam Spade
+4807_3	medium_shot	false	action	person§Sam Spade	leans back	
+4807_4	medium_shot	false	expresses	person§Sam Spade	contemntment
+4807_5	medium_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+4807_6	medium_shot	false	action	person§Miles Archer	leans forward on	object§Sam's desk
+4807_7	medium_shot	false	says	person§Miles Archer	Bla, myself		person§Miss Wonderly
+4807_8	medium_shot	false	expresses	person§Miles Archer	guardianism
+5003_1	closeup	false	expresses	person§Miss Wonderly	relief
+5003_2	closeup	false	says	person§Miss Wonderly	Thank you!		person§Miles Archer
+5055_1	medium_shot	true	action	person§Miss Wonderly	tries to stand up	
+5055_2	medium_shot	true	action	person§Miss Wonderly	sits down again	
+5055_3	medium_shot	false	expresses	person§Sam Spade	interest
+5055_4	medium_shot	false	expresses	person§Miles Archer	interest
+5055_5	medium_shot	false	says	person§Miss Wonderly	Oh, Yes.		person§Sam Spade
+5055_6	medium_shot	false	introduce	object§Wonderly's bag	
+5055_7	medium_shot	true	action	person§Miss Wonderly	produces	object§Wonderly's bag
+5055_8	medium_shot	true	action	person§Miss Wonderly	sits	on Sam's deskobject§Wonderly's bag
+5055_9	medium_shot	true	action	person§Miss Wonderly	opens	object§Wonderly's bag
+5055_10	medium_shot	false	expresses	person§Miles Archer	surprise
+5055_11	medium_shot	false	action	person§Miles Archer	looks to	person§Sam Spade
+5055_12	medium_shot	false	expresses	person§Sam Spade	patience
+5287_1	closeup	false	expresses	person§Miss Wonderly	unsureness
+5287_2	closeup	false	action	person§Miss Wonderly	takes money from	object§Wonderly's bag
+5350_1	medium_shot	false	introduce	object§100$	
+5350_2	medium_shot	false	action	person§Miss Wonderly	lays	on Sam's deskobject§100$
+5350_3	medium_shot	false	says	person§Miss Wonderly	Would that be enough?		person§Sam Spade
+5350_4	medium_shot	false	expresses	person§Sam Spade	approval
+5350_5	medium_shot	false	action	person§Sam Spade	nods	
+5449_1	american_shot	false	says	person§Miss Wonderly	Bla		person§Sam Spade	person§Miles Archer
+5449_2	american_shot	false	action	person§Miss Wonderly	stands up	
+5449_3	american_shot	false	says	person§Sam Spade	Not at all!		person§Miss Wonderly
+5449_4	american_shot	false	action	person§Sam Spade	stands up	
+5449_5	american_shot	false	action	person§Miles Archer	stands up	
+5449_6	american_shot	false	says	person§Sam Spade	Bla		person§Miss Wonderly
+5449_7	american_shot	false	says	person§Miss Wonderly	Bla		person§Sam Spade
+5449_8	american_shot	false	says	person§Miles Archer	Bla		person§Miss Wonderly
+5449_9	american_shot	false	says	person§Miss Wonderly	Thank You		person§Miles Archer
+5449_10	american_shot	false	action	person§Miss Wonderly	shakes hands with	person§Miles Archer
+5449_11	american_shot	false	action	person§Miss Wonderly	walks to	object§the door
+5449_12	american_shot	false	action	person§Sam Spade	walks to	object§the door
+5449_13	american_shot	false	action	person§Sam Spade	opens	object§the door
+5449_14	american_shot	false	action	person§Miss Wonderly	turns in	object§the door
+5449_15	american_shot	false	says	person§Miss Wonderly	Thank you		person§Sam Spade
+5449_16	american_shot	false	action	person§Miss Wonderly	shakes hands with	person§Sam Spade
+5449_17	american_shot	false	expresses	person§Sam Spade	kindness
+5449_18	american_shot	false	action	person§Miss Wonderly	exits through	object§the door
+5449_19	american_shot	false	action	person§Sam Spade	closes	object§the door
+5449_20	american_shot	false	action	person§Sam Spade	turns around	
+5935_1	long_shot	false	action	person§Miles Archer	inspects	object§100$
+5935_2	long_shot	false	action	person§Sam Spade	walks to	object§Sam's desk
+5935_3	long_shot	false	says	person§Sam Spade	What do you think of her?		person§Miles Archer
+5935_4	long_shot	false	action	person§Miles Archer	sits down	
+5935_5	long_shot	false	action	person§Sam Spade	sits down	
+5935_6	long_shot	false	says	person§Miles Archer	Bla		person§Sam Spade
+5935_7	long_shot	false	show	place§the buro	

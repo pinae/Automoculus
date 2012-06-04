@@ -1,0 +1,112 @@
+#Film:	The Woman in the Window
+#Scene:	Abenteuerlust
+#FPS:	24
+#Context:	person§Professor Richard Wanley, 
+#EntityList:	object§the clock, person§Dr. Michael Barkstane, place§the club, person§Frank Lalor, object§Wanley's armchair, person§Collins, object§the drinks, object§the table, object§bookshelf, object§Wanley's glasses, object§a book, object§the bill, person§Professor Richard Wanley, 
+0_1	detail	false	introduce	object§the clock	
+0_2	detail	true	introduce	person§Dr. Michael Barkstane
+0_3	detail	true	says	person§Dr. Michael Barkstane	Hahaha		person§Professor Richard Wanley
+92_1	long_shot	false	introduce	place§the club	
+92_2	long_shot	false	introduce	person§Frank Lalor	
+92_3	long_shot	false	introduce	object§Wanley's armchair	
+92_4	long_shot	false	show	person§Professor Richard Wanley	
+92_5	long_shot	false	show	person§Dr. Michael Barkstane	
+92_6	long_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley
+92_7	long_shot	false	introduce	person§Collins	
+92_8	long_shot	false	introduce	object§the drinks	
+92_9	long_shot	false	introduce	object§the table	
+92_10	long_shot	false	action	person§Collins	walks to	object§the table
+92_11	long_shot	false	says	person§Professor Richard Wanley	bla...		person§Dr. Michael Barkstane
+92_12	long_shot	false	action	person§Collins	serves	object§the drinks
+92_13	long_shot	false	says	person§Professor Richard Wanley	...bla		person§Dr. Michael Barkstane
+92_14	long_shot	false	says	person§Dr. Michael Barkstane	bla...		person§Professor Richard Wanley
+92_15	long_shot	false	says	person§Frank Lalor	bla		person§Collins
+92_16	long_shot	false	action	person§Collins	nods	
+92_17	long_shot	false	says	person§Dr. Michael Barkstane	...bla		person§Professor Richard Wanley
+681_1	american_shot	false	action	person§Professor Richard Wanley	takes	object§the drinks
+681_2	american_shot	false	says	person§Professor Richard Wanley	bla...		person§Dr. Michael Barkstane
+681_3	american_shot	false	action	person§Professor Richard Wanley	gestures in a direction	
+681_4	american_shot	false	says	person§Professor Richard Wanley	...bla		person§Dr. Michael Barkstane
+908_1	full_shot	false	expresses	person§Frank Lalor	amusement
+908_2	full_shot	false	says	person§Frank Lalor	incredible		person§Professor Richard Wanley
+908_3	full_shot	false	expresses	person§Dr. Michael Barkstane	amusement
+908_4	full_shot	false	action	person§Dr. Michael Barkstane	sugars	object§the drinks
+908_5	full_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley
+1067_1	american_shot	false	says	person§Professor Richard Wanley	bla		person§Dr. Michael Barkstane	person§Frank Lalor
+1067_2	american_shot	false	expresses	person§Dr. Michael Barkstane	dissent
+1067_3	american_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley
+1317_1	american_shot	false	says	person§Frank Lalor	bla		person§Professor Richard Wanley
+1419_1	american_shot	false	says	person§Professor Richard Wanley	bla		person§Frank Lalor
+1778_1	american_shot	false	says	person§Frank Lalor	bla		person§Professor Richard Wanley
+1926_1	american_shot	false	says	person§Professor Richard Wanley	hm		person§Frank Lalor
+1926_2	american_shot	true	says	person§Frank Lalor	bla		person§Professor Richard Wanley
+1926_3	american_shot	false	expresses	person§Professor Richard Wanley	resigantion
+2004_1	american_shot	false	says	person§Frank Lalor	...bla		person§Professor Richard Wanley
+2051_1	american_shot	false	says	person§Professor Richard Wanley	bla		person§Frank Lalor
+2101_1	long_shot	false	says	person§Frank Lalor	bla		person§Professor Richard Wanley	person§Dr. Michael Barkstane
+2101_2	long_shot	false	expresses	person§Professor Richard Wanley	amusement
+2101_3	long_shot	false	expresses	person§Dr. Michael Barkstane	amusement
+2101_4	long_shot	false	action	person§Frank Lalor	laughs	
+2246_1	american_shot	false	expresses	person§Frank Lalor	excitement
+2246_2	american_shot	false	says	person§Frank Lalor	bla...		person§Professor Richard Wanley
+2246_3	american_shot	false	says	person§Frank Lalor	...bla...		person§Dr. Michael Barkstane
+2246_4	american_shot	false	says	person§Frank Lalor	...bla...		person§Professor Richard Wanley
+2296_1	long_shot	false	says	person§Frank Lalor	...bla		person§Dr. Michael Barkstane	person§Professor Richard Wanley
+2296_2	long_shot	false	action	person§Professor Richard Wanley	drinks	
+2296_3	long_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley
+2296_4	long_shot	false	expresses	person§Professor Richard Wanley	surprise
+2296_5	long_shot	false	says	person§Professor Richard Wanley	bla		person§Dr. Michael Barkstane
+2296_6	long_shot	false	says	person§Dr. Michael Barkstane	bla		person§Frank Lalor
+2296_7	long_shot	false	action	person§Frank Lalor	drinks	
+2729_1	american_shot	false	expresses	person§Frank Lalor	amusement
+2729_2	american_shot	false	says	person§Frank Lalor	bla		person§Dr. Michael Barkstane	person§Professor Richard Wanley
+2785_1	long_shot	false	says	person§Frank Lalor	bla		person§Professor Richard Wanley
+2785_2	long_shot	false	says	person§Dr. Michael Barkstane	bla...		person§Frank Lalor	person§Professor Richard Wanley
+2785_3	long_shot	false	action	person§Dr. Michael Barkstane	stands up	
+2785_4	long_shot	false	says	person§Dr. Michael Barkstane	...bla		person§Frank Lalor	person§Professor Richard Wanley
+2785_5	long_shot	false	action	person§Dr. Michael Barkstane	drinks up	
+2785_6	long_shot	false	action	person§Frank Lalor	drinks up	
+2785_7	long_shot	false	action	person§Professor Richard Wanley	drinks up	
+2785_8	long_shot	false	says	person§Professor Richard Wanley	bla		person§Dr. Michael Barkstane
+2785_9	long_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley	person§Frank Lalor
+2785_10	long_shot	false	says	person§Professor Richard Wanley	bla		person§Dr. Michael Barkstane
+2785_11	long_shot	false	action	person§Frank Lalor	stands up	
+2785_12	long_shot	false	says	person§Frank Lalor	bla		person§Dr. Michael Barkstane
+2785_13	long_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley
+2785_14	long_shot	false	says	person§Frank Lalor	bla		person§Professor Richard Wanley
+2785_15	long_shot	false	says	person§Professor Richard Wanley	bla...		person§Frank Lalor
+2785_16	long_shot	false	action	person§Professor Richard Wanley	stands up	
+2785_17	long_shot	false	says	person§Professor Richard Wanley	...bla...		person§Frank Lalor
+2785_18	long_shot	false	action	person§Frank Lalor	waks away	
+2785_19	long_shot	false	action	person§Professor Richard Wanley	walks away	
+2785_20	long_shot	false	says	person§Professor Richard Wanley	...bla		person§Frank Lalor
+2785_21	long_shot	false	says	person§Frank Lalor	good		person§Professor Richard Wanley
+2785_22	long_shot	false	says	person§Professor Richard Wanley	bla		person§Frank Lalor	person§Dr. Michael Barkstane
+2785_23	long_shot	false	says	person§Dr. Michael Barkstane	bla		person§Professor Richard Wanley
+2785_24	long_shot	false	says	person§Professor Richard Wanley	bla		person§Frank Lalor	person§Dr. Michael Barkstane
+2785_25	long_shot	false	action	person§Professor Richard Wanley	pats the back of	person§Frank Lalor
+2785_26	long_shot	false	action	person§Professor Richard Wanley	pats the back of	person§Dr. Michael Barkstane
+2785_27	long_shot	false	says	person§Professor Richard Wanley	Goodbye		person§Dr. Michael Barkstane	person§Frank Lalor
+2785_28	long_shot	false	action	person§Professor Richard Wanley	walks back	
+4920_1	full_shot	false	introduce	object§bookshelf	
+4920_2	full_shot	false	action	person§Professor Richard Wanley	walks to the	object§bookshelf
+4920_3	full_shot	false	introduce	object§Wanley's glasses	
+4920_4	full_shot	false	action	person§Professor Richard Wanley	puts on	object§Wanley's glasses
+4920_5	full_shot	false	action	person§Professor Richard Wanley	opens the	object§bookshelf
+4920_6	full_shot	false	introduce	object§a book	
+4920_7	full_shot	false	action	person§Professor Richard Wanley	takes	out of the bookshelfobject§a book
+5363_1	detail	false	show	object§a book	
+5363_2	detail	true	action	person§Professor Richard Wanley	opens	object§a book
+5363_3	detail	false	show	object§a book	
+5489_1	medium_shot	false	action	person§Professor Richard Wanley	reads	object§a book
+5489_2	medium_shot	false	action	person§Professor Richard Wanley	walks to	object§Wanley's armchair
+5973_1	american_shot	false	action	person§Professor Richard Wanley	walks to	object§Wanley's armchair
+5973_2	american_shot	false	action	person§Professor Richard Wanley	sits down in	object§Wanley's armchair
+5973_3	american_shot	false	action	person§Collins	serves	object§the drinks
+5973_4	american_shot	false	says	person§Professor Richard Wanley	Thank you		person§Collins
+5973_5	american_shot	false	introduce	object§the bill	
+5973_6	american_shot	false	action	person§Collins	shows	object§the bill
+5973_7	american_shot	false	action	person§Professor Richard Wanley	signs	object§the bill
+5973_8	american_shot	false	says	person§Professor Richard Wanley	bla		person§Collins
+5973_9	american_shot	false	says	person§Collins	bla		person§Professor Richard Wanley
+5973_10	american_shot	false	action	person§Professor Richard Wanley	reads	object§a book

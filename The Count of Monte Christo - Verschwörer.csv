@@ -1,0 +1,34 @@
+#Film:	The Count of Monte Christo
+#Scene:	Verschwörer
+#FPS:	24
+#Context:	person§Fernand Mondego, person§Danglars, 
+#EntityList:	place§Harbour, object§the table, object§the first glass, object§the second glass, person§Fernand Mondego, person§Danglars, 
+0_1	full_shot	false	introduce	place§Harbour	
+0_2	full_shot	false	expresses	person§Fernand Mondego	drunkenness
+0_3	full_shot	true	says	person§Danglars	Hello, my fine young Gentleman		person§Fernand Mondego
+0_4	full_shot	false	action	person§Fernand Mondego	sees	person§Danglars
+0_5	full_shot	false	expresses	person§Fernand Mondego	recognition
+0_6	full_shot	false	action	person§Fernand Mondego	walks towards	person§Danglars
+165_1	medium_shot	false	introduce	object§the table	
+165_2	medium_shot	false	expresses	person§Danglars	viciousness
+165_3	medium_shot	false	introduce	object§the first glass	
+165_4	medium_shot	false	action	person§Danglars	tilts	object§the first glass
+165_5	medium_shot	false	says	person§Danglars	Care to join me?		person§Fernand Mondego
+216_1	medium_shot	true	action	person§Fernand Mondego	sits down at	object§the table
+216_2	medium_shot	false	introduce	object§the second glass	
+216_3	medium_shot	false	action	person§Danglars	pours rum in	object§the second glass
+216_4	medium_shot	false	action	person§Danglars	looks at	person§Fernand Mondego
+216_5	medium_shot	false	expresses	person§Danglars	gauginess
+303_1	medium_shot	false	action	person§Fernand Mondego	drinks	object§the second glass
+303_2	medium_shot	false	says	person§Danglars	just...		person§Fernand Mondego
+303_3	medium_shot	false	expresses	person§Fernand Mondego	short pain
+303_4	medium_shot	false	says	person§Danglars	tell me Mondego:		person§Fernand Mondego
+402_1	medium_shot	false	says	person§Danglars	How did you ever become Friends with this vaultious little pomp Dantés?		person§Fernand Mondego
+610_1	medium_shot	false	expresses	person§Fernand Mondego	revulsion
+610_2	medium_shot	false	says	person§Fernand Mondego	He claims to be my friend.		person§Danglars
+610_3	medium_shot	false	expresses	person§Fernand Mondego	confusion by alcohol
+610_4	medium_shot	false	says	person§Fernand Mondego	Bla		person§Danglars
+843_1	closeup	false	expresses	person§Danglars	great interest
+843_2	closeup	false	says	person§Danglars	What secrets?		person§Fernand Mondego
+901_1	closeup	false	expresses	person§Fernand Mondego	pondering
+1034_1	closeup	false	expresses	person§Danglars	curiosity

@@ -1,0 +1,147 @@
+#Film:	The Treasure of the Sierra Madre
+#Scene:	Ausbeuter
+#FPS:	24
+#Context:	person§Dobbs, person§Curtin, person§McCormick, object§McCormick's hat, 
+#EntityList:	place§saloon, person§the barkeeper, object§the bar, object§glasses, object§the bottle, person§spectator 1, person§spectator 2, object§McCormick's purse, object§the money, object§the change, person§Dobbs, person§Curtin, person§McCormick, object§McCormick's hat, 
+0_1	full_shot	false	introduce	place§saloon	
+0_2	full_shot	false	introduce	person§the barkeeper	
+0_3	full_shot	false	introduce	object§the bar	
+0_4	full_shot	false	introduce	object§glasses	
+0_5	full_shot	false	action	person§Dobbs	enters the	place§saloon
+0_6	full_shot	false	action	person§Curtin	enters the	place§saloon
+0_7	full_shot	false	action	person§McCormick	enters the	place§saloon
+0_8	full_shot	false	action	person§Dobbs	walks to	object§the bar
+0_9	full_shot	false	action	person§Curtin	walks to	object§the bar
+0_10	full_shot	false	action	person§McCormick	walks to	object§the bar
+0_11	full_shot	false	says	person§McCormick	Three shots bla		person§the barkeeper
+0_12	full_shot	false	action	person§the barkeeper	prepares the	object§glasses
+0_13	full_shot	false	action	person§the barkeeper	turns towards	, Curtin and Dobbsperson§McCormick
+0_14	full_shot	false	says	person§Curtin	Bla		person§the barkeeper
+0_15	full_shot	false	says	person§Dobbs	Bla		person§the barkeeper
+0_16	full_shot	false	action	person§Dobbs	leans on	object§the bar
+0_17	full_shot	false	action	person§Curtin	leans on	object§the bar
+0_18	full_shot	false	says	person§Curtin	Bla		person§Dobbs	person§McCormick
+0_19	full_shot	false	action	person§McCormick	leans on	object§the bar
+0_20	full_shot	false	action	person§McCormick	turns towards	and Curtinperson§Dobbs
+0_21	full_shot	false	says	person§McCormick	Bla, money		person§Dobbs	person§Curtin
+451_1	closeup	false	expresses	person§Dobbs	distrust
+451_2	closeup	true	says	person§McCormick	Bla		person§Dobbs	person§Curtin
+552_1	american_shot	false	says	person§McCormick	Bla		person§Dobbs	person§Curtin
+552_2	american_shot	false	action	person§McCormick	drinks up	
+552_3	american_shot	false	says	person§Curtin	We want it now!		person§McCormick
+552_4	american_shot	false	says	person§McCormick	something		person§Curtin
+552_5	american_shot	false	action	person§Dobbs	walks to the other side of	person§McCormick
+552_6	american_shot	false	says	person§McCormick	Bla		person§Curtin	person§Dobbs
+920_1	medium_shot	false	says	person§McCormick	Bla		person§Curtin	person§Dobbs
+920_2	medium_shot	false	says	person§Curtin	Bla		person§McCormick
+920_3	medium_shot	false	says	person§McCormick	Two more drinks for the gentlemen		person§the barkeeper
+920_4	medium_shot	false	says	person§McCormick	Oh, no...		person§Curtin	person§Dobbs
+920_5	medium_shot	false	introduce	object§the bottle	
+920_6	medium_shot	false	action	person§McCormick	takes	ACHTUNG! Dieser medium shot ist ein Achsensprung über die Achse McCormick - Dobbs. Außerdem folt er auf einen american shot, ohne dass die targets wechseln. Unter Umständen ist dieses Beispiel nicht klassisch. ACHTUNGobject§the bottle
+920_7	medium_shot	false	says	person§McCormick	... bla ...		person§Curtin	person§Dobbs
+920_8	medium_shot	false	action	person§McCormick	fills the	object§glasses
+920_9	medium_shot	false	says	person§McCormick	... bla		person§Curtin	person§Dobbs
+920_10	medium_shot	false	action	person§Dobbs	walks very near to	person§McCormick
+920_11	medium_shot	false	says	person§Dobbs	Bla		person§McCormick
+920_12	medium_shot	false	says	person§McCormick	Bla		person§Dobbs	person§Curtin
+1337_1	medium_shot	false	action	person§McCormick	hits	with the bottle#person§Curtin
+1337_2	medium_shot	false	action	person§McCormick	turns	
+1385_1	closeup	false	action	person§McCormick	hits	in the faceperson§Dobbs
+1385_2	closeup	false	expresses	person§Dobbs	surprise
+1407_1	detail	false	action	person§Dobbs	falls down	
+1407_2	detail	false	action	person§Curtin	grabs	's feetperson§McCormick
+1463_1	closeup	false	expresses	person§Dobbs	confusion
+1494_1	detail	false	action	person§McCormick	pushes	with his knee to the groundperson§Curtin
+1534_1	medium_shot	false	action	person§Dobbs	errects himself by grabbing	person§McCormick
+1534_2	medium_shot	false	action	person§Dobbs	hits	in the faceperson§McCormick
+1585_1	closeup	false	action	person§McCormick	looses	object§McCormick's hat
+1585_2	closeup	false	expresses	person§McCormick	tension
+1599_1	closeup	false	expresses	person§Dobbs	anger
+1599_2	closeup	false	action	person§Dobbs	hits	
+1613_1	american_shot	false	action	person§McCormick	wrestles	downperson§Dobbs
+1613_2	american_shot	false	action	person§McCormick	hits	in the faceperson§Dobbs
+1641_1	long_shot	false	introduce	person§spectator 1	
+1641_2	long_shot	false	introduce	person§spectator 2	
+1641_3	long_shot	false	action	person§Dobbs	falls on the ground	
+1641_4	long_shot	false	action	person§McCormick	waks towards	person§Dobbs
+1702_1	closeup	false	expresses	person§Curtin	exertion
+1702_2	closeup	false	action	person§Curtin	stands up	
+1722_1	long_shot	false	action	person§spectator 1	leaves	his table
+1722_2	long_shot	false	action	person§spectator 2	leaves	his table
+1722_3	long_shot	false	action	person§McCormick	kicks	in the faceperson§Dobbs
+1722_4	long_shot	false	action	person§Curtin	throws himself at	person§McCormick
+1722_5	long_shot	false	action	person§Curtin	wrestles with	person§McCormick
+1815_1	medium_shot	false	expresses	person§Dobbs	anger
+1815_2	medium_shot	false	action	person§Dobbs	stands up	
+1853_1	full_shot	false	action	person§Curtin	is thrown through the	place§saloon
+1853_2	full_shot	false	action	person§Curtin	falls to the floor	
+1877_1	closeup	false	expresses	person§Dobbs	exertion
+1877_2	closeup	false	action	person§Dobbs	stands up	
+1902_1	full_shot	false	action	person§Dobbs	throws himself at	's feetperson§McCormick
+1902_2	full_shot	false	action	person§Curtin	stands up	
+1902_3	full_shot	false	action	person§McCormick	misses	person§Curtin
+1902_4	full_shot	false	action	person§McCormick	wrestles with	person§Dobbs
+1902_5	full_shot	false	action	person§Curtin	hits	person§McCormick
+1902_6	full_shot	false	action	person§McCormick	hits	person§Curtin
+2018_1	american_shot	false	expresses	person§spectator 1	interest
+2018_2	american_shot	false	expresses	person§spectator 2	interest
+2018_3	american_shot	false	action	person§spectator 1	drinks	
+2018_4	american_shot	false	action	person§spectator 2	lifts his glass	
+2120_1	american_shot	false	action	person§McCormick	wrestles with	person§Curtin
+2120_2	american_shot	false	action	person§McCormick	wrestles with	person§Dobbs
+2156_1	long_shot	false	action	person§McCormick	hits	person§Curtin
+2156_2	long_shot	false	action	person§Curtin	falls down	
+2156_3	long_shot	false	action	person§McCormick	turns towards	person§Dobbs
+2156_4	long_shot	false	action	person§Dobbs	pushes	to the barperson§McCormick
+2242_1	closeup	false	expresses	person§McCormick	confusion
+2242_2	closeup	false	action	person§McCormick	turns himself at thne bar to get away from	person§Dobbs
+2272_1	long_shot	false	action	person§McCormick	begins to fall down	
+2272_2	long_shot	false	action	person§Dobbs	earns a bit of distance	
+2272_3	long_shot	false	action	person§Curtin	grabs	at his collarperson§McCormick
+2272_4	long_shot	false	action	person§Curtin	hits	person§McCormick
+2323_1	closeup	false	expresses	person§McCormick	confusion
+2323_2	closeup	false	action	person§McCormick	turns the other way round	
+2343_1	long_shot	false	action	person§McCormick	falls down at	object§the bar
+2343_2	long_shot	false	action	person§Curtin	stedies himself	
+2376_1	medium_shot	false	action	person§Dobbs	hits	in the faceperson§McCormick
+2376_2	medium_shot	false	action	person§McCormick	is turned towards	person§Curtin
+2424_1	long_shot	false	action	person§McCormick	avoids	person§Curtin
+2424_2	long_shot	false	action	person§Curtin	grabs	person§McCormick
+2424_3	long_shot	false	action	person§Curtin	hits	in the faceperson§McCormick
+2424_4	long_shot	false	action	person§McCormick	is turned towards	person§Dobbs
+2501_1	medium_shot	false	action	person§Dobbs	hits	in the faceperson§McCormick
+2518_1	long_shot	false	action	person§McCormick	falls on the floor	
+2553_1	medium_shot	false	expresses	person§spectator 1	interest
+2553_2	medium_shot	false	expresses	person§spectator 2	interest
+2582_1	american_shot	false	action	person§Curtin	lifts	at his hairperson§McCormick
+2620_1	long_shot	false	action	person§Curtin	hits	in the faceperson§McCormick
+2620_2	long_shot	false	expresses	person§Curtin	loathing
+2620_3	long_shot	false	action	person§McCormick	falls down	
+2701_1	american_shot	false	action	person§Dobbs	bends down to	person§McCormick
+2726_1	medium_shot	false	action	person§McCormick	crawls	on the floor
+2726_2	medium_shot	false	expresses	person§Curtin	disgust
+2726_3	medium_shot	false	expresses	person§McCormick	desperation
+2726_4	medium_shot	false	says	person§McCormick	Bla...		person§Dobbs	person§Curtin
+2726_5	medium_shot	false	action	person§Dobbs	kicks	down to the floorperson§McCormick
+2726_6	medium_shot	false	says	person§McCormick	...bla		person§Dobbs	person§Curtin
+2968_1	medium_shot	false	expresses	person§Dobbs	no anger
+2968_2	medium_shot	false	says	person§Dobbs	come on ...		person§McCormick
+2998_1	medium_shot	true	says	person§Dobbs	... give us our money!		person§McCormick
+2998_2	medium_shot	true	introduce	object§McCormick's purse
+2998_3	medium_shot	false	action	person§McCormick	searches for	object§McCormick's purse
+2998_4	medium_shot	false	show	object§McCormick's purse	
+2998_5	medium_shot	false	says	person§McCormick	I can't see		person§Dobbs
+2998_6	medium_shot	false	action	person§Dobbs	grabs	object§McCormick's purse
+3214_1	medium_shot	false	action	person§Dobbs	opens	object§McCormick's purse
+3214_2	medium_shot	false	introduce	object§the money	
+3214_3	medium_shot	false	action	person§Dobbs	counts	object§the money
+3214_4	medium_shot	false	says	person§Dobbs	bla 300. That's it?		person§Curtin
+3214_5	medium_shot	true	says	person§Curtin	Yeah, that's it.		person§Dobbs
+3214_6	medium_shot	false	introduce	object§the change	
+3214_7	medium_shot	false	action	person§Dobbs	throws	at McCormickobject§the change
+3538_1	medium_shot	false	action	person§McCormick	gets cover by	object§the change
+3538_2	medium_shot	false	action	person§Dobbs	goes to	object§the bar
+3538_3	medium_shot	false	action	person§Dobbs	pays	person§the barkeeper
+3538_4	medium_shot	false	says	person§Dobbs	Bla		person§the barkeeper
+3538_5	medium_shot	false	action	person§Curtin	turns to go	
+3538_6	medium_shot	false	action	person§Dobbs	turns to go	

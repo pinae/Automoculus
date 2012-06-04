@@ -1,0 +1,23 @@
+#Film:	The Woman in the Window
+#Scene:	Ampel
+#FPS:	24
+#Context:	person§Professor Richard Wanley, 
+#EntityList:	place§junction, object§traffic lights, object§Wanley's car, person§policeman, person§Professor Richard Wanley, 
+0_1	long_shot	false	introduce	place§junction	
+0_2	long_shot	false	introduce	object§traffic lights	
+0_3	long_shot	false	introduce	object§Wanley's car	
+0_4	long_shot	false	action	person§Professor Richard Wanley	advances the	with Wanley's carobject§traffic lights
+0_5	long_shot	true	introduce	person§policeman
+0_6	long_shot	true	action	person§policeman	changes the	object§traffic lights
+0_7	long_shot	false	show	object§traffic lights	
+0_8	long_shot	false	action	person§Professor Richard Wanley	stops	abruptlyobject§Wanley's car
+184_1	closeup	false	expresses	person§Professor Richard Wanley	fear
+184_2	closeup	false	action	person§Professor Richard Wanley	looks around	
+342_1	american_shot	false	show	person§policeman	
+342_2	american_shot	false	expresses	person§policeman	malicious glee
+405_1	closeup	false	expresses	person§Professor Richard Wanley	tension
+405_2	closeup	false	action	person§Professor Richard Wanley	nods towards the	person§policeman
+405_3	closeup	false	action	person§Professor Richard Wanley	looks at the	object§traffic lights
+628_1	long_shot	true	action	person§policeman	changes the	object§traffic lights
+628_2	long_shot	false	show	object§traffic lights	
+628_3	long_shot	false	action	person§Professor Richard Wanley	drives away	

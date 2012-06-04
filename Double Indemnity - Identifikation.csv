@@ -1,0 +1,138 @@
+#Film:	Double Indemnity
+#Scene:	Identifikation
+#FPS:	24
+#Context:	person§Walter, person§Keyes, place§Keye's Room, 
+#EntityList:	object§Keye's chair, object§Keye's desk, object§Keye's phone, object§the door, person§Mr. Jackson, object§the file, object§a cigar, object§Keye's cigar, object§matchstick, person§Walter, person§Keyes, place§Keye's Room, 
+0_1	full_shot	false	says	person§Keyes	Bla		person§Walter
+0_2	full_shot	true	says	person§Walter	Hallo Keyes		person§Keyes
+0_3	full_shot	false	action	person§Walter	walks to	person§Keyes
+0_4	full_shot	false	expresses	person§Keyes	thoughtfulness
+0_5	full_shot	false	says	person§Keyes	Bla		person§Walter
+0_6	full_shot	false	says	person§Walter	Yeah		person§Keyes
+0_7	full_shot	false	says	person§Keyes	Bla... Very great man		person§Walter
+0_8	full_shot	false	says	person§Walter	Yeah		person§Keyes
+0_9	full_shot	false	expresses	person§Keyes	communicativeness
+0_10	full_shot	false	says	person§Keyes	Bla		person§Walter
+488_1	closeup	true	says	person§Keyes	something		person§Walter
+488_2	closeup	false	expresses	person§Walter	tension
+611_1	closeup	false	expresses	person§Keyes	convincement
+611_2	closeup	false	says	person§Keyes	Bla		person§Walter
+611_3	closeup	true	says	person§Walter	Bla		person§Keyes
+611_4	closeup	false	says	person§Keyes	Bla		person§Walter
+984_1	closeup	false	expresses	person§Walter	hidden emergency
+984_2	closeup	false	says	person§Walter	He wasn't?		person§Keyes
+984_3	closeup	true	says	person§Keyes	No, he wasn't		person§Walter
+1078_1	full_shot	false	says	person§Keyes	Bla		person§Walter
+1078_2	full_shot	false	action	person§Keyes	walks through	place§Keye's Room
+1078_3	full_shot	false	introduce	object§Keye's chair	
+1078_4	full_shot	false	introduce	object§Keye's desk	
+1078_5	full_shot	false	introduce	object§Keye's phone	
+1078_6	full_shot	false	says	person§Keyes	the rest of Bla		person§Walter
+1078_7	full_shot	false	expresses	person§Walter	no change
+1078_8	full_shot	false	says	person§Walter	You're way ahead of me, Keyes.		person§Keyes
+1663_1	closeup	false	says	person§Keyes	something		person§Walter
+1888_1	closeup	false	expresses	person§Walter	hidden concern
+1888_2	closeup	false	says	person§Keyes	Bla, impersonation, see?		person§Walter
+2042_1	full_shot	false	says	person§Keyes	Bla		person§Walter
+2042_2	full_shot	false	says	person§Walter	A little bit too fancy		person§Keyes
+2042_3	full_shot	false	expresses	person§Walter	tension
+2042_4	full_shot	false	says	person§Keyes	Bla		person§Walter
+2042_5	full_shot	false	expresses	person§Walter	hidden horror
+2757_1	medium_shot	false	introduce	object§the door	
+2757_2	medium_shot	false	introduce	person§Mr. Jackson	
+2757_3	medium_shot	false	introduce	object§the file	
+2757_4	medium_shot	false	introduce	object§a cigar	
+2757_5	medium_shot	false	action	person§Mr. Jackson	smokes	object§a cigar
+2757_6	medium_shot	false	says	person§Mr. Jackson	Fine Cigar, Bla		person§Keyes
+2757_7	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+2757_8	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+2757_9	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+2757_10	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+2757_11	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+2757_12	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+2757_13	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+2757_14	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+2757_15	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+2757_16	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+2757_17	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+2757_18	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+2757_19	medium_shot	false	action	person§Keyes	points to	person§Walter
+2757_20	medium_shot	false	says	person§Keyes	Bla		person§Walter
+2757_21	medium_shot	false	expresses	person§Walter	mistrust
+2757_22	medium_shot	false	says	person§Keyes	This is Mr. Neff		person§Mr. Jackson
+2757_23	medium_shot	false	action	person§Mr. Jackson	shakes hands with	person§Walter
+2757_24	medium_shot	false	says	person§Walter	How are you?		person§Mr. Jackson
+2757_25	medium_shot	false	expresses	person§Keyes	please sit down
+2757_26	medium_shot	false	action	person§Mr. Jackson	sits down in	object§Keye's chair
+2757_27	medium_shot	false	says	person§Keyes	something		person§Mr. Jackson
+2757_28	medium_shot	false	says	person§Mr. Jackson	the answer		person§Keyes
+2757_29	medium_shot	false	says	person§Keyes	Dietrichsen was about 50. Wasn't he, Walter?		person§Walter
+3979_1	closeup	false	expresses	person§Walter	calmness
+3979_2	closeup	false	says	person§Walter	51 according to the policy.		person§Keyes
+4030_1	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes	person§Walter
+4030_2	medium_shot	false	expresses	person§Keyes	give me the file
+4030_3	medium_shot	false	says	person§Mr. Jackson	the rest of Bla		person§Keyes	person§Walter
+4030_4	medium_shot	false	action	person§Mr. Jackson	hands	to Keyesobject§the file
+4030_5	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+4030_6	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+4030_7	medium_shot	false	expresses	person§Mr. Jackson	unsureness
+4030_8	medium_shot	false	says	person§Mr. Jackson	Expenses paid of course?		person§Keyes
+4529_1	full_shot	false	says	person§Keyes	Of course		person§Mr. Jackson
+4529_2	full_shot	false	action	person§Keyes	walks to	object§Keye's phone
+4529_3	full_shot	false	expresses	person§Mr. Jackson	expectation
+4529_4	full_shot	false	action	person§Keyes	lays	on the deskobject§the file
+4529_5	full_shot	false	action	person§Keyes	picks up	object§Keye's phone
+4529_6	full_shot	false	says	person§Keyes	Bla		object§Keye's phone
+4684_1	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_2	medium_shot	false	action	person§Mr. Jackson	looks at	person§Walter
+4684_3	medium_shot	false	expresses	person§Walter	tension
+4684_4	medium_shot	false	action	person§Walter	walks two steps through	place§Keye's Room
+4684_5	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_6	medium_shot	false	action	person§Mr. Jackson	follows	with his stareperson§Walter
+4684_7	medium_shot	false	expresses	person§Mr. Jackson	thoughtfulness
+4684_8	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_9	medium_shot	false	action	person§Mr. Jackson	stands up	
+4684_10	medium_shot	false	action	person§Mr. Jackson	grabs	's armperson§Walter
+4684_11	medium_shot	false	says	person§Mr. Jackson	Bla		person§Walter
+4684_12	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_13	medium_shot	false	says	person§Walter	Bla		person§Mr. Jackson
+4684_14	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_15	medium_shot	false	says	person§Mr. Jackson	Bla		person§Walter
+4684_16	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_17	medium_shot	false	says	person§Walter	Bla		person§Mr. Jackson
+4684_18	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_19	medium_shot	false	says	person§Mr. Jackson	Bla		person§Walter
+4684_20	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_21	medium_shot	false	says	person§Walter	Bla		person§Mr. Jackson
+4684_22	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_23	medium_shot	false	says	person§Mr. Jackson	Bla		person§Walter
+4684_24	medium_shot	true	says	person§Keyes	Bla		object§Keye's phone
+4684_25	medium_shot	false	says	person§Walter	Bla		person§Mr. Jackson
+4684_26	medium_shot	false	action	person§Keyes	leads	to the doorperson§Mr. Jackson
+4684_27	medium_shot	false	expresses	person§Mr. Jackson	confusion
+4684_28	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+4684_29	medium_shot	false	action	person§Keyes	opens	object§the door
+4684_30	medium_shot	false	says	person§Mr. Jackson	Bla		person§Keyes
+4684_31	medium_shot	false	says	person§Keyes	Bla		person§Mr. Jackson
+4684_32	medium_shot	false	action	person§Keyes	pushes	through the doorperson§Mr. Jackson
+4684_33	medium_shot	false	action	person§Keyes	closes	object§the door
+4684_34	medium_shot	false	action	person§Keyes	turns twards	person§Walter
+4684_35	medium_shot	false	says	person§Keyes	Bla!		person§Walter
+6183_1	full_shot	false	introduce	object§Keye's cigar	
+6183_2	full_shot	false	says	person§Keyes	Bla		person§Walter
+6183_3	full_shot	false	action	person§Walter	leans at	object§Keye's desk
+6183_4	full_shot	false	says	person§Keyes	Bla		person§Walter
+6459_1	closeup	false	expresses	person§Walter	no change
+6459_2	closeup	false	introduce	object§matchstick	
+6459_3	closeup	false	action	person§Walter	bites on	object§matchstick
+6459_4	closeup	true	says	person§Keyes	Bla		person§Walter
+6606_1	medium_shot	false	says	person§Keyes	Bla		person§Walter
+7099_1	american_shot	false	action	person§Keyes	takes	object§the file
+7099_2	american_shot	false	says	person§Keyes	Bla		object§the file
+7099_3	american_shot	false	expresses	person§Keyes	determination
+7099_4	american_shot	false	action	person§Keyes	throws	on Keye's deskobject§the file
+7099_5	american_shot	false	says	person§Keyes	right back at her!		object§the file
+7263_1	closeup	false	action	person§Walter	ligths the	object§matchstick
+7263_2	closeup	false	action	person§Walter	hands the	to Keyesobject§matchstick
+7367_1	medium_shot	false	says	person§Keyes	Bla		person§Walter
+7367_2	medium_shot	false	action	person§Keyes	lights	object§Keye's cigar

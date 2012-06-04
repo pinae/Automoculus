@@ -1,0 +1,27 @@
+#Film:	The Mighty Hugo
+#Scene:	Testszene
+#FPS:	24
+#Context:	
+#EntityList:	person§Karl, person§Hugo, person§Frank, object§Tisch, object§Donut, object§Monkey, object§Caesars head, 
+0_1	closeup	false	introduce	person§Karl	
+0_2	closeup	false	introduce	person§Hugo	
+0_3	closeup	false	introduce	person§Frank	
+0_4	closeup	false	introduce	object§Tisch	
+0_5	closeup	false	introduce	object§Donut	
+0_6	closeup	false	introduce	object§Monkey	
+0_7	closeup	false	introduce	object§Caesars head	
+0_8	closeup	false	action	person§Karl	walks towards	person§Frank
+2_1	closeup	false	action	person§Hugo	goes a step towards	person§Frank
+19_1	closeup	false	action	person§Karl	turns towards	person§Frank
+28_1	closeup	false	action	person§Hugo	walks in the direction of	person§Karl
+28_2	closeup	false	says	person§Karl	bla		person§Frank
+61_1	closeup	false	says	person§Frank	bla...		person§Karl
+73_1	closeup	false	expresses	person§Karl	rejection
+73_2	closeup	false	says	person§Frank	...bla		person§Karl
+82_1	closeup	false	expresses	person§Hugo	concern
+82_2	closeup	false	action	person§Hugo	turns around	
+99_1	closeup	false	says	person§Karl	bla		person§Frank
+111_1	closeup	false	says	person§Hugo	bla		person§Frank
+138_1	closeup	false	says	person§Frank	bla		person§Hugo	person§Karl
+164_1	closeup	false	says	person§Karl	bla		person§Frank
+182_1	closeup	false	says	person§Hugo	bla		person§Frank

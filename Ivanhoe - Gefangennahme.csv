@@ -1,0 +1,91 @@
+#Film:	Ivanhoe
+#Scene:	Gefangennahme
+#FPS:	25
+#Context:	person§Rebecca, person§Rowena, person§Cedric, person§Wamba, person§Isaac of York, 
+#EntityList:	place§field, person§guards, person§attackers, person§Brian de Bois Guilbert, person§Hugh de Bracy, place§the next valley, person§a guard, person§an attacker, person§Rebecca, person§Rowena, person§Cedric, person§Wamba, person§Isaac of York, 
+0_1	extreme_long_shot	false	introduce	place§field	
+0_2	extreme_long_shot	false	introduce	person§guards	
+0_3	extreme_long_shot	false	action	person§guards	ride through the	place§field
+0_4	extreme_long_shot	false	action	person§Rebecca	rides through the	place§field
+0_5	extreme_long_shot	false	action	person§Rowena	rides through the	place§field
+0_6	extreme_long_shot	false	action	person§Cedric	rides through the	place§field
+0_7	extreme_long_shot	false	action	person§Wamba	rides through the	place§field
+0_8	extreme_long_shot	false	action	person§Isaac of York	rides through the	place§field
+173_1	medium_shot	false	says	person§Cedric	bla		person§Wamba
+173_2	medium_shot	false	expresses	person§Wamba	joy
+173_3	medium_shot	false	says	person§Cedric	bla		person§Wamba
+173_4	medium_shot	false	says	person§Wamba	bla		person§Cedric
+173_5	medium_shot	false	says	person§Cedric	bla		person§Wamba
+626_1	medium_shot	false	says	person§Rowena	bla		person§Rebecca
+626_2	medium_shot	false	expresses	person§Rebecca	earnesty
+626_3	medium_shot	false	says	person§Rebecca	bla		person§Rowena
+626_4	medium_shot	false	says	person§Rowena	bla		person§Rebecca
+626_5	medium_shot	false	says	person§Rebecca	bla		person§Rowena
+626_6	medium_shot	false	says	person§Rowena	bla		person§Rebecca
+626_7	medium_shot	false	says	person§Rebecca	bla		person§Rowena
+626_8	medium_shot	false	expresses	person§Rowena	pity
+626_9	medium_shot	false	says	person§Rowena	bla		person§Rebecca
+626_10	medium_shot	true	introduce	person§attackers
+626_11	medium_shot	true	action	person§attackers	ride	
+1556_1	extreme_long_shot	false	show	person§attackers	
+1556_2	extreme_long_shot	false	introduce	person§Brian de Bois Guilbert	
+1556_3	extreme_long_shot	false	introduce	person§Hugh de Bracy	
+1556_4	extreme_long_shot	false	action	person§attackers	ride through the	place§field
+1556_5	extreme_long_shot	false	action	person§Brian de Bois Guilbert	rides through the	place§field
+1556_6	extreme_long_shot	false	action	person§Hugh de Bracy	rides through the	place§field
+1636_1	extreme_long_shot	false	introduce	place§the next valley	
+1636_2	extreme_long_shot	false	action	person§guards	turn their horses towards the	person§attackers
+1636_3	extreme_long_shot	false	action	person§Rebecca	turns her horse towards the	person§attackers
+1636_4	extreme_long_shot	false	action	person§Rowena	turns her horse towards the	person§attackers
+1636_5	extreme_long_shot	false	action	person§Cedric	turns his horse towards the	person§attackers
+1636_6	extreme_long_shot	false	action	person§Wamba	turns his horse towards the	person§attackers
+1636_7	extreme_long_shot	false	action	person§Isaac of York	turns his horse towards the	person§attackers
+1636_8	extreme_long_shot	false	action	person§attackers	ride to the	wildlyperson§guards
+1636_9	extreme_long_shot	false	action	person§Brian de Bois Guilbert	rides to	wildlyperson§Rebecca
+1636_10	extreme_long_shot	false	action	person§Hugh de Bracy	rides to	wildlyperson§Rowena
+1636_11	extreme_long_shot	false	action	person§attackers	hit	person§guards
+1636_12	extreme_long_shot	false	action	person§guards	dodge hits from the	person§attackers
+1775_1	long_shot	false	introduce	person§a guard	
+1775_2	long_shot	false	introduce	person§an attacker	
+1775_3	long_shot	false	action	person§guards	hit	person§attackers
+1775_4	long_shot	false	action	person§attackers	dodge hits from the	person§guards
+1775_5	long_shot	false	action	person§a guard	fights	
+1775_6	long_shot	false	action	person§an attacker	fights	
+1775_7	long_shot	false	action	person§attackers	hit	person§guards
+1775_8	long_shot	false	action	person§guards	dodge hits from the	person§attackers
+1775_9	long_shot	false	action	person§Brian de Bois Guilbert	hits	person§guards
+1775_10	long_shot	false	action	person§guards	dodge hits from	person§Brian de Bois Guilbert
+1834_1	full_shot	false	action	person§an attacker	hits	person§a guard
+1834_2	full_shot	false	action	person§a guard	falls from his horse	
+1834_3	full_shot	false	action	person§attackers	fight	
+1834_4	full_shot	false	action	person§guards	fight	
+1907_1	medium_shot	false	says	person§Cedric	bla		person§guards
+1953_1	medium_shot	false	says	person§Wamba	God save England!		person§guards
+1953_2	medium_shot	false	action	person§Wamba	evades a hit by	person§an attacker
+1953_3	medium_shot	false	expresses	person§Wamba	disenchantment
+1953_4	medium_shot	false	says	person§Wamba	God save Wamba!		person§guards
+1953_5	medium_shot	false	action	person§an attacker	hits	person§Wamba
+1953_6	medium_shot	false	action	person§Wamba	doges a hit by	person§an attacker
+1953_7	medium_shot	false	action	person§an attacker	hits	person§Wamba
+1953_8	medium_shot	false	action	person§Wamba	doges a hit by	person§an attacker
+2081_1	american_shot	false	action	person§Rebecca	looks around	
+2081_2	american_shot	false	action	person§attackers	ride	
+2081_3	american_shot	false	expresses	person§Rebecca	fear
+2081_4	american_shot	false	action	person§Rebecca	looks around	
+2150_1	american_shot	false	action	person§an attacker	corners	person§Rowena
+2150_2	american_shot	false	action	person§Rowena	hits	with her handperson§an attacker
+2150_3	american_shot	false	action	person§an attacker	dodges with his shield	
+2150_4	american_shot	false	action	person§Rowena	hits	with her handperson§an attacker
+2218_1	full_shot	false	action	person§a guard	pushes	down from his horseperson§an attacker
+2218_2	full_shot	false	action	person§an attacker	falls to the ground	
+2254_1	american_shot	false	action	person§Hugh de Bracy	kills	person§guards
+2254_2	american_shot	false	action	person§guards	fall down	
+2300_1	american_shot	false	action	person§Brian de Bois Guilbert	hits	person§guards
+2346_1	american_shot	false	action	person§an attacker	wrestles with	person§Isaac of York
+2346_2	american_shot	false	action	person§Isaac of York	fails to free himself of	person§an attacker
+2375_1	american_shot	false	action	person§Brian de Bois Guilbert	grabs the reins of	person§Rebecca
+2375_2	american_shot	false	expresses	person§Rebecca	horror
+2375_3	american_shot	false	action	person§Brian de Bois Guilbert	rides away with	person§Rebecca
+2436_1	american_shot	false	action	person§Hugh de Bracy	grabs the reins of	person§Rowena
+2436_2	american_shot	false	expresses	person§Rowena	surprise
+2436_3	american_shot	false	action	person§Hugh de Bracy	rides away with	person§Rowena

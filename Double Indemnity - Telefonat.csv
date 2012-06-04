@@ -1,0 +1,97 @@
+#Film:	Double Indemnity
+#Scene:	Telefonat
+#FPS:	24
+#Context:	person§Walter, place§the buro, object§the door, object§the phone, 
+#EntityList:	object§Letter, person§Keyes, object§a file, object§another Letter, person§Mrs. Dietrichsen, object§a cigarette, object§a cup, person§Walter, place§the buro, object§the door, object§the phone, 
+0_1	full_shot	false	introduce	object§Letter	
+0_2	full_shot	false	action	person§Walter	opens the	object§Letter
+0_3	full_shot	false	action	person§Walter	reads the	object§Letter
+0_4	full_shot	false	introduce	person§Keyes	
+0_5	full_shot	false	action	person§Keyes	enters	place§the buro
+0_6	full_shot	false	introduce	object§a file	
+0_7	full_shot	false	says	person§Walter	bla		person§Keyes
+0_8	full_shot	false	action	person§Keyes	looks up something in	object§a file
+0_9	full_shot	false	says	person§Keyes	bla		person§Walter
+0_10	full_shot	false	says	person§Walter	bla		person§Keyes
+0_11	full_shot	false	says	person§Keyes	bla		person§Walter
+0_12	full_shot	false	says	person§Walter	bla		person§Keyes
+0_13	full_shot	false	says	person§Keyes	bla		person§Walter
+0_14	full_shot	false	expresses	person§Walter	surprise
+0_15	full_shot	false	says	person§Walter	bla		person§Keyes
+0_16	full_shot	false	expresses	person§Keyes	commitment
+0_17	full_shot	false	says	person§Keyes	bla		person§Walter
+0_18	full_shot	false	action	person§Keyes	throws	on Walter's Deskobject§a file
+0_19	full_shot	false	says	person§Walter	bla		person§Keyes
+0_20	full_shot	false	says	person§Keyes	bla		person§Walter
+0_21	full_shot	false	says	person§Walter	bla		person§Keyes
+0_22	full_shot	false	says	person§Keyes	bla		person§Walter
+0_23	full_shot	false	says	person§Walter	bla		person§Keyes
+0_24	full_shot	false	says	person§Keyes	bla		person§Walter
+0_25	full_shot	false	introduce	object§another Letter	
+0_26	full_shot	false	action	person§Walter	opens	object§another Letter
+0_27	full_shot	false	says	person§Walter	bla		person§Keyes
+0_28	full_shot	false	says	person§Keyes	bla		person§Walter
+0_29	full_shot	false	says	person§Walter	bla		person§Keyes
+0_30	full_shot	false	says	person§Keyes	bla		person§Walter
+0_31	full_shot	false	says	person§Walter	bla		person§Keyes
+0_32	full_shot	false	says	person§Keyes	bla		person§Walter
+0_33	full_shot	true	introduce	person§Mrs. Dietrichsen
+0_34	full_shot	true	action	person§Mrs. Dietrichsen	lets	ringobject§the phone
+0_35	full_shot	false	action	person§Keyes	answers	object§the phone
+0_36	full_shot	false	says	person§Keyes	Hello, Hold out a minute.		person§Mrs. Dietrichsen
+0_37	full_shot	false	says	person§Keyes	bla		person§Walter
+0_38	full_shot	false	action	person§Keyes	gives	the Phoneperson§Walter
+0_39	full_shot	false	action	person§Walter	takes	object§the phone
+0_40	full_shot	false	action	person§Keyes	wanders around in	place§the buro
+0_41	full_shot	false	says	person§Walter	Walter Neff speaking.		person§Mrs. Dietrichsen
+3123_1	medium_shot	false	show	person§Mrs. Dietrichsen	
+3123_2	medium_shot	false	expresses	person§Mrs. Dietrichsen	worry
+3123_3	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+3201_1	medium_shot	false	expresses	person§Walter	tension
+3201_2	medium_shot	false	says	person§Walter	Yes I am. Can I call you back		person§Mrs. Dietrichsen
+3201_3	medium_shot	false	expresses	person§Keyes	boredom
+3201_4	medium_shot	false	says	person§Walter	Margie?		person§Mrs. Dietrichsen
+3320_1	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+3497_1	medium_shot	false	says	person§Walter	bla		person§Mrs. Dietrichsen
+3497_2	medium_shot	false	action	person§Keyes	looks around in	place§the buro
+3497_3	medium_shot	false	says	person§Walter	bla		person§Mrs. Dietrichsen
+3602_1	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+3602_2	medium_shot	false	expresses	person§Mrs. Dietrichsen	excitement
+3602_3	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+3825_1	medium_shot	false	says	person§Walter	bla		person§Mrs. Dietrichsen
+3825_2	medium_shot	false	action	person§Walter	turns to	person§Keyes
+3825_3	medium_shot	false	says	person§Walter	bla		person§Keyes
+3825_4	medium_shot	false	says	person§Keyes	bla		person§Walter
+3825_5	medium_shot	false	expresses	person§Walter	letdown
+3825_6	medium_shot	false	says	person§Walter	Go ahead.		person§Mrs. Dietrichsen
+4167_1	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+4375_1	medium_shot	false	says	person§Walter	bla		person§Mrs. Dietrichsen
+4498_1	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+4572_1	medium_shot	false	says	person§Walter	bla		person§Mrs. Dietrichsen
+4653_1	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+4653_2	medium_shot	false	expresses	person§Mrs. Dietrichsen	excitement
+4653_3	medium_shot	false	says	person§Mrs. Dietrichsen	bla		person§Walter
+4849_1	american_shot	false	says	person§Walter	bla		person§Keyes
+4849_2	american_shot	false	action	person§Walter	stands up	
+4849_3	american_shot	false	says	person§Keyes	bla		person§Walter
+4849_4	american_shot	false	says	person§Walter	bla		person§Keyes
+4849_5	american_shot	false	says	person§Keyes	bla		person§Walter
+4849_6	american_shot	false	says	person§Walter	bla		person§Keyes
+4849_7	american_shot	false	says	person§Keyes	bla		person§Walter
+4849_8	american_shot	false	says	person§Walter	bla		person§Keyes
+4849_9	american_shot	false	says	person§Keyes	bla		person§Walter
+4849_10	american_shot	false	says	person§Walter	bla		person§Keyes
+4849_11	american_shot	false	introduce	object§a cigarette	
+4849_12	american_shot	false	action	person§Keyes	takes out	object§a cigarette
+4849_13	american_shot	false	action	person§Walter	lights	object§a cigarette
+4849_14	american_shot	false	says	person§Keyes	bla		person§Walter
+4849_15	american_shot	false	expresses	person§Keyes	disappointment
+4849_16	american_shot	false	says	person§Keyes	bla		person§Walter
+4849_17	american_shot	false	action	person§Keyes	leaves	place§the buro
+6710_1	long_shot	false	action	person§Walter	closes	object§the door
+6710_2	long_shot	false	action	person§Walter	fetches something to drink	
+6710_3	long_shot	false	introduce	object§a cup	
+6710_4	long_shot	false	action	person§Walter	drinks	
+6710_5	long_shot	false	action	person§Walter	throws away	object§a cup
+6710_6	long_shot	false	action	person§Walter	walks to	object§the door
+6710_7	long_shot	false	action	person§Walter	leaves	place§the buro

@@ -1,0 +1,58 @@
+#Film:	Double Indemnity
+#Scene:	Eingang
+#FPS:	24
+#Context:	person§Walter, object§Walter's hat, 
+#EntityList:	place§Dietrichsens House, object§the bell, object§the doorframe, object§the door, person§Natty, person§Mrs. Dietrichsen, place§the livingroom, person§Walter, object§Walter's hat, 
+0_1	medium_shot	false	introduce	place§Dietrichsens House	
+0_2	medium_shot	false	introduce	object§the bell	
+0_3	medium_shot	false	introduce	object§the doorframe	
+0_4	medium_shot	false	introduce	object§the door	
+0_5	medium_shot	false	action	person§Walter	rings	object§the bell
+0_6	medium_shot	false	action	person§Walter	lifts	object§Walter's hat
+0_7	medium_shot	false	action	person§Walter	leans at	object§the doorframe
+0_8	medium_shot	false	introduce	person§Natty	
+0_9	medium_shot	false	action	person§Natty	opens	object§the door
+0_10	medium_shot	false	action	person§Walter	stands straight	
+0_11	medium_shot	false	says	person§Walter	Is, ah, Mr. Dietrichsen in?		person§Natty
+0_12	medium_shot	false	says	person§Natty	Who wants to see him?		person§Walter
+0_13	medium_shot	false	says	person§Walter	Neff. My name is Walter Neff.		person§Natty
+0_14	medium_shot	false	says	person§Natty	If you're selling something!		person§Walter
+0_15	medium_shot	false	says	person§Walter	Look, it's Mr. Dietrichsen ...		person§Natty
+0_16	medium_shot	false	action	person§Walter	goes through	object§the door
+0_17	medium_shot	false	says	person§Walter	... I wanna talk.		person§Natty
+256_1	medium_shot	false	says	person§Walter	It's not a magazine inscription.		person§Natty
+256_2	medium_shot	false	action	person§Walter	closes	halfwayobject§the door
+256_3	medium_shot	false	says	person§Natty	Listen! Mr. Dietrichsen is not in!		person§Walter
+256_4	medium_shot	false	says	person§Walter	How soon do you expect him?		person§Natty
+256_5	medium_shot	false	says	person§Natty	He'll be home, when he gets here. When that's any help to you		person§Walter
+256_6	medium_shot	true	introduce	person§Mrs. Dietrichsen
+256_7	medium_shot	true	says	person§Mrs. Dietrichsen	What is it, Natty? Who is it?		person§Natty
+256_8	medium_shot	false	action	person§Natty	looks to	person§Mrs. Dietrichsen
+256_9	medium_shot	false	action	person§Walter	looks to	person§Mrs. Dietrichsen
+443_1	long_shot	false	show	person§Mrs. Dietrichsen	
+443_2	long_shot	false	says	person§Natty	It's for Mr. Dietrichsen.		person§Mrs. Dietrichsen
+443_3	long_shot	false	expresses	person§Mrs. Dietrichsen	reticence
+443_4	long_shot	false	says	person§Mrs. Dietrichsen	I'm Mrs. Dietrichsen. Waht is it?		person§Walter
+545_1	closeup	false	expresses	person§Walter	stunner
+545_2	closeup	false	says	person§Walter	How do you do, Mrs. Dietrichsen.		person§Mrs. Dietrichsen
+545_3	closeup	false	action	person§Walter	deducts	object§Walter's hat
+545_4	closeup	false	says	person§Walter	I'm Walter Neff, Pacific All Risk.		person§Mrs. Dietrichsen
+635_1	full_shot	false	says	person§Mrs. Dietrichsen	Pacific all waht?		person§Walter
+635_2	full_shot	false	says	person§Walter	Pacific All Risk insurance company. It's about some renewance for the automobile. I've trid to contact your Husband for the past two weeks but he's never in his office.		person§Mrs. Dietrichsen
+635_3	full_shot	false	says	person§Mrs. Dietrichsen	Is there anything I can do?		person§Walter
+892_1	closeup	false	says	person§Walter	The insurance ran out at the 15th. I'd hate to think of you smash feathered or something while you're not ...		person§Mrs. Dietrichsen
+892_2	closeup	false	expresses	person§Walter	amusement
+892_3	closeup	false	says	person§Walter	... fully Covered.		person§Mrs. Dietrichsen
+1071_1	full_shot	false	expresses	person§Mrs. Dietrichsen	amusement
+1071_2	full_shot	false	says	person§Mrs. Dietrichsen	Perhaps I know what you mean, Mr. Neff. I've just been taking a sun-bath.		person§Walter
+1200_1	closeup	false	says	person§Walter	No pidgins are all I hope. - ah -		person§Mrs. Dietrichsen
+1200_2	closeup	false	expresses	person§Walter	austerity
+1200_3	closeup	false	says	person§Walter	Now, about those policies Mrs. Dietrichsen. I hate to take up your time.		person§Mrs. Dietrichsen
+1346_1	medium_shot	false	says	person§Mrs. Dietrichsen	That's all right. If you wait, right. With something on I'll be right there.		person§Walter
+1346_2	medium_shot	false	says	person§Mrs. Dietrichsen	Natty, show Mr. Neff into the livingroom.		person§Natty
+1564_1	american_shot	false	says	person§Walter	Where would the livingroom be?		person§Natty
+1564_2	american_shot	false	action	person§Natty	closes	object§the door
+1564_3	american_shot	false	says	person§Natty	In there. But they keep the liquer locked up!		person§Walter
+1564_4	american_shot	false	says	person§Walter	It's alright, I'm carrying my own keys.		person§Natty
+1564_5	american_shot	false	introduce	place§the livingroom	
+1564_6	american_shot	false	action	person§Walter	walks to	place§the livingroom

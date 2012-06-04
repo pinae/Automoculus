@@ -1,0 +1,111 @@
+#Film:	Berg der Versuchung
+#Scene:	Schwere Stelle
+#FPS:	25
+#Context:	person§Chris, person§Zacharias, 
+#EntityList:	object§Rope, place§the Way, object§ice axe, object§a Rock, object§hand hold, object§foot hold, object§snowy hold, object§small hold, person§Chris, person§Zacharias, 
+0_1	full_shot	false	introduce	object§Rope	
+0_2	full_shot	false	introduce	place§the Way	
+0_3	full_shot	false	expresses	person§Chris	Is it time to turn back?
+0_4	full_shot	false	expresses	person§Zacharias	Is it time to turn back?
+0_5	full_shot	false	says	person§Chris	So weit wären wir.		person§Zacharias
+0_6	full_shot	false	says	person§Zacharias	Ja.		person§Chris
+0_7	full_shot	false	expresses	person§Zacharias	That's the way to go.
+0_8	full_shot	false	says	person§Chris	Wie geht's jetzt weiter?		person§Zacharias
+0_9	full_shot	false	action	person§Zacharias	points to	place§the Way
+0_10	full_shot	false	expresses	person§Chris	I understand
+215_1	long_shot	false	show	place§the Way	
+284_1	full_shot	false	expresses	person§Chris	fear of the Way
+284_2	full_shot	false	says	person§Chris	Nicht so einfach.		person§Zacharias
+284_3	full_shot	false	says	person§Zacharias	Da bin ich mit dem Engländer abgestürzt.		person§Chris
+284_4	full_shot	false	action	person§Zacharias	prepares	object§Rope
+284_5	full_shot	false	says	person§Chris	Gibt's denn keinen anderen Weg?		person§Zacharias
+284_6	full_shot	false	says	person§Zacharias	Nein.		person§Chris
+284_7	full_shot	false	says	person§Chris	Das ist alles ganz glatter Fels.		person§Zacharias
+284_8	full_shot	false	says	person§Zacharias	Ich weiß.		person§Chris
+673_1	american_shot	false	expresses	person§Chris	doubt
+673_2	american_shot	false	says	person§Chris	Du hast wohl Angst.		person§Zacharias
+673_3	american_shot	false	expresses	person§Zacharias	Wahts's this kind of provocation good for?
+673_4	american_shot	false	says	person§Zacharias	Ja.		person§Chris
+673_5	american_shot	false	says	person§Chris	Du willst doch nicht aufgeben. Oder?		person§Zacharias
+867_1	medium_shot	false	action	person§Chris	prepares	object§Rope
+867_2	medium_shot	false	says	person§Zacharias	Nein.		person§Chris
+867_3	medium_shot	false	expresses	person§Chris	doubt
+867_4	medium_shot	false	says	person§Zacharias	Ich habe nichts weiter als Angst. Nicht mehr als sonst. Das ist eine schwierige Passage. Es kommen noch andere.		person§Chris
+867_5	medium_shot	false	action	person§Chris	looks for	place§the Way
+867_6	medium_shot	false	says	person§Chris	Glaubst du, dass du da Halt findest?		person§Zacharias
+867_7	medium_shot	false	action	person§Zacharias	nods	
+867_8	medium_shot	false	action	person§Zacharias	hands	object§Rope
+1304_1	long_shot	false	action	person§Zacharias	climbs	place§the Way
+1304_2	long_shot	false	action	person§Chris	secures	person§Zacharias
+1304_3	long_shot	false	introduce	object§ice axe	
+1868_1	full_shot	false	introduce	object§a Rock	
+1868_2	full_shot	false	action	person§Zacharias	kicks	object§a Rock
+2551_1	medium_shot	false	expresses	person§Chris	thrill
+2611_1	long_shot	false	action	person§Zacharias	climbs	place§the Way
+2804_1	medium_shot	false	expresses	person§Chris	anxiety
+2859_1	medium_shot	false	introduce	object§hand hold	
+2859_2	medium_shot	false	action	person§Zacharias	searches for	object§hand hold
+2964_1	detail	false	introduce	object§foot hold	
+2964_2	detail	false	action	person§Zacharias	searches for	object§foot hold
+3131_1	long_shot	false	action	person§Zacharias	climbs	
+3355_1	medium_shot	false	expresses	person§Zacharias	fear of the height
+3618_1	medium_shot	false	says	person§Chris	Vielleicht gibt's einen besseren Weg.		person§Zacharias
+3669_1	medium_shot	false	says	person§Zacharias	Nein.		person§Chris
+3736_1	medium_shot	false	says	person§Chris	Ich möchte nicht, dass du mich mit runter ziehst, wie den...		person§Zacharias
+3736_2	medium_shot	false	expresses	person§Chris	What consequences do I have to face?
+3837_1	medium_shot	false	expresses	person§Zacharias	understanding
+3837_2	medium_shot	false	says	person§Zacharias	Du kannst dich ja losbinden, wenn du willst. Lass das Seil los.		person§Chris
+4076_1	medium_shot	false	says	person§Chris	Wenn ich das tue, muss ich ja alleine weiter.		person§Zacharias
+4136_1	medium_shot	false	expresses	person§Zacharias	contempt
+4136_2	medium_shot	false	says	person§Zacharias	Ja.		person§Chris
+4183_1	medium_shot	false	says	person§Chris	Nein. Entweder wir schaffen es, oder nicht.		person§Zacharias
+4280_1	medium_shot	false	says	person§Zacharias	Ja. Ich mache jetzt weiter.		person§Chris
+4412_1	medium_shot	false	expresses	person§Chris	nagging doubts
+4476_1	extreme_long_shot	false	introduce	object§snowy hold	
+4618_1	medium_shot	false	action	person§Zacharias	searches for	object§snowy hold
+5011_1	medium_shot	false	expresses	person§Chris	Waht is he doing?
+5011_2	medium_shot	false	says	person§Chris	Alles in Ordnung?		person§Zacharias
+5099_1	medium_shot	false	expresses	person§Zacharias	extertion
+5099_2	medium_shot	false	says	person§Zacharias	Nicht sprechen! Jetzt lieber nicht.		person§Chris
+5377_1	medium_shot	false	action	person§Zacharias	takes	object§ice axe
+5377_2	medium_shot	false	action	person§Zacharias	uses	object§ice axe
+5799_1	medium_shot	false	expresses	person§Chris	thrill
+5857_1	medium_shot	false	expresses	person§Zacharias	exhaustion
+5857_2	medium_shot	false	action	person§Zacharias	feels if	object§snowy hold
+5857_3	medium_shot	false	action	person§Zacharias	uses	object§ice axe
+6453_1	medium_shot	false	expresses	person§Chris	thrill
+6512_1	long_shot	false	action	person§Zacharias	uses	object§ice axe
+6512_2	long_shot	false	expresses	person§Zacharias	fatigue
+6740_1	medium_shot	false	action	person§Zacharias	uses	object§ice axe
+7137_1	extreme_long_shot	false	action	person§Zacharias	takes away	object§ice axe
+7285_1	closeup	false	expresses	person§Zacharias	exhaustion
+7285_2	closeup	false	action	person§Zacharias	feels for	
+7285_3	closeup	false	says	person§Zacharias	Chris, kannst du sehen?		person§Chris
+7528_1	medium_shot	false	action	person§Chris	looks	
+7528_2	medium_shot	false	says	person§Chris	Ja.		person§Zacharias
+7576_1	closeup	false	says	person§Zacharias	Oberhalb meiner linken Hand, da muss irgendwo ein 10 bis 15 Zentimeter langer Riss sein.	
+7727_1	medium_shot	false	action	person§Chris	nods	
+7727_2	medium_shot	false	says	person§Chris	Ja, den sehe ich.		person§Zacharias
+7778_1	closeup	false	says	person§Zacharias	wie weit über meiner Hand?		person§Chris
+7778_2	closeup	false	says	person§Chris	Gut 20 Zentimeter.		person§Zacharias
+7778_3	closeup	false	expresses	person§Zacharias	disappointment
+7778_4	closeup	false	says	person§Zacharias	Zu weit.		person§Chris
+8127_1	detail	false	introduce	object§small hold	
+8127_2	detail	false	action	person§Zacharias	feels for	object§small hold
+8127_3	detail	false	says	person§Zacharias	Irgendwas über meiner rechten Hand?		person§Chris
+8260_1	medium_shot	false	says	person§Chris	10 Zentimeter höher ist ein kleiner Vorsprung.		person§Zacharias
+8312_1	closeup	false	says	person§Zacharias	Ich werde es versuchen. Vorsichtig das Seil straff ziehen! Ich muss den linken Fuß bewegen.		person§Chris
+8527_1	medium_shot	false	expresses	person§Chris	concern
+8527_2	medium_shot	false	says	person§Chris	Das ist doch dein bester Halt!		person§Zacharias
+8577_1	closeup	false	says	person§Zacharias	Das weiß ich besser als du!		person§Chris
+8577_2	closeup	false	expresses	person§Zacharias	effort
+8776_1	detail	false	action	person§Zacharias	feels for	object§small hold
+8847_1	detail	false	action	person§Zacharias	moves	person§Zacharias
+8963_1	detail	false	action	person§Zacharias	grabs	object§small hold
+9042_1	closeup	false	expresses	person§Zacharias	effort
+9114_1	detail	false	action	person§Zacharias	moves	person§Zacharias
+9224_1	closeup	false	expresses	person§Zacharias	extreme effort
+9399_1	long_shot	false	action	person§Zacharias	climbs	place§the Way
+9702_1	medium_shot	false	expresses	person§Chris	relief
+9702_2	medium_shot	false	action	person§Chris	gives more	object§Rope
+9778_1	extreme_long_shot	false	action	person§Zacharias	climbs	place§the Way

@@ -1,0 +1,50 @@
+#Film:	Ivanhoe
+#Scene:	Taverne
+#FPS:	25
+#Context:	place§tavern, 
+#EntityList:	person§Guardsman 1, person§Guardsman 2, object§the door, person§Brian de Bois Guilbert, person§Hugh de Bracy, person§Messenger, place§tavern, 
+0_1	full_shot	false	introduce	person§Guardsman 1	
+0_2	full_shot	false	introduce	person§Guardsman 2	
+0_3	full_shot	false	introduce	object§the door	
+0_4	full_shot	false	show	place§tavern	
+0_5	full_shot	false	action	person§Guardsman 1	opens	object§the door
+0_6	full_shot	false	action	person§Guardsman 1	enters the	place§tavern
+0_7	full_shot	false	action	person§Guardsman 2	enters the	place§tavern
+0_8	full_shot	false	action	person§Guardsman 1	looks around in the	place§tavern
+0_9	full_shot	false	introduce	person§Brian de Bois Guilbert	
+0_10	full_shot	false	introduce	person§Hugh de Bracy	
+0_11	full_shot	false	action	person§Brian de Bois Guilbert	enters the	place§tavern
+0_12	full_shot	false	action	person§Hugh de Bracy	enters the	place§tavern
+0_13	full_shot	false	action	person§Guardsman 2	looks around in the	place§tavern
+0_14	full_shot	false	action	person§Brian de Bois Guilbert	looks around in the	place§tavern
+0_15	full_shot	false	action	person§Hugh de Bracy	looks around in the	place§tavern
+0_16	full_shot	false	says	person§Brian de Bois Guilbert	No one here, either.		person§Hugh de Bracy
+0_17	full_shot	false	says	person§Hugh de Bracy	What did you expect? bla		person§Brian de Bois Guilbert
+0_18	full_shot	false	says	person§Brian de Bois Guilbert	bla		person§Hugh de Bracy
+0_19	full_shot	false	introduce	person§Messenger	
+0_20	full_shot	false	action	person§Messenger	enters the	place§tavern
+0_21	full_shot	false	action	person§Messenger	straigtens his Back for	person§Brian de Bois Guilbert
+0_22	full_shot	false	says	person§Messenger	bla		person§Brian de Bois Guilbert
+478_1	medium_shot	false	says	person§Messenger	bla		person§Brian de Bois Guilbert
+478_2	medium_shot	false	says	person§Hugh de Bracy	And Ivanhoe?		person§Messenger
+478_3	medium_shot	false	says	person§Messenger	bla		person§Hugh de Bracy
+613_1	medium_shot	false	says	person§Brian de Bois Guilbert	bla		person§Messenger
+613_2	medium_shot	false	says	person§Hugh de Bracy	bla		person§Brian de Bois Guilbert
+613_3	medium_shot	false	action	person§Brian de Bois Guilbert	turns towards	person§Hugh de Bracy
+613_4	medium_shot	false	says	person§Brian de Bois Guilbert	bla		person§Hugh de Bracy
+613_5	medium_shot	false	expresses	person§Brian de Bois Guilbert	anger
+613_6	medium_shot	false	says	person§Brian de Bois Guilbert	bla		person§Messenger
+871_1	full_shot	false	says	person§Brian de Bois Guilbert	bla		person§Messenger
+871_2	full_shot	false	action	person§Messenger	nods	
+871_3	full_shot	false	action	person§Messenger	leaves the	place§tavern
+871_4	full_shot	false	action	person§Brian de Bois Guilbert	attemps to leave the	place§tavern
+871_5	full_shot	false	says	person§Hugh de Bracy	bla		person§Brian de Bois Guilbert
+871_6	full_shot	false	action	person§Brian de Bois Guilbert	turns towards	person§Hugh de Bracy
+871_7	full_shot	false	says	person§Brian de Bois Guilbert	bla		person§Hugh de Bracy
+871_8	full_shot	false	action	person§Brian de Bois Guilbert	leaves the	place§tavern
+871_9	full_shot	false	says	person§Hugh de Bracy	bla		person§Brian de Bois Guilbert
+871_10	full_shot	false	action	person§Hugh de Bracy	leaves the	place§tavern
+871_11	full_shot	false	says	person§Hugh de Bracy	bla		person§Brian de Bois Guilbert
+871_12	full_shot	false	action	person§Guardsman 1	leaves the	place§tavern
+871_13	full_shot	false	action	person§Guardsman 2	leaves the	place§tavern
+871_14	full_shot	false	action	person§Guardsman 2	closes	object§the door

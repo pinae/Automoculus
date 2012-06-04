@@ -1,0 +1,410 @@
+#Film:	Ivanhoe
+#Scene:	Turnier
+#FPS:	25
+#Context:	
+#EntityList:	person§trumpeters, object§trumpets, place§tiltyard, person§audience, person§prince John, person§purple knight, person§red knight, person§yellow knight, person§Brian de Bois Guilbert, person§Hugh de Bracy, person§anglo saxian knight 1, person§anglo saxian knight 2, person§anglo saxian knight 3, person§anglo saxian knight 4, person§anglo saxian knight 5, person§John's advisor, person§anglo saxian fan 1, person§anglo saxian fan 2, person§anglo saxian fan 3, person§anglo saxian fan 4, person§Locksley, person§little John, person§Cedric, person§Rowena, person§Isaac of York, person§Rebecca, object§Rebecca's veil, person§Ivanhoe, person§the judge, object§yellow shield, object§red shield, object§purple shield, object§yellow-red shield, object§blue-white shield, person§Wamba, person§yellow knight's squire, person§red knight's squire, person§purple knight's squire, object§Ivanhoe's injury, object§coronet, person§Guilbert's squire, 
+0_1	full_shot	false	introduce	person§trumpeters	
+0_2	full_shot	false	introduce	object§trumpets	
+0_3	full_shot	false	action	person§trumpeters	blow the	object§trumpets
+141_1	extreme_long_shot	false	introduce	place§tiltyard	
+141_2	extreme_long_shot	false	introduce	person§audience	
+141_3	extreme_long_shot	true	introduce	person§prince John
+141_4	extreme_long_shot	true	action	person§trumpeters	blow the	object§trumpets
+312_1	full_shot	false	action	person§trumpeters	blow the	object§trumpets
+312_2	full_shot	false	action	person§trumpeters	take down the	object§trumpets
+389_1	long_shot	false	introduce	person§purple knight	
+389_2	long_shot	false	introduce	person§red knight	
+389_3	long_shot	false	introduce	person§yellow knight	
+389_4	long_shot	false	introduce	person§Brian de Bois Guilbert	
+389_5	long_shot	false	introduce	person§Hugh de Bracy	
+389_6	long_shot	false	action	person§Brian de Bois Guilbert	rides forwards	
+389_7	long_shot	false	action	person§Hugh de Bracy	rides forwards	
+389_8	long_shot	false	action	person§purple knight	rides forwards	
+389_9	long_shot	false	action	person§red knight	rides forwards	
+389_10	long_shot	false	action	person§yellow knight	rides forwards	
+466_1	long_shot	false	introduce	person§anglo saxian knight 1	
+466_2	long_shot	false	introduce	person§anglo saxian knight 2	
+466_3	long_shot	false	introduce	person§anglo saxian knight 3	
+466_4	long_shot	false	introduce	person§anglo saxian knight 4	
+466_5	long_shot	false	introduce	person§anglo saxian knight 5	
+466_6	long_shot	false	action	person§anglo saxian knight 1	rides towards	person§Brian de Bois Guilbert
+466_7	long_shot	false	action	person§anglo saxian knight 2	rides towards	person§Hugh de Bracy
+466_8	long_shot	false	action	person§anglo saxian knight 3	rides towards	person§purple knight
+466_9	long_shot	false	action	person§anglo saxian knight 4	rides towards	person§red knight
+466_10	long_shot	false	action	person§anglo saxian knight 5	rides towards	person§yellow knight
+517_1	extreme_long_shot	false	action	person§anglo saxian knight 1	lowers his lance	
+517_2	extreme_long_shot	false	action	person§anglo saxian knight 2	lowers his lance	
+517_3	extreme_long_shot	false	action	person§anglo saxian knight 3	lowers his lance	
+517_4	extreme_long_shot	false	action	person§anglo saxian knight 4	lowers his lance	
+517_5	extreme_long_shot	false	action	person§anglo saxian knight 5	lowers his lance	
+517_6	extreme_long_shot	false	action	person§Brian de Bois Guilbert	lowers his lance	
+517_7	extreme_long_shot	false	action	person§Hugh de Bracy	lowers his lance	
+517_8	extreme_long_shot	false	action	person§purple knight	lowers his lance	
+517_9	extreme_long_shot	false	action	person§red knight	lowers his lance	
+517_10	extreme_long_shot	false	action	person§yellow knight	lowers his lance	
+572_1	long_shot	false	action	person§Brian de Bois Guilbert	pushes	out of his saddleperson§anglo saxian knight 1
+572_2	long_shot	false	action	person§Hugh de Bracy	pushes	out of his saddleperson§anglo saxian knight 2
+572_3	long_shot	false	action	person§purple knight	pushes	out of his saddleperson§anglo saxian knight 3
+572_4	long_shot	false	action	person§red knight	pushes	out of his saddleperson§anglo saxian knight 4
+572_5	long_shot	false	action	person§yellow knight	pushes	out of his saddleperson§anglo saxian knight 5
+572_6	long_shot	false	action	person§anglo saxian knight 1	falls from his horse	
+572_7	long_shot	false	action	person§anglo saxian knight 2	falls from his horse	
+572_8	long_shot	false	action	person§anglo saxian knight 3	falls from his horse	
+572_9	long_shot	false	action	person§anglo saxian knight 4	falls from his horse	
+572_10	long_shot	false	action	person§anglo saxian knight 5	falls from his horse	
+626_1	long_shot	false	action	person§Brian de Bois Guilbert	slows his horse	victoriously
+626_2	long_shot	false	action	person§Hugh de Bracy	slows his horse	victoriously
+626_3	long_shot	false	action	person§purple knight	slows his horse	victoriously
+626_4	long_shot	false	action	person§red knight	slows his horse	victoriously
+626_5	long_shot	false	action	person§yellow knight	slows his horse	victoriously
+662_1	long_shot	false	action	person§Brian de Bois Guilbert	presents himself in front of	person§prince John
+662_2	long_shot	false	action	person§Hugh de Bracy	presents himself in front of	person§prince John
+662_3	long_shot	false	action	person§purple knight	presents himself in front of	person§prince John
+662_4	long_shot	false	action	person§red knight	presents himself in front of	person§prince John
+662_5	long_shot	false	action	person§yellow knight	presents himself in front of	person§prince John
+903_1	long_shot	false	action	person§Brian de Bois Guilbert	lowers his lance in respect of	person§prince John
+903_2	long_shot	false	action	person§Hugh de Bracy	lowers his lance in respect of	person§prince John
+903_3	long_shot	false	action	person§purple knight	lowers his lance in respect of	person§prince John
+903_4	long_shot	false	action	person§red knight	lowers his lance in respect of	person§prince John
+903_5	long_shot	false	action	person§yellow knight	lowers his lance in respect of	person§prince John
+1100_1	american_shot	false	show	person§prince John	
+1100_2	american_shot	false	introduce	person§John's advisor	
+1100_3	american_shot	false	expresses	person§prince John	satisfaction
+1155_1	american_shot	false	action	person§yellow knight	attempts to put down his helmet	
+1155_2	american_shot	false	action	person§red knight	attempts to put down his helmet	
+1155_3	american_shot	false	action	person§purple knight	attempts to put down his helmet	
+1155_4	american_shot	false	action	person§Hugh de Bracy	attempts to put down his helmet	
+1155_5	american_shot	false	action	person§Brian de Bois Guilbert	attempts to put down his helmet	
+1196_1	medium_shot	false	action	person§Brian de Bois Guilbert	puts down his helmet	
+1196_2	medium_shot	false	expresses	person§Brian de Bois Guilbert	pride
+1264_1	medium_shot	false	action	person§Hugh de Bracy	puts down his helmet	
+1264_2	medium_shot	false	expresses	person§Hugh de Bracy	pride
+1332_1	medium_shot	false	action	person§purple knight	puts down his helmet	
+1332_2	medium_shot	false	expresses	person§purple knight	pride
+1395_1	medium_shot	false	action	person§red knight	puts down his helmet	
+1395_2	medium_shot	false	expresses	person§red knight	boredom
+1454_1	medium_shot	false	action	person§yellow knight	puts down his helmet	
+1454_2	medium_shot	false	expresses	person§yellow knight	pride
+1522_1	american_shot	false	expresses	person§prince John	satisfaction
+1522_2	american_shot	false	says	person§prince John	bla		person§Brian de Bois Guilbert	person§Hugh de Bracy	person§purple knight	person§red knight	person§yellow knight
+1522_3	american_shot	false	says	person§John's advisor	bla		person§prince John
+1522_4	american_shot	false	says	person§prince John	bla		person§John's advisor
+1522_5	american_shot	false	says	person§prince John	bla		person§Brian de Bois Guilbert	person§Hugh de Bracy	person§purple knight	person§red knight	person§yellow knight
+1784_1	long_shot	false	introduce	person§anglo saxian fan 1	
+1784_2	long_shot	false	introduce	person§anglo saxian fan 2	
+1784_3	long_shot	false	introduce	person§anglo saxian fan 3	
+1784_4	long_shot	false	introduce	person§anglo saxian fan 4	
+1784_5	long_shot	false	introduce	person§Locksley	
+1784_6	long_shot	false	introduce	person§little John	
+1784_7	long_shot	false	expresses	person§Locksley	dissatisfaction
+1784_8	long_shot	false	expresses	person§little John	shame
+1784_9	long_shot	false	expresses	person§anglo saxian fan 1	dissatisfaction
+1784_10	long_shot	false	expresses	person§anglo saxian fan 2	dissatisfaction
+1784_11	long_shot	false	expresses	person§anglo saxian fan 3	dissatisfaction
+1784_12	long_shot	false	expresses	person§anglo saxian fan 4	dissatisfaction
+1839_1	american_shot	false	introduce	person§Cedric	
+1839_2	american_shot	false	introduce	person§Rowena	
+1839_3	american_shot	false	expresses	person§Cedric	dissatisfaction
+1839_4	american_shot	false	expresses	person§Rowena	dissatisfaction
+1839_5	american_shot	false	says	person§Cedric	bla		person§Rowena
+1839_6	american_shot	false	expresses	person§Rowena	audacity
+1839_7	american_shot	false	says	person§Rowena	bla		person§Cedric
+1839_8	american_shot	false	says	person§Cedric	bla		person§Rowena
+2164_1	full_shot	false	introduce	person§Isaac of York	
+2164_2	full_shot	false	introduce	person§Rebecca	
+2164_3	full_shot	false	introduce	object§Rebecca's veil	
+2164_4	full_shot	false	action	person§Isaac of York	walks to his seat	
+2164_5	full_shot	false	action	person§Rebecca	walks to her seat	
+2164_6	full_shot	false	action	person§Isaac of York	sits down	
+2164_7	full_shot	false	action	person§Rebecca	sits down	
+2305_1	medium_shot	false	says	person§Isaac of York	bla		person§Rebecca
+2485_1	full_shot	false	action	person§trumpeters	blow the	object§trumpets
+2620_1	american_shot	false	expresses	person§prince John	confusion
+2620_2	american_shot	false	says	person§prince John	bla		person§John's advisor
+2746_1	long_shot	false	introduce	person§Ivanhoe	
+2746_2	long_shot	false	action	person§Ivanhoe	rides over the	place§tiltyard
+2746_3	long_shot	false	action	person§Ivanhoe	presents himself in front of	person§prince John
+3094_1	medium_shot	false	expresses	person§Rebecca	interest
+3094_2	medium_shot	false	expresses	person§Isaac of York	doubt
+3157_1	full_shot	false	introduce	person§the judge	
+3157_2	full_shot	false	action	person§Ivanhoe	lowers his lance for	person§prince John
+3157_3	full_shot	false	says	person§the judge	bla		person§Ivanhoe
+3323_1	american_shot	false	says	person§Ivanhoe	bla		person§prince John
+3419_1	closeup	false	expresses	person§prince John	mistrust
+3467_1	american_shot	false	says	person§the judge	bla		person§Ivanhoe
+3522_1	american_shot	false	says	person§Ivanhoe	bla		person§the judge
+3567_1	medium_shot	false	expresses	person§Rowena	surprise
+3567_2	medium_shot	false	expresses	person§Cedric	surprise
+3617_1	american_shot	false	says	person§the judge	bla		person§Ivanhoe
+3617_2	american_shot	false	action	person§Ivanhoe	looks towards	person§yellow knight
+3731_1	long_shot	false	introduce	object§yellow shield	
+3731_2	long_shot	false	introduce	object§red shield	
+3731_3	long_shot	false	introduce	object§purple shield	
+3731_4	long_shot	false	introduce	object§yellow-red shield	
+3731_5	long_shot	false	introduce	object§blue-white shield	
+3731_6	long_shot	false	action	person§red knight	comes out of his tent	
+3731_7	long_shot	true	action	person§audience	murmurs	
+3793_1	american_shot	false	action	person§Ivanhoe	rides towards the	person§red knight
+3849_1	medium_shot	false	expresses	person§Cedric	surprise
+3849_2	medium_shot	false	expresses	person§Rowena	excitement
+3925_1	american_shot	false	expresses	person§prince John	disgust
+3925_2	american_shot	false	says	person§prince John	bla		person§John's advisor
+3925_3	american_shot	false	says	person§John's advisor	bla		person§prince John
+4071_1	american_shot	false	expresses	person§Locksley	suspense
+4071_2	american_shot	false	expresses	person§little John	suspense
+4071_3	american_shot	false	action	person§audience	murmurs	
+4139_1	medium_shot	false	expresses	person§Rebecca	suspense
+4139_2	medium_shot	false	action	person§Isaac of York	looks to	person§Rebecca
+4139_3	medium_shot	false	expresses	person§Isaac of York	disbelief
+4263_1	long_shot	false	action	person§Ivanhoe	rides towards the	place§tiltyard
+4263_2	long_shot	false	action	person§Ivanhoe	hits	object§yellow shield
+4263_3	long_shot	false	action	person§Ivanhoe	hits	object§red shield
+4263_4	long_shot	false	action	person§Ivanhoe	hits	object§purple shield
+4263_5	long_shot	false	action	person§Ivanhoe	hits	object§yellow-red shield
+4263_6	long_shot	false	action	person§Ivanhoe	hits	object§blue-white shield
+4463_1	medium_shot	false	action	person§Rowena	stands up	
+4463_2	medium_shot	false	action	person§Cedric	stands up	
+4463_3	medium_shot	true	action	person§audience	celebrates	
+4463_4	medium_shot	false	expresses	person§Rowena	joy
+4463_5	medium_shot	false	expresses	person§Cedric	astonishment
+4529_1	american_shot	false	says	person§prince John	bla		person§John's advisor
+4611_1	medium_shot	false	expresses	person§Rebecca	joy
+4611_2	medium_shot	false	expresses	person§Isaac of York	astonishment
+4647_1	medium_shot	false	expresses	person§little John	joy
+4647_2	medium_shot	false	expresses	person§Locksley	joy
+4647_3	medium_shot	false	says	person§Locksley	yeah!		person§Ivanhoe
+4647_4	medium_shot	false	says	person§little John	bla		person§Locksley
+4758_1	long_shot	false	action	person§audience	celebrates	
+4758_2	long_shot	false	action	person§Ivanhoe	rides on the	place§tiltyard
+4976_1	american_shot	false	introduce	person§Wamba	
+4976_2	american_shot	false	action	person§Ivanhoe	waits	
+4976_3	american_shot	false	action	person§Wamba	shades his face for	person§Cedric
+4976_4	american_shot	false	action	person§Wamba	walks to the other side of	person§Ivanhoe
+5128_1	medium_shot	false	introduce	person§yellow knight's squire	
+5128_2	medium_shot	false	expresses	person§yellow knight	determination
+5128_3	medium_shot	false	action	person§yellow knight's squire	puts the helmet on	person§yellow knight
+5212_1	full_shot	false	says	person§Brian de Bois Guilbert	bla		person§yellow knight
+5212_2	full_shot	false	action	person§yellow knight's squire	leads	on the tiltyardperson§yellow knight
+5212_3	full_shot	true	action	person§trumpeters	blow the	object§trumpets
+5371_1	full_shot	false	action	person§trumpeters	blow the	object§trumpets
+5371_2	full_shot	false	action	person§trumpeters	take down the	object§trumpets
+5453_1	american_shot	false	action	person§Ivanhoe	starts to ride	
+5453_2	american_shot	false	action	person§Wamba	follows	with his eyesperson§Ivanhoe
+5492_1	american_shot	false	action	person§yellow knight	starts to ride	
+5492_2	american_shot	false	expresses	person§yellow knight's squire	contempt
+5525_1	long_shot	false	action	person§Ivanhoe	gains speed	
+5587_1	full_shot	false	action	person§yellow knight	gains speed	
+5587_2	full_shot	false	action	person§yellow knight	lowers his lance	
+5653_1	full_shot	false	action	person§Ivanhoe	lowers his lance	
+5706_1	full_shot	false	action	person§Ivanhoe	thrusts	out of his saddleperson§yellow knight
+5706_2	full_shot	false	action	person§yellow knight	falls to the ground	
+5765_1	medium_shot	false	expresses	person§audience	elation
+5765_2	medium_shot	false	action	person§audience	celebrates	
+5765_3	medium_shot	false	action	person§Rebecca	stands up	
+5765_4	medium_shot	false	expresses	person§Rebecca	joy
+5765_5	medium_shot	false	action	person§Isaac of York	stands up	
+5765_6	medium_shot	false	expresses	person§Isaac of York	concern
+5869_1	medium_shot	false	says	person§Cedric	bla		person§Rowena
+5869_2	medium_shot	false	action	person§Cedric	sits down	
+5869_3	medium_shot	false	action	person§Rowena	sits down	
+5869_4	medium_shot	false	says	person§Cedric	bla		person§Rowena
+5869_5	medium_shot	false	expresses	person§Rowena	surprise
+5869_6	medium_shot	false	says	person§Cedric	bla		person§Rowena
+6180_1	american_shot	false	expresses	person§prince John	angriness
+6180_2	american_shot	false	says	person§prince John	bla		person§John's advisor
+6311_1	long_shot	false	action	person§Ivanhoe	rides over the	place§tiltyard
+6311_2	long_shot	false	action	person§Ivanhoe	lowers his lance for	person§Rebecca
+6573_1	american_shot	false	expresses	person§Rebecca	fascination
+6573_2	american_shot	false	action	person§Isaac of York	greets	person§Ivanhoe
+6699_1	closeup	false	expresses	person§Brian de Bois Guilbert	weighting
+6761_1	long_shot	false	action	person§Ivanhoe	rides away	
+6825_1	medium_shot	false	expresses	person§Cedric	indignation
+6825_2	medium_shot	false	says	person§Cedric	bla		person§Rowena
+6825_3	medium_shot	false	says	person§Rowena	bla		person§Cedric
+6825_4	medium_shot	false	expresses	person§Cedric	understanding
+7060_1	medium_shot	false	expresses	person§Isaac of York	investigativeness
+7060_2	medium_shot	false	says	person§Isaac of York	bla		person§Rebecca
+7060_3	medium_shot	false	says	person§Rebecca	bla		person§Isaac of York
+7060_4	medium_shot	false	says	person§Isaac of York	bla		person§Rebecca
+7060_5	medium_shot	false	says	person§Rebecca	bla		person§Isaac of York
+7060_6	medium_shot	false	says	person§Isaac of York	bla		person§Rebecca
+7060_7	medium_shot	false	expresses	person§Rebecca	thoughtfulness
+7886_1	closeup	false	expresses	person§Brian de Bois Guilbert	severity
+7886_2	closeup	false	action	person§Brian de Bois Guilbert	looks at	person§Rebecca
+7949_1	medium_shot	false	action	person§Rebecca	raises	object§Rebecca's veil
+8018_1	medium_shot	false	expresses	person§Hugh de Bracy	coolness
+8018_2	medium_shot	false	expresses	person§Brian de Bois Guilbert	fever
+8018_3	medium_shot	false	says	person§Brian de Bois Guilbert	bla		person§Hugh de Bracy
+8166_1	american_shot	false	says	person§prince John	bla		person§John's advisor
+8166_2	american_shot	false	expresses	person§John's advisor	hidden doubt
+8338_1	full_shot	false	introduce	person§red knight's squire	
+8338_2	full_shot	false	action	person§red knight's squire	puts the helmet on the	person§red knight
+8338_3	full_shot	false	action	person§red knight	rides onto the	place§tiltyard
+8610_1	full_shot	false	action	person§trumpeters	blow the	object§trumpets
+8610_2	full_shot	false	action	person§trumpeters	take down the	object§trumpets
+8680_1	long_shot	false	action	person§Ivanhoe	rides towards the	person§red knight
+8680_2	long_shot	false	action	person§Ivanhoe	lowers his lance	halfway
+8771_1	full_shot	false	action	person§red knight	rides towards	person§Ivanhoe
+8771_2	full_shot	false	action	person§red knight	lowers his lance	
+8826_1	full_shot	false	action	person§Ivanhoe	lowers his lance	
+8867_1	full_shot	false	action	person§red knight	rides	fast
+8911_1	full_shot	false	action	person§Ivanhoe	thrusts	out of his saddleperson§red knight
+8911_2	full_shot	false	action	person§red knight	falls to the ground	
+8911_3	full_shot	false	action	person§audience	cheer	
+8966_1	american_shot	false	action	person§red knight's squire	runs to the	place§tiltyard
+8966_2	american_shot	false	expresses	person§Brian de Bois Guilbert	fixation
+8966_3	american_shot	false	says	person§Hugh de Bracy	bla		person§purple knight
+8966_4	american_shot	false	says	person§purple knight	bla		person§Hugh de Bracy
+8966_5	american_shot	false	says	person§Hugh de Bracy	bla		person§Brian de Bois Guilbert
+8966_6	american_shot	false	says	person§Brian de Bois Guilbert	bla		person§Hugh de Bracy
+9670_1	full_shot	false	action	person§Wamba	holds	's stirrupperson§Ivanhoe
+9670_2	full_shot	false	action	person§Ivanhoe	waits	
+9744_1	full_shot	false	introduce	person§purple knight's squire	
+9744_2	full_shot	false	action	person§purple knight's squire	puts the helmet on	person§purple knight
+9744_3	full_shot	false	action	person§purple knight	rides to the	place§tiltyard
+10017_1	long_shot	false	action	person§Ivanhoe	starts to ride	
+10017_2	long_shot	false	action	person§Ivanhoe	lowers his lance	
+10095_1	full_shot	false	action	person§purple knight	lowers his lance	
+10159_1	long_shot	false	action	person§Ivanhoe	rides tiwards the	person§purple knight
+10205_1	full_shot	false	action	person§Ivanhoe	thrusts	out of his saddleperson§purple knight
+10205_2	full_shot	false	action	person§purple knight	falls to the ground	
+10262_1	medium_shot	true	action	person§audience	celebrates	
+10262_2	medium_shot	false	action	person§Rowena	stands up	
+10262_3	medium_shot	false	action	person§Cedric	stands up	
+10262_4	medium_shot	false	expresses	person§Rowena	joy
+10262_5	medium_shot	false	expresses	person§Cedric	joy
+10262_6	medium_shot	false	says	person§Cedric	bla		person§Rowena
+10262_7	medium_shot	false	expresses	person§Rowena	thoughtfulness
+10262_8	medium_shot	false	says	person§Rowena	bla		person§Cedric
+10544_1	medium_shot	false	action	person§little John	lays a hand on the shoulder of	person§Locksley
+10544_2	medium_shot	false	says	person§little John	bla		person§Locksley
+10544_3	medium_shot	false	says	person§Locksley	bla		person§little John
+10544_4	medium_shot	false	says	person§little John	bla		person§Locksley
+10544_5	medium_shot	false	expresses	person§little John	joy
+10544_6	medium_shot	false	action	person§little John	laughs	
+10544_7	medium_shot	false	expresses	person§Locksley	joy
+10544_8	medium_shot	false	action	person§Locksley	laughs	
+10818_1	full_shot	false	action	person§purple knight's squire	carries	to his tentperson§purple knight
+10818_2	full_shot	false	action	person§yellow knight's squire	helps	
+10818_3	full_shot	false	action	person§red knight's squire	helps	
+10910_1	american_shot	false	expresses	person§prince John	unhappiness
+10910_2	american_shot	false	says	person§prince John	bla		person§John's advisor
+11120_1	long_shot	false	action	person§Hugh de Bracy	rides onto the	place§tiltyard
+11120_2	long_shot	false	action	person§Hugh de Bracy	lowers his lance	
+11227_1	full_shot	false	action	person§Ivanhoe	rides towards	person§Hugh de Bracy
+11227_2	full_shot	false	action	person§Ivanhoe	lowers his lance	
+11283_1	full_shot	false	action	person§Hugh de Bracy	rides towards	person§Ivanhoe
+11312_1	full_shot	false	action	person§Ivanhoe	targets his lance at	person§Hugh de Bracy
+11335_1	full_shot	false	action	person§Ivanhoe	thrusts	out of his saddleperson§Hugh de Bracy
+11335_2	full_shot	false	action	person§Hugh de Bracy	falls to the ground	
+11387_1	american_shot	true	action	person§audience	cheer	
+11387_2	american_shot	false	introduce	object§Ivanhoe's injury	
+11387_3	american_shot	false	action	person§Ivanhoe	feels for	object§Ivanhoe's injury
+11526_1	medium_shot	false	expresses	person§Rebecca	worry
+11526_2	medium_shot	false	says	person§Rebecca	bla		person§Isaac of York
+11526_3	medium_shot	false	says	person§Isaac of York	bla		person§Rebecca
+11526_4	medium_shot	false	says	person§Rebecca	bla		person§Isaac of York
+11810_1	medium_shot	false	expresses	person§Rowena	shock
+11810_2	medium_shot	false	expresses	person§Cedric	shock
+11915_1	full_shot	false	action	person§Ivanhoe	struugles to stay on his horse	
+11979_1	american_shot	false	says	person§prince John	bla		person§John's advisor
+11979_2	american_shot	false	says	person§John's advisor	bla		person§prince John
+12152_1	medium_shot	false	says	person§Cedric	bla		person§Ivanhoe
+12152_2	medium_shot	false	expresses	person§Rowena	tauntiness
+12152_3	medium_shot	false	says	person§Rowena	bla		person§Cedric
+12152_4	medium_shot	false	expresses	person§Cedric	pudency
+12410_1	full_shot	false	action	person§Ivanhoe	rides in front of	person§prince John
+12477_1	american_shot	false	expresses	person§prince John	venomity
+12477_2	american_shot	false	says	person§prince John	bla		person§Ivanhoe
+12561_1	medium_shot	false	action	person§Ivanhoe	shakesw his head	
+12621_1	american_shot	false	says	person§prince John	bla		person§Ivanhoe
+12768_1	medium_shot	false	says	person§Ivanhoe	bla		person§prince John
+12839_1	american_shot	false	expresses	person§prince John	anger
+12839_2	american_shot	false	expresses	person§prince John	hatred
+12839_3	american_shot	false	says	person§prince John	bla		person§Ivanhoe
+13135_1	full_shot	false	action	person§Ivanhoe	lowers his lance towards	person§prince John
+13135_2	full_shot	false	introduce	object§coronet	
+13135_3	full_shot	false	action	person§prince John	grabs the	object§coronet
+13135_4	full_shot	false	says	person§prince John	bla		person§Ivanhoe
+13331_1	american_shot	false	says	person§prince John	bla		person§Ivanhoe
+13331_2	american_shot	false	action	person§prince John	puts the	on Ivanhoe's lanceobject§coronet
+13624_1	full_shot	false	action	person§Ivanhoe	rides along the	person§audience
+13624_2	full_shot	false	action	person§Ivanhoe	rides along	person§Isaac of York
+13624_3	full_shot	false	action	person§Ivanhoe	rides along	person§Rebecca
+13624_4	full_shot	false	action	person§Ivanhoe	rides along	person§Locksley
+13624_5	full_shot	false	action	person§Ivanhoe	rides along	person§little John
+13624_6	full_shot	false	action	person§Ivanhoe	rides to	person§Rowena
+14149_1	medium_shot	false	expresses	person§Rowena	delight
+14149_2	medium_shot	false	action	person§Rowena	takes the	object§coronet
+14149_3	medium_shot	false	expresses	person§Cedric	rejection
+14149_4	medium_shot	false	action	person§Rowena	puts the	on her headobject§coronet
+14297_1	medium_shot	false	expresses	person§Rebecca	hidden anger
+14297_2	medium_shot	false	expresses	person§Isaac of York	pity
+14373_1	full_shot	false	action	person§Ivanhoe	rides away from	person§Rowena
+14433_1	american_shot	false	expresses	person§prince John	anger
+14433_2	american_shot	false	says	person§prince John	bla		person§John's advisor
+14433_3	american_shot	false	says	person§John's advisor	bla		person§prince John
+14433_4	american_shot	false	says	person§prince John	bla		person§John's advisor
+14433_5	american_shot	false	says	person§John's advisor	bla		person§prince John
+14433_6	american_shot	false	says	person§prince John	bla		person§John's advisor
+14998_1	full_shot	false	action	person§Locksley	emerges from the	person§audience
+14998_2	full_shot	false	action	person§Ivanhoe	rides towards	person§Locksley
+14998_3	full_shot	false	action	person§Locksley	presents himself in front of	person§Ivanhoe
+14998_4	full_shot	false	says	person§Locksley	bla		person§Ivanhoe
+14998_5	full_shot	false	action	person§Ivanhoe	nods	
+14998_6	full_shot	false	action	person§Ivanhoe	rides away	
+15222_1	long_shot	false	action	person§Ivanhoe	passes the	person§audience
+15222_2	long_shot	false	action	person§Ivanhoe	rides to	person§Wamba
+15222_3	long_shot	false	action	person§Wamba	holds	's stirrupperson§Ivanhoe
+15222_4	long_shot	false	action	person§Ivanhoe	lets his head sink	
+15222_5	long_shot	false	action	person§Ivanhoe	errects himself again	
+15459_1	medium_shot	false	introduce	person§Guilbert's squire	
+15459_2	medium_shot	false	expresses	person§Brian de Bois Guilbert	mistrust
+15459_3	medium_shot	false	action	person§Guilbert's squire	puts the helmet on	person§Brian de Bois Guilbert
+15459_4	medium_shot	false	action	person§Brian de Bois Guilbert	readies himself	by riding forward
+15459_5	medium_shot	true	action	person§trumpeters	blow the	object§trumpets
+15762_1	long_shot	true	action	person§trumpeters	blow the	object§trumpets
+15762_2	long_shot	false	action	person§Ivanhoe	waits	
+15762_3	long_shot	true	action	person§trumpeters	take down the	object§trumpets
+15822_1	long_shot	false	action	person§Brian de Bois Guilbert	starts to ride	
+15822_2	long_shot	false	action	person§Guilbert's squire	slaps the bottom of the horse of	person§Brian de Bois Guilbert
+15912_1	full_shot	false	action	person§Ivanhoe	rides forward	
+15912_2	full_shot	false	action	person§Ivanhoe	lowers his lance	
+15971_1	full_shot	false	action	person§Brian de Bois Guilbert	lowers his lance	
+16011_1	american_shot	false	action	person§Ivanhoe	rides	
+16040_1	american_shot	false	action	person§Brian de Bois Guilbert	rides	
+16063_1	full_shot	false	action	person§Ivanhoe	hits	with his lanceperson§Brian de Bois Guilbert
+16063_2	full_shot	false	action	person§Brian de Bois Guilbert	nearls falls from his horse	
+16156_1	full_shot	false	action	person§Ivanhoe	stops	
+16156_2	full_shot	false	action	person§Ivanhoe	lets his lance drop	
+16156_3	full_shot	false	action	person§Ivanhoe	drops his shield	
+16156_4	full_shot	false	action	person§Ivanhoe	falls from his horse	
+16345_1	medium_shot	false	action	person§Rowena	stands up	
+16345_2	medium_shot	false	action	person§Cedric	stands up	
+16345_3	medium_shot	false	expresses	person§Rowena	fright
+16345_4	medium_shot	false	expresses	person§Cedric	fright
+16345_5	medium_shot	false	action	person§Rowena	turns towards	person§Cedric
+16428_1	medium_shot	false	expresses	person§Rebecca	fright
+16428_2	medium_shot	false	expresses	person§Isaac of York	fright
+16498_1	full_shot	false	action	person§Wamba	carries	from the tiltyardperson§Ivanhoe
+16498_2	full_shot	false	action	person§yellow knight's squire	helps	
+16498_3	full_shot	false	action	person§red knight's squire	helps	
+16498_4	full_shot	false	action	person§purple knight's squire	helps	
+16498_5	full_shot	false	action	person§Guilbert's squire	helps	
+16641_1	american_shot	false	expresses	person§prince John	satisfaction
+16762_1	medium_shot	false	expresses	person§Locksley	horror
+16762_2	medium_shot	false	expresses	person§little John	horror
+16842_1	full_shot	false	action	person§Wamba	carries	from the tiltyardperson§Ivanhoe
+16842_2	full_shot	false	action	person§yellow knight's squire	helps	
+16842_3	full_shot	false	action	person§red knight's squire	helps	
+16842_4	full_shot	false	action	person§purple knight's squire	helps	
+16842_5	full_shot	false	action	person§Guilbert's squire	helps	
+17034_1	medium_shot	false	expresses	person§Isaac of York	condern
+17034_2	medium_shot	false	expresses	person§Rebecca	horror
+17034_3	medium_shot	false	action	person§Rebecca	runs towards	person§Ivanhoe
+17137_1	american_shot	false	expresses	person§Cedric	shock
+17137_2	american_shot	false	expresses	person§Rowena	shock
+17137_3	american_shot	false	says	person§Cedric	bla		person§Rowena
+17137_4	american_shot	false	says	person§Rowena	bla		person§Cedric
+17137_5	american_shot	false	says	person§Cedric	bla		person§Rowena
+17137_6	american_shot	false	action	person§Rowena	runs towards	person§Ivanhoe

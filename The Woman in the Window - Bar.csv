@@ -1,0 +1,51 @@
+#Film:	The Woman in the Window
+#Scene:	Bar
+#FPS:	24
+#Context:	person§Professor Richard Wanley, person§Alice Reed, 
+#EntityList:	place§bar, person§customer 1, person§customer 2, person§customer 3, person§customer 4, person§customer 5, person§customer 6, person§customer 7, person§customer 8, person§customer 9, person§customer 10, person§customer 11, person§customer 12, object§cigarettes, object§Alice's long cigarette, person§Professor Richard Wanley, person§Alice Reed, 
+0_1	long_shot	false	introduce	place§bar	
+0_2	long_shot	false	introduce	person§customer 1	
+0_3	long_shot	false	introduce	person§customer 2	
+0_4	long_shot	false	introduce	person§customer 3	
+0_5	long_shot	false	introduce	person§customer 4	
+0_6	long_shot	false	introduce	person§customer 5	
+0_7	long_shot	false	introduce	person§customer 6	
+0_8	long_shot	false	introduce	person§customer 7	
+0_9	long_shot	false	introduce	person§customer 8	
+0_10	long_shot	false	introduce	person§customer 9	
+0_11	long_shot	false	introduce	person§customer 10	
+0_12	long_shot	false	introduce	person§customer 11	
+0_13	long_shot	false	introduce	person§customer 12	
+0_14	long_shot	false	action	person§customer 5	walks	
+0_15	long_shot	false	show	person§Alice Reed	
+0_16	long_shot	false	show	person§Professor Richard Wanley	
+0_17	long_shot	false	expresses	person§Professor Richard Wanley	amusement
+0_18	long_shot	false	says	person§Professor Richard Wanley	hahaha		person§Alice Reed
+0_19	long_shot	false	says	person§Alice Reed	bla		person§Professor Richard Wanley
+0_20	long_shot	false	says	person§Professor Richard Wanley	bla		person§Alice Reed
+321_1	medium_shot	false	introduce	object§cigarettes	
+321_2	medium_shot	false	action	person§Professor Richard Wanley	takes out the	object§cigarettes
+321_3	medium_shot	false	says	person§Professor Richard Wanley	bla		person§Alice Reed
+436_1	medium_shot	true	says	person§Professor Richard Wanley	bla		person§Alice Reed
+436_2	medium_shot	false	introduce	object§Alice's long cigarette	
+436_3	medium_shot	false	action	person§Alice Reed	takes out	object§Alice's long cigarette
+436_4	medium_shot	false	says	person§Alice Reed	bla...		person§Professor Richard Wanley
+436_5	medium_shot	false	action	person§Professor Richard Wanley	lights	object§Alice's long cigarette
+436_6	medium_shot	false	says	person§Alice Reed	...bla		person§Professor Richard Wanley
+878_1	medium_shot	false	expresses	person§Professor Richard Wanley	concern
+878_2	medium_shot	false	says	person§Professor Richard Wanley	A little late, isn't it?		person§Alice Reed
+878_3	medium_shot	false	says	person§Alice Reed	Is that late? Eleven.		person§Professor Richard Wanley
+878_4	medium_shot	false	says	person§Professor Richard Wanley	bla		person§Alice Reed
+1108_1	closeup	false	expresses	person§Alice Reed	flirtiveness
+1108_2	closeup	false	says	person§Alice Reed	bla		person§Professor Richard Wanley
+1194_1	closeup	false	says	person§Professor Richard Wanley	I was warned!		person§Alice Reed
+1194_2	closeup	false	expresses	person§Professor Richard Wanley	resignation
+1194_3	closeup	true	says	person§Alice Reed	bla...		person§Professor Richard Wanley
+1265_1	closeup	false	says	person§Alice Reed	...bla...		person§Professor Richard Wanley
+1265_2	closeup	false	expresses	person§Alice Reed	false surprise
+1265_3	closeup	false	says	person§Alice Reed	...bla		person§Professor Richard Wanley
+1343_1	medium_shot	false	says	person§Professor Richard Wanley	bla..		person§Alice Reed
+1343_2	medium_shot	false	expresses	person§Professor Richard Wanley	false concern
+1343_3	medium_shot	false	says	person§Professor Richard Wanley	...bla		person§Alice Reed
+1638_1	closeup	false	expresses	person§Alice Reed	challenge
+1638_2	closeup	false	says	person§Alice Reed	never?		person§Professor Richard Wanley
