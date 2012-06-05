@@ -237,7 +237,7 @@ def getDecidedBlockListFromFile(file, decisions):
     return relevantBlockList
 
 
-def getSingleFeatureLineFromFile(file, decisions, shot, leaveout=-1):
+def getSingleFeatureLineFromFile(file, decisions, shot, leave_out=-1):
     featureLines = []
     beatscriptFile = open(file, "r")
     lines = beatscriptFile.readlines()
@@ -253,11 +253,11 @@ def getSingleFeatureLineFromFile(file, decisions, shot, leaveout=-1):
         featureLines.append(getFeatureLine(context, block, shot, lastShotId))
         context["BygoneBlocks"].append(block)
         lastShotId = block[-1].shotId
-    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leaveout)
+    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
     return featureLine
 
 
-def getIdCount(file, frameno):
+def getIdCount(file, frame_no):
     beatscriptFile = open(file, "r")
     lines = beatscriptFile.readlines()
     context = readContext(lines)
@@ -265,7 +265,7 @@ def getIdCount(file, frameno):
     count = 1
     lastShotId = beatList[0].shotID
     for beat in beatList:
-        if frameno >= beat.shotId != lastShotId:
+        if frame_no >= beat.shotId != lastShotId:
             count += 1
     return count
 

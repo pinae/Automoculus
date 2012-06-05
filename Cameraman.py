@@ -61,32 +61,22 @@ class AutomoculusCameraman(bpy.types.Operator):
         cut = classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
         print("Cut: " + str(cut))
 
-        # Calculate optimal positions for all shots in the distribution with a propability > 0
-        #processes = []
-        #returnqueues = []
-        #for i in range(0, len(SHOT_NAMES)):
-        #    if dist[i] > 0:
-        #        returnqueues.append(Queue())
-        #        returnqueues[i].put(i)
-        #        processes.append(Process(target=calculatePosition, args=(i != shot or cut, i, returnqueues[i])))
-        #        processes[i].start()
-
         # Determine which shot fits best, regarding the classified propability
-        bestratio = 0
-        bestconfig = (self.camera.location, self.camera.rotation_euler)
-        bestShotCandidate = shot
-        noCutRatio = 0
-        noCutConfig = (self.camera.location, self.camera.rotation_euler)
+        best_ratio = 0
+        best_config = (self.camera.location, self.camera.rotation_euler)
+        best_shot_candidate = shot
+        no_cut_ratio = 0
+        no_cut_config = (self.camera.location, self.camera.rotation_euler)
         correction = [141, 42, 59, 130, 130, 130, 130]
         #correction = [100, 100, 100, 100, 100, 100, 100]
         shots = []
         for i in range(0, len(SHOT_NAMES)):
             if dist[i] > 0.1 or i == shot:
                 shots.append(i)
-        candidatestr = "Es kommen folgende Einstellungsgrößen in Frage: "
+        candidate_str = "Es kommen folgende Einstellungsgrößen in Frage: "
         for shot in shots:
-            candidatestr += SHOT_NAMES[shot]+", "
-        print(candidatestr)
+            candidate_str += SHOT_NAMES[shot]+", "
+        print(candidate_str)
         results = self.cameraOptimizer(scenicContext, target, linetarget, shots)
         for result in results:
             configuration = result[0]
@@ -96,40 +86,39 @@ class AutomoculusCameraman(bpy.types.Operator):
             ratio = 1 / fitness * dist[shot_number] * correction[shot_number]
             print("Ratio " + str(ratio) + " for " + SHOT_NAMES[shot_number] + ".")
             if shot_number == shot:
-                noCutRatio = ratio
-                noCutConfig = configuration
-            if ratio > bestratio:
-                bestratio = ratio
-                bestconfig = configuration
-                bestShotCandidate = shot_number
+                no_cut_ratio = ratio
+                no_cut_config = configuration
+            if ratio > best_ratio:
+                best_ratio = ratio
+                best_config = configuration
+                best_shot_candidate = shot_number
 
         # Should we Cut?
-        if bestratio - 0.1 > noCutRatio or initialcut or cut: # We want to cut, the ratio gets much better
-            shot = bestShotCandidate
-            if (bestconfig[0] - self.camera.location).length < 0.8:
-                #newConfiguration = self.springConfigurator(bestconfig,
-                #    (camera.location, camera.rotation_euler))
-                newConfiguration = bestconfig
+        if best_ratio - 0.1 > no_cut_ratio or initialcut or cut: # We want to cut, the ratio gets much better
+            shot = best_shot_candidate
+            if (best_config[0] - self.camera.location).length < 0.8:
+                new_configuration = self.springConfigurator(best_config)
+                #new_configuration = best_config
                 print("Es sollte geschnitten werden, die Abweichung war jedoch zu gering. Wir bleiben bei " +
                       SHOT_NAMES[shot])
             else:
-                newConfiguration = bestconfig
-                lastcut = frame
+                new_configuration = best_config
+                last_cut = frame
                 self.setInitialVelocity(target)
                 print("Schnitt auf: " + SHOT_NAMES[shot])
         else: # We don't want to cut because the ratio doesn't get significantly better
-            #newConfiguration = self.springConfigurator(noCutConfig,
-            #    (camera.location, camera.rotation_euler))
-            newConfiguration = noCutConfig
+            new_configuration = self.springConfigurator(no_cut_config)
+            #new_configuration = no_cut_config
             print("Kein Schnitt. Wir bleiben bei " + SHOT_NAMES[shot])
-            # Tell our decision to the classifier
+
+        # Tell our decision to the classifier
         classificationProcess.stdin.write(b'd\n')
         classificationProcess.stdin.flush()
         classificationProcess.stdin.write((str(shot) + "\n").encode('utf-8'))
         classificationProcess.stdin.flush()
         if classificationProcess.stdout.readline().decode('utf-8').rstrip() != "decision recieved":
             print("Could not Write decision.")
-        return newConfiguration, shot, lastcut, target, linetarget
+        return new_configuration, shot, last_cut, target, linetarget
 
 
     def setCurrentFrame(self, frame_nr):
@@ -285,13 +274,10 @@ class AutomoculusCameraman(bpy.types.Operator):
                     print("Keine neuen Beats.")
                     optimalConfiguration, fitness, notused = self.cameraOptimizer(scenicContext, target, linetarget,
                         [shot])[0]
-                    #optimalConfiguration, fitness = self.geneticConfigurator(scenicContext, target, linetarget, shot,
-                    #    (camera.location, camera.rotation_euler))
                     newConfiguration = self.springConfigurator(optimalConfiguration)
                     #newConfiguration = optimalConfiguration
             else: # It's too early to cut
-                #optimalConfiguration, fitness = self.geneticConfigurator(scenicContext, target, linetarget, shot,
-                #    (camera.location, camera.rotation_euler))
+                #optimalConfiguration, fitness = self.geneticConfigurator(scenicContext, target, linetarget, shot)
                 optimalConfiguration, fitness, notused = self.cameraOptimizer(scenicContext, target, linetarget, [shot])[0]
                 newConfiguration = self.springConfigurator(optimalConfiguration)
                 #newConfiguration = optimalConfiguration
