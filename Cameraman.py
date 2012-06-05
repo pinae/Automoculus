@@ -12,6 +12,9 @@ import time
 
 from Config import PROJECT_PATH
 
+position_process_filename = path.abspath(path.join(project_path, "PositionProcess.py"))
+beatscript_classifier_filename = path.abspath(path.join(project_path, "BeatscriptClassifier.sh"))
+
 class AutomoculusCameraman(bpy.types.Operator):
     bl_idname = "marker.automoculus"
     bl_label = "Automoculus - position camera"
@@ -231,14 +234,11 @@ class AutomoculusCameraman(bpy.types.Operator):
 
         SHOT_NAMES = ["detail", "closeup", "medium_shot", "american_shot", "full_shot", "long_shot",
                       "extreme_long_shot"]
-        beatscriptFile = path.join(PROJECT_PATH, beatscript)
-        print(beatscriptFile)
-        time.sleep(5)
         #blockcount = 0
         classification_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.py")
         classificationProcess = subprocess.Popen(
             [classification_process_filename,
-             beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+             beatscript], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         camera = bpy.data.scenes['Scene'].camera
         shot = 0
         lastcut = 0
@@ -258,7 +258,7 @@ class AutomoculusCameraman(bpy.types.Operator):
             lastcut, True)
         setConfiguration(newConfiguration)
         print("Szenenkontext erzeugt.")
-        for frame in range(2, 750):
+        for frame in range(2, bpy.context.scene.frame_end):
             bpy.data.scenes['Scene'].frame_current = frame
             bpy.ops.object.paths_calculate()
             print("Bearbeite Frame No. " + str(bpy.data.scenes['Scene'].frame_current))
