@@ -233,9 +233,9 @@ class CameraOptimizer:
                 targetFactor = 0.1
             quality += targetFactor * self.getPersonQuality(genome, person, targetFactor * 12,
                 personFitnessByImage, occultationWeight)
-            quality += targetFactor * self.getPersonQuality(genome, person.eye_L, targetFactor * 12,
+            quality += targetFactor * self.getPersonQuality(genome, person.eye_L, targetFactor * 13,
                 personFitnessByImage, occultationWeight)
-            quality += targetFactor * self.getPersonQuality(genome, person.eye_R, targetFactor * 12,
+            quality += targetFactor * self.getPersonQuality(genome, person.eye_R, targetFactor * 13,
                 personFitnessByImage, occultationWeight)
 
         #Objekte im Bild

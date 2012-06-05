@@ -45,7 +45,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.camera.keyframe_insert(data_path="location")
 
 
-    def calculateForNewBeats(self, classificationProcess, shot, frame, lastcut, initialcut, scenicContext):
+    def calculateForNewBeats(self, classificationProcess, shot, frame, last_cut, initial_cut, scenicContext):
         # New Beats! That changes the situation: what's the distribution now?
         dist = getShotDistribution(classificationProcess)
 
@@ -94,7 +94,7 @@ class AutomoculusCameraman(bpy.types.Operator):
                 best_shot_candidate = shot_number
 
         # Should we Cut?
-        if best_ratio - 0.1 > no_cut_ratio or initialcut or cut: # We want to cut, the ratio gets much better
+        if best_ratio - 0.1 > no_cut_ratio or initial_cut or cut: # We want to cut, the ratio gets much better
             shot = best_shot_candidate
             if (best_config[0] - self.camera.location).length < 0.8:
                 new_configuration = self.springConfigurator(best_config)
