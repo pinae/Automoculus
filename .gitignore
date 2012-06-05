@@ -32,3 +32,5 @@ pip-log.txt
 # Blender copies
 *.blend[1-9]
 
+# pycharm project
+.idea
