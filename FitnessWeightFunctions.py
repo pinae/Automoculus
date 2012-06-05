@@ -3,7 +3,6 @@
 
 # =============================== Imports ======================================
 from __future__ import division
-#from matplotlib.patches import Patch
 from pylab import *
 import numpy as np
 
@@ -11,25 +10,24 @@ import numpy as np
 def personFitnessByImage(x, y):
     x2 = x * x
     y2 = y * y
-    return (np.exp(-0.5 * x2 * x2 * x2 * x2 * x2 - 0.5 * y2 * y2 * y2 * y2 * y2) *
+    return (np.exp(-0.5 * x2 ** 5 - 0.5 * y2 ** 5) *
             (((7 * x2 - 4.5) * x2 - 9) + ((10 * y2 - 4.5) * y2 - 2 * y - 9)) + 21.2) * (1 + (abs(x) + abs(y)) * 0.1)
 
+
 def distanceFitnessByRange(x):
-    x2 = x * x
-    return (1000 - 1000 * np.exp(-0.5 * x2 * x2)) * (abs(x) * 0.1 + 0.9)
+    return (1000 - 1000 * np.exp(-0.5 * x ** 4)) * (0.1 * abs(x) + 0.9)
+
 
 def range0to1(x):
-    x2 = x * x
-    x4 = x2 * x2
-    return (1000 - 1000 * np.exp(-0.5 * x4 * x4 * x2)) * (abs(x) * 0.001 + 0.999)
+    return (1000 - 1000 * np.exp(-0.5 * x ** 10)) * (0.001 * abs(x) + 0.999)
+
 
 def lineQualityFunction(x):
-    #return (500*(1+np.tanh(-50*x)))*(-10*x+1)
-    return (50 - 50 * x / (0.001 + abs(x))) * (2 - 5*x)
+    return (50 - 50 * x / (0.001 + abs(x))) * (2 - 5 * x)
+
 
 def occultationWeight(x):
-    x2 = x * x
-    return 3 * np.exp(-0.5 * x2 * x2)
+    return 3 * np.exp(-0.5 * x ** 4)
 
 # ================================ Plots =======================================
 def main():
