@@ -74,11 +74,64 @@ def printListOfEntities(context):
     persons = [entity for name, entity in context["Entities"].items() if entity.type == PERSON]
     objects = [entity for name, entity in context["Entities"].items() if entity.type == OBJECT]
     places = [entity for name, entity in context["Entities"].items() if entity.type == PLACE]
-    entityString = pickle.dump({"Persons" : persons, "Objects" : objects, "Places": places}, sys.stdout)
-    #sys.stdout.write(entityString + "\n")
+    pickle.dump({"Persons" : persons, "Objects" : objects, "Places": places}, sys.stdout)
 
 
 # =============================== Main =========================================
+
+def determine_targets(context, current_block):
+    lineTargets = []
+    targets = []
+    for beat in current_block:
+        if beat.subject not in targets:
+            targets.append(beat.subject)
+        if beat.linetarget and beat.linetarget not in lineTargets:
+            lineTargets.append(beat.linetarget)
+
+    if len(targets) <= 1 and not lineTargets:
+        linetarget = targets[0]
+        target = targets[0]
+        for block in reversed(context["BygoneBlocks"]):
+            for beat in reversed(block):
+                if beat.linetarget and beat.linetarget != target:
+                    linetarget = beat.linetarget
+                    break
+                elif beat.subject != target:
+                    linetarget = beat.subject
+    else :
+        if lineTargets:
+            # get last person in lineTargets as lineTarget
+            linetarget = lineTargets[-1]
+            for t in reversed(lineTargets):
+                if t.type == PERSON:
+                    linetarget = t
+                    break
+        else:
+            # trying to get persons as linetargets, because objects and places aren't as important
+            linetarget = targets[-1]
+            for t in reversed(targets):
+                if t.type == PERSON :
+                    linetarget = t
+                    break
+
+        # make sure linetarget != target
+        if linetarget in targets:
+            targets.remove(linetarget)
+
+        # trying to get persons as targets, because objects and places aren't as important
+        target = targets[-1]
+        for t in reversed(targets):
+            if t.type == PERSON :
+                target = t
+                break
+
+        # switch target and linetarget, if only linetarget of the two is a person
+        if linetarget.type == PERSON and target.type != PERSON:
+            target, linetarget = linetarget, target
+
+    # write
+    sys.stdout.write(target.name + "\t" + linetarget.name + "\n")
+
 
 def main():
     # Initialization and Training
@@ -106,7 +159,12 @@ def main():
     #sys.stdout.flush()
     while True:
         choice = raw_input("")
-        if choice == "c": # Print out, if we should cut at this point
+        if choice == "e":
+            printListOfEntities(context)
+        elif choice == "t": # get the names of the target and the linetarget
+            determine_targets(context, lastBlock)
+
+        elif choice == "c": # Print out, if we should cut at this point
             blockList = []
             decisions = []
             for block in context["BygoneBlocks"]:
@@ -123,8 +181,7 @@ def main():
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")
-        elif choice == "e":
-            printListOfEntities(context)
+
         elif choice == "f": # check framenumber for a new block
             beatList = readBeatscriptTillFrame(lines, context, int(raw_input("")))
             for block in context["BygoneBlocks"]:
@@ -146,86 +203,7 @@ def main():
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")
-        elif choice == "t": # get the names of the target and the linetarget
-            lineTargets = []
-            targets = []
-            for beat in lastBlock:
-                targetUnknown = True
-                for t in targets:
-                    if beat.subject == t: targetUnknown = False
-                if targetUnknown:
-                    targets.append(beat.subject)
-                if beat.linetarget:
-                    lineTargetUnknown = True
-                    for t in lineTargets:
-                        if beat.linetarget == t: lineTargetUnknown = False
-                    if lineTargetUnknown:
-                        lineTargets.append(beat.linetarget)
-            if len(lineTargets) > 0:
-                # trying to get persons as linetargets, because objects and places aren't as important
-                linetarget = lineTargets[0]
-                for t in lineTargets:
-                    if linetarget.type != PERSON:
-                        if t.type == PERSON:
-                            linetarget = t
-                # make sure linetarget != target
-                tmp_targets = []
-                for p in targets:
-                    if p != linetarget: tmp_targets.append(p)
-                targets = tmp_targets
-                # trying to get persons as targets, because objects and places aren't as important
-                target = targets[0]
-                for t in targets:
-                    if target.type != PERSON and t.type == PERSON:
-                        target = t
-                # switch target and linetarget, if only linetarget of the two is a person
-                if linetarget.type == PERSON and target.type != PERSON:
-                    t = target
-                    target = linetarget
-                    linetarget = t
-                # write
-                sys.stdout.write(target.name + "\t" + linetarget.name + "\n")
-            else:
-                if len(targets) >= 2:
-                    # trying to get persons as linetargets, because objects and places aren't as important
-                    linetarget = targets[0]
-                    for t in targets:
-                        if linetarget.type != PERSON:
-                            if t.type == PERSON:
-                                linetarget = t
-                    # make sure linetarget != target
-                    tmp_targets = []
-                    for p in targets:
-                        if p != linetarget: tmp_targets.append(p)
-                    targets = tmp_targets
-                    # trying to get persons as targets, because objects and places aren't as important
-                    target = targets[0]
-                    for t in targets:
-                        if target.type != PERSON and t.type == PERSON:
-                            target = t
-                    # switch target and linetarget, if only linetarget of the two is a person
-                    if linetarget.type == PERSON and target.type != PERSON:
-                        t = target
-                        target = linetarget
-                        linetarget = t
-                    # write
-                    sys.stdout.write(target.name + "\t" + linetarget.name + "\n")
-                else:
-                    linetarget = targets[-1]
-                    j = 1
-                    while linetarget == targets[-1]:
-                        if len(context["BygoneBlocks"]) >= j:
-                            for i in range(len(context["BygoneBlocks"][-j]) - 1, -1, -1):
-                                if context["BygoneBlocks"][-j][i].linetarget:
-                                    linetarget = context["BygoneBlocks"][-j][i].linetarget
-                                else:
-                                    linetarget = context["BygoneBlocks"][-j][i].subject
-                                if linetarget != targets[-1]:
-                                    break
-                        else:
-                            break
-                        j += 1
-                    sys.stdout.write(targets[-1].name + "\t" + linetarget.name + "\n")
+
         elif choice == "d": # recieve the decision for the lastBlock
             decision = int(raw_input(""))
             for beat in lastBlock:
