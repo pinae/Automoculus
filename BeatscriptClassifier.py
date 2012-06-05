@@ -44,10 +44,7 @@ def trainWithAllExamples(shot):
 
 
 def distToStr(dist):
-    output = ""
-    for value in dist:
-        output += '\t' + str(value)
-    return output.strip('\t')
+    return "\t".join([str(x) for x in dist])
 
 
 def readBeatscriptTillFrame(lines, context, frameno):
@@ -163,6 +160,8 @@ def main():
             printListOfEntities(context)
         elif choice == "t": # get the names of the target and the linetarget
             determine_targets(context, lastBlock)
+        elif choice == "p": # print out the classification propabilities
+            sys.stdout.write(distToStr(dist) + "\n")
 
         elif choice == "c": # Print out, if we should cut at this point
             blockList = []
@@ -209,8 +208,7 @@ def main():
             for beat in lastBlock:
                 beat.shot = decision
             sys.stdout.write("decision recieved\n")
-        elif choice == "p": # print out the classification propabilities
-            sys.stdout.write(distToStr(dist) + "\n")
+
         elif choice == "q": # quit...
             sys.stdout.write("exiting...\n")
             sys.stdout.flush()

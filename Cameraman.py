@@ -13,6 +13,26 @@ from Config import PROJECT_PATH, SHOT_NAMES
 position_process_filename = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
 beatscript_classifier_filename = path.abspath(path.join(PROJECT_PATH, "BeatscriptClassifier.sh"))
 
+def getDistFromStr(diststr):
+    return [float(x) for x in diststr.split('\t')]
+    #return [0.14, 0.14, 0.14, 0.14, 0.14, 0.14, 0.14]
+
+def getShotDistribution(classificationProcess):
+    classificationProcess.stdin.write(b'p\n')
+    classificationProcess.stdin.flush()
+    return getDistFromStr(classificationProcess.stdout.readline().decode('utf-8').rstrip())
+
+def getTargets(classificationProcess):
+    classificationProcess.stdin.write(b't\n')
+    classificationProcess.stdin.flush()
+    targetstr = classificationProcess.stdout.readline().decode('utf-8').rstrip()
+    splitstr = targetstr.split('\t')
+    target = bpy.data.objects[splitstr[0]]
+    linetarget = bpy.data.objects[splitstr[1]]
+    return target, linetarget
+
+
+
 
 class AutomoculusCameraman(bpy.types.Operator):
     bl_idname = "marker.automoculus"
@@ -24,19 +44,13 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.camera.keyframe_insert(data_path="rotation_euler")
         self.camera.keyframe_insert(data_path="location")
 
+
     def calculateForNewBeats(self, classificationProcess, shot, frame, lastcut, initialcut, scenicContext):
         # New Beats! That changes the situation: what's the distribution now?
-        classificationProcess.stdin.write(b'p\n')
-        classificationProcess.stdin.flush()
-        dist = self.getDistFromStr(classificationProcess.stdout.readline().decode('utf-8').rstrip())
-        #print(str(classificationProcess.stdout.readline(), encoding='utf-8').rstrip())
-        #dist = [0.14, 0.14, 0.14, 0.14, 0.14, 0.14, 0.14]
+        dist = getShotDistribution(classificationProcess)
 
         # For new beats we have to update the targets
-        classificationProcess.stdin.write(b't\n')
-        classificationProcess.stdin.flush()
-        target, linetarget = self.getTargetsFromStr(
-            classificationProcess.stdout.readline().decode('utf-8').rstrip())
+        target, linetarget = getTargets(classificationProcess)
         #target = bpy.data.objects["Green"]
         #linetarget = bpy.data.objects["Red"]
         print(target.name + "\t" + linetarget.name)
@@ -118,14 +132,17 @@ class AutomoculusCameraman(bpy.types.Operator):
         return newConfiguration, shot, lastcut, target, linetarget
 
 
+    def setCurrentFrame(self, frame_nr):
+        bpy.data.scenes['Scene'].frame_current = frame_nr
+        bpy.ops.object.paths_calculate()
+
     def setInitialVelocity(self, target):
         # Geschwindigkeit des Targets auf die Kamera übertragen.
-        target_tmp_loc = Vector((target.location[0], target.location[1], target.location[2]))
-        bpy.data.scenes['Scene'].frame_current -= 1
-        bpy.ops.object.paths_calculate()
-        target_velocity = (target_tmp_loc - target.location) * 1.333333
-        bpy.data.scenes['Scene'].frame_current += 1
-        bpy.ops.object.paths_calculate()
+        current_frame = bpy.data.scenes['Scene'].frame_current
+        target_previous_position = Vector(target.location)
+        self.setCurrentFrame(current_frame - 1)
+        target_velocity = (target_previous_position - target.location) * 1.333333
+        self.setCurrentFrame(current_frame)
         self.velocity = (target_velocity, Euler((0, 0, 0), 'XYZ'))
 
     def createScenicContext(self, process):
@@ -215,17 +232,9 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.velocity = (vloc * 0.75, Euler((vrot[0] * 0.75, 0, vrot[2] * 0.75), 'XYZ'))
         return loc, rot
 
-    def getDistFromStr(self, diststr):
-        dist = []
-        for valstr in diststr.split('\t'):
-            dist.append(float(valstr))
-        return dist
 
-    def getTargetsFromStr(self, targetstr):
-        splitstr = targetstr.split('\t')
-        target = bpy.data.objects[splitstr[0]]
-        linetarget = bpy.data.objects[splitstr[1]]
-        return target, linetarget
+
+
 
 
     def startClassificationProcess(self):
@@ -249,20 +258,17 @@ class AutomoculusCameraman(bpy.types.Operator):
         lastcut = 0
         self.waitForTrainingToFinish(classificationProcess)
         scenicContext = self.createScenicContext(classificationProcess)
-
-        classificationProcess.stdin.write(b't\n')
-        classificationProcess.stdin.flush()
-        target, linetarget = self.getTargetsFromStr(classificationProcess.stdout.readline().decode('utf-8').rstrip())
+        target, linetarget = getTargets(classificationProcess)
+        self.setCurrentFrame(1)
         self.setInitialVelocity(target)
-        bpy.data.scenes['Scene'].frame_current = 1
-        bpy.ops.object.paths_calculate()
+
         newConfiguration, shot, lastcut, target, linetarget = self.calculateForNewBeats(classificationProcess, shot, 1,
             lastcut, True, scenicContext)
+
         self.setConfiguration(newConfiguration)
         print("Szenenkontext erzeugt.")
         for frame in range(2, bpy.context.scene.frame_end):
-            bpy.data.scenes['Scene'].frame_current = frame
-            bpy.ops.object.paths_calculate()
+            self.setCurrentFrame(frame)
             print("Bearbeite Frame No. " + str(bpy.data.scenes['Scene'].frame_current))
             if frame - lastcut >= 19: # It's been 19 frames or more since the last cut
                 # Are there new beats?
