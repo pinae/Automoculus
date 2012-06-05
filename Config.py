@@ -25,7 +25,9 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv", "Double Indemnity - E
                "The Woman in the Window - Ampel.csv",
                "The Woman in the Window - Bar.csv"]
 
-TRAIN_FILES = ["beatscripts/" + f for f in TRAIN_FILES]
-
 PROJECT_PATH = path.dirname(path.abspath(__file__))
+
+TRAIN_FILES = [path.abspath(path.join(PROJECT_PATH, "beatscripts", f)) for f in TRAIN_FILES]
+
+
 

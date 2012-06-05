@@ -235,7 +235,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         print(beatscriptFile)
         time.sleep(5)
         #blockcount = 0
-        classification_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.sh")
+        classification_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.py")
         classificationProcess = subprocess.Popen(
             [classification_process_filename,
              beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
