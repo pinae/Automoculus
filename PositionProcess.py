@@ -3,15 +3,14 @@
 
 # =============================== Imports ======================================
 from math import sqrt, pi
-import scipy.optimize as opt
-import numpy as np
 import sys
+
+import numpy as np
 from multiprocessing import Queue, Process
-from FitnessWeightFunctions import personFitnessByImage
-from FitnessWeightFunctions import distanceFitnessByRange
-from FitnessWeightFunctions import range0to1
-from FitnessWeightFunctions import lineQualityFunction
-from FitnessWeightFunctions import occultationWeight
+import scipy.optimize as opt
+
+from FitnessWeightFunctions import personFitnessByImage, distanceFitnessByRange, range0to1, lineQualityFunction, occultationWeight
+
 
 # ============================= Person class ===================================
 class PersonAddition:
@@ -341,7 +340,7 @@ def configurationToStr(configuration):
            str(configuration[3]) + "|" + str(0.0) + "|" + str(configuration[4])
 
 
-def optimizeAllShots(target, linetarget, camera, personlist, objectlist, oldConfiguration, shots):
+def optimizeAllShots(camera, linetarget, objectlist, oldConfiguration, personlist, shots, target):
     def doOptimization(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot, returnqueue):
         optimizer = CameraOptimizer(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot)
         returnqueue.put(optimizer.optimize())
@@ -359,9 +358,12 @@ def optimizeAllShots(target, linetarget, camera, personlist, objectlist, oldConf
     return results
 
 # =============================== Main =========================================
-def main():
-    # initialization
-    initialData = sys.stdin.readline().split("\t")
+
+
+
+def read_initial_data(data_line):
+    # TODO: check if this can be rewritten using pickle
+    initialData = data_line.split("\t")
     targetName = initialData[0]
     linetargetName = initialData[1]
     camera = Camera(float(initialData[2]), int(initialData[3]), int(initialData[4]))
@@ -384,15 +386,24 @@ def main():
     rotation = eulerFromStr(configurationStrings[1])
     oldConfiguration = np.array([location[0], location[1], location[2], rotation[0], rotation[2]])
     shots = shotlistFromStr(initialData[8])
-    # optimization
-    results = optimizeAllShots(target, linetarget, camera, personlist, objectlist, oldConfiguration, shots)
-    # returning results
-    sys.stdout.write("OK\n")
-    sys.stdout.flush()
+    return camera, linetarget, objectlist, oldConfiguration, personlist, shots, target
+
+def build_return_string(results):
+    #TODO check if this can be rewritten using pickle
     resultstr = ""
     for result in results:
         resultstr += configurationToStr(result[0]) + "§" + str(result[1]) + "§" + str(result[2]) + "\t"
-    sys.stdout.write("Result:\t" + resultstr.rstrip("\t") + "\n")
+    return resultstr.rstrip("\t")
+
+
+def main():
+    initial_data = read_initial_data(sys.stdin.readline())
+
+    results = optimizeAllShots(*initial_data)
+
+    sys.stdout.write("OK\n")
+    sys.stdout.flush()
+    sys.stdout.write("Result:\t" + build_return_string(results) + "\n")
     sys.stdout.flush()
 
 if __name__ == "__main__":
