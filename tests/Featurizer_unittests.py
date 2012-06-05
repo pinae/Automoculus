@@ -2,9 +2,14 @@
 # -*- coding: utf-8 -*-
 
 # =============================== Imports ======================================
+import sys
+sys.path.append("..")
+
 import unittest
-import ConvertData
+
 import Config
+import ConvertData
+
 
 # ================================ Tests =======================================
 class TestConvertDataFunctions(unittest.TestCase):

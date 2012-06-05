@@ -1,5 +1,7 @@
 import subprocess
 from os import path
+import sys
+sys.path.append("..")
 
 from Config import PROJECT_PATH
 

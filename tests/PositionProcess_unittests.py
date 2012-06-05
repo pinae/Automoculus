@@ -3,14 +3,13 @@
 
 # =============================== Imports ======================================
 from __future__ import division
-import unittest
-#import math
-#import numpy as np
-import PositionProcess
-#import subprocess
-from pylab import *
-#from FitnessWeightFunctions import personFitnessByImage, occultationWeight
+import sys
+sys.path.append("..")
 
+import unittest
+from pylab import *
+
+import PositionProcess
 # ================================ Tests =======================================
 class TestPositionProcessFunctions(unittest.TestCase):
     def test_angle(self):
