@@ -6,20 +6,12 @@ from mathutils import Vector, Euler
 import bpy
 
 import subprocess
-
+import pickle
 
 from Config import PROJECT_PATH, SHOT_NAMES
 
 position_process_filename = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
 beatscript_classifier_filename = path.abspath(path.join(PROJECT_PATH, "BeatscriptClassifier.sh"))
-
-
-
-
-
-
-
-
 
 
 class AutomoculusCameraman(bpy.types.Operator):
@@ -140,14 +132,9 @@ class AutomoculusCameraman(bpy.types.Operator):
         context = {"persons": [], "objects": []}
         process.stdin.write(b'e\n')
         process.stdin.flush()
-        entityStr = process.stdout.readline().decode('utf-8').rstrip()
-        entityStrByType = entityStr.split("§")
-        for personName in entityStrByType[0].strip("\t").split("\t"):
-            if len(personName) > 0:
-                context["persons"].append(bpy.data.objects[personName])
-        for objectName in entityStrByType[1].strip("\t").split("\t"):
-            if len(objectName) > 0:
-                context["objects"].append(bpy.data.objects[objectName])
+        entities = pickle.load(process.stdout)
+        context["persons"] = [bpy.data.objects[e.name] for e in entities["Persons"] if e.name]
+        context["objects"] = [bpy.data.objects[e.name] for e in entities["Objects"] if e.name]
         return context
 
     def cameraOptimizer(self, context, target, linetarget, shots):
@@ -248,17 +235,21 @@ class AutomoculusCameraman(bpy.types.Operator):
              beatscript], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         return process
 
+    def waitForTrainingToFinish(self, classificationProcess):
+        while True:
+            input = classificationProcess.stdout.readline()
+            print(input.decode('utf8').rstrip())
+            if input.decode('utf8').rstrip() == "Training finished.":
+                return
+
     def invoke(self, context, event):
         classificationProcess = self.startClassificationProcess()
         self.camera = bpy.data.scenes['Scene'].camera
         shot = 0
         lastcut = 0
-        while True:
-            input = classificationProcess.stdout.readline()
-            print(input.decode('utf8').rstrip())
-            if input.decode('utf8').rstrip() == "Training finished.":
-                break
+        self.waitForTrainingToFinish(classificationProcess)
         scenicContext = self.createScenicContext(classificationProcess)
+
         classificationProcess.stdin.write(b't\n')
         classificationProcess.stdin.flush()
         target, linetarget = self.getTargetsFromStr(classificationProcess.stdout.readline().decode('utf-8').rstrip())

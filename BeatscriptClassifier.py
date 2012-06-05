@@ -5,13 +5,14 @@
 from multiprocessing import Process, Queue, Lock
 #import cPickle
 import orange#, orngTree
-from Config import SHOT_NAMES, TRAIN_FILES, DETAIL, PERSON, OBJECT
+from Config import SHOT_NAMES, TRAIN_FILES, DETAIL, PERSON, OBJECT, PLACE
 from Classify import getDomain, getTrainingExamples, trainTree, trainSVM, classifyForShot#, trainRule
 from Classify import getNormalizationTerms, classifyForCut
 #from Classify import cutBeforeThisBlock
 import sys
 from ConvertData import readContext, readBeatscript
 import Features
+import pickle
 
 # =============================== Methods ======================================
 def trainWithAllExamples(shot):
@@ -68,7 +69,17 @@ def sameBeat(beat1, beat2):
     elif beat1.linetarget != beat2.linetarget: return False
     else: return True
 
+# =============================== Interactions =========================================
+def printListOfEntities(context):
+    persons = [entity for name, entity in context["Entities"].items() if entity.type == PERSON]
+    objects = [entity for name, entity in context["Entities"].items() if entity.type == OBJECT]
+    places = [entity for name, entity in context["Entities"].items() if entity.type == PLACE]
+    entityString = pickle.dump({"Persons" : persons, "Objects" : objects, "Places": places}, sys.stdout)
+    #sys.stdout.write(entityString + "\n")
+
+
 # =============================== Main =========================================
+
 def main():
     # Initialization and Training
     cutClassifiers, means, vars = trainWithAllExamples(False)
@@ -112,27 +123,8 @@ def main():
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")
-        elif choice == "e": # Print out a list of entities
-            persons = []
-            objects = []
-            places = []
-            for entityName in context["Entities"]:
-                if context["Entities"][entityName].type == PERSON:
-                    persons.append(context["Entities"][entityName])
-                elif context["Entities"][entityName].type == OBJECT:
-                    objects.append(context["Entities"][entityName])
-                else: # entity.type == PLACE
-                    places.append(context["Entities"][entityName])
-            entityString = ""
-            for person in persons:
-                entityString += person.name+"\t"
-            entityString += "§"
-            for object in objects:
-                entityString += object.name+"\t"
-            entityString += "§"
-            for place in places:
-                entityString += place.name+"\t"
-            sys.stdout.write(entityString+"\n")
+        elif choice == "e":
+            printListOfEntities(context)
         elif choice == "f": # check framenumber for a new block
             beatList = readBeatscriptTillFrame(lines, context, int(raw_input("")))
             for block in context["BygoneBlocks"]:
