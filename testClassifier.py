@@ -1,4 +1,7 @@
 import subprocess
+from os import path
+
+from Config import PROJECT_PATH
 
 def readLine(filehandle):
     #byteline = []
@@ -12,8 +15,9 @@ def readLine(filehandle):
     return filehandle.read().rstrip()
 
 beatscriptFile = 'The Mighty Hugo - Testszene.csv'
+classifier_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.sh")
 prozess = subprocess.Popen(
-    ['/home/greff/Programming/Automoculus/BeatscriptClassifier.sh',
+    [classifier_process_filename,
      beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 while True:
 #for i in range(0,10):

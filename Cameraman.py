@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+from os import path
 from mathutils import Vector, Euler
 import bpy
 #from multiprocessing import Process, Queue, Lock, Manager
 import subprocess
 #import random
 #import math
+import time
+
+from Config import PROJECT_PATH
 
 class AutomoculusCameraman(bpy.types.Operator):
     bl_idname = "marker.automoculus"
@@ -38,9 +42,9 @@ class AutomoculusCameraman(bpy.types.Operator):
             vectorCoordStrings = parts[1].split("|")
             return location, Euler(
                 (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])), 'XYZ')
-
+        position_process_filename = path.join(PROJECT_PATH, "PositionProcess.py")
         optimizationProcess = subprocess.Popen(
-            ['python', '/home/greff/Programming/Automoculus/PositionProcess.py']
+            ['python', position_process_filename]
             , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         initStr = target.name + "\t" + linetarget.name + "\t"
         initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
@@ -227,10 +231,13 @@ class AutomoculusCameraman(bpy.types.Operator):
 
         SHOT_NAMES = ["detail", "closeup", "medium_shot", "american_shot", "full_shot", "long_shot",
                       "extreme_long_shot"]
-        beatscriptFile = '/home/greff/Programming/Automoculus/Robots - Dialogue.csv'
+        beatscriptFile = path.join(PROJECT_PATH, beatscript)
+        print(beatscriptFile)
+        time.sleep(5)
         #blockcount = 0
+        classification_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.sh")
         classificationProcess = subprocess.Popen(
-            ['/home/greff/Programming/Automoculus/BeatscriptClassifier.sh',
+            [classification_process_filename,
              beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         camera = bpy.data.scenes['Scene'].camera
         shot = 0

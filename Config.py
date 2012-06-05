@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from os import path
+
 
 # =============================== Constants ====================================
 
@@ -22,3 +24,6 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv", "Double Indemnity - E
                "The Woman in the Window - Abenteuerlust.csv",
                "The Woman in the Window - Ampel.csv",
                "The Woman in the Window - Bar.csv"]
+
+PROJECT_PATH = path.dirname(path.abspath(__file__))
+

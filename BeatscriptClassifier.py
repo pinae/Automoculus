@@ -35,10 +35,6 @@ def trainWithAllExamples(shot):
     treeLearningProcess.join()
     #ruleLearningProcess.join()
     svmLearningProcess.join()
-    #if shot:
-    #    filename = "/home/jonny/Programmierung/Automoculus - Featurizer/trained_classifiers"
-    #else:
-    #    filename = "/home/jonny/Programmierung/Automoculus - Featurizer/trained_classifiers_cutting"
     #file = open(filename, 'wb')
     #cPickle.Pickler(file, cPickle.HIGHEST_PROTOCOL).dump((treeClassifier, ruleLearningClassifier, svmClassifier))
     #file.close()

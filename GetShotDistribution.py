@@ -8,15 +8,15 @@ from Classify import getDomain, classifyForDistribution
 from Config import SHOT_NAMES
 import orange
 import sys
-
+from os import path
 # =============================== Main =========================================
 def main():
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    file = open("/home/greff/Programming/Automoculus/trained_classifiers",'rb')
+    file = open(path.join(PROJECT_PATH, "trained_classifiers"),'rb')
     classifiers = cPickle.Unpickler(file).load()
     file.close()
     try:
-        file = open("/home/greff/Programming/Automoculus/decisionHistory.txt",'r')
+        file = open(path.join(PROJECT_PATH, "decisionHistory.txt"),'r')
         lines = file.readlines()
     except IOError:
         lines = []
@@ -25,7 +25,7 @@ def main():
         decisionHistory.append(SHOT_NAMES[line])
     file.close()
     dist = classifyForDistribution(domain,sys.argv[1],classifiers,decisionHistory)
-    file = open("/home/greff/Programming/Automoculus/decisions.txt",'w')
+    file = open(path.join(PROJECT_PATH, "decisions.txt"),'w')
     diststr = ""
     for value in dist:
         diststr += str(value)+"\t"
