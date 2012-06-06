@@ -13,7 +13,19 @@ import scipy.optimize as opt
 from FitnessWeightFunctions import personFitnessByImage, distanceFitnessByRange, range0to1, lineQualityFunction, occultationWeight
 from SceneSnapshot import SceneSnapshot, Person, Object, Camera
 
+# ================================ constants =====================================
+SHOT_LIMITS = [
+    np.array([0.0, 3.87]), # detail
+    np.array([0.3, 1.15]), # closeup
+    np.array([1.15, 2.06]), # medium shot
+    np.array([2.06, 3.62]), # american shot
+    np.array([3.62, 5.35]), # full shot
+    np.array([5.35, 7.2]), # long shot
+    np.array([7.2, 28]) # extreme long shot
+]
+
 # ================================ Methods =====================================
+
 
 def location(genome):
     return genome[:3]
@@ -80,20 +92,8 @@ class CameraOptimizer:
         self.shot = shot
 
     def getShotLimits(self, shot):
-        if shot == 1: # closeup
-            return 0.3 * self.target.height, 1.15 * self.target.height
-        elif shot == 2: # medium shot
-            return 1.15 * self.target.height, 2.06 * self.target.height
-        elif shot == 3: # american shot
-            return 2.06 * self.target.height, 3.62 * self.target.height
-        elif shot == 4: # full shot
-            return 3.62 * self.target.height, 5.35 * self.target.height
-        elif shot == 5: # long shot
-            return 5.35 * self.target.height, 7.2 * self.target.height
-        elif shot == 6: # extreme long shot
-            return 7.2 * self.target.height, 28 * self.target.height
-        else: # detail
-            return 0 * self.target.height, 3.87 * self.target.height # Details sind ganz zu sehen.
+        return SHOT_LIMITS[shot] * self.target.height
+
 
     def getPersonQuality(self, genome, person, intensity):
         ax, ay = getImageAngles(genome, person)
@@ -116,37 +116,29 @@ class CameraOptimizer:
         else:
             return 0.01 * angles[0] + 0.01 * angles[1]
 
-    def getDistQuality(self, genome, shot, weightfunction):
-        camera_location = location(genome)
-        #camera_location = camera_location.reshape(-1, 1)
-        target_location = self.target.location
-        v = camera_location - target_location
-        v = v.reshape(-1)
+    def getDistQuality(self, genome, shot):
+        v = location(genome) - self.target.location
         dist = sqrt(v.dot(v))
         minDist, maxDist = self.getShotLimits(shot)
-        #if dist < minDist or dist > maxDist: print("Dist ist außerhalb des Bereichs: " + str(dist) + " : " + str(
-        #    2 * (dist - minDist) / (maxDist - minDist) -1) + " : " + str(
-        #    distanceFitnessByRange(2 * (dist - minDist) / (maxDist - minDist) -1)))
-        return weightfunction(2 * (dist - minDist) / (maxDist - minDist) - 1)
+        return distanceFitnessByRange(2 * (dist - minDist) / (maxDist - minDist) - 1)
 
     def getHeightQuality(self, genome):
-        heightdiff = abs(genome[2] - self.target.location[2])
+        heightdiff = genome[2] - self.target.location[2]
         return float(100 * heightdiff * heightdiff)
 
-    def getXAngleQuality(self, genome, weightfunction):
-        return weightfunction(genome[3] / pi)
+    def getXAngleQuality(self, genome):
+        return range0to1(genome[3] / pi)
 
     def getLineQuality(self, genome):
-        if self.target is self.linetarget or not self.linetarget: return 0
-        if self.target.location.flatten() is location(genome): return 10000
-        targettolinetarget = self.linetarget.location.flatten() - self.target.location.flatten()
+        if not self.linetarget or self.target is self.linetarget: return 0
+        if (self.target.location == location(genome)).all(): return 10000
+        targettolinetarget = self.linetarget.location - self.target.location
         normalvector = np.cross(np.array([0, 0, -1]), targettolinetarget)
-        olddiffvector = self.target.location.flatten() - location(self.oldConfiguration).flatten()
+        olddiffvector = self.target.location - location(self.oldConfiguration)
         angletoold = angle(olddiffvector, normalvector)
-        diffvector = self.target.location.flatten() - location(genome).flatten()
+        diffvector = self.target.location - location(genome)
         lineangle = angle(diffvector, normalvector)
-        if angletoold > pi / 2:
-            lineangle = pi - lineangle
+        lineangle = pi - lineangle if angletoold > pi / 2 else lineangle
         return lineQualityFunction(pi / 2 - lineangle)
 
     def fitness(self, genome):
@@ -155,33 +147,25 @@ class CameraOptimizer:
         for person in self.personlist:
             targetFactor = 1.0 if person is self.target else 0.1
             quality += targetFactor * self.getPersonQuality(genome, person, targetFactor * 12)
-            quality += targetFactor * self.getPersonQuality(genome, person.eye_L, targetFactor * 13)
-            quality += targetFactor * self.getPersonQuality(genome, person.eye_R, targetFactor * 13)
-
+            quality += targetFactor * self.getPersonQuality(genome, person.eye_L, targetFactor * 12)
+            quality += targetFactor * self.getPersonQuality(genome, person.eye_R, targetFactor * 12)
         #Objekte im Bild
         #for object in self.objectlist:
         #    quality += getObjectQuality(genome, object)
-
         #Entfernung zur Kamera
-        quality += self.getDistQuality(genome, self.shot, distanceFitnessByRange)
-
+        quality += self.getDistQuality(genome, self.shot)
         #Höhe der Kamera
         quality += self.getHeightQuality(genome)
-
         #Kein Überdrehen der X-Rotation
-        quality += self.getXAngleQuality(genome, range0to1)
-
+        quality += self.getXAngleQuality(genome)
         #Ebener Blick
         quality += genome[4] * genome[4] * 0.01
-
         #Achsenspruenge?
         quality += self.getLineQuality(genome)
-
         #Sprunghaftigkeit?
         #diffvector = location(genome).reshape(-1) - location(self.oldConfiguration).reshape(-1)
         #quality += sqrt(diffvector.dot(diffvector)) * 3
-        quality += float((genome[3] - self.oldConfiguration[3]) * (genome[3] - self.oldConfiguration[3]) +\
-                         (genome[4] - self.oldConfiguration[4]) * (genome[4] - self.oldConfiguration[4]))
+        quality += np.sum((genome[3:] - self.oldConfiguration[3:])**2)
         return quality
 
     def optimize(self):
