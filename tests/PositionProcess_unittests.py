@@ -10,6 +10,7 @@ import unittest
 from pylab import *
 
 import PositionProcess
+from SceneSnapshot import SceneSnapshot, Camera, Person
 # ================================ Tests =======================================
 class TestPositionProcessFunctions(unittest.TestCase):
     def test_angle(self):
@@ -77,60 +78,62 @@ class TestPositionProcessFunctions(unittest.TestCase):
                 self.assertAlmostEqual(np.sqrt(v2.dot(v2)),1,5)
 
     def test_angles(self):
-        c = PositionProcess.Camera(math.pi/2, 1920, 1080)
+        c = PositionProcess.Camera(math.pi/2, 1920, 1080, [0,0,0], [math.pi/2, 0])
         genome = np.array([0, 0, 0, math.pi/2, 0])
         o1 = PositionProcess.Object("o1", np.array([1, 1, 0]))
         xa, ya = PositionProcess.getImageAngles(genome, o1)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
         self.assertAlmostEqual(x, 1, 5)
         self.assertAlmostEqual(y, 0, 5)
-        o2 = PositionProcess.Object("o2", np.array([0, 1, tan(c.angle / 2 * c.resolution_y / c.resolution_x)]))
+        o2 = PositionProcess.Object("o2", np.array([0, 1, tan(c.aperture_angle / 2 * c.resolution_y / c.resolution_x)]))
         xa, ya = PositionProcess.getImageAngles(genome, o2)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
         self.assertAlmostEqual(x, 0, 5)
         self.assertAlmostEqual(y, 1, 5)
-        o3 = PositionProcess.Object("o3", np.array([0.5, 1, 0.5 * tan(c.angle / 2 * c.resolution_y / c.resolution_x)]))
+        o3 = PositionProcess.Object("o3", np.array([0.5, 1, 0.5 * tan(c.aperture_angle / 2 * c.resolution_y / c.resolution_x)]))
         xa, ya = PositionProcess.getImageAngles(genome, o3)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
-        self.assertAlmostEqual(x, arctan(0.5) / (c.angle / 2), 2)
-        self.assertAlmostEqual(y, arctan(0.5) / (c.angle * c.resolution_y / c.resolution_x), 0)
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
+        self.assertAlmostEqual(x, arctan(0.5) / (c.aperture_angle / 2), 2)
+        self.assertAlmostEqual(y, arctan(0.5) / (c.aperture_angle * c.resolution_y / c.resolution_x), 0)
         genome = np.array([0, 0, 0, math.pi/2, -math.pi/4])
         xa, ya = PositionProcess.getImageAngles(genome, o1)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
         self.assertAlmostEqual(x, 0, 5)
         self.assertAlmostEqual(y, 0, 5)
         genome = np.array([0, 0, 0, math.pi/2, math.pi/4])
         xa, ya = PositionProcess.getImageAngles(genome, o1)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
         self.assertAlmostEqual(x, 2, 5)
         self.assertAlmostEqual(y, 0, 5)
         genome = np.array([0, 0, 0, math.pi/2, math.pi/2])
         xa, ya = PositionProcess.getImageAngles(genome, o1)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
         self.assertAlmostEqual(x, 3, 5)
         self.assertAlmostEqual(y, 0, 5)
         genome = np.array([0, 0, 0, math.pi/2, math.pi])
         xa, ya = PositionProcess.getImageAngles(genome, o1)
-        x = xa * 2.0 / c.angle
-        y = ya * 2.0 * c.resolution_x / (c.angle * c.resolution_y )
+        x = xa * 2.0 / c.aperture_angle
+        y = ya * 2.0 * c.resolution_x / (c.aperture_angle * c.resolution_y )
         self.assertAlmostEqual(x, 3, 5)
         self.assertAlmostEqual(y, 0, 5)
 
     def test_plot_rotation(self):
-        c = PositionProcess.Camera(0.48271098732948303, 1920, 1080)
+        c = Camera(0.48271098732948303, 1920, 1080, [5, 0, 0], [math.pi / 2, 0, math.pi])
         genome = np.array([5, 0, 0, math.pi / 2, 0, math.pi])
-        t = PositionProcess.Person('Max Mustermann', np.array([0, 0, 0]).reshape(-1, 1), 1,
-            np.array([0.7, -0.2, 0]).reshape(-1, 1), np.array([0.7, 0.2, 0]).reshape(-1, 1))
-        lt = PositionProcess.Person('Agnes Angeschaute', np.array([2, 0, 0]).reshape(-1, 1), 1,
-            np.array([1.3, -0.2, 0]).reshape(-1, 1), np.array([1.3, 0.2, 0]).reshape(-1, 1))
+        t = Person('Max Mustermann', np.array([0, 0, 0]), 1,
+            np.array([0.7, -0.2, 0]), np.array([0.7, 0.2, 0]))
+        lt = Person('Agnes Angeschaute', np.array([2, 0, 0]), 1,
+            np.array([1.3, -0.2, 0]), np.array([1.3, 0.2, 0]))
+        persons = [t, lt]
         #PositionProcess.optimizeAllShots(t, t, c, [t], [], genome, [2])
-        optimizer = PositionProcess.CameraOptimizer(t, lt, c, [t, lt], [], genome, 2)
+        snapshot = SceneSnapshot(t, lt, c, persons, [], [], [2])
+        optimizer = PositionProcess.CameraOptimizer(snapshot, 2)
         #optimizer.fitness(genome)
         winkel = arange(-math.pi, math.pi, 0.01)
         s = arange(-math.pi, math.pi, 0.01)

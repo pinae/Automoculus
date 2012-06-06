@@ -16,9 +16,7 @@ from SceneSnapshot import SceneSnapshot, Person, Object, Camera
 # ================================ Methods =====================================
 
 def location(genome):
-    loc = np.array([genome[0], genome[1], genome[2]])
-    loc.reshape(-1, 1)
-    return loc
+    return genome[:3]
 
 
 def rotate(genome):
@@ -44,35 +42,12 @@ def angle(v1, v2):
 
 
 def getImageAngles(genome, object):
-#    # koordinatensystem der Kamera
-#    U = np.eye(3)
-#    U[2,2] = -1
-#
-#    # rotationsmatrix
-#    R = rotate(genome)
-#
-#    # gedreht
-#    Ur = U.dot(R)
-#
-#    # vektor von kamera nach objekt
-#    p = object.location.flatten() - location(genome).flatten()
-#
-#    # vektor im Koordinatensystem der Kamera
-#    x, y, z = p.dot(Ur)
-#
-#    pl = np.sqrt(p.dot(p))
-#
-#    x_angle = np.arctan(y / x)
-#    #y_angle = np.arctan(y / z)
-#    #x_angle = -np.arccos(x/pl)+pi/2
-#    y_angle = -np.arccos(z/pl)+pi/2
-
     c = np.array([0, 0, -1])
     e = np.array([1, 0, 0])
     rotmatrix = rotate(genome)
     c = c.dot(rotmatrix)
     e = e.dot(rotmatrix)
-    p = object.location.reshape(-1) - location(genome)
+    p = object.location - location(genome)
     ps = p.dot(c) * c + p.dot(e) * e
     if object.location is location(genome):
         print("Kamerposition ist Objektposition")
@@ -80,34 +55,16 @@ def getImageAngles(genome, object):
     if ps.dot(ps) > 0:
         x_angle = angle(c, ps)
     else:
-        #print("ps x ist < 0")
         x_angle = 10
     y_angle = angle(p, ps)
-    #e = np.array([0, 1, 0])
-    #e = e.dot(rotmatrix)
-    #if p.dot(c)<=0: print("p.dot(c): "+str(p.dot(c))+" c="+str(c))
-    #if p.dot(e)<=0: print("p.dot(e): "+str(p.dot(e))+" e="+str(e))
-    #ps = np.absolute(p.dot(c)) * c + np.absolute(p.dot(e)) * e
-    #ps = p.dot(c) * c + p.dot(e) * e
-    #if ps.dot(ps) > 0:
-    #y_angle = (angle(c, ps)+pi/2)%pi-pi/2
-    #y_angle = angle(c, ps)
-    #print(str(ps)+"  :  "+str(c))
-    #if y_angle > 2: print("###########")
-    #else:
-    #print("ps y ist < 0: ps="+str(ps))
-    #y_angle = 10
-    #sp = np.array([0, 0, -1])
     if (p - ps)[2] < 0: y_angle *= -1
-    #if x_angle > pi/2: y_angle *= -1
     return x_angle, y_angle
 
 
 def getVisibilityFactor(genome, target, object):
-    v = object.location.flatten() - target.location.flatten()
-    dist = sqrt(v.dot(v))
-    if dist < object.radius: dist = object.radius
-    alpha = angle(v, location(genome) - target.location.flatten())
+    v = object.location - target.location
+    dist = max(sqrt(v.dot(v)), object.radius)
+    alpha = angle(v, location(genome) - target.location)
     beta = np.arcsin(object.radius / dist)
     return alpha / beta
 
@@ -138,17 +95,17 @@ class CameraOptimizer:
         else: # detail
             return 0 * self.target.height, 3.87 * self.target.height # Details sind ganz zu sehen.
 
-    def getPersonQuality(self, genome, person, intensity, weightfunction, occultationfunction):
+    def getPersonQuality(self, genome, person, intensity):
         ax, ay = getImageAngles(genome, person)
         x = ax * 2.0 / self.camera.aperture_angle
         y = ay * 2.0 * self.camera.resolution_x / (self.camera.aperture_angle * self.camera.resolution_y)
         occultation = 0
         for object in self.objectlist:
-            occultation += occultationfunction(getVisibilityFactor(genome, person, object))
+            occultation += occultationWeight(getVisibilityFactor(genome, person, object))
         for somebody in self.personlist:
             if not somebody is person:
-                occultation += occultationfunction(getVisibilityFactor(genome, person, somebody))
-        return (weightfunction(x, y) + occultation) * intensity
+                occultation += occultationWeight(getVisibilityFactor(genome, person, somebody))
+        return (personFitnessByImage(x, y) + occultation) * intensity
 
     def getObjectQuality(self, genome, object):
         angles = getImageAngles(genome, object)
@@ -161,7 +118,7 @@ class CameraOptimizer:
 
     def getDistQuality(self, genome, shot, weightfunction):
         camera_location = location(genome)
-        camera_location = camera_location.reshape(-1, 1)
+        #camera_location = camera_location.reshape(-1, 1)
         target_location = self.target.location
         v = camera_location - target_location
         v = v.reshape(-1)
@@ -196,16 +153,10 @@ class CameraOptimizer:
         quality = 0.1
         #Personen im Bild
         for person in self.personlist:
-            if person is self.target:
-                targetFactor = 1.0
-            else:
-                targetFactor = 0.1
-            quality += targetFactor * self.getPersonQuality(genome, person, targetFactor * 12,
-                personFitnessByImage, occultationWeight)
-            quality += targetFactor * self.getPersonQuality(genome, person.eye_L, targetFactor * 13,
-                personFitnessByImage, occultationWeight)
-            quality += targetFactor * self.getPersonQuality(genome, person.eye_R, targetFactor * 13,
-                personFitnessByImage, occultationWeight)
+            targetFactor = 1.0 if person is self.target else 0.1
+            quality += targetFactor * self.getPersonQuality(genome, person, targetFactor * 12)
+            quality += targetFactor * self.getPersonQuality(genome, person.eye_L, targetFactor * 13)
+            quality += targetFactor * self.getPersonQuality(genome, person.eye_R, targetFactor * 13)
 
         #Objekte im Bild
         #for object in self.objectlist:
@@ -239,26 +190,21 @@ class CameraOptimizer:
             #o = opt.fmin_cg(f=function, x0=startvector)
             #o = opt.fmin_bfgs(f=function, x0=startvector)
             #o = opt.anneal(func=function, x0=startvector)
-            returnqueue.put(o)
-            returnqueue.put(self.fitness(o))
+            returnqueue.put((o, self.fitness(o)))
 
-        start = np.array([self.oldConfiguration[0], self.oldConfiguration[1], self.oldConfiguration[2],
-                          self.oldConfiguration[3], self.oldConfiguration[4]])
-        oldQueue = Queue(maxsize=2)
+        start = self.oldConfiguration
+        oldQueue = Queue(maxsize=1)
         oldProcess = Process(target=runoptimizer, args=(self.fitness, start, oldQueue))
         oldProcess.start()
         if self.linetarget:
-            start = np.array([self.linetarget.location[0], self.linetarget.location[1], self.linetarget.location[2],
-                              self.oldConfiguration[3], self.oldConfiguration[4]])
+            start = np.hstack((self.linetarget.location, self.oldConfiguration[3:5]))
         else:
             start = np.array([0, 0, 0, self.oldConfiguration[3], self.oldConfiguration[4]])
-        litQueue = Queue(maxsize=2)
+        litQueue = Queue(maxsize=1)
         litProcess = Process(target=runoptimizer, args=(self.fitness, start, litQueue))
         litProcess.start()
-        o_old = oldQueue.get()
-        f_o_old = oldQueue.get()
-        o_lit = litQueue.get()
-        f_o_lit = litQueue.get()
+        o_old, f_o_old = oldQueue.get()
+        o_lit, f_o_lit = litQueue.get()
         oldProcess.join()
         litProcess.join()
         if f_o_lit < f_o_old:
