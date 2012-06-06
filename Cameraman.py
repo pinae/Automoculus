@@ -47,16 +47,24 @@ def createPersonObject(person):
         personEyeR = person.location
     return Person(person.name, person.location, person.dimensions.z, personEyeL, personEyeR)
 
+def thereAreNewBeats(classificationProcess, frame):
+    classificationProcess.stdin.write(b'f\n' + (str(frame) + '\n').encode("utf-8"))
+    classificationProcess.stdin.flush()
+    return classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
+
 
 class AutomoculusCameraman(bpy.types.Operator):
     bl_idname = "marker.automoculus"
     bl_label = "Automoculus - position camera"
 
-    def setConfiguration(self, newConfiguration):
+    def setConfiguration(self, newConfiguration, target):
         self.camera.location = newConfiguration[0]
         self.camera.rotation_euler = newConfiguration[1]
         self.camera.keyframe_insert(data_path="rotation_euler")
         self.camera.keyframe_insert(data_path="location")
+
+        bpy.data.scenes['Scene'].camera.data.dof_distance = (target.location - self.camera.location).length
+        self.camera.data.keyframe_insert(data_path="dof_distance")
 
 
 
@@ -83,15 +91,12 @@ class AutomoculusCameraman(bpy.types.Operator):
         #correction = [100, 100, 100, 100, 100, 100, 100]
         shots = [s for s in range(len(SHOT_NAMES)) if dist[s] > 0.1 or s == shot]
         print("Es kommen folgende Einstellungsgrößen in Frage: " + ", ".join([SHOT_NAMES[s] for s in shots]))
-        #>>
         results = self.cameraOptimizer(scenicContext, target, linetarget, shots)
         for result in results:
-            configuration = result[0]
-            fitness = result[1]
-            shot_number = result[2]
-            print("Fitness " + str(fitness) + " for " + SHOT_NAMES[shot_number] + ".")
+            configuration, fitness, shot_number = result
+            print("Fitness %f for %s."%(fitness, SHOT_NAMES[shot_number]))
             ratio = 1 / fitness * dist[shot_number] * correction[shot_number]
-            print("Ratio " + str(ratio) + " for " + SHOT_NAMES[shot_number] + ".")
+            print("Ratio %f for %s."%(ratio, SHOT_NAMES[shot_number]))
             if shot_number == shot:
                 no_cut_ratio = ratio
                 no_cut_config = configuration
@@ -190,16 +195,6 @@ class AutomoculusCameraman(bpy.types.Operator):
 
 
     def cameraOptimizer(self, context, target, linetarget, shots):
-        def strToConfiguration(configstr):
-            parts = configstr.split(",")
-            vectorCoordStrings = parts[0].split("|")
-            location = Vector(
-                (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])))
-            vectorCoordStrings = parts[1].split("|")
-            return location, Euler(
-                (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])), 'XYZ')
-
-
         optimization_process_filename = path.join(PROJECT_PATH, "PositionProcess.py")
         optimizationProcess = subprocess.Popen(
             ['python', optimization_process_filename]
@@ -213,7 +208,6 @@ class AutomoculusCameraman(bpy.types.Operator):
         return result_list
 
     def springConfigurator(self, opt):
-
         opt[1].make_compatible(self.camera.rotation_euler)
         #print(self.velocity)
         vloc = self.velocity[0]
@@ -231,11 +225,6 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.velocity = (vloc * 0.75, Euler((vrot[0] * 0.75, 0, vrot[2] * 0.75), 'XYZ'))
         return loc, rot
 
-
-
-
-
-
     def startClassificationProcess(self):
         classification_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.py")
         process = subprocess.Popen(
@@ -250,6 +239,8 @@ class AutomoculusCameraman(bpy.types.Operator):
             if input.decode('utf8').rstrip() == "Training finished.":
                 return
 
+
+
     def invoke(self, context, event):
         classificationProcess = self.startClassificationProcess()
         self.camera = bpy.data.scenes['Scene'].camera
@@ -260,40 +251,31 @@ class AutomoculusCameraman(bpy.types.Operator):
         target, linetarget = getTargets(classificationProcess)
         self.setCurrentFrame(1)
         self.setInitialVelocity(target)
-        # >>
+
         newConfiguration, shot, lastcut, target, linetarget = self.calculateForNewBeats(classificationProcess, shot, 1,
             lastcut, True, scenicContext)
-
-        self.setConfiguration(newConfiguration)
+        self.setConfiguration(newConfiguration, target)
         print("Szenenkontext erzeugt.")
-        for frame in range(2, bpy.context.scene.frame_end):
+        for frame in range(2, bpy.context.scene.frame_end + 1):
             self.setCurrentFrame(frame)
-            print("Bearbeite Frame No. " + str(bpy.data.scenes['Scene'].frame_current))
+            print("Bearbeite Frame No. " + str(frame))
             if frame - lastcut >= 19: # It's been 19 frames or more since the last cut
-                # Are there new beats?
-                classificationProcess.stdin.write(b'f\n')
-                classificationProcess.stdin.flush()
-                classificationProcess.stdin.write((str(frame) + "\n").encode('utf-8'))
-                classificationProcess.stdin.flush()
-                if classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes": # there are new beats
+                if thereAreNewBeats(classificationProcess, frame):
                     print("Neue Beats, neues Glück!")
                     newConfiguration, shot, lastcut, target, linetarget = self.calculateForNewBeats(classificationProcess,
-                        shot, frame, lastcut,
-                        False, scenicContext)
+                        shot, frame, lastcut, False, scenicContext)
                 else: # There were no new beats
                     print("Keine neuen Beats.")
-                    optimalConfiguration, fitness, notused = self.cameraOptimizer(scenicContext, target, linetarget,
-                        [shot])[0]
+                    optimalConfiguration, fitness, _ = self.cameraOptimizer(scenicContext, target, linetarget, [shot])[0]
                     newConfiguration = self.springConfigurator(optimalConfiguration)
                     #newConfiguration = optimalConfiguration
             else: # It's too early to cut
                 #optimalConfiguration, fitness = self.geneticConfigurator(scenicContext, target, linetarget, shot)
-                optimalConfiguration, fitness, notused = self.cameraOptimizer(scenicContext, target, linetarget, [shot])[0]
+                optimalConfiguration, fitness, _ = self.cameraOptimizer(scenicContext, target, linetarget, [shot])[0]
                 newConfiguration = self.springConfigurator(optimalConfiguration)
                 #newConfiguration = optimalConfiguration
-            self.setConfiguration(newConfiguration)
-            bpy.data.scenes['Scene'].camera.data.dof_distance = (target.location - self.camera.location).length
-            self.camera.data.keyframe_insert(data_path="dof_distance")
+            self.setConfiguration(newConfiguration, target)
+
         classificationProcess.stdin.write(b'q\n')
         classificationProcess.stdin.flush()
         print("Classification Process: " + classificationProcess.stdout.readline().decode('utf-8').rstrip())
