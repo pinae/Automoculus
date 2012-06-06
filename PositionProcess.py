@@ -321,50 +321,36 @@ def convertToNumpy(o):
     return o
 
 
-def optimizeAllShots(scene_snapshot):#camera, linetarget, objectlist, oldConfiguration, personlist, shots, target):
-    def doOptimization(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot, returnqueue):
-        optimizer = CameraOptimizer(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot)
-        returnqueue.put(optimizer.optimize())
-
-    camera = scene_snapshot.camera
-    linetarget = convertToNumpy(scene_snapshot.linetarget)
-    target = convertToNumpy(scene_snapshot.target)
-    object_list = [convertToNumpy(o) for o in scene_snapshot.objects]
-    person_list = [convertToNumpy(p) for p in scene_snapshot.persons]
-    shots = scene_snapshot.shots
-    old_configuration = np.array(scene_snapshot.camera.getConfiguration())
+def optimizeAllShots(scene_snapshot):
+    def doOptimization(scene_snapshot, shot, return_queue):
+        camera = scene_snapshot.camera
+        linetarget = convertToNumpy(scene_snapshot.linetarget)
+        target = convertToNumpy(scene_snapshot.target)
+        object_list = [convertToNumpy(o) for o in scene_snapshot.objects]
+        person_list = [convertToNumpy(p) for p in scene_snapshot.persons]
+        old_configuration = np.array(scene_snapshot.camera.getConfiguration())
+        optimizer = CameraOptimizer(target, linetarget, camera, person_list, object_list, old_configuration, shot)
+        return_queue.put(optimizer.optimize())
 
     processes = []
-    for i in range(0, len(shots)):
+    for shot in scene_snapshot.shots:
         q = Queue(1)
-        processes.append((Process(target=doOptimization, args=(
-            target, linetarget, camera, person_list, object_list, old_configuration, shots[i], q)), q))
-        processes[-1][0].start()
+        p = Process(target=doOptimization, args=(scene_snapshot, shot, q))
+        processes.append((p, q))
+        p.start()
     results = []
-    for process in processes:
-        results.append(process[1].get())
-        process[0].join()
+    for process, queue in processes:
+        results.append(queue.get())
+        process.join()
     return results
 
 # =============================== Main =========================================
 
-
-def build_return_string(results):
-    #TODO check if this can be rewritten using pickle
-    resultstr = ""
-    for result in results:
-        resultstr += configurationToStr(result[0]) + "§" + str(result[1]) + "§" + str(result[2]) + "\t"
-    return resultstr.rstrip("\t")
-
-
 def main():
     initial_data = pickle.load(sys.stdin)
-
     results = optimizeAllShots(initial_data)
-
     sys.stdout.write("OK\n")
     sys.stdout.flush()
-
     #remove all traces of numpy before pickling
     result_list = [(r[0].tolist(), float(r[1]), int(r[2])) for r in results]
     pickle.dump(result_list, sys.stdout)
