@@ -113,13 +113,13 @@ def getVisibilityFactor(genome, target, object):
 
 # =========================== Optimizer class ==================================
 class CameraOptimizer:
-    def __init__(self, target, linetarget, camera, personlist, objectlist, oldConfiguration, shot):
-        self.target = target
-        self.linetarget = linetarget
-        self.camera = camera
-        self.personlist = personlist
-        self.objectlist = objectlist
-        self.oldConfiguration = oldConfiguration
+    def __init__(self,scene_snapshot, shot):
+        self.target = convertToNumpy(scene_snapshot.target)
+        self.linetarget = convertToNumpy(scene_snapshot.linetarget)
+        self.camera = scene_snapshot.camera
+        self.personlist = [convertToNumpy(p) for p in scene_snapshot.persons]
+        self.objectlist = [convertToNumpy(o) for o in scene_snapshot.objects]
+        self.oldConfiguration = np.array(scene_snapshot.camera.getConfiguration())
         self.shot = shot
 
     def getShotLimits(self, shot):
@@ -323,13 +323,7 @@ def convertToNumpy(o):
 
 def optimizeAllShots(scene_snapshot):
     def doOptimization(scene_snapshot, shot, return_queue):
-        camera = scene_snapshot.camera
-        linetarget = convertToNumpy(scene_snapshot.linetarget)
-        target = convertToNumpy(scene_snapshot.target)
-        object_list = [convertToNumpy(o) for o in scene_snapshot.objects]
-        person_list = [convertToNumpy(p) for p in scene_snapshot.persons]
-        old_configuration = np.array(scene_snapshot.camera.getConfiguration())
-        optimizer = CameraOptimizer(target, linetarget, camera, person_list, object_list, old_configuration, shot)
+        optimizer = CameraOptimizer(scene_snapshot, shot)
         return_queue.put(optimizer.optimize())
 
     processes = []
