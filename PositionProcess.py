@@ -309,16 +309,36 @@ def configurationToStr(configuration):
            str(configuration[3]) + "|" + str(0.0) + "|" + str(configuration[4])
 
 
-def optimizeAllShots(camera, linetarget, objectlist, oldConfiguration, personlist, shots, target):
+def convertToNumpy(o):
+    if hasattr(o, "location"):
+        o.location = np.array(o.location)
+    if hasattr(o, "rotation"):
+        o.rotation = np.array(o.rotation)
+    if hasattr(o, "eye_L"):
+        o.eye_L.location = np.array(o.eye_L.location)
+    if hasattr(o, "eye_R"):
+        o.eye_R.location = np.array(o.eye_R.location)
+    return o
+
+
+def optimizeAllShots(scene_snapshot):#camera, linetarget, objectlist, oldConfiguration, personlist, shots, target):
     def doOptimization(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot, returnqueue):
         optimizer = CameraOptimizer(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot)
         returnqueue.put(optimizer.optimize())
+
+    camera = scene_snapshot.camera
+    linetarget = convertToNumpy(scene_snapshot.linetarget)
+    target = convertToNumpy(scene_snapshot.target)
+    object_list = [convertToNumpy(o) for o in scene_snapshot.objects]
+    person_list = [convertToNumpy(p) for p in scene_snapshot.persons]
+    shots = scene_snapshot.shots
+    old_configuration = np.array(scene_snapshot.camera.getConfiguration())
 
     processes = []
     for i in range(0, len(shots)):
         q = Queue(1)
         processes.append((Process(target=doOptimization, args=(
-            target, linetarget, camera, personlist, objectlist, oldConfiguration, shots[i], q)), q))
+            target, linetarget, camera, person_list, object_list, old_configuration, shots[i], q)), q))
         processes[-1][0].start()
     results = []
     for process in processes:
@@ -332,6 +352,7 @@ def optimizeAllShots(camera, linetarget, objectlist, oldConfiguration, personlis
 
 def read_initial_data(data_line):
     # TODO: check if this can be rewritten using pickle
+
     initialData = data_line.split("\t")
     targetName = initialData[0]
     linetargetName = initialData[1]
@@ -366,9 +387,9 @@ def build_return_string(results):
 
 
 def main():
-    initial_data = read_initial_data(sys.stdin.readline())
+    initial_data = pickle.load(sys.stdin) #read_initial_data(sys.stdin.readline())
 
-    results = optimizeAllShots(*initial_data)
+    results = optimizeAllShots(initial_data)
 
     sys.stdout.write("OK\n")
     sys.stdout.flush()

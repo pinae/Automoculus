@@ -60,6 +60,8 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.camera.keyframe_insert(data_path="location")
 
 
+
+
     def calculateForNewBeats(self, classificationProcess, shot, frame, last_cut, initial_cut, scenicContext):
         # New Beats! That changes the situation: what's the distribution now?
         dist = getShotDistribution(classificationProcess)
@@ -80,7 +82,6 @@ class AutomoculusCameraman(bpy.types.Operator):
         no_cut_config = (self.camera.location, self.camera.rotation_euler)
         correction = [141, 42, 59, 130, 130, 130, 130]
         #correction = [100, 100, 100, 100, 100, 100, 100]
-
         shots = [i for i in range(len(SHOT_NAMES)) if dist[i] > 0.1 or i == shot]
         print("Es kommen folgende Einstellungsgrößen in Frage: " + ", ".join([SHOT_NAMES[s] for s in shots]))
         #>>
@@ -178,30 +179,49 @@ class AutomoculusCameraman(bpy.types.Operator):
         optimizationProcess = subprocess.Popen(
             ['python', position_process_filename]
             , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        initStr = target.name + "\t" + linetarget.name + "\t"
-        initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
-        initStr += str(bpy.context.scene.render.resolution_x) + "\t"
-        initStr += str(bpy.context.scene.render.resolution_y) + "\t"
-        for person in context['persons']:
-            try:
-                personEyeL = bpy.data.objects[person.name + "_eye.L"].location
-                personEyeR = bpy.data.objects[person.name + "_eye.R"].location
-            except KeyError:
-                personEyeL = person.location
-                personEyeR = person.location
-            initStr += person.name + "§" + vectorToStr(person.location) + "§" + str(person.dimensions.z) +\
-                       "§" + vectorToStr(personEyeL) + "§" + vectorToStr(personEyeR) + ","
-        initStr = initStr.rstrip(",") + "\t"
-        for object in context['objects']:
-            initStr += object.name + "§" + vectorToStr(object.location) + ","
-        initStr = initStr.rstrip(",") + "\t"
-        initStr += vectorToStr(self.camera.location) + "," + vectorToStr(self.camera.rotation_euler) + "\t"
-        shotstr = ""
-        for shot in shots:
-            shotstr += str(shot) + ","
-        initStr += shotstr.rstrip(",")
-        optimizationProcess.stdin.write((initStr + "\n").encode('utf-8'))
-        optimizationProcess.stdin.flush()
+
+        camera = self.createCameraObject()
+        persons = [createPersonObject(p) for p in context['persons']]
+        objects = [Object(o.name, o.location) for o in context['objects']]
+        places = [Place(p.name, p.location) for p in context['places']]
+        target_object = persons[context['persons'].index(target)]
+        if linetarget in context['persons'] :
+            linetarget_object = persons[context['persons'].index(linetarget)]
+        elif linetarget in context['objects'] :
+            linetarget_object = objects[context['objects'].index(linetarget)]
+        else : # in places
+            linetarget_object =places[context['places'].index(linetarget)]
+        snapshot = SceneSnapshot(target_object, linetarget_object, camera, persons, objects, places, shots)
+        pickle.dump(snapshot, optimizationProcess.stdin, protocol=2)
+        #initStr = target.name + "\t" + linetarget.name + "\t"
+        #initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
+        #initStr += str(bpy.context.scene.render.resolution_x) + "\t"
+        #initStr += str(bpy.context.scene.render.resolution_y) + "\t"
+#        for person in context['persons']:
+#            try:
+#                personEyeL = bpy.data.objects[person.name + "_eye.L"].location
+#                personEyeR = bpy.data.objects[person.name + "_eye.R"].location
+#            except KeyError:
+#                personEyeL = person.location
+#                personEyeR = person.location
+#            initStr += person.name + "§" + vectorToStr(person.location) + "§" + str(person.dimensions.z) +\
+#                       "§" + vectorToStr(personEyeL) + "§" + vectorToStr(personEyeR) + ","
+#        initStr = initStr.rstrip(",") + "\t"
+
+
+#        for object in context['objects']:
+#            initStr += object.name + "§" + vectorToStr(object.location) + ","
+#        initStr = initStr.rstrip(",") + "\t"
+        #initStr += vectorToStr(self.camera.location) + "," + vectorToStr(self.camera.rotation_euler) + "\t"
+#        shotstr = ""
+#        for shot in shots:
+#            shotstr += str(shot) + ","
+#        initStr += shotstr.rstrip(",")
+
+        #optimizationProcess.stdin.write((initStr + "\n").encode('utf-8'))
+        #optimizationProcess.stdin.flush()
+
+
         returnstr = optimizationProcess.stdout.readline().decode('utf-8').rstrip()
         while returnstr != "OK":
             if len(returnstr) > 0:
