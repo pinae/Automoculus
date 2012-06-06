@@ -3,6 +3,7 @@
 
 # =============================== Imports ======================================
 from math import sqrt, pi
+import pickle
 import sys
 
 import numpy as np
@@ -10,39 +11,7 @@ from multiprocessing import Queue, Process
 import scipy.optimize as opt
 
 from FitnessWeightFunctions import personFitnessByImage, distanceFitnessByRange, range0to1, lineQualityFunction, occultationWeight
-
-
-# ============================= Person class ===================================
-class PersonAddition:
-    def __init__(self, name, location):
-        self.name = name
-        self.location = location
-        self.radius = 0
-
-
-class Person:
-    def __init__(self, name, location, height, left_eye_loc, right_eye_loc):
-        self.name = name
-        self.location = location
-        self.height = height
-        self.eye_L = PersonAddition(name + "_eye.L", left_eye_loc)
-        self.eye_R = PersonAddition(name + "_eye.R", right_eye_loc)
-        self.radius = 1.0#0.1
-
-# ============================= Object class ===================================
-
-class Object:
-    def __init__(self, name, location):
-        self.name = name
-        self.location = location
-        self.radius = 0.1
-
-# ============================= Camera class ===================================
-class Camera:
-    def __init__(self, angle, resolution_x, resolution_y):
-        self.angle = angle
-        self.resolution_x = resolution_x
-        self.resolution_y = resolution_y
+from SceneSnapshot import SceneSnapshot, Person, Object, Camera
 
 # ================================ Methods =====================================
 
@@ -171,8 +140,8 @@ class CameraOptimizer:
 
     def getPersonQuality(self, genome, person, intensity, weightfunction, occultationfunction):
         ax, ay = getImageAngles(genome, person)
-        x = ax * 2.0 / self.camera.angle
-        y = ay * 2.0 * self.camera.resolution_x / (self.camera.angle * self.camera.resolution_y)
+        x = ax * 2.0 / self.camera.aperture_angle
+        y = ay * 2.0 * self.camera.resolution_x / (self.camera.aperture_angle * self.camera.resolution_y)
         occultation = 0
         for object in self.objectlist:
             occultation += occultationfunction(getVisibilityFactor(genome, person, object))
@@ -183,8 +152,8 @@ class CameraOptimizer:
 
     def getObjectQuality(self, genome, object):
         angles = getImageAngles(genome, object)
-        if angles[0] > self.camera.angle / 2.0 or\
-           angles[1] > self.camera.angle / 2.0 *\
+        if angles[0] > self.camera.aperture_angle / 2.0 or\
+           angles[1] > self.camera.aperture_angle / 2.0 *\
                        self.camera.resolution_y / self.camera.resolution_x:
             return 4 + 0.01 * angles[0] + 0.01 * angles[1]
         else:
@@ -340,16 +309,36 @@ def configurationToStr(configuration):
            str(configuration[3]) + "|" + str(0.0) + "|" + str(configuration[4])
 
 
-def optimizeAllShots(camera, linetarget, objectlist, oldConfiguration, personlist, shots, target):
+def convertToNumpy(o):
+    if hasattr(o, "location"):
+        o.location = np.array(o.location)
+    if hasattr(o, "rotation"):
+        o.rotation = np.array(o.rotation)
+    if hasattr(o, "eye_L"):
+        o.eye_L.location = np.array(o.eye_L.location)
+    if hasattr(o, "eye_R"):
+        o.eye_R.location = np.array(o.eye_R.location)
+    return o
+
+
+def optimizeAllShots(scene_snapshot):#camera, linetarget, objectlist, oldConfiguration, personlist, shots, target):
     def doOptimization(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot, returnqueue):
         optimizer = CameraOptimizer(target, linetarget, camera, personlist, objectlist, oldConfiguration, shot)
         returnqueue.put(optimizer.optimize())
+
+    camera = scene_snapshot.camera
+    linetarget = convertToNumpy(scene_snapshot.linetarget)
+    target = convertToNumpy(scene_snapshot.target)
+    object_list = [convertToNumpy(o) for o in scene_snapshot.objects]
+    person_list = [convertToNumpy(p) for p in scene_snapshot.persons]
+    shots = scene_snapshot.shots
+    old_configuration = np.array(scene_snapshot.camera.getConfiguration())
 
     processes = []
     for i in range(0, len(shots)):
         q = Queue(1)
         processes.append((Process(target=doOptimization, args=(
-            target, linetarget, camera, personlist, objectlist, oldConfiguration, shots[i], q)), q))
+            target, linetarget, camera, person_list, object_list, old_configuration, shots[i], q)), q))
         processes[-1][0].start()
     results = []
     for process in processes:
@@ -363,6 +352,7 @@ def optimizeAllShots(camera, linetarget, objectlist, oldConfiguration, personlis
 
 def read_initial_data(data_line):
     # TODO: check if this can be rewritten using pickle
+
     initialData = data_line.split("\t")
     targetName = initialData[0]
     linetargetName = initialData[1]
@@ -397,9 +387,9 @@ def build_return_string(results):
 
 
 def main():
-    initial_data = read_initial_data(sys.stdin.readline())
+    initial_data = pickle.load(sys.stdin) #read_initial_data(sys.stdin.readline())
 
-    results = optimizeAllShots(*initial_data)
+    results = optimizeAllShots(initial_data)
 
     sys.stdout.write("OK\n")
     sys.stdout.flush()

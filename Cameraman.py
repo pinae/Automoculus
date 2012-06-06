@@ -9,6 +9,7 @@ import subprocess
 import pickle
 
 from Config import PROJECT_PATH, SHOT_NAMES
+from SceneSnapshot import Object, Person, Place, Camera, SceneSnapshot
 
 position_process_filename = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
 beatscript_classifier_filename = path.abspath(path.join(PROJECT_PATH, "BeatscriptClassifier.sh"))
@@ -31,7 +32,20 @@ def getTargets(classificationProcess):
     linetarget = bpy.data.objects[splitstr[1]]
     return target, linetarget
 
+def shouldCut(classificationProcess):
+    classificationProcess.stdin.write(b'c\n')
+    classificationProcess.stdin.flush()
+    cut = classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
+    return cut
 
+def createPersonObject(person):
+    try:
+        personEyeL = bpy.data.objects[person.name + "_eye.L"].location
+        personEyeR = bpy.data.objects[person.name + "_eye.R"].location
+    except KeyError:
+        personEyeL = person.location
+        personEyeR = person.location
+    return Person(person.name, person.location, person.dimensions.z, personEyeL, personEyeR)
 
 
 class AutomoculusCameraman(bpy.types.Operator):
@@ -45,20 +59,18 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.camera.keyframe_insert(data_path="location")
 
 
+
+
     def calculateForNewBeats(self, classificationProcess, shot, frame, last_cut, initial_cut, scenicContext):
         # New Beats! That changes the situation: what's the distribution now?
         dist = getShotDistribution(classificationProcess)
 
         # For new beats we have to update the targets
         target, linetarget = getTargets(classificationProcess)
-        #target = bpy.data.objects["Green"]
-        #linetarget = bpy.data.objects["Red"]
         print(target.name + "\t" + linetarget.name)
 
         # Should we cut? Ask the classificationProcess
-        classificationProcess.stdin.write(b'c\n')
-        classificationProcess.stdin.flush()
-        cut = classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
+        cut = shouldCut(classificationProcess)
         print("Cut: " + str(cut))
 
         # Determine which shot fits best, regarding the classified propability
@@ -69,14 +81,9 @@ class AutomoculusCameraman(bpy.types.Operator):
         no_cut_config = (self.camera.location, self.camera.rotation_euler)
         correction = [141, 42, 59, 130, 130, 130, 130]
         #correction = [100, 100, 100, 100, 100, 100, 100]
-        shots = []
-        for i in range(0, len(SHOT_NAMES)):
-            if dist[i] > 0.1 or i == shot:
-                shots.append(i)
-        candidate_str = "Es kommen folgende Einstellungsgrößen in Frage: "
-        for shot in shots:
-            candidate_str += SHOT_NAMES[shot]+", "
-        print(candidate_str)
+        shots = [s for s in range(len(SHOT_NAMES)) if dist[s] > 0.1 or s == shot]
+        print("Es kommen folgende Einstellungsgrößen in Frage: " + ", ".join([SHOT_NAMES[s] for s in shots]))
+        #>>
         results = self.cameraOptimizer(scenicContext, target, linetarget, shots)
         for result in results:
             configuration = result[0]
@@ -135,13 +142,23 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.velocity = (target_velocity, Euler((0, 0, 0), 'XYZ'))
 
     def createScenicContext(self, process):
-        context = {"persons": [], "objects": []}
+        context = {"persons": [], "objects": [], "places": []}
         process.stdin.write(b'e\n')
         process.stdin.flush()
         entities = pickle.load(process.stdout)
         context["persons"] = [bpy.data.objects[e.name] for e in entities["Persons"] if e.name]
         context["objects"] = [bpy.data.objects[e.name] for e in entities["Objects"] if e.name]
+        context["places"] = [bpy.data.objects[e.name] for e in entities["Places"] if e.name]
         return context
+
+    def createCameraObject(self):
+        aperture = bpy.data.scenes['Scene'].camera.data.angle
+        res_x = bpy.context.scene.render.resolution_x
+        res_y = bpy.context.scene.render.resolution_y
+        location = self.camera.location
+        rotation = self.camera.rotation_euler
+        return Camera(aperture, res_x, res_y, location, rotation)
+
 
     def cameraOptimizer(self, context, target, linetarget, shots):
         def vectorToStr(vector):
@@ -161,30 +178,49 @@ class AutomoculusCameraman(bpy.types.Operator):
         optimizationProcess = subprocess.Popen(
             ['python', position_process_filename]
             , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        initStr = target.name + "\t" + linetarget.name + "\t"
-        initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
-        initStr += str(bpy.context.scene.render.resolution_x) + "\t"
-        initStr += str(bpy.context.scene.render.resolution_y) + "\t"
-        for person in context['persons']:
-            try:
-                personEyeL = bpy.data.objects[person.name + "_eye.L"].location
-                personEyeR = bpy.data.objects[person.name + "_eye.R"].location
-            except KeyError:
-                personEyeL = person.location
-                personEyeR = person.location
-            initStr += person.name + "§" + vectorToStr(person.location) + "§" + str(person.dimensions.z) +\
-                       "§" + vectorToStr(personEyeL) + "§" + vectorToStr(personEyeR) + ","
-        initStr = initStr.rstrip(",") + "\t"
-        for object in context['objects']:
-            initStr += object.name + "§" + vectorToStr(object.location) + ","
-        initStr = initStr.rstrip(",") + "\t"
-        initStr += vectorToStr(self.camera.location) + "," + vectorToStr(self.camera.rotation_euler) + "\t"
-        shotstr = ""
-        for shot in shots:
-            shotstr += str(shot) + ","
-        initStr += shotstr.rstrip(",")
-        optimizationProcess.stdin.write((initStr + "\n").encode('utf-8'))
-        optimizationProcess.stdin.flush()
+
+        camera = self.createCameraObject()
+        persons = [createPersonObject(p) for p in context['persons']]
+        objects = [Object(o.name, o.location) for o in context['objects']]
+        places = [Place(p.name, p.location) for p in context['places']]
+        target_object = persons[context['persons'].index(target)]
+        if linetarget in context['persons'] :
+            linetarget_object = persons[context['persons'].index(linetarget)]
+        elif linetarget in context['objects'] :
+            linetarget_object = objects[context['objects'].index(linetarget)]
+        else : # in places
+            linetarget_object =places[context['places'].index(linetarget)]
+        snapshot = SceneSnapshot(target_object, linetarget_object, camera, persons, objects, places, shots)
+        pickle.dump(snapshot, optimizationProcess.stdin, protocol=2)
+        #initStr = target.name + "\t" + linetarget.name + "\t"
+        #initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
+        #initStr += str(bpy.context.scene.render.resolution_x) + "\t"
+        #initStr += str(bpy.context.scene.render.resolution_y) + "\t"
+#        for person in context['persons']:
+#            try:
+#                personEyeL = bpy.data.objects[person.name + "_eye.L"].location
+#                personEyeR = bpy.data.objects[person.name + "_eye.R"].location
+#            except KeyError:
+#                personEyeL = person.location
+#                personEyeR = person.location
+#            initStr += person.name + "§" + vectorToStr(person.location) + "§" + str(person.dimensions.z) +\
+#                       "§" + vectorToStr(personEyeL) + "§" + vectorToStr(personEyeR) + ","
+#        initStr = initStr.rstrip(",") + "\t"
+
+
+#        for object in context['objects']:
+#            initStr += object.name + "§" + vectorToStr(object.location) + ","
+#        initStr = initStr.rstrip(",") + "\t"
+        #initStr += vectorToStr(self.camera.location) + "," + vectorToStr(self.camera.rotation_euler) + "\t"
+#        shotstr = ""
+#        for shot in shots:
+#            shotstr += str(shot) + ","
+#        initStr += shotstr.rstrip(",")
+
+        #optimizationProcess.stdin.write((initStr + "\n").encode('utf-8'))
+        #optimizationProcess.stdin.flush()
+
+
         returnstr = optimizationProcess.stdout.readline().decode('utf-8').rstrip()
         while returnstr != "OK":
             if len(returnstr) > 0:
@@ -250,7 +286,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         target, linetarget = getTargets(classificationProcess)
         self.setCurrentFrame(1)
         self.setInitialVelocity(target)
-
+        # >>
         newConfiguration, shot, lastcut, target, linetarget = self.calculateForNewBeats(classificationProcess, shot, 1,
             lastcut, True, scenicContext)
 
