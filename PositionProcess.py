@@ -349,35 +349,6 @@ def optimizeAllShots(scene_snapshot):#camera, linetarget, objectlist, oldConfigu
 # =============================== Main =========================================
 
 
-
-def read_initial_data(data_line):
-    # TODO: check if this can be rewritten using pickle
-
-    initialData = data_line.split("\t")
-    targetName = initialData[0]
-    linetargetName = initialData[1]
-    camera = Camera(float(initialData[2]), int(initialData[3]), int(initialData[4]))
-    personlist = []
-    target = False
-    linetarget = False
-    for personstr in initialData[5].split(","):
-        personlist.append(personFromStr(personstr))
-        if personlist[-1].name == targetName:
-            target = personlist[-1]
-        if personlist[-1].name == linetargetName:
-            linetarget = personlist[-1]
-            #print(personlist)
-    objectlist = []
-    for objectstr in initialData[6].split(","):
-        if len(objectstr) > 0:
-            objectlist.append(objectFromStr(objectstr))
-    configurationStrings = initialData[7].split(",")
-    location = locationFromStr(configurationStrings[0])
-    rotation = eulerFromStr(configurationStrings[1])
-    oldConfiguration = np.array([location[0], location[1], location[2], rotation[0], rotation[2]])
-    shots = shotlistFromStr(initialData[8])
-    return camera, linetarget, objectlist, oldConfiguration, personlist, shots, target
-
 def build_return_string(results):
     #TODO check if this can be rewritten using pickle
     resultstr = ""
@@ -387,14 +358,17 @@ def build_return_string(results):
 
 
 def main():
-    initial_data = pickle.load(sys.stdin) #read_initial_data(sys.stdin.readline())
+    initial_data = pickle.load(sys.stdin)
 
     results = optimizeAllShots(initial_data)
 
     sys.stdout.write("OK\n")
     sys.stdout.flush()
-    sys.stdout.write("Result:\t" + build_return_string(results) + "\n")
-    sys.stdout.flush()
+
+    #remove all traces of numpy before pickling
+    result_list = [(r[0].tolist(), float(r[1]), int(r[2])) for r in results]
+    pickle.dump(result_list, sys.stdout)
+
 
 if __name__ == "__main__":
     main()

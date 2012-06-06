@@ -160,25 +160,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         return Camera(aperture, res_x, res_y, location, rotation)
 
 
-    def cameraOptimizer(self, context, target, linetarget, shots):
-        def vectorToStr(vector):
-            return str(vector[0]) + "|" + str(vector[1]) + "|" + str(vector[2])
-
-        def strToConfiguration(configstr):
-            parts = configstr.split(",")
-            vectorCoordStrings = parts[0].split("|")
-            location = Vector(
-                (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])))
-            vectorCoordStrings = parts[1].split("|")
-            return location, Euler(
-                (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])), 'XYZ')
-
-
-        position_process_filename = path.join(PROJECT_PATH, "PositionProcess.py")
-        optimizationProcess = subprocess.Popen(
-            ['python', position_process_filename]
-            , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-
+    def submitSceneSnapshot(self, optimizationProcess, context, target, linetarget, shots):
         camera = self.createCameraObject()
         persons = [createPersonObject(p) for p in context['persons']]
         objects = [Object(o.name, o.location) for o in context['objects']]
@@ -192,51 +174,43 @@ class AutomoculusCameraman(bpy.types.Operator):
             linetarget_object =places[context['places'].index(linetarget)]
         snapshot = SceneSnapshot(target_object, linetarget_object, camera, persons, objects, places, shots)
         pickle.dump(snapshot, optimizationProcess.stdin, protocol=2)
-        #initStr = target.name + "\t" + linetarget.name + "\t"
-        #initStr += str(bpy.data.scenes['Scene'].camera.data.angle) + "\t"
-        #initStr += str(bpy.context.scene.render.resolution_x) + "\t"
-        #initStr += str(bpy.context.scene.render.resolution_y) + "\t"
-#        for person in context['persons']:
-#            try:
-#                personEyeL = bpy.data.objects[person.name + "_eye.L"].location
-#                personEyeR = bpy.data.objects[person.name + "_eye.R"].location
-#            except KeyError:
-#                personEyeL = person.location
-#                personEyeR = person.location
-#            initStr += person.name + "§" + vectorToStr(person.location) + "§" + str(person.dimensions.z) +\
-#                       "§" + vectorToStr(personEyeL) + "§" + vectorToStr(personEyeR) + ","
-#        initStr = initStr.rstrip(",") + "\t"
 
 
-#        for object in context['objects']:
-#            initStr += object.name + "§" + vectorToStr(object.location) + ","
-#        initStr = initStr.rstrip(",") + "\t"
-        #initStr += vectorToStr(self.camera.location) + "," + vectorToStr(self.camera.rotation_euler) + "\t"
-#        shotstr = ""
-#        for shot in shots:
-#            shotstr += str(shot) + ","
-#        initStr += shotstr.rstrip(",")
-
-        #optimizationProcess.stdin.write((initStr + "\n").encode('utf-8'))
-        #optimizationProcess.stdin.flush()
-
-
+    def waitForOk(self, optimizationProcess):
         returnstr = optimizationProcess.stdout.readline().decode('utf-8').rstrip()
         while returnstr != "OK":
             if len(returnstr) > 0:
                 print(returnstr)
             returnstr = optimizationProcess.stdout.readline().decode('utf-8').rstrip()
-        returnStrings = optimizationProcess.stdout.readline().decode('utf-8').rstrip().split("\t")
-        while returnStrings[0] != "Result:":
-            if returnStrings != ['']:
-                print(returnStrings)
-            returnStrings = optimizationProcess.stdout.readline().decode('utf-8').rstrip().split("\t")
-        resultlist = []
-        for returnString in returnStrings:
-            if returnString != "Result:":
-                resultparts = returnString.split("§")
-                resultlist.append((strToConfiguration(resultparts[0]), float(resultparts[1]), int(resultparts[2])))
-        return resultlist
+
+    def tupleToConfiguration(self, t):
+        location = Vector(t[:3])
+        rotation = Euler((t[3], 0, t[4]), "XYZ")
+        return location, rotation
+
+
+    def cameraOptimizer(self, context, target, linetarget, shots):
+        def strToConfiguration(configstr):
+            parts = configstr.split(",")
+            vectorCoordStrings = parts[0].split("|")
+            location = Vector(
+                (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])))
+            vectorCoordStrings = parts[1].split("|")
+            return location, Euler(
+                (float(vectorCoordStrings[0]), float(vectorCoordStrings[1]), float(vectorCoordStrings[2])), 'XYZ')
+
+
+        optimization_process_filename = path.join(PROJECT_PATH, "PositionProcess.py")
+        optimizationProcess = subprocess.Popen(
+            ['python', optimization_process_filename]
+            , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+        self.submitSceneSnapshot(optimizationProcess, context, target, linetarget, shots)
+        self.waitForOk(optimizationProcess)
+
+        results = pickle.load(optimizationProcess.stdout)
+        result_list = [(self.tupleToConfiguration(r[0]), r[1], r[2]) for r in results]
+        return result_list
 
     def springConfigurator(self, opt):
 
