@@ -14,6 +14,8 @@ from SceneSnapshot import Object, Person, Place, Camera, SceneSnapshot
 POSITION_PROCESS_FILENAME = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
 CLASSIFICATION_PROCESS_FILENAME = path.abspath(path.join(PROJECT_PATH, "ClassificationProcess.py"))
 
+# ============================= Communication ===================================================
+
 def getShotDistribution(classificationProcess):
     classificationProcess.stdin.write(b'p\n')
     return pickle.load(classificationProcess.stdout)
@@ -34,6 +36,13 @@ def shouldCut(classificationProcess):
     cut = classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
     return cut
 
+def thereAreNewBeats(classificationProcess, frame):
+    classificationProcess.stdin.write(b'f\n' + (str(frame) + '\n').encode("utf-8"))
+    classificationProcess.stdin.flush()
+    return classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
+
+# ============================= Helpers ===================================================
+
 def createPersonObject(person):
     try:
         personEyeL = bpy.data.objects[person.name + "_eye.L"].location
@@ -43,11 +52,21 @@ def createPersonObject(person):
         personEyeR = person.location
     return Person(person.name, person.location, person.dimensions.z, personEyeL, personEyeR)
 
-def thereAreNewBeats(classificationProcess, frame):
-    classificationProcess.stdin.write(b'f\n' + (str(frame) + '\n').encode("utf-8"))
-    classificationProcess.stdin.flush()
-    return classificationProcess.stdout.readline().decode('utf-8').rstrip() == "yes"
+def setCurrentFrame(frame_nr):
+    bpy.data.scenes['Scene'].frame_current = frame_nr
+    bpy.ops.object.paths_calculate()
 
+def createScenicContext(process):
+    context = {"persons": [], "objects": [], "places": []}
+    process.stdin.write(b'e\n')
+    process.stdin.flush()
+    entities = pickle.load(process.stdout)
+    context["persons"] = [bpy.data.objects[e.name] for e in entities["Persons"] if e.name]
+    context["objects"] = [bpy.data.objects[e.name] for e in entities["Objects"] if e.name]
+    context["places"] = [bpy.data.objects[e.name] for e in entities["Places"] if e.name]
+    return context
+
+# ============================= Main Class ===================================================
 
 class AutomoculusCameraman(bpy.types.Operator):
     bl_idname = "marker.automoculus"
@@ -61,9 +80,6 @@ class AutomoculusCameraman(bpy.types.Operator):
 
         bpy.data.scenes['Scene'].camera.data.dof_distance = (target.location - self.camera.location).length
         self.camera.data.keyframe_insert(data_path="dof_distance")
-
-
-
 
     def calculateForNewBeats(self, classificationProcess, shot, frame, last_cut, initial_cut, scenicContext):
         # New Beats! That changes the situation: what's the distribution now?
@@ -129,28 +145,18 @@ class AutomoculusCameraman(bpy.types.Operator):
         return new_configuration, shot, last_cut, target, linetarget
 
 
-    def setCurrentFrame(self, frame_nr):
-        bpy.data.scenes['Scene'].frame_current = frame_nr
-        bpy.ops.object.paths_calculate()
+
 
     def setInitialVelocity(self, target):
         # Geschwindigkeit des Targets auf die Kamera übertragen.
         current_frame = bpy.data.scenes['Scene'].frame_current
         target_previous_position = Vector(target.location)
-        self.setCurrentFrame(current_frame - 1)
+        setCurrentFrame(current_frame - 1)
         target_velocity = (target_previous_position - target.location) * 1.333333
-        self.setCurrentFrame(current_frame)
+        setCurrentFrame(current_frame)
         self.velocity = (target_velocity, Euler((0, 0, 0), 'XYZ'))
 
-    def createScenicContext(self, process):
-        context = {"persons": [], "objects": [], "places": []}
-        process.stdin.write(b'e\n')
-        process.stdin.flush()
-        entities = pickle.load(process.stdout)
-        context["persons"] = [bpy.data.objects[e.name] for e in entities["Persons"] if e.name]
-        context["objects"] = [bpy.data.objects[e.name] for e in entities["Objects"] if e.name]
-        context["places"] = [bpy.data.objects[e.name] for e in entities["Places"] if e.name]
-        return context
+
 
     def createCameraObject(self):
         aperture = bpy.data.scenes['Scene'].camera.data.angle
@@ -241,9 +247,9 @@ class AutomoculusCameraman(bpy.types.Operator):
         shot = 0
         lastcut = 0
         self.waitForTrainingToFinish(classificationProcess)
-        scenicContext = self.createScenicContext(classificationProcess)
+        scenicContext = createScenicContext(classificationProcess)
         target, linetarget = getTargets(classificationProcess)
-        self.setCurrentFrame(1)
+        setCurrentFrame(1)
         self.setInitialVelocity(target)
 
         newConfiguration, shot, lastcut, target, linetarget = self.calculateForNewBeats(classificationProcess, shot, 1,
@@ -251,7 +257,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         self.setConfiguration(newConfiguration, target)
         print("Szenenkontext erzeugt.")
         for frame in range(2, bpy.context.scene.frame_end + 1):
-            self.setCurrentFrame(frame)
+            setCurrentFrame(frame)
             print("Bearbeite Frame No. " + str(frame))
             if frame - lastcut >= 19: # It's been 19 frames or more since the last cut
                 if thereAreNewBeats(classificationProcess, frame):
