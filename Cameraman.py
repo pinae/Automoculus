@@ -11,8 +11,8 @@ import pickle
 from Config import PROJECT_PATH, SHOT_NAMES
 from SceneSnapshot import Object, Person, Place, Camera, SceneSnapshot
 
-position_process_filename = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
-beatscript_classifier_filename = path.abspath(path.join(PROJECT_PATH, "BeatscriptClassifier.sh"))
+POSITION_PROCESS_FILENAME = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
+CLASSIFICATION_PROCESS_FILENAME = path.abspath(path.join(PROJECT_PATH, "ClassificationProcess.py"))
 
 def getShotDistribution(classificationProcess):
     classificationProcess.stdin.write(b'p\n')
@@ -191,9 +191,8 @@ class AutomoculusCameraman(bpy.types.Operator):
 
 
     def cameraOptimizer(self, context, target, linetarget, shots):
-        optimization_process_filename = path.join(PROJECT_PATH, "PositionProcess.py")
         optimizationProcess = subprocess.Popen(
-            ['python', optimization_process_filename]
+            ['python', POSITION_PROCESS_FILENAME]
             , stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
         self.submitSceneSnapshot(optimizationProcess, context, target, linetarget, shots)
@@ -222,10 +221,9 @@ class AutomoculusCameraman(bpy.types.Operator):
         return loc, rot
 
     def startClassificationProcess(self):
-        classification_process_filename = path.join(PROJECT_PATH, "ClassificationProcess.py")
         process = subprocess.Popen(
-            [classification_process_filename,
-             beatscript], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            [CLASSIFICATION_PROCESS_FILENAME, beatscript],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         return process
 
     def waitForTrainingToFinish(self, classificationProcess):
