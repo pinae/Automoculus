@@ -14,14 +14,10 @@ from SceneSnapshot import Object, Person, Place, Camera, SceneSnapshot
 position_process_filename = path.abspath(path.join(PROJECT_PATH, "PositionProcess.py"))
 beatscript_classifier_filename = path.abspath(path.join(PROJECT_PATH, "BeatscriptClassifier.sh"))
 
-def getDistFromStr(diststr):
-    return [float(x) for x in diststr.split('\t')]
-    #return [0.14, 0.14, 0.14, 0.14, 0.14, 0.14, 0.14]
-
 def getShotDistribution(classificationProcess):
     classificationProcess.stdin.write(b'p\n')
-    classificationProcess.stdin.flush()
-    return getDistFromStr(classificationProcess.stdout.readline().decode('utf-8').rstrip())
+    return pickle.load(classificationProcess.stdout)
+    #return [0.14, 0.14, 0.14, 0.14, 0.14, 0.14, 0.14]
 
 def getTargets(classificationProcess):
     classificationProcess.stdin.write(b't\n')
@@ -226,7 +222,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         return loc, rot
 
     def startClassificationProcess(self):
-        classification_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.py")
+        classification_process_filename = path.join(PROJECT_PATH, "ClassificationProcess.py")
         process = subprocess.Popen(
             [classification_process_filename,
              beatscript], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)

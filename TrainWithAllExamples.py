@@ -3,7 +3,7 @@
 
 # =============================== Imports ======================================
 from multiprocessing import Process
-from BeatscriptClassifier import trainWithAllExamples
+from ClassificationProcess import trainWithAllExamples
 
 # =============================== Main =========================================
 def main():

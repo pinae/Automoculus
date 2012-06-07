@@ -43,28 +43,16 @@ def trainWithAllExamples(shot):
     return (treeClassifier, svmClassifier), means, vars
 
 
-def distToStr(dist):
-    return "\t".join([str(x) for x in dist])
+def getBeatsBetweenFrames(beatscript, start_frame, end_frame):
+    """
+    Get all beats in a given beatscript between start_frame (exclusive) and end_frame (inclusive).
+    """
+    beat_list = [beat for beat in beatscript if start_frame < beat.shotId <= end_frame]
+    # prevent cheating
+    for beat in beat_list:
+        beat.shot = DETAIL
+    return beat_list
 
-
-def readBeatscriptTillFrame(lines, context, frameno):
-    wholeList = readBeatscript(lines, context)
-    beatList = []
-    for beat in wholeList:
-        if beat.shotId <= frameno:
-            beatList.append(beat)
-    return beatList
-
-
-def sameBeat(beat1, beat2):
-    if beat1.shotId != beat2.shotId: return False
-    elif beat1.beatId != beat2.beatId: return False
-    elif beat1.shot != beat2.shot: return False
-    elif beat1.invisible != beat2.invisible: return False
-    elif beat1.type != beat2.type: return False
-    elif beat1.subject != beat2.subject: return False
-    elif beat1.linetarget != beat2.linetarget: return False
-    else: return True
 
 # =============================== Interactions =========================================
 def printListOfEntities(context):
@@ -138,11 +126,11 @@ def main():
     domain = getDomain(shot)
     beatscriptFile = open(sys.argv[1], "r")
     lines = beatscriptFile.readlines()
-    context = readContext(lines)
+    context = readContext(lines)#
+    beatscript = readBeatscript(lines, context)
     Features.initializeContextVars(context)
-    beatList = readBeatscriptTillFrame(lines, context, 0)
-    for beat in beatList:
-        beat.shot = DETAIL
+    beatList = getBeatsBetweenFrames(beatscript, -1, 0)
+    current_frame = 0
     lastBlock = beatList
     context["BygoneBlocks"] = []
     sys.stdout.write("Training finished." + "\n")
@@ -161,7 +149,7 @@ def main():
         elif choice == "t": # get the names of the target and the linetarget
             determine_targets(context, lastBlock)
         elif choice == "p": # print out the classification propabilities
-            sys.stdout.write(distToStr(dist) + "\n")
+            pickle.dump(dist, sys.stdout)
 
         elif choice == "c": # Print out, if we should cut at this point
             blockList = []
@@ -182,17 +170,10 @@ def main():
                 sys.stdout.write("no\n")
 
         elif choice == "f": # check framenumber for a new block
-            beatList = readBeatscriptTillFrame(lines, context, int(raw_input("")))
-            for block in context["BygoneBlocks"]:
-                for _ in block:
-                    if len(beatList) > 0:
-                            del beatList[0]
-            for _ in lastBlock:
-                if len(beatList) > 0:
-                        del beatList[0]
-            if len(beatList) > 0:
-                for beat in beatList: #Um sicher zu gehen, dass hier nicht beschissen wird.
-                    beat.shot = DETAIL
+            new_frame = int(raw_input(""))
+            beatList = getBeatsBetweenFrames(beatscript, current_frame, new_frame)
+            current_frame = new_frame
+            if beatList :
                 context["BygoneBlocks"].append(lastBlock)
                 lastBlock = beatList
                 dist = classifyForShot(domain, lastBlock, context, classifiers, means, vars)

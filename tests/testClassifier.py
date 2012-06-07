@@ -17,7 +17,7 @@ def readLine(filehandle):
     return filehandle.read().rstrip()
 
 beatscriptFile = PROJECT_PATH + '/beatscripts/The Mighty Hugo - Testszene.csv'
-classifier_process_filename = path.join(PROJECT_PATH, "BeatscriptClassifier.py")
+classifier_process_filename = path.join(PROJECT_PATH, "ClassificationProcess.py")
 prozess = subprocess.Popen(
     [classifier_process_filename,
      beatscriptFile], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
