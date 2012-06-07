@@ -121,3 +121,13 @@ def getBeatListAndContextFromFile(file):
 def getBlockList(lines, context):
     beatList = readBeatscript(lines, context)
     return coalesceBeats(beatList)
+
+def getBeatsBetweenFrames(beatscript, start_frame, end_frame):
+    """
+    Get all beats in a given beatscript between start_frame (exclusive) and end_frame (inclusive).
+    And set all the shots to DETAIL to prevent cheating.
+    """
+    beat_list = [beat for beat in beatscript if start_frame < beat.shotId <= end_frame]
+    for beat in beat_list:
+        beat.shot = DETAIL
+    return beat_list

@@ -3,14 +3,14 @@
 
 # =============================== Imports ======================================
 from multiprocessing import Process, Queue, Lock
-#import cPickle
+
 import orange#, orngTree
-from Config import SHOT_NAMES, TRAIN_FILES, DETAIL, PERSON, OBJECT, PLACE
+from Config import SHOT_NAMES, TRAIN_FILES, PERSON, OBJECT, PLACE
 from Classify import getDomain, getTrainingExamples, trainTree, trainSVM, classifyForShot#, trainRule
 from Classify import getNormalizationTerms, classifyForCut
-#from Classify import cutBeforeThisBlock
+
 import sys
-from ConvertData import readContext, readBeatscript
+from Beatscript import readContext, readBeatscript, getBeatsBetweenFrames
 import Features
 import pickle
 
@@ -43,17 +43,6 @@ def trainWithAllExamples(shot):
     return (treeClassifier, svmClassifier), means, vars
 
 
-def getBeatsBetweenFrames(beatscript, start_frame, end_frame):
-    """
-    Get all beats in a given beatscript between start_frame (exclusive) and end_frame (inclusive).
-    """
-    beat_list = [beat for beat in beatscript if start_frame < beat.shotId <= end_frame]
-    # prevent cheating
-    for beat in beat_list:
-        beat.shot = DETAIL
-    return beat_list
-
-
 # =============================== Interactions =========================================
 def printListOfEntities(context):
     persons = [entity for name, entity in context["Entities"].items() if entity.type == PERSON]
@@ -63,7 +52,6 @@ def printListOfEntities(context):
 
 
 # =============================== Main =========================================
-
 def determine_targets(context, current_block):
     lineTargets = []
     targets = []
