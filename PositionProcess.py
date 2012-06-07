@@ -11,7 +11,6 @@ from multiprocessing import Queue, Process
 import scipy.optimize as opt
 
 from FitnessWeightFunctions import personFitnessByImage, distanceFitnessByRange, range0to1, lineQualityFunction, occultationWeight
-from SceneSnapshot import SceneSnapshot, Person, Object, Camera
 
 # ================================ constants =====================================
 SHOT_LIMITS = [
@@ -195,48 +194,6 @@ class CameraOptimizer:
             return o_lit, f_o_lit, self.shot
         else:
             return o_old, f_o_old, self.shot
-
-
-def vectorFromStr(vectorstr):
-    coordinateStrings = vectorstr.split("|")
-    return np.array([float(coordinateStrings[0]), float(coordinateStrings[1]), float(coordinateStrings[2])])\
-    .reshape(-1, 1)
-
-
-def locationFromStr(locstr):
-    return vectorFromStr(locstr)
-
-
-def eulerFromStr(rotstr):
-    return vectorFromStr(rotstr)
-
-
-def personFromStr(personstr):
-    parts = personstr.split("§")
-    return Person(parts[0], locationFromStr(parts[1]), float(parts[2]), locationFromStr(parts[3]),
-        locationFromStr(parts[4]))
-
-
-def objectFromStr(objectstr):
-    parts = objectstr.split("§")
-    return Object(parts[0], locationFromStr(parts[1]))
-
-
-def shotlistFromStr(shotliststr):
-    shotlist = []
-    for numberstr in shotliststr.split(","):
-        if len(numberstr) > 0:
-            shotlist.append(int(numberstr))
-    return shotlist
-
-
-def vectorToStr(vector):
-    return str(vector[0]) + "|" + str(vector[1]) + "|" + str(vector[2])
-
-
-def configurationToStr(configuration):
-    return str(configuration[0]) + "|" + str(configuration[1]) + "|" + str(configuration[2]) + "," +\
-           str(configuration[3]) + "|" + str(0.0) + "|" + str(configuration[4])
 
 
 def convertToNumpy(o):
