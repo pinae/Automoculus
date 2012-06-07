@@ -3,10 +3,13 @@
 
 # =============================== Imports ======================================
 from __future__ import division
+import cProfile
+import pstats
 from pylab import *
 import numpy as np
 from math import sqrt, pi
-
+import tempfile
+import os
 
 # ================================ constants =====================================
 SHOT_LIMITS = [
@@ -18,6 +21,9 @@ SHOT_LIMITS = [
     np.array([5.35, 7.2]), # long shot
     np.array([7.2, 28]) # extreme long shot
 ]
+
+C = np.array([0, 0, -1])
+E = np.array([1, 0, 0])
 
 # ============================== Weight Functions =====================================
 def personFitnessByImage(x, y):
@@ -61,26 +67,24 @@ def rotate(genome):
 
 
 def angle(v1, v2):
-    lv1 = sqrt(v1.dot(v1))
-    lv2 = sqrt(v2.dot(v2))
-    if not lv1 or not lv2: return 0
+    lv1 = np.sqrt(v1.dot(v1))
+    lv2 = np.sqrt(v2.dot(v2))
+    if not (lv1 and lv2): return 0
     div = v1.dot(v2) / (lv1 * lv2)
     if div > 1.0: div = 1.0
     if div < -1.0: div = -1.0
     return np.arccos(div)
 
 def getImageAngles(genome, object):
-    c = np.array([0, 0, -1])
-    e = np.array([1, 0, 0])
     rotmatrix = rotate(genome)
-    c = c.dot(rotmatrix)
-    e = e.dot(rotmatrix)
-    p = object.location - location(genome)
+    c = C.dot(rotmatrix)
+    e = E.dot(rotmatrix)
+    p = object.location - genome[:3]
     ps = p.dot(c) * c + p.dot(e) * e
-    if object.location is location(genome):
+    if not p.all():
         print("Kamerposition ist Objektposition")
         return 10, 10
-    if ps.dot(ps) > 0:
+    if not ps.all(): #ps.dot(ps) > 0:
         x_angle = angle(c, ps)
     else:
         x_angle = 10
@@ -90,8 +94,8 @@ def getImageAngles(genome, object):
 
 def getVisibilityFactor(genome, target, object):
     v = object.location - target.location
-    dist = max(sqrt(v.dot(v)), object.radius)
-    alpha = angle(v, location(genome) - target.location)
+    dist = max(np.sqrt(v.dot(v)), object.radius)
+    alpha = angle(v, genome[:3] - target.location)
     beta = np.arcsin(object.radius / dist)
     return alpha / beta
 
@@ -147,7 +151,6 @@ def getLineQuality(cameraOptimizer, genome):
 
 
 # ============================== Fitness Function =====================================
-
 
 def fitness(genome, cameraOptimizer):
     quality = 0.1
