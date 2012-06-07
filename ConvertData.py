@@ -12,7 +12,7 @@ import Features
 from Config import SHOT_NAMES
 from Config import SAYS
 from Config import DELIMITER
-from Beatscript import Beat, createContext, readContext, readBeatscript, coalesceBeats, getBeatListAndContextFromFile, getBlockList
+from Beatscript import Beat, createContext, readContext, readBeatscript, coalesceBeats, getContextAndBeatListFromFile, getBlockList
 
 
 def createDataLine(context, block, leaveout=-1):
@@ -75,12 +75,12 @@ def createFeatureLines(context, beatList, shot, leaveout=-1):
 
 
 def getFeatureLinesFromFile(file, shot, leaveout=-1):
-    context, beatList = getBeatListAndContextFromFile(file)
+    context, beatList = getContextAndBeatListFromFile(file)
     return createFeatureLines(context, beatList, shot, leaveout)
 
 
 def getFeatureLinesFromFileAndModify(file, shot):
-    context, beatList = getBeatListAndContextFromFile(file)
+    context, beatList = getContextAndBeatListFromFile(file)
     originalList = []
     for beat in beatList:
         originalList.append(beat)
@@ -107,22 +107,29 @@ def getDecidedBlockListFromFile(file, decisions):
     return relevantBlockList
 
 
-def getSingleFeatureLineFromFile(file, decisions, shot, leave_out=-1):
-    featureLines = []
-    beatscriptFile = open(file, "r")
-    lines = beatscriptFile.readlines()
-    context = readContext(lines)
-    blockList = getBlockList(lines, context)
-    Features.initializeContextVars(context)
+def applyDecisionsToBeatscript(context, blockList, decisions):
     lastShotId = -1
     context["BygoneBlocks"] = []
-    for i in range(0, len(decisions)):
+    for i, decision in enumerate(decisions):
         block = blockList[i]
         for beat in block:
-            beat.shot = Beat.shotType[decisions[i].value]
-        featureLines.append(getFeatureLine(context, block, shot, lastShotId))
+            beat.shot = Beat.shotType[decision.value]
         context["BygoneBlocks"].append(block)
         lastShotId = block[-1].shotId
+    return lastShotId, context, blockList
+
+
+def getSingleFeatureLineFromFile(file, decisions, shot, leave_out=-1):
+    beatList, context = getContextAndBeatListFromFile(file)
+    blockList = coalesceBeats(beatList)
+    Features.initializeContextVars(context)
+    lastShotId, context, blockList = applyDecisionsToBeatscript(context, blockList, decisions)
+    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
+    return featureLine
+
+def getSingleFeatureLine(context, blockList, decisions, shot, leave_out=-1):
+    Features.initializeContextVars(context)
+    lastShotId, context, blockList = applyDecisionsToBeatscript(context, blockList, decisions)
     featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
     return featureLine
 

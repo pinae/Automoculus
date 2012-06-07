@@ -380,6 +380,7 @@ class LastSevenBeatTypes(Feature):
 
 
 class SameSubjectPairs(Feature):
+    # TODO: Optimize this!
     def calculateNumbers(self, context, block):
         beatlist = copy(context["BeatList"])
         prev = False
@@ -623,6 +624,7 @@ class InvisibleCount(Feature):
 
 
 class PersonAnalyzer(Feature):
+    # TODO: Optimize this!!
     def calculateNumbers(self, context, block):
         personHistogram = {}
         personBeatCount = 0
@@ -714,6 +716,7 @@ class PersonAnalyzer(Feature):
 
 
 class DecidedShots(Feature):
+    # TODO: Optimize this!!!
     def calculateNumbers(self, context, block):
         lastShotId = context["BeatList"][0].shotId
         lastShot = -3

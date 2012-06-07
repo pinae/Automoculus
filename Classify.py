@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 # =============================== Imports ======================================
+from copy import deepcopy
 from multiprocessing import Process, Queue, Lock
 #import random
+from Beatscript import getContextAndBeatListFromFile, coalesceBeats
 from Config import SHOT_NAMES, TRAIN_FILES, CLOSEUP, ACTION, SAYS, MEDIUM_SHOT, EXPRESS
 #from Config import FULL_SHOT
 from Config import SHOW, INTRODUCE, DETAIL, AMERICAN_SHOT
@@ -109,8 +111,8 @@ def trainSVM(lock, trainingData, returnQueue):
     return svmClassifier
 
 
-def classification(classifier, testFile, domain, decisions, means, vars, returnQueue, shot, leaveout=-1):
-    featureLine = ConvertData.getSingleFeatureLineFromFile(testFile, decisions, shot, leaveout)
+def classification(classifier, context, blockList, domain, decisions, means, vars, returnQueue, shot, leaveout=-1):
+    featureLine = ConvertData.getSingleFeatureLine(context, blockList, decisions, shot, leaveout)
     datum = orange.Example(domain, featureLine)
     datum = normalizeDatum(datum, means, vars)
     classification = classifier(datum)
@@ -293,15 +295,19 @@ def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
             #ruleDecisions = []
             svmDecisions = []
             boostDecisions = []
+            # read test file
+            context, beatList = getContextAndBeatListFromFile(file)
+            blockList = coalesceBeats(beatList)
+
             for i in range(len(testData)):
                 treeClassificationReturnQueue = Queue()
                 treeClassify = Process(target=classification,
-                                       args=(tree, testFile, domain, treeDecisions, means, vars,
+                                       args=(tree, deepcopy(context), blockList, domain, treeDecisions, means, vars,
                                              treeClassificationReturnQueue, True, featureleaveout))
                 treeClassify.start()
                 cutClassificationReturnQueue = Queue()
                 cutClassify = Process(target=classification,
-                                      args=(cutClassifier, testFile,
+                                      args=(cutClassifier, deepcopy(context), blockList,
                                             getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']), featureleaveout),
                                             boostDecisions, means, vars,
                                             cutClassificationReturnQueue, False, featureleaveout))
@@ -313,13 +319,13 @@ def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
                 #ruleClassify.start()
                 svmClassificationReturnQueue = Queue()
                 svmClassify = Process(target=classification,
-                                      args=(svmClassifier, testFile, domain, svmDecisions, means, vars,
+                                      args=(svmClassifier, deepcopy(context), blockList, domain, svmDecisions, means, vars,
                                             svmClassificationReturnQueue, True, featureleaveout))
                 svmClassify.start()
-                boostFeatureLine = ConvertData.getSingleFeatureLineFromFile(testFile, boostDecisions, True, featureleaveout)
+                boostFeatureLine = ConvertData.getSingleFeatureLine(deepcopy(context), blockList, boostDecisions, True, featureleaveout)
                 boostDatum = orange.Example(domain, boostFeatureLine)
                 boostDatum = normalizeDatum(boostDatum, means, vars)
-                cutFeatureLine = ConvertData.getSingleFeatureLineFromFile(testFile, boostDecisions, False, featureleaveout)
+                cutFeatureLine = ConvertData.getSingleFeatureLine(deepcopy(context), blockList, boostDecisions, False, featureleaveout)
                 cutDatum = orange.Example(getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']), featureleaveout),
                                           cutFeatureLine)
                 cutDatum = normalizeDatum(cutDatum, means, vars)

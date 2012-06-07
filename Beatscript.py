@@ -111,7 +111,7 @@ def coalesceBeats(beatList):
             block.append(beat)
     return blockList
 
-def getBeatListAndContextFromFile(file):
+def getContextAndBeatListFromFile(file):
     beatscriptFile = open(file, "r")
     lines = beatscriptFile.readlines()
     context = readContext(lines)
