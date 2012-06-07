@@ -136,7 +136,7 @@ def getDomain(enumVariable, leaveoutfeature=-1):
 
 def cutBeforeThisBlock(blockList, decisions, keepingPropability):
     cut = True
-    if len(blockList) >= 2 and len(decisions) >= 2:
+    if len(blockList) >= 2 <= len(decisions):
         if blockList[-1][0].subject == blockList[-2][-1].subject and (
             decisions[-2] >= MEDIUM_SHOT and blockList[-1][0].type in [SAYS, ACTION]) or (
             decisions[-2] >= CLOSEUP and blockList[-1][0].type == SAYS):
