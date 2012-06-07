@@ -112,6 +112,7 @@ class EstablishingShot(Feature):
             output = "Es gab einen Establishing-Shot."
         else:
             output = "Es gab keinen Establishing-Shot."
+        return output
 
     def getNames(self):
         return ["Es gab einen Establishing-Shot?"]
@@ -1161,7 +1162,7 @@ def getAllFeatureClasses():
     """Returns a list of all subclasses of Feature defined in, or imported into this module."""
     featureClassList = []
     for name, obj in inspect.getmembers(CURRENT_MODULE):
-        if (inspect.isclass(obj) and issubclass(obj, Feature) and (obj != Feature)):
+        if inspect.isclass(obj) and issubclass(obj, Feature) and (obj != Feature):
             featureClassList.append(obj)
     return featureClassList
 
