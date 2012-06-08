@@ -9,7 +9,7 @@ import numpy as np
 from multiprocessing import Queue, Process
 import scipy.optimize as opt
 
-from FitnessFunction import fitness
+from FitnessFunction import fitness, angle
 
 # =========================== Optimizer class ==================================
 class CameraOptimizer:
@@ -35,7 +35,15 @@ class CameraOptimizer:
         oldProcess = Process(target=runoptimizer, args=(fitness, start, oldQueue))
         oldProcess.start()
         if self.linetarget:
-            start = np.hstack((self.linetarget.location, self.oldConfiguration[3:5]))
+            target_to_linetarget = self.linetarget.location - self.target.location
+            normal_vector = np.cross(np.array([0, 0, -1]), target_to_linetarget)
+            old_diff_vector = self.target.location - self.oldConfiguration[:3]
+            angle_to_old = angle(old_diff_vector, normal_vector)
+            if angle_to_old > np.pi / 2:
+                new_start_position = 0.3 * self.linetarget.location + 0.7 * self.target.location + 0.2 * normal_vector
+            else:
+                new_start_position = 0.3 * self.linetarget.location + 0.7 * self.target.location - 0.2 * normal_vector
+            start = np.hstack((new_start_position, self.oldConfiguration[3:5]))
         else:
             start = np.array([0, 0, 0, self.oldConfiguration[3], self.oldConfiguration[4]])
         litQueue = Queue(maxsize=1)

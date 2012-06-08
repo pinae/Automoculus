@@ -122,8 +122,8 @@ class AutomoculusCameraman(bpy.types.Operator):
         if best_ratio - 0.1 > no_cut_ratio or initial_cut or cut: # We want to cut, the ratio gets much better
             shot = best_shot_candidate
             if (best_config[0] - self.camera.location).length < 0.8:
-                #new_configuration = self.springConfigurator(best_config)
-                new_configuration = best_config
+                new_configuration = self.springConfigurator(best_config)
+                #new_configuration = best_config
                 print("Es sollte geschnitten werden, die Abweichung war jedoch zu gering. Wir bleiben bei " +
                       SHOT_NAMES[shot])
             else:
@@ -132,8 +132,8 @@ class AutomoculusCameraman(bpy.types.Operator):
                 self.setInitialVelocity(target)
                 print("Schnitt auf: " + SHOT_NAMES[shot])
         else: # We don't want to cut because the ratio doesn't get significantly better
-            #new_configuration = self.springConfigurator(no_cut_config)
-            new_configuration = no_cut_config
+            new_configuration = self.springConfigurator(no_cut_config)
+            #new_configuration = no_cut_config
             print("Kein Schnitt. Wir bleiben bei " + SHOT_NAMES[shot])
 
         # Tell our decision to the classifier
