@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from Config import PERSON, OBJECT, PLACE
+from Config import PERSON, OBJECT, PLACE, DEMONSTRAT_TYPE_NAMES, BEAT_TYPE_NAMES
 from Config import INTRODUCE, EXPRESS, SAYS, ACTION, SHOW
 from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, LONG_SHOT, EXTREME_LONG_SHOT
 
@@ -9,9 +9,15 @@ class Entity:
     entityType = {"person": PERSON, "object": OBJECT, "place": PLACE}
 
     def __init__(self, text):
-        splitText = text.split("§")
+        splitText = text.strip().split("§")
         self.type = self.entityType[splitText[0]]
         self.name = splitText[1]
+
+    def __str__(self):
+        return DEMONSTRAT_TYPE_NAMES[self.type] + "§" + self.name
+
+    def __repr__(self):
+        return "<Entity: " + str(self) + ">"
 
 
 class Beat:
@@ -34,9 +40,27 @@ class Beat:
         self.subject = entityFactory(splitText[4], context)
         self.linetarget = False
         if self.type == SAYS:
-            linetargetText = splitText[5].strip('\t').split("\t")[1]
-            if len(linetargetText) >= 8:
-                self.linetarget = entityFactory(linetargetText, context)
+            r_split = splitText[5].strip('\t').split("\t")
+            if len(r_split) > 0:
+                self.speech = r_split[0]
+            if len(r_split) > 1:
+                self.audiences = [entityFactory(e, context) for e in r_split[1:]]
+                self.linetarget = self.audiences[0]
+        if self.type == ACTION:
+            r_split = splitText[5].strip('\t').split("\t")
+            if len(r_split) > 0:
+                self.action = r_split[0]
+            if len(r_split) > 1:
+                self.description = r_split[1]
+            if len(r_split) > 2:
+                self.object = entityFactory(r_split[2], context)
+                self.linetarget = self.object
+
+    def __str__(self):
+        return str(self.shotId) + "_" + str(self.beatId) + ": " + BEAT_TYPE_NAMES[self.type]
+
+    def __repr__(self):
+        return "<Beat " + str(self) + ">"
 
 # =============================== Methods ======================================
 def entityFactory(entityText, context):
@@ -106,9 +130,10 @@ def coalesceBeats(beatList):
     for beat in beatList:
         if isSplittingPoint(block, beat):
             blockList.append(block)
-            block = []
+            block = [beat]
         else:
             block.append(beat)
+    blockList.append(block)
     return blockList
 
 def getContextAndBeatListFromFile(file):
