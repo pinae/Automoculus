@@ -149,10 +149,10 @@ def coalesceBeats(beatList):
     for beat in beatList:
         if isSplittingPoint(block, beat):
             blockList.append(block)
-            block = []
+            block = [beat]
         else:
             block.append(beat)
-
+    blockList.append(block)
     return blockList
 
 
