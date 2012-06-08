@@ -3,6 +3,7 @@
 
 # =============================== Imports ======================================
 from math import sqrt, pi
+import pickle
 import sys
 
 import numpy as np
@@ -10,39 +11,7 @@ from multiprocessing import Queue, Process
 import scipy.optimize as opt
 
 from FitnessWeightFunctions import personFitnessByImage, distanceFitnessByRange, range0to1, lineQualityFunction, occultationWeight
-
-
-# ============================= Person class ===================================
-class PersonAddition:
-    def __init__(self, name, location):
-        self.name = name
-        self.location = location
-        self.radius = 0
-
-
-class Person:
-    def __init__(self, name, location, height, left_eye_loc, right_eye_loc):
-        self.name = name
-        self.location = location
-        self.height = height
-        self.eye_L = PersonAddition(name + "_eye.L", left_eye_loc)
-        self.eye_R = PersonAddition(name + "_eye.R", right_eye_loc)
-        self.radius = 1.0#0.1
-
-# ============================= Object class ===================================
-
-class Object:
-    def __init__(self, name, location):
-        self.name = name
-        self.location = location
-        self.radius = 0.1
-
-# ============================= Camera class ===================================
-class Camera:
-    def __init__(self, angle, resolution_x, resolution_y):
-        self.angle = angle
-        self.resolution_x = resolution_x
-        self.resolution_y = resolution_y
+from SceneSnapshot import SceneSnapshot, Person, Object, Camera
 
 # ================================ Methods =====================================
 
@@ -171,8 +140,8 @@ class CameraOptimizer:
 
     def getPersonQuality(self, genome, person, intensity, weightfunction, occultationfunction):
         ax, ay = getImageAngles(genome, person)
-        x = ax * 2.0 / self.camera.angle
-        y = ay * 2.0 * self.camera.resolution_x / (self.camera.angle * self.camera.resolution_y)
+        x = ax * 2.0 / self.camera.aperture_angle
+        y = ay * 2.0 * self.camera.resolution_x / (self.camera.aperture_angle * self.camera.resolution_y)
         occultation = 0
         for object in self.objectlist:
             occultation += occultationfunction(getVisibilityFactor(genome, person, object))
@@ -183,8 +152,8 @@ class CameraOptimizer:
 
     def getObjectQuality(self, genome, object):
         angles = getImageAngles(genome, object)
-        if angles[0] > self.camera.angle / 2.0 or\
-           angles[1] > self.camera.angle / 2.0 *\
+        if angles[0] > self.camera.aperture_angle / 2.0 or\
+           angles[1] > self.camera.aperture_angle / 2.0 *\
                        self.camera.resolution_y / self.camera.resolution_x:
             return 4 + 0.01 * angles[0] + 0.01 * angles[1]
         else:
@@ -366,7 +335,7 @@ def read_initial_data(data_line):
     initialData = data_line.split("\t")
     targetName = initialData[0]
     linetargetName = initialData[1]
-    camera = Camera(float(initialData[2]), int(initialData[3]), int(initialData[4]))
+    camera = Camera(float(initialData[2]), int(initialData[3]), int(initialData[4]), False, False)
     personlist = []
     target = False
     linetarget = False

@@ -152,9 +152,9 @@ def main():
     sys.stdout.flush()
     # Get Distribution
     dist = classifyForShot(domain, lastBlock, context, classifiers, means, vars)
-    cutBeforeThisClassification = classifyForCut(
-                    getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
-                    cutClassifiers, means, vars)
+    #cutBeforeThisClassification = classifyForCut(
+    #                getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
+    #                cutClassifiers, means, vars)
     #sys.stdout.write(distToStr(dist) + "\n")
     #sys.stdout.flush()
     while True:
@@ -179,7 +179,8 @@ def main():
             #else:
             #        keepingPropability = 1.0
             #if cutBeforeThisBlock(blockList, decisions, keepingPropability):
-            if cutBeforeThisClassification == "True":
+            if True:
+            #if cutBeforeThisClassification[0] > cutBeforeThisClassification[1]:
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")
@@ -199,9 +200,9 @@ def main():
                 context["BygoneBlocks"].append(lastBlock)
                 lastBlock = beatList
                 dist = classifyForShot(domain, lastBlock, context, classifiers, means, vars)
-                cutBeforeThisClassification = classifyForCut(
-                    getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
-                    cutClassifiers, means, vars)
+                #cutBeforeThisClassification = classifyForCut(
+                #    getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
+                #    cutClassifiers, means, vars)
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")
