@@ -95,6 +95,9 @@ def determine_targets(context, current_block):
                     break
                 elif beat.subject != target:
                     linetarget = beat.subject
+                    break
+            if target is not linetarget:
+                break
     else :
         if lineTargets:
             # get last person in lineTargets as lineTarget
