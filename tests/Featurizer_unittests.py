@@ -3,10 +3,12 @@
 
 # =============================== Imports ======================================
 import sys
+
 sys.path.append("..")
 
 import unittest
 
+import Beatscript
 import Config
 import ConvertData
 
@@ -15,7 +17,7 @@ import ConvertData
 class TestConvertDataFunctions(unittest.TestCase):
     def test_entityList(self):
         context = ConvertData.createContext()
-        ConvertData.addEntityList(context, "person§Karl, person§Hugo,\tobject§Table,place§Home,\t")
+        Beatscript.addEntityList(context, "person§Karl, person§Hugo,\tobject§Table,place§Home,\t")
         self.assertTrue("Table" in context["Entities"] and context["Entities"]["Table"].type == Config.OBJECT)
         self.assertTrue("Karl" in context["Entities"] and context["Entities"]["Karl"].type == Config.PERSON)
         self.assertTrue("Hugo" in context["Entities"] and context["Entities"]["Hugo"].type == Config.PERSON)
@@ -25,8 +27,8 @@ class TestConvertDataFunctions(unittest.TestCase):
 
     def test_initialContext(self):
         context = ConvertData.createContext()
-        ConvertData.addInitialContext(context, "person§Peter, person§Hugo,\tobject§Table,place§Home, person§Lord Harthorne,")
-        ConvertData.addEntityList(context, "person§Karl, person§Hugo,\tobject§Table,place§Home, ")
+        Beatscript.addInitialContext(context, "person§Peter, person§Hugo,\tobject§Table,place§Home, person§Lord Harthorne,")
+        Beatscript.addEntityList(context, "person§Karl, person§Hugo,\tobject§Table,place§Home, ")
         self.assertTrue(context["Entities"]["Table"] in context["KnownEntities"])
         self.assertTrue(context["Entities"]["Hugo"] in context["KnownEntities"])
         self.assertTrue(context["Entities"]["Home"] in context["KnownEntities"])

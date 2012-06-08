@@ -81,10 +81,10 @@ def getImageAngles(genome, object):
     e = E.dot(rotmatrix)
     p = object.location - genome[:3]
     ps = p.dot(c) * c + p.dot(e) * e
-    if not p.all():
-        print("Kamerposition ist Objektposition")
+    if not p.any():
+        print("Kamerposition ist Objektposition", p)
         return 10, 10
-    if not ps.all(): #ps.dot(ps) > 0:
+    if ps.any(): #ps.dot(ps) > 0:
         x_angle = angle(c, ps)
     else:
         x_angle = 10
