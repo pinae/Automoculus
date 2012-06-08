@@ -1134,7 +1134,7 @@ class ExpositoryPhaseOfTheScene(Feature):
             beatlist = copy(context["BeatList"])
             for beat in beatlist:
                 allPersons.add(beat.subject)
-                if beat.linetarget: allPersons.add(beat.linetareget)
+                if beat.linetarget and beat.linetarget.type == PERSON: allPersons.add(beat.linetarget)
                 if beat.type == EXPRESS: emotionallySituatedPersons.add(beat.subject)
                 if beat.type == SHOW and beat.subject.type == PERSON: emotionallySituatedPersons.add(beat.subject)
                 if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE: shownPlace = True

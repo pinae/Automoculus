@@ -7,24 +7,24 @@
 0_2	detail	false	introduce	person§Green	
 0_3	detail	false	introduce	place§Somewhere	
 0_4	detail	false	expresses	person§Red	anger
-2_1	detail	false	says	person§Red	Now we're both somewhere ...		person§Green
-7_1	detail	false	action	person§Green	walks to	person§Red
-30_1	detail	false	says	person§Red	... and I'm angry		person§Green
+2_1	detail	false	says	person§Red	Now we're both somewhere ...	person§Green
+7_1	detail	false	action	person§Green	walks to		person§Red
+30_1	detail	false	says	person§Red	... and I'm angry	person§Green
 100_1	detail	false	expresses	person§Green	determination
-100_2	detail	false	says	person§Green	I come to you as an enemy!		person§Red
-160_1	detail	false	says	person§Red	Then take this!		person§Green
-180_1	detail	false	action	person§Red	lasers	person§Green
+100_2	detail	false	says	person§Green	I come to you as an enemy!	person§Red
+160_1	detail	false	says	person§Red	Then take this!	person§Green
+180_1	detail	false	action	person§Red	lasers		person§Green
 186_1	detail	false	expresses	person§Green	surprise
 186_2	detail	false	action	person§Green	falls down	
-216_1	detail	false	says	person§Green	Revenge! You bastard!		person§Red
+216_1	detail	false	says	person§Green	Revenge! You bastard!	person§Red
 230_1	detail	false	action	person§Green	stands up	
-280_1	detail	false	action	person§Green	lasers	person§Red
+280_1	detail	false	action	person§Green	lasers		person§Red
 280_2	detail	false	expresses	person§Red	surprise
 290_1	detail	false	action	person§Red	nearly falls	
 295_1	detail	false	action	person§Red	turns around	
-320_1	detail	false	says	person§Red	Now, you die!		person§Green
-360_1	detail	false	action	person§Red	lasers	person§Green
-360_2	detail	false	action	person§Green	lasers	person§Red
+320_1	detail	false	says	person§Red	Now, you die!	person§Green
+360_1	detail	false	action	person§Red	lasers		person§Green
+360_2	detail	false	action	person§Green	lasers		person§Red
 375_1	detail	false	expresses	person§Red	surprise
 375_2	detail	false	expresses	person§Green	surprise
 388_1	detail	false	action	person§Red	falls down	

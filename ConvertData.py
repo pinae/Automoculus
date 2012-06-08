@@ -49,10 +49,22 @@ class Beat:
         self.type = self.beatType[splitText[3]]
         self.subject = entityFactory(splitText[4], context)
         self.linetarget = False
-        if self.type in [SAYS, ACTION]:
-            linetargetText = splitText[5].strip('\t').split("\t")[1]
-            if len(linetargetText) >= 8:
-                self.linetarget = entityFactory(linetargetText, context)
+        if self.type == SAYS:
+            r_split = splitText[5].strip('\t').split("\t")
+            if len(r_split) > 0:
+                self.speech = r_split[0]
+            if len(r_split) > 1:
+                self.audiences = [entityFactory(e, context) for e in r_split[1:]]
+                self.linetarget = self.audiences[0]
+        if self.type == ACTION:
+            r_split = splitText[5].strip('\t').split("\t")
+            if len(r_split) > 0:
+                self.action = r_split[0]
+            if len(r_split) > 1:
+                self.description = r_split[1]
+            if len(r_split) > 2:
+                self.object = entityFactory(r_split[2], context)
+                self.linetarget = self.object
 
     def __str__(self):
         return str(self.shotId) + "_" + str(self.beatId) + ": " + BEAT_TYPE_NAMES[self.type]

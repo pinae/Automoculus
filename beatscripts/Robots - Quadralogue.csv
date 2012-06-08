@@ -9,35 +9,35 @@
 0_4	detail	false	expresses	person§Red	boredom
 105_1	detail	false	action	person§Red	walks down	
 160_1	detail	false	introduce	person§Green	
-160_2	detail	false	action	person§Green	walks to	person§Red
-175_1	detail	false	says	person§Green	Hello, my love.		person§Red
+160_2	detail	false	action	person§Green	walks to		person§Red
+175_1	detail	false	says	person§Green	Hello, my love.	person§Red
 190_1	detail	false	action	person§Red	turns around	
 220_1	detail	false	expresses	person§Red	surprise
-250_1	detail	false	says	person§Red	I love you!		person§Green
+250_1	detail	false	says	person§Red	I love you!	person§Green
 280_1	detail	false	expresses	person§Green	joy
 330_1	detail	false	introduce	person§Blue	
-330_2	detail	false	says	person§Blue	Gotcha! ...		person§Red	person§Green
-390_1	detail	false	action	person§Red	turns to	person§Blue
-390_2	detail	false	action	person§Green	turns to	person§Blue
-400_1	detail	false	action	person§Blue	walks to	person§Green
-400_2	detail	false	says	person§Blue	... You shouldn't be together.		person§Red	person§Green
-440_1	detail	false	says	person§Green	you are always against us.		person§Blue
-480_1	detail	false	says	person§Red	You're a tyrant!		person§Blue
+330_2	detail	false	says	person§Blue	Gotcha! ...	person§Red	person§Green
+390_1	detail	false	action	person§Red	turns to		person§Blue
+390_2	detail	false	action	person§Green	turns to		person§Blue
+400_1	detail	false	action	person§Blue	walks to		person§Green
+400_2	detail	false	says	person§Blue	... You shouldn't be together.	person§Red	person§Green
+440_1	detail	false	says	person§Green	you are always against us.	person§Blue
+480_1	detail	false	says	person§Red	You're a tyrant!	person§Blue
 510_1	detail	false	action	person§Blue	turns away	
 510_2	detail	false	action	person§Green	steps back	
-510_3	detail	false	action	person§Red	steps back for	person§Blue
+510_3	detail	false	action	person§Red	steps back for		person§Blue
 510_4	detail	false	expresses	person§Blue	fury
-525_1	detail	false	action	person§Green	turns to	person§Blue
-525_2	detail	false	action	person§Blue	steps away from	person§Red
+525_1	detail	false	action	person§Green	turns to		person§Blue
+525_2	detail	false	action	person§Blue	steps away from		person§Red
 540_1	detail	false	action	person§Blue	turns around	
-555_1	detail	false	says	person§Blue	I will not allow that!		person§Green	person§Blue
-610_1	detail	false	says	person§Green	I hate you!		person§Blue
+555_1	detail	false	says	person§Blue	I will not allow that!	person§Green	person§Blue
+610_1	detail	false	says	person§Green	I hate you!	person§Blue
 610_2	detail	false	expresses	person§Green	hate
 650_1	detail	false	introduce	person§Pink	
-650_2	detail	false	action	person§Green	turns to	person§Pink
-650_3	detail	false	action	person§Red	turns to	person§Pink
-650_4	detail	false	action	person§Pink	walks towards	person§Blue
-655_1	detail	false	says	person§Pink	Stop that! Go!		person§Blue	person§Green
+650_2	detail	false	action	person§Green	turns to		person§Pink
+650_3	detail	false	action	person§Red	turns to		person§Pink
+650_4	detail	false	action	person§Pink	walks towards		person§Blue
+655_1	detail	false	says	person§Pink	Stop that! Go!	person§Blue	person§Green
 670_1	detail	false	action	person§Green	turns away	
 670_2	detail	false	expresses	person§Green	anger
-700_1	detail	false	says	person§Red	It's sad that it ends this way.		person§Pink
+700_1	detail	false	says	person§Red	It's sad that it ends this way.	person§Pink

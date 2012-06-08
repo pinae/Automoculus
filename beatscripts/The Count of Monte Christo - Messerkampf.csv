@@ -4,80 +4,80 @@
 #Context:	person§Edmond Dantés, person§Jacopo, person§the joking smuggler, person§Luigi Vampa, 
 #EntityList:	place§Beach, person§a smuggler, object§a knife, object§Jacopo's knife, place§fighting ground, person§a smuggling sailor, person§Edmond Dantés, person§Jacopo, person§the joking smuggler, person§Luigi Vampa, 
 0_1	long_shot	false	introduce	place§Beach	
-0_2	long_shot	false	action	person§the joking smuggler	releases	person§Jacopo
+0_2	long_shot	false	action	person§the joking smuggler	releases		person§Jacopo
 0_3	long_shot	false	expresses	person§Jacopo	determination
 0_4	long_shot	false	action	person§Jacopo	stands up	
 83_1	full_shot	false	introduce	person§a smuggler	
 83_2	full_shot	false	introduce	object§a knife	
-83_3	full_shot	false	action	person§a smuggler	throws	in the sand in front of Edmond Dantésobject§a knife
-83_4	full_shot	false	action	person§Edmond Dantés	looks up to	person§a smuggler
+83_3	full_shot	false	action	person§a smuggler	throws	in the sand in front of Edmond Dantés	object§a knife
+83_4	full_shot	false	action	person§Edmond Dantés	looks up to		person§a smuggler
 141_1	long_shot	false	introduce	object§Jacopo's knife	
-141_2	long_shot	false	action	person§the joking smuggler	gives	Jackopo's knifeperson§Jacopo
-141_3	long_shot	false	action	person§the joking smuggler	pats	's shoulderperson§Jacopo
+141_2	long_shot	false	action	person§the joking smuggler	gives	Jackopo's knife	person§Jacopo
+141_3	long_shot	false	action	person§the joking smuggler	pats	's shoulder	person§Jacopo
 141_4	long_shot	false	expresses	person§Jacopo	anger
-141_5	long_shot	false	action	person§Jacopo	pushes	awayperson§the joking smuggler
+141_5	long_shot	false	action	person§Jacopo	pushes	away	person§the joking smuggler
 141_6	long_shot	false	expresses	person§Jacopo	determination
 240_1	closeup	false	expresses	person§Edmond Dantés	calmness
 240_2	closeup	false	action	person§Edmond Dantés	stands up	
 264_1	long_shot	false	action	person§Edmond Dantés	stands up	
 264_2	long_shot	false	action	person§Edmond Dantés	walks two steps to the side	
-264_3	long_shot	false	action	person§a smuggler	stays clear of	person§Edmond Dantés
+264_3	long_shot	false	action	person§a smuggler	stays clear of		person§Edmond Dantés
 264_4	long_shot	false	introduce	place§fighting ground	
-299_1	long_shot	false	action	person§Jacopo	runs to the	place§fighting ground
-299_2	long_shot	false	action	person§Jacopo	throws	from hand to handobject§Jacopo's knife
-384_1	american_shot	false	action	person§Jacopo	threatens	with Jacopo's knifeperson§Edmond Dantés
+299_1	long_shot	false	action	person§Jacopo	runs to the		place§fighting ground
+299_2	long_shot	false	action	person§Jacopo	throws	from hand to hand	object§Jacopo's knife
+384_1	american_shot	false	action	person§Jacopo	threatens	with Jacopo's knife	person§Edmond Dantés
 384_2	american_shot	false	expresses	person§Edmond Dantés	concentration
-384_3	american_shot	false	action	person§Edmond Dantés	threatens	with a knifeperson§Jacopo
+384_3	american_shot	false	action	person§Edmond Dantés	threatens	with a knife	person§Jacopo
 462_1	medium_shot	false	action	person§Jacopo	attacks	
-471_1	american_shot	false	action	person§Jacopo	attacks	person§Edmond Dantés
+471_1	american_shot	false	action	person§Jacopo	attacks		person§Edmond Dantés
 471_2	american_shot	false	action	person§Edmond Dantés	defends	
-471_3	american_shot	false	action	person§Jacopo	attacks	person§Edmond Dantés
+471_3	american_shot	false	action	person§Jacopo	attacks		person§Edmond Dantés
 471_4	american_shot	false	action	person§Edmond Dantés	defends	fluidly
-471_5	american_shot	false	action	person§Jacopo	grabs	person§Edmond Dantés
-513_1	closeup	false	action	person§Jacopo	wrestles with	person§Edmond Dantés
+471_5	american_shot	false	action	person§Jacopo	grabs		person§Edmond Dantés
+513_1	closeup	false	action	person§Jacopo	wrestles with		person§Edmond Dantés
 534_1	american_shot	false	action	person§Jacopo	attacks by turning around	
-534_2	american_shot	false	action	person§Edmond Dantés	avoids	's attackperson§Jacopo
-560_1	medium_shot	false	action	person§Edmond Dantés	avoids	's attackperson§Jacopo
+534_2	american_shot	false	action	person§Edmond Dantés	avoids	's attack	person§Jacopo
+560_1	medium_shot	false	action	person§Edmond Dantés	avoids	's attack	person§Jacopo
 576_1	closeup	false	action	person§Edmond Dantés	jumps sideways	
-593_1	medium_shot	false	action	person§Jacopo	attacks	person§Edmond Dantés
-593_2	medium_shot	false	action	person§Edmond Dantés	avoids	's attackperson§Jacopo
+593_1	medium_shot	false	action	person§Jacopo	attacks		person§Edmond Dantés
+593_2	medium_shot	false	action	person§Edmond Dantés	avoids	's attack	person§Jacopo
 593_3	medium_shot	false	expresses	person§Edmond Dantés	mastership
 593_4	medium_shot	false	action	person§Edmond Dantés	jumps away	
 593_5	medium_shot	false	action	person§Edmond Dantés	presents himself	open handed
 651_1	closeup	false	expresses	person§Jacopo	anger
 651_2	closeup	false	action	person§Jacopo	attacks	
-667_1	detail	false	action	person§Edmond Dantés	stps forward towards	person§Jacopo
-693_1	medium_shot	false	action	person§Edmond Dantés	pushes	backwardsperson§Jacopo
+667_1	detail	false	action	person§Edmond Dantés	stps forward towards		person§Jacopo
+693_1	medium_shot	false	action	person§Edmond Dantés	pushes	backwards	person§Jacopo
 693_2	medium_shot	false	action	person§Jacopo	falls backwards	
 709_1	medium_shot	false	action	person§Jacopo	hits the ground	
 709_2	medium_shot	false	expresses	person§Jacopo	fear
-709_3	medium_shot	false	action	person§Edmond Dantés	presses	to the groundperson§Jacopo
-709_4	medium_shot	false	action	person§Edmond Dantés	threatens	to cut his throatperson§Jacopo
+709_3	medium_shot	false	action	person§Edmond Dantés	presses	to the ground	person§Jacopo
+709_4	medium_shot	false	action	person§Edmond Dantés	threatens	to cut his throat	person§Jacopo
 736_1	full_shot	false	expresses	person§Luigi Vampa	frustration
-777_1	medium_shot	false	says	person§Edmond Dantés	Bla		person§Jacopo
+777_1	medium_shot	false	says	person§Edmond Dantés	Bla	person§Jacopo
 777_2	medium_shot	false	expresses	person§Jacopo	acceptance
-777_3	medium_shot	false	says	person§Edmond Dantés	Bla ...		person§Luigi Vampa
-977_1	closeup	false	says	person§Edmond Dantés	... bla ...		person§Luigi Vampa
-1126_1	long_shot	false	says	person§Edmond Dantés	... bla ...		person§Luigi Vampa
+777_3	medium_shot	false	says	person§Edmond Dantés	Bla ...	person§Luigi Vampa
+977_1	closeup	false	says	person§Edmond Dantés	... bla ...	person§Luigi Vampa
+1126_1	long_shot	false	says	person§Edmond Dantés	... bla ...	person§Luigi Vampa
 1126_2	long_shot	false	expresses	person§Luigi Vampa	incredulity
-1225_1	closeup	false	says	person§Edmond Dantés	... bla		person§Luigi Vampa
+1225_1	closeup	false	says	person§Edmond Dantés	... bla	person§Luigi Vampa
 1371_1	full_shot	false	introduce	person§a smuggling sailor	
 1371_2	full_shot	false	expresses	person§Luigi Vampa	thoughtfulness
 1371_3	full_shot	false	action	person§Luigi Vampa	looks left and right	
 1371_4	full_shot	false	expresses	person§Luigi Vampa	decisiveness
-1371_5	full_shot	false	says	person§Luigi Vampa	Deal!		person§Edmond Dantés
-1371_6	full_shot	false	says	person§a smuggling sailor	Bla		person§Edmond Dantés
-1371_7	full_shot	false	says	person§Luigi Vampa	Bla		person§Edmond Dantés
-1694_1	closeup	false	says	person§Edmond Dantés	Bla		person§Luigi Vampa
-1730_1	american_shot	false	says	person§Luigi Vampa	Bla		person§Edmond Dantés
+1371_5	full_shot	false	says	person§Luigi Vampa	Deal!	person§Edmond Dantés
+1371_6	full_shot	false	says	person§a smuggling sailor	Bla	person§Edmond Dantés
+1371_7	full_shot	false	says	person§Luigi Vampa	Bla	person§Edmond Dantés
+1694_1	closeup	false	says	person§Edmond Dantés	Bla	person§Luigi Vampa
+1730_1	american_shot	false	says	person§Luigi Vampa	Bla	person§Edmond Dantés
 1730_2	american_shot	false	action	person§Luigi Vampa	walks away	
 1797_1	medium_shot	false	expresses	person§Jacopo	determination
-1797_2	medium_shot	false	action	person§Jacopo	grabs	collarperson§Edmond Dantés
+1797_2	medium_shot	false	action	person§Jacopo	grabs	collar	person§Edmond Dantés
 1829_1	closeup	false	expresses	person§Edmond Dantés	surprise
-1843_1	medium_shot	false	says	person§Jacopo	Bla		person§Edmond Dantés
-1843_2	medium_shot	false	says	person§Edmond Dantés	Bla		person§Jacopo
-1843_3	medium_shot	false	action	person§Edmond Dantés	pats	's headperson§Jacopo
-1843_4	medium_shot	false	action	person§Edmond Dantés	helps	to stand upperson§Jacopo
+1843_1	medium_shot	false	says	person§Jacopo	Bla	person§Edmond Dantés
+1843_2	medium_shot	false	says	person§Edmond Dantés	Bla	person§Jacopo
+1843_3	medium_shot	false	action	person§Edmond Dantés	pats	's head	person§Jacopo
+1843_4	medium_shot	false	action	person§Edmond Dantés	helps	to stand up	person§Jacopo
 2151_1	extreme_long_shot	false	action	person§a smuggling sailor	walks away	
 2151_2	extreme_long_shot	false	action	person§a smuggler	walks away	
 2151_3	extreme_long_shot	false	action	person§Luigi Vampa	walks away	

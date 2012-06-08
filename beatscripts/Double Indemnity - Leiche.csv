@@ -4,110 +4,110 @@
 #Context:	person§Walter, object§crutches, 
 #EntityList:	place§compartment, object§Mr. Dietrichsen's hat, person§other passenger 1, person§other passenger 2, person§other passenger 3, person§other passenger 4, person§other passenger 5, object§the door, place§balcony, person§Mr. Jackson, object§Jackson's cigarettes, place§the tracks, object§the car, person§Mrs. Dietrichsen, object§blanket, object§the corpse of Mr. Dietrichsen, object§Walters bandage, person§Walter, object§crutches, 
 0_1	full_shot	false	introduce	place§compartment	
-0_2	full_shot	false	action	person§Walter	enters the	place§compartment
+0_2	full_shot	false	action	person§Walter	enters the		place§compartment
 0_3	full_shot	false	introduce	object§Mr. Dietrichsen's hat	
 0_4	full_shot	false	introduce	person§other passenger 1	
 0_5	full_shot	false	introduce	person§other passenger 2	
 0_6	full_shot	false	introduce	person§other passenger 3	
 0_7	full_shot	false	introduce	person§other passenger 4	
 0_8	full_shot	false	introduce	person§other passenger 5	
-0_9	full_shot	false	action	person§Walter	hobbles through the	with the crutchesplace§compartment
-0_10	full_shot	false	action	person§other passenger 1	ignores	person§Walter
-0_11	full_shot	false	action	person§other passenger 2	ignores	person§Walter
-0_12	full_shot	false	action	person§other passenger 3	ignores	person§Walter
-0_13	full_shot	false	action	person§other passenger 4	ignores	person§Walter
+0_9	full_shot	false	action	person§Walter	hobbles through the	with the crutches	place§compartment
+0_10	full_shot	false	action	person§other passenger 1	ignores		person§Walter
+0_11	full_shot	false	action	person§other passenger 2	ignores		person§Walter
+0_12	full_shot	false	action	person§other passenger 3	ignores		person§Walter
+0_13	full_shot	false	action	person§other passenger 4	ignores		person§Walter
 0_14	full_shot	false	introduce	object§the door	
-0_15	full_shot	false	action	person§other passenger 5	ignores	person§Walter
-0_16	full_shot	false	action	person§Walter	opens	object§the door
+0_15	full_shot	false	action	person§other passenger 5	ignores		person§Walter
+0_16	full_shot	false	action	person§Walter	opens		object§the door
 418_1	full_shot	false	introduce	place§balcony	
-418_2	full_shot	false	action	person§Walter	steps on the	place§balcony
+418_2	full_shot	false	action	person§Walter	steps on the		place§balcony
 418_3	full_shot	false	introduce	person§Mr. Jackson	
 418_4	full_shot	false	action	person§Walter	looks around	
-418_5	full_shot	false	action	person§Walter	attempts to throw the	off the trainobject§crutches
-418_6	full_shot	false	says	person§Mr. Jackson	Like ...		person§Walter
+418_5	full_shot	false	action	person§Walter	attempts to throw the	off the train	object§crutches
+418_6	full_shot	false	says	person§Mr. Jackson	Like ...	person§Walter
 418_7	full_shot	false	expresses	person§Walter	dismay
-418_8	full_shot	false	says	person§Mr. Jackson	... a chair?		person§Walter
-418_9	full_shot	false	action	person§Walter	supports himself on the	againobject§crutches
-418_10	full_shot	false	says	person§Walter	No, thanks! I will stand.		person§Mr. Jackson
-418_11	full_shot	false	action	person§Walter	hobbles to the other side of the	place§balcony
+418_8	full_shot	false	says	person§Mr. Jackson	... a chair?	person§Walter
+418_9	full_shot	false	action	person§Walter	supports himself on the	again	object§crutches
+418_10	full_shot	false	says	person§Walter	No, thanks! I will stand.	person§Mr. Jackson
+418_11	full_shot	false	action	person§Walter	hobbles to the other side of the		place§balcony
 418_12	full_shot	false	expresses	person§Walter	apprehension
-418_13	full_shot	false	says	person§Mr. Jackson	You're going far?		person§Walter
-418_14	full_shot	false	says	person§Walter	Paloamo		person§Mr. Jackson
+418_13	full_shot	false	says	person§Mr. Jackson	You're going far?	person§Walter
+418_14	full_shot	false	says	person§Walter	Paloamo	person§Mr. Jackson
 862_1	medium_shot	false	expresses	person§Mr. Jackson	interest
-862_2	medium_shot	false	says	person§Mr. Jackson	My name is Jackson. I'm going all the Way to Medford, Medford Oregon.		person§Walter
-862_3	medium_shot	true	says	person§Walter	aha		person§Mr. Jackson
-862_4	medium_shot	false	says	person§Mr. Jackson	I had a broken Arm once. A ... thought I'd go crazy with mine		person§Walter
+862_2	medium_shot	false	says	person§Mr. Jackson	My name is Jackson. I'm going all the Way to Medford, Medford Oregon.	person§Walter
+862_3	medium_shot	true	says	person§Walter	aha	person§Mr. Jackson
+862_4	medium_shot	false	says	person§Mr. Jackson	I had a broken Arm once. A ... thought I'd go crazy with mine	person§Walter
 1178_1	medium_shot	false	expresses	person§Walter	precautiousness
-1178_2	medium_shot	true	says	person§Mr. Jackson	Bla		person§Walter
+1178_2	medium_shot	true	says	person§Mr. Jackson	Bla	person§Walter
 1178_3	medium_shot	false	action	person§Walter	searches something inside his pockets.	
-1178_4	medium_shot	true	says	person§Mr. Jackson	Are you a stanford man?		person§Walter
-1178_5	medium_shot	false	says	person§Walter	I used to be.		person§Mr. Jackson
-1354_1	medium_shot	false	says	person§Mr. Jackson	Oh, oh. I bet you left something behind. I always do.		person§Walter
-1463_1	medium_shot	false	says	person§Walter	A cigar case, ... bla		person§Mr. Jackson
+1178_4	medium_shot	true	says	person§Mr. Jackson	Are you a stanford man?	person§Walter
+1178_5	medium_shot	false	says	person§Walter	I used to be.	person§Mr. Jackson
+1354_1	medium_shot	false	says	person§Mr. Jackson	Oh, oh. I bet you left something behind. I always do.	person§Walter
+1463_1	medium_shot	false	says	person§Walter	A cigar case, ... bla	person§Mr. Jackson
 1538_1	medium_shot	false	introduce	object§Jackson's cigarettes	
-1538_2	medium_shot	false	action	person§Mr. Jackson	takes	out of his pocketobject§Jackson's cigarettes
-1538_3	medium_shot	false	says	person§Mr. Jackson	bla, cigarette?		person§Walter
-1629_1	full_shot	false	says	person§Walter	Bla, I'm Dietrichsen		person§Mr. Jackson
-1629_2	full_shot	false	action	person§Mr. Jackson	puts	awayobject§Jackson's cigarettes
-1629_3	full_shot	false	says	person§Walter	Bla, prefer cigar		person§Mr. Jackson
-1629_4	full_shot	false	action	person§Walter	attempts to go back to the	place§compartment
+1538_2	medium_shot	false	action	person§Mr. Jackson	takes	out of his pocket	object§Jackson's cigarettes
+1538_3	medium_shot	false	says	person§Mr. Jackson	bla, cigarette?	person§Walter
+1629_1	full_shot	false	says	person§Walter	Bla, I'm Dietrichsen	person§Mr. Jackson
+1629_2	full_shot	false	action	person§Mr. Jackson	puts	away	object§Jackson's cigarettes
+1629_3	full_shot	false	says	person§Walter	Bla, prefer cigar	person§Mr. Jackson
+1629_4	full_shot	false	action	person§Walter	attempts to go back to the		place§compartment
 1629_5	full_shot	false	action	person§Mr. Jackson	stands up	
-1629_6	full_shot	false	says	person§Mr. Jackson	Bla, go for you		person§Walter
-1629_7	full_shot	false	says	person§Walter	where		person§Mr. Jackson
-1629_8	full_shot	false	says	person§Mr. Jackson	Bla, pleasure		person§Walter
-1629_9	full_shot	false	action	person§Mr. Jackson	walks to	object§the door
-1629_10	full_shot	false	action	person§Mr. Jackson	opens	object§the door
-1629_11	full_shot	false	action	person§Mr. Jackson	goues to the	place§compartment
-1629_12	full_shot	false	action	person§Walter	hobbles to the end of the	place§balcony
+1629_6	full_shot	false	says	person§Mr. Jackson	Bla, go for you	person§Walter
+1629_7	full_shot	false	says	person§Walter	where	person§Mr. Jackson
+1629_8	full_shot	false	says	person§Mr. Jackson	Bla, pleasure	person§Walter
+1629_9	full_shot	false	action	person§Mr. Jackson	walks to		object§the door
+1629_10	full_shot	false	action	person§Mr. Jackson	opens		object§the door
+1629_11	full_shot	false	action	person§Mr. Jackson	goues to the		place§compartment
+1629_12	full_shot	false	action	person§Walter	hobbles to the end of the		place§balcony
 1629_13	full_shot	false	action	person§Walter	prepares himself to jump	
-2314_1	american_shot	false	action	person§Walter	throws down the	object§crutches
-2314_2	american_shot	false	action	person§Walter	climbs over the fence of the	place§balcony
-2429_1	long_shot	false	action	person§Walter	jumps off the	place§balcony
+2314_1	american_shot	false	action	person§Walter	throws down the		object§crutches
+2314_2	american_shot	false	action	person§Walter	climbs over the fence of the		place§balcony
+2429_1	long_shot	false	action	person§Walter	jumps off the		place§balcony
 2429_2	long_shot	false	introduce	place§the tracks	
 2501_1	full_shot	false	action	person§Walter	stands up	
 2501_2	full_shot	false	action	person§Walter	beats the dust off his suit	
 2501_3	full_shot	false	action	person§Walter	looks for something	
 2647_1	extreme_long_shot	false	introduce	object§the car	
 2647_2	extreme_long_shot	false	introduce	person§Mrs. Dietrichsen	
-2647_3	extreme_long_shot	false	action	person§Mrs. Dietrichsen	flashes the lights of	object§the car
-2804_1	full_shot	false	action	person§Walter	walks to	object§the car
-2842_1	full_shot	false	action	person§Mrs. Dietrichsen	leaves	object§the car
+2647_3	extreme_long_shot	false	action	person§Mrs. Dietrichsen	flashes the lights of		object§the car
+2804_1	full_shot	false	action	person§Walter	walks to		object§the car
+2842_1	full_shot	false	action	person§Mrs. Dietrichsen	leaves		object§the car
 2842_2	full_shot	false	introduce	object§blanket	
-2842_3	full_shot	false	action	person§Mrs. Dietrichsen	opens the doors of	object§the car
-2842_4	full_shot	false	action	person§Mrs. Dietrichsen	puts the	on the backseatobject§blanket
+2842_3	full_shot	false	action	person§Mrs. Dietrichsen	opens the doors of		object§the car
+2842_4	full_shot	false	action	person§Mrs. Dietrichsen	puts the	on the backseat	object§blanket
 2842_5	full_shot	false	action	person§Walter	arrives	
-2842_6	full_shot	false	says	person§Walter	Ok, this is gonna be fast. Take bla...		person§Mrs. Dietrichsen
-2842_7	full_shot	false	action	person§Walter	gives	to Mrs. Dietrichsenobject§Mr. Dietrichsen's hat
+2842_6	full_shot	false	says	person§Walter	Ok, this is gonna be fast. Take bla...	person§Mrs. Dietrichsen
+2842_7	full_shot	false	action	person§Walter	gives	to Mrs. Dietrichsen	object§Mr. Dietrichsen's hat
 2842_8	full_shot	false	action	person§Mrs. Dietrichsen	leaves	
 2842_9	full_shot	false	introduce	object§the corpse of Mr. Dietrichsen	
-2842_10	full_shot	false	action	person§Walter	lifts	out of the carobject§the corpse of Mr. Dietrichsen
+2842_10	full_shot	false	action	person§Walter	lifts	out of the car	object§the corpse of Mr. Dietrichsen
 3333_1	closeup	false	expresses	person§Walter	effort
-3404_1	long_shot	false	action	person§Mrs. Dietrichsen	collects the	object§crutches
-3404_2	long_shot	false	action	person§Mrs. Dietrichsen	runs to	person§Walter
-3404_3	long_shot	false	action	person§Mrs. Dietrichsen	gives the	to Walterobject§crutches
-3404_4	long_shot	false	action	person§Mrs. Dietrichsen	gives	to Walterobject§Mr. Dietrichsen's hat
-3404_5	long_shot	false	action	person§Walter	throws the	on the tracksobject§crutches
-3404_6	long_shot	false	action	person§Walter	throws	on the tracksobject§Mr. Dietrichsen's hat
-3404_7	long_shot	false	says	person§Walter	Ok, Baby. That's it.		person§Mrs. Dietrichsen
-3404_8	long_shot	false	action	person§Walter	leaves	place§the tracks
-3404_9	long_shot	false	action	person§Mrs. Dietrichsen	leaves	place§the tracks
-3946_1	long_shot	false	action	person§Walter	runs to	object§the car
-3946_2	long_shot	false	action	person§Mrs. Dietrichsen	runs to	object§the car
-4107_1	full_shot	false	action	person§Mrs. Dietrichsen	enters	object§the car
-4107_2	full_shot	false	action	person§Walter	enters	object§the car
+3404_1	long_shot	false	action	person§Mrs. Dietrichsen	collects the		object§crutches
+3404_2	long_shot	false	action	person§Mrs. Dietrichsen	runs to		person§Walter
+3404_3	long_shot	false	action	person§Mrs. Dietrichsen	gives the	to Walter	object§crutches
+3404_4	long_shot	false	action	person§Mrs. Dietrichsen	gives	to Walter	object§Mr. Dietrichsen's hat
+3404_5	long_shot	false	action	person§Walter	throws the	on the tracks	object§crutches
+3404_6	long_shot	false	action	person§Walter	throws	on the tracks	object§Mr. Dietrichsen's hat
+3404_7	long_shot	false	says	person§Walter	Ok, Baby. That's it.	person§Mrs. Dietrichsen
+3404_8	long_shot	false	action	person§Walter	leaves		place§the tracks
+3404_9	long_shot	false	action	person§Mrs. Dietrichsen	leaves		place§the tracks
+3946_1	long_shot	false	action	person§Walter	runs to		object§the car
+3946_2	long_shot	false	action	person§Mrs. Dietrichsen	runs to		object§the car
+4107_1	full_shot	false	action	person§Mrs. Dietrichsen	enters		object§the car
+4107_2	full_shot	false	action	person§Walter	enters		object§the car
 4208_1	medium_shot	false	action	person§Walter	sits down	
 4208_2	medium_shot	false	action	person§Mrs. Dietrichsen	sits down	
-4208_3	medium_shot	false	action	person§Mrs. Dietrichsen	fails to start	object§the car
+4208_3	medium_shot	false	action	person§Mrs. Dietrichsen	fails to start		object§the car
 4208_4	medium_shot	false	introduce	object§Walters bandage	
-4208_5	medium_shot	false	action	person§Walter	removes	object§Walters bandage
-4208_6	medium_shot	false	action	person§Mrs. Dietrichsen	fails to start	object§the car
+4208_5	medium_shot	false	action	person§Walter	removes		object§Walters bandage
+4208_6	medium_shot	false	action	person§Mrs. Dietrichsen	fails to start		object§the car
 4208_7	medium_shot	false	expresses	person§Mrs. Dietrichsen	concern
 4208_8	medium_shot	false	expresses	person§Walter	concern
-4208_9	medium_shot	false	action	person§Mrs. Dietrichsen	fails to start	object§the car
+4208_9	medium_shot	false	action	person§Mrs. Dietrichsen	fails to start		object§the car
 4208_10	medium_shot	false	expresses	person§Mrs. Dietrichsen	terror
 4208_11	medium_shot	false	expresses	person§Walter	concern
-4208_12	medium_shot	false	action	person§Walter	starts	object§the car
+4208_12	medium_shot	false	action	person§Walter	starts		object§the car
 4208_13	medium_shot	false	expresses	person§Mrs. Dietrichsen	relief
 4208_14	medium_shot	false	expresses	person§Walter	relief
 4208_15	medium_shot	false	action	person§Mrs. Dietrichsen	drives away	
-5398_1	long_shot	false	action	person§Mrs. Dietrichsen	drives	awayobject§the car
+5398_1	long_shot	false	action	person§Mrs. Dietrichsen	drives	away	object§the car

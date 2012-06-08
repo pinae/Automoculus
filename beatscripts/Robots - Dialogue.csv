@@ -4,24 +4,24 @@
 #Context:	person§Red, person§Green, 
 #EntityList:	place§Somewhere, person§Red, person§Green, 
 0_1	detail	false	introduce	place§Somewhere	
-0_2	detail	false	action	person§Red	walks to	person§Green
-70_1	detail	false	action	person§Red	turns to	person§Green
-90_1	detail	false	action	person§Red	walks to	person§Green
+0_2	detail	false	action	person§Red	walks to		person§Green
+70_1	detail	false	action	person§Red	turns to		person§Green
+90_1	detail	false	action	person§Red	walks to		person§Green
 118_1	detail	false	expresses	person§Green	surprise
-120_1	detail	false	says	person§Red	bla		person§Green
-170_1	detail	false	says	person§Green	bla		person§Red
-230_1	detail	false	says	person§Red	bla		person§Green
+120_1	detail	false	says	person§Red	bla	person§Green
+170_1	detail	false	says	person§Green	bla	person§Red
+230_1	detail	false	says	person§Red	bla	person§Green
 260_1	detail	false	expresses	person§Green	surprise
-270_1	detail	false	says	person§Green	bla		person§Red
+270_1	detail	false	says	person§Green	bla	person§Red
 305_1	detail	false	expresses	person§Red	surprise
-310_1	detail	false	says	person§Red	bla		person§Green
-335_1	detail	false	says	person§Green	bla		person§Red
-365_1	detail	false	says	person§Red	bla bla		person§Green
+310_1	detail	false	says	person§Red	bla	person§Green
+335_1	detail	false	says	person§Green	bla	person§Red
+365_1	detail	false	says	person§Red	bla bla	person§Green
 425_1	detail	false	expresses	person§Green	surprise
 440_1	detail	false	expresses	person§Red	anger
-490_1	detail	false	says	person§Green	bla		person§Red
-530_1	detail	false	says	person§Red	bla		person§Green
-600_1	detail	false	says	person§Green	bla		person§Red
+490_1	detail	false	says	person§Green	bla	person§Red
+530_1	detail	false	says	person§Red	bla	person§Green
+600_1	detail	false	says	person§Green	bla	person§Red
 620_1	detail	false	expresses	person§Red	surprise
-648_1	detail	false	says	person§Red	bla		person§Green
+648_1	detail	false	says	person§Red	bla	person§Green
 685_1	detail	false	action	person§Red	walks away	
