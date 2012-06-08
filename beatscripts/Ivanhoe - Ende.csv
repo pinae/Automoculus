@@ -3,118 +3,118 @@
 #FPS:	25
 #Context:	person§Ivanhoe, person§Brian de Bois-Guilbert, person§Rebecca, person§Rowena, person§prince john, person§Isaac of York, person§the audience, person§the judge, object§the flail, object§the axe, object§Ivanhoe's shield, object§Guilbert's Horse, place§battleground, 
 #EntityList:	person§Richard, person§Richard's knights, person§medic 1, person§medic 2, person§Ivanhoe, person§Brian de Bois-Guilbert, person§Rebecca, person§Rowena, person§prince john, person§Isaac of York, person§the audience, person§the judge, object§the flail, object§the axe, object§Ivanhoe's shield, object§Guilbert's Horse, place§battleground, 
-0_1	long_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flailperson§Ivanhoe
-0_2	long_shot	false	action	person§Ivanhoe	dodges	object§the flail
-0_3	long_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flailperson§Ivanhoe
-0_4	long_shot	false	action	person§Ivanhoe	dodges	object§the flail
+0_1	long_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flail	person§Ivanhoe
+0_2	long_shot	false	action	person§Ivanhoe	dodges		object§the flail
+0_3	long_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flail	person§Ivanhoe
+0_4	long_shot	false	action	person§Ivanhoe	dodges		object§the flail
 0_5	long_shot	false	action	person§Ivanhoe	falls down	
 89_1	closeup	false	expresses	person§Rebecca	sorrow
-89_2	closeup	true	action	person§Brian de Bois-Guilbert	hits	with the flailperson§Ivanhoe
-89_3	closeup	true	action	person§Ivanhoe	dodges	object§the flail
-89_4	closeup	false	says	person§Rebecca	Ivanhoe, god spare you!		person§Rebecca
-273_1	full_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flailperson§Ivanhoe
-273_2	full_shot	false	action	person§Ivanhoe	dodges	object§the flail
-273_3	full_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flailperson§Ivanhoe
-273_4	full_shot	false	action	person§Ivanhoe	dodges	object§the flail
+89_2	closeup	true	action	person§Brian de Bois-Guilbert	hits	with the flail	person§Ivanhoe
+89_3	closeup	true	action	person§Ivanhoe	dodges		object§the flail
+89_4	closeup	false	says	person§Rebecca	Ivanhoe, god spare you!	person§Rebecca
+273_1	full_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flail	person§Ivanhoe
+273_2	full_shot	false	action	person§Ivanhoe	dodges		object§the flail
+273_3	full_shot	false	action	person§Brian de Bois-Guilbert	hits	with the flail	person§Ivanhoe
+273_4	full_shot	false	action	person§Ivanhoe	dodges		object§the flail
 273_5	full_shot	false	action	person§Ivanhoe	falls down	
 394_1	closeup	false	expresses	person§Rowena	worry
-394_2	closeup	true	action	person§Brian de Bois-Guilbert	rides	object§Guilbert's Horse
-447_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards	person§Ivanhoe
-447_2	long_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-447_3	long_shot	false	action	person§Ivanhoe	rises	object§Ivanhoe's shield
-475_1	medium_shot	false	action	person§Ivanhoe	evades	object§the flail
-475_2	medium_shot	false	action	person§Ivanhoe	hits	person§Brian de Bois-Guilbert
+394_2	closeup	true	action	person§Brian de Bois-Guilbert	rides		object§Guilbert's Horse
+447_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards		person§Ivanhoe
+447_2	long_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+447_3	long_shot	false	action	person§Ivanhoe	rises		object§Ivanhoe's shield
+475_1	medium_shot	false	action	person§Ivanhoe	evades		object§the flail
+475_2	medium_shot	false	action	person§Ivanhoe	hits		person§Brian de Bois-Guilbert
 475_3	medium_shot	false	expresses	person§Ivanhoe	concentration
-535_1	american_shot	false	action	person§Brian de Bois-Guilbert	rides	wildlyobject§Guilbert's Horse
-535_2	american_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-535_3	american_shot	false	action	person§Ivanhoe	evades	object§the flail
-535_4	american_shot	false	action	person§Brian de Bois-Guilbert	turns	object§Guilbert's Horse
-630_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards	person§Ivanhoe
-630_2	long_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-630_3	long_shot	false	action	person§Ivanhoe	rises	object§Ivanhoe's shield
-686_1	american_shot	false	action	person§Ivanhoe	dodges	object§the flail
-686_2	american_shot	false	action	person§Ivanhoe	hits	person§Brian de Bois-Guilbert
-686_3	american_shot	false	action	person§Brian de Bois-Guilbert	dodges	object§the axe
+535_1	american_shot	false	action	person§Brian de Bois-Guilbert	rides	wildly	object§Guilbert's Horse
+535_2	american_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+535_3	american_shot	false	action	person§Ivanhoe	evades		object§the flail
+535_4	american_shot	false	action	person§Brian de Bois-Guilbert	turns		object§Guilbert's Horse
+630_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards		person§Ivanhoe
+630_2	long_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+630_3	long_shot	false	action	person§Ivanhoe	rises		object§Ivanhoe's shield
+686_1	american_shot	false	action	person§Ivanhoe	dodges		object§the flail
+686_2	american_shot	false	action	person§Ivanhoe	hits		person§Brian de Bois-Guilbert
+686_3	american_shot	false	action	person§Brian de Bois-Guilbert	dodges		object§the axe
 794_1	medium_shot	false	expresses	person§the judge	suspense
-794_2	medium_shot	true	action	person§Brian de Bois-Guilbert	rides	object§Guilbert's Horse
-845_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards	person§Ivanhoe
-845_2	long_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-845_3	long_shot	false	action	person§Ivanhoe	looses	object§Ivanhoe's shield
-845_4	long_shot	false	action	person§Brian de Bois-Guilbert	hits	far awayobject§Ivanhoe's shield
+794_2	medium_shot	true	action	person§Brian de Bois-Guilbert	rides		object§Guilbert's Horse
+845_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards		person§Ivanhoe
+845_2	long_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+845_3	long_shot	false	action	person§Ivanhoe	looses		object§Ivanhoe's shield
+845_4	long_shot	false	action	person§Brian de Bois-Guilbert	hits	far away	object§Ivanhoe's shield
 845_5	long_shot	false	action	person§Ivanhoe	ducks down	
-845_6	long_shot	false	action	person§Brian de Bois-Guilbert	turns	object§Guilbert's Horse
-845_7	long_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-845_8	long_shot	false	action	person§Ivanhoe	evades	object§the flail
+845_6	long_shot	false	action	person§Brian de Bois-Guilbert	turns		object§Guilbert's Horse
+845_7	long_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+845_8	long_shot	false	action	person§Ivanhoe	evades		object§the flail
 1011_1	closeup	false	expresses	person§Rowena	terror
-1043_1	long_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-1043_2	long_shot	false	action	person§Ivanhoe	evades	object§the flail
+1043_1	long_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+1043_2	long_shot	false	action	person§Ivanhoe	evades		object§the flail
 1043_3	long_shot	false	action	person§Ivanhoe	falls down	
 1105_1	closeup	false	expresses	person§Rebecca	terror
-1105_2	closeup	true	says	person§the audience	oooh!		person§the audience
-1147_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards	person§Ivanhoe
+1105_2	closeup	true	says	person§the audience	oooh!	person§the audience
+1147_1	long_shot	false	action	person§Brian de Bois-Guilbert	rides towards		person§Ivanhoe
 1147_2	long_shot	false	action	person§Ivanhoe	stands up	
-1171_1	medium_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
+1171_1	medium_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
 1171_2	medium_shot	false	expresses	person§Brian de Bois-Guilbert	certainty of success
-1191_1	closeup	false	action	person§Ivanhoe	catches	with his axeobject§the flail
-1223_1	full_shot	false	action	person§Ivanhoe	pulls	downperson§Brian de Bois-Guilbert
+1191_1	closeup	false	action	person§Ivanhoe	catches	with his axe	object§the flail
+1223_1	full_shot	false	action	person§Ivanhoe	pulls	down	person§Brian de Bois-Guilbert
 1223_2	full_shot	false	action	person§Brian de Bois-Guilbert	falls to the ground	
 1269_1	closeup	false	expresses	person§prince john	surprise
 1269_2	closeup	false	action	person§the audience	jumps up	
 1293_1	closeup	false	expresses	person§Rowena	enthusiasm
 1319_1	closeup	false	expresses	person§Rebecca	joy
-1345_1	full_shot	false	action	person§Brian de Bois-Guilbert	swings	object§the flail
-1345_2	full_shot	false	action	person§Ivanhoe	hits	in the faceperson§Brian de Bois-Guilbert
+1345_1	full_shot	false	action	person§Brian de Bois-Guilbert	swings		object§the flail
+1345_2	full_shot	false	action	person§Ivanhoe	hits	in the face	person§Brian de Bois-Guilbert
 1345_3	full_shot	false	action	person§Brian de Bois-Guilbert	falls down	
-1421_1	medium_shot	false	action	person§Ivanhoe	hits	person§Brian de Bois-Guilbert
+1421_1	medium_shot	false	action	person§Ivanhoe	hits		person§Brian de Bois-Guilbert
 1446_1	extreme_long_shot	false	introduce	person§Richard	
 1446_2	extreme_long_shot	false	introduce	person§Richard's knights	
-1446_3	extreme_long_shot	false	action	person§Richard	rides onto the	place§battleground
-1446_4	extreme_long_shot	false	action	person§Richard's knights	ride onto the	place§battleground
-1446_5	extreme_long_shot	false	action	person§Richard	stops before	person§prince john
+1446_3	extreme_long_shot	false	action	person§Richard	rides onto the		place§battleground
+1446_4	extreme_long_shot	false	action	person§Richard's knights	ride onto the		place§battleground
+1446_5	extreme_long_shot	false	action	person§Richard	stops before		person§prince john
 1788_1	long_shot	false	action	person§prince john	stands up	
-1788_2	long_shot	false	action	person§Richard's knights	array themselves behind	person§Richard
+1788_2	long_shot	false	action	person§Richard's knights	array themselves behind		person§Richard
 1879_1	closeup	false	expresses	person§Richard	nothing
 1957_1	medium_shot	false	expresses	person§prince john	disenchantment
-1957_2	medium_shot	false	action	person§prince john	knees for	person§Richard
+1957_2	medium_shot	false	action	person§prince john	knees for		person§Richard
 2180_1	closeup	false	expresses	person§Richard	satisfaction
-2225_1	american_shot	false	action	person§Isaac of York	hugs	person§Rebecca
+2225_1	american_shot	false	action	person§Isaac of York	hugs		person§Rebecca
 2225_2	american_shot	false	expresses	person§Rebecca	joy
 2225_3	american_shot	false	expresses	person§Rebecca	care
-2225_4	american_shot	false	action	person§Rebecca	walks towards	person§Ivanhoe
+2225_4	american_shot	false	action	person§Rebecca	walks towards		person§Ivanhoe
 2461_1	full_shot	false	introduce	person§medic 1	
 2461_2	full_shot	false	introduce	person§medic 2	
-2461_3	full_shot	false	action	person§medic 1	doctors	person§Brian de Bois-Guilbert
-2461_4	full_shot	false	action	person§medic 2	doctors	person§Brian de Bois-Guilbert
-2461_5	full_shot	false	action	person§Ivanhoe	considers	person§Brian de Bois-Guilbert
-2461_6	full_shot	false	action	person§Rebecca	considers	person§Brian de Bois-Guilbert
-2461_7	full_shot	false	action	person§Isaac of York	walks to	person§Rebecca
-2461_8	full_shot	false	action	person§Rebecca	turns to	person§Ivanhoe
+2461_3	full_shot	false	action	person§medic 1	doctors		person§Brian de Bois-Guilbert
+2461_4	full_shot	false	action	person§medic 2	doctors		person§Brian de Bois-Guilbert
+2461_5	full_shot	false	action	person§Ivanhoe	considers		person§Brian de Bois-Guilbert
+2461_6	full_shot	false	action	person§Rebecca	considers		person§Brian de Bois-Guilbert
+2461_7	full_shot	false	action	person§Isaac of York	walks to		person§Rebecca
+2461_8	full_shot	false	action	person§Rebecca	turns to		person§Ivanhoe
 2659_1	medium_shot	false	expresses	person§Rebecca	love
 2659_2	medium_shot	false	expresses	person§Ivanhoe	nothing
 2659_3	medium_shot	false	expresses	person§Rebecca	comprehension
-2766_1	full_shot	false	says	person§Brian de Bois-Guilbert	Rebecca!		person§Rebecca
-2766_2	full_shot	false	action	person§Rebecca	knees down to	person§Brian de Bois-Guilbert
-2869_1	medium_shot	false	says	person§Brian de Bois-Guilbert	Who would blame the fates, that it was I who loved you alone.		person§Rebecca
+2766_1	full_shot	false	says	person§Brian de Bois-Guilbert	Rebecca!	person§Rebecca
+2766_2	full_shot	false	action	person§Rebecca	knees down to		person§Brian de Bois-Guilbert
+2869_1	medium_shot	false	says	person§Brian de Bois-Guilbert	Who would blame the fates, that it was I who loved you alone.	person§Rebecca
 3006_1	medium_shot	false	expresses	person§Rebecca	pity
-3006_2	medium_shot	false	says	person§Brian de Bois-Guilbert	But you were always mine. Doomed am I. God keep you.		person§Rebecca
+3006_2	medium_shot	false	says	person§Brian de Bois-Guilbert	But you were always mine. Doomed am I. God keep you.	person§Rebecca
 3006_3	medium_shot	false	action	person§Brian de Bois-Guilbert	dies	
 3488_1	american_shot	false	action	person§Rebecca	stands up	
 3488_2	american_shot	false	expresses	person§Rebecca	sorrow
-3488_3	american_shot	false	says	person§Rebecca	Mylady. In death he spoke the truth.		person§Rowena
-3488_4	american_shot	false	says	person§Rowena	bla		person§Rebecca
-3840_1	closeup	false	says	person§Rebecca	bla		person§Rowena
-4221_1	closeup	false	action	person§Rebecca	hugs	person§Rowena
+3488_3	american_shot	false	says	person§Rebecca	Mylady. In death he spoke the truth.	person§Rowena
+3488_4	american_shot	false	says	person§Rowena	bla	person§Rebecca
+3840_1	closeup	false	says	person§Rebecca	bla	person§Rowena
+4221_1	closeup	false	action	person§Rebecca	hugs		person§Rowena
 4221_2	closeup	false	expresses	person§Rowena	affection
 4267_1	closeup	false	expresses	person§Ivanhoe	nothing
 4328_1	closeup	false	expresses	person§Rebecca	sorrow
-4328_2	closeup	false	action	person§Rowena	frees herself from the hug with	person§Rebecca
-4445_1	american_shot	false	action	person§Isaac of York	lays his arm around	person§Rebecca
+4328_2	closeup	false	action	person§Rowena	frees herself from the hug with		person§Rebecca
+4445_1	american_shot	false	action	person§Isaac of York	lays his arm around		person§Rebecca
 4445_2	american_shot	false	action	person§Rebecca	leaves	
 4445_3	american_shot	false	action	person§Isaac of York	leaves	
-4518_1	extreme_long_shot	false	says	person§Richard	bla		person§the audience
-4578_1	closeup	false	says	person§Richard	bla		person§the audience
-4640_1	extreme_long_shot	false	says	person§Richard	bla		person§the audience
+4518_1	extreme_long_shot	false	says	person§Richard	bla	person§the audience
+4578_1	closeup	false	says	person§Richard	bla	person§the audience
+4640_1	extreme_long_shot	false	says	person§Richard	bla	person§the audience
 4640_2	extreme_long_shot	false	action	person§the audience	stands up	
 4841_1	closeup	false	expresses	person§Ivanhoe	affection
 4841_2	closeup	false	expresses	person§Rowena	joy
-4908_1	extreme_long_shot	false	action	person§the audience	waves for	person§Richard
+4908_1	extreme_long_shot	false	action	person§the audience	waves for		person§Richard

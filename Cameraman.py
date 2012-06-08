@@ -7,6 +7,7 @@ import bpy
 
 import subprocess
 import pickle
+import time
 
 from Config import PROJECT_PATH, SHOT_NAMES
 from SceneSnapshot import Object, Person, Place, Camera, SceneSnapshot

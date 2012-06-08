@@ -20,205 +20,205 @@
 1022_3	long_shot	false	show	person§Ivanhoe	
 1022_4	long_shot	false	expresses	person§Ivanhoe	unease
 1122_1	long_shot	false	introduce	person§the judge	
-1122_2	long_shot	false	action	person§the judge	rides in front of	person§Rebecca
-1316_1	full_shot	false	says	person§the judge	Bla		person§Ivanhoe	person§Brian De Bois-Guilbert
+1122_2	long_shot	false	action	person§the judge	rides in front of		person§Rebecca
+1316_1	full_shot	false	says	person§the judge	Bla	person§Ivanhoe	person§Brian De Bois-Guilbert
 1683_1	full_shot	false	show	person§the shooters	
-1683_2	full_shot	false	says	person§the judge	... bla		person§Ivanhoe	person§Brian De Bois-Guilbert
-1742_1	long_shot	false	action	person§Brian De Bois-Guilbert	turns towards	person§Rebecca
-1742_2	long_shot	false	says	person§Brian De Bois-Guilbert	Bla		person§Rebecca
+1683_2	full_shot	false	says	person§the judge	... bla	person§Ivanhoe	person§Brian De Bois-Guilbert
+1742_1	long_shot	false	action	person§Brian De Bois-Guilbert	turns towards		person§Rebecca
+1742_2	long_shot	false	says	person§Brian De Bois-Guilbert	Bla	person§Rebecca
 2052_1	closeup	false	expresses	person§Brian De Bois-Guilbert	sincerity
-2052_2	closeup	false	says	person§Brian De Bois-Guilbert	Bla		person§Rebecca
+2052_2	closeup	false	says	person§Brian De Bois-Guilbert	Bla	person§Rebecca
 2464_1	closeup	false	expresses	person§Rebecca	thoughtfulness
-2464_2	closeup	false	action	person§Rebecca	looks to	person§Ivanhoe
+2464_2	closeup	false	action	person§Rebecca	looks to		person§Ivanhoe
 2523_1	closeup	false	expresses	person§Ivanhoe	severity
-2523_2	closeup	false	action	person§Ivanhoe	looks to	person§Rebecca
+2523_2	closeup	false	action	person§Ivanhoe	looks to		person§Rebecca
 2586_1	closeup	false	expresses	person§Rebecca	unsureness
 2586_2	closeup	false	expresses	person§Rebecca	decisiveness
-2586_3	closeup	false	says	person§Rebecca	We're all in Gods hands.		person§Brian De Bois-Guilbert
+2586_3	closeup	false	says	person§Rebecca	We're all in Gods hands.	person§Brian De Bois-Guilbert
 2811_1	closeup	false	expresses	person§Brian De Bois-Guilbert	anger
-2811_2	closeup	false	says	person§Brian De Bois-Guilbert	Bla		person§Rebecca
+2811_2	closeup	false	says	person§Brian De Bois-Guilbert	Bla	person§Rebecca
 2977_1	closeup	false	expresses	person§Rebecca	worry
-2977_2	closeup	false	action	person§Rebecca	looks to	person§Ivanhoe
+2977_2	closeup	false	action	person§Rebecca	looks to		person§Ivanhoe
 3036_1	closeup	false	expresses	person§Ivanhoe	severity
-3036_2	closeup	false	action	person§Ivanhoe	looks to	person§Brian De Bois-Guilbert
+3036_2	closeup	false	action	person§Ivanhoe	looks to		person§Brian De Bois-Guilbert
 3100_1	closeup	false	expresses	person§Brian De Bois-Guilbert	severity
-3151_1	full_shot	false	says	person§the judge	Bla		person§Brian De Bois-Guilbert
-3423_1	american_shot	false	says	person§Brian De Bois-Guilbert	Bla		person§the judge
+3151_1	full_shot	false	says	person§the judge	Bla	person§Brian De Bois-Guilbert
+3423_1	american_shot	false	says	person§Brian De Bois-Guilbert	Bla	person§the judge
 3423_2	american_shot	false	introduce	person§Guilbert's servant	
 3423_3	american_shot	false	introduce	object§the flail	
-3423_4	american_shot	false	action	person§Guilbert's servant	brings	object§the flail
+3423_4	american_shot	false	action	person§Guilbert's servant	brings		object§the flail
 3567_1	closeup	false	expresses	person§Rebecca	worry
-3567_2	closeup	false	action	person§Rebecca	looks to	object§the flail
+3567_2	closeup	false	action	person§Rebecca	looks to		object§the flail
 3609_1	detail	false	show	object§the flail	
 3670_1	closeup	false	expresses	person§Rebecca	worry
-3716_1	full_shot	false	says	person§the judge	Bla		person§Ivanhoe
-3879_1	american_shot	false	says	person§Ivanhoe	I choose the axe.		person§the judge
+3716_1	full_shot	false	says	person§the judge	Bla	person§Ivanhoe
+3879_1	american_shot	false	says	person§Ivanhoe	I choose the axe.	person§the judge
 3879_2	american_shot	false	action	person§Ivanhoe	looks to the side	
 3879_3	american_shot	false	introduce	person§the servant of Ivanhoe	
 3879_4	american_shot	false	introduce	object§the axe	
-3879_5	american_shot	false	action	person§the servant of Ivanhoe	brings	object§the axe
-3879_6	american_shot	false	action	person§Ivanhoe	looks at	object§the axe
+3879_5	american_shot	false	action	person§the servant of Ivanhoe	brings		object§the axe
+3879_6	american_shot	false	action	person§Ivanhoe	looks at		object§the axe
 4025_1	closeup	false	expresses	person§Rebecca	concern
 4072_1	detail	false	show	object§the axe	
 4131_1	closeup	false	expresses	person§Rebecca	worry
-4131_2	closeup	false	action	person§Rebecca	looks to	person§Ivanhoe
-4210_1	long_shot	false	says	person§the judge	Bla		person§Ivanhoe	person§Brian De Bois-Guilbert
+4131_2	closeup	false	action	person§Rebecca	looks to		person§Ivanhoe
+4210_1	long_shot	false	says	person§the judge	Bla	person§Ivanhoe	person§Brian De Bois-Guilbert
 4210_2	long_shot	false	expresses	person§Rebecca	nervousness
 4473_1	long_shot	false	introduce	object§Guilbert's horse	
 4473_2	long_shot	false	introduce	object§Ivanhoe's horse	
-4473_3	long_shot	false	action	person§Brian De Bois-Guilbert	rides to	person§the judge
-4473_4	long_shot	false	action	person§Ivanhoe	rides to	person§the judge
+4473_3	long_shot	false	action	person§Brian De Bois-Guilbert	rides to		person§the judge
+4473_4	long_shot	false	action	person§Ivanhoe	rides to		person§the judge
 4473_5	long_shot	false	action	person§the judge	lifts his arm	
 4473_6	long_shot	false	action	person§prince john	stands up	
 4473_7	long_shot	false	action	person§the audience	stands up	
-4473_8	long_shot	false	says	person§the judge	May God defend the right!		person§Ivanhoe	person§Brian De Bois-Guilbert	person§the audience	person§prince john
+4473_8	long_shot	false	says	person§the judge	May God defend the right!	person§Ivanhoe	person§Brian De Bois-Guilbert	person§the audience	person§prince john
 4790_1	closeup	false	expresses	person§Rebecca	weltschmerz
 4887_1	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	rides to the edge of the battleground	
 4887_2	extreme_long_shot	false	action	person§Ivanhoe	rides to the edge of the battleground	
 5156_1	american_shot	false	expresses	person§Ivanhoe	readyness
 5217_1	american_shot	false	expresses	person§Brian De Bois-Guilbert	determination
 5286_1	american_shot	false	expresses	person§the judge	patience
-5286_2	american_shot	false	action	person§the judge	looks from	to Ivanhoeperson§Brian De Bois-Guilbert
+5286_2	american_shot	false	action	person§the judge	looks from	to Ivanhoe	person§Brian De Bois-Guilbert
 5348_1	full_shot	false	show	person§the shooters	
 5348_2	full_shot	false	action	person§the drummers	drum	
 5420_1	american_shot	false	action	person§the judge	signals	readyness
 5497_1	medium_shot	false	action	person§prince john	signals	start
 5554_1	american_shot	false	action	person§the judge	signals	start
-5628_1	extreme_long_shot	false	action	person§Ivanhoe	rides against	person§Brian De Bois-Guilbert
-5628_2	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	rides against	person§Ivanhoe
-5628_3	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	swings	object§the flail
-5628_4	extreme_long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-5628_5	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-5628_6	extreme_long_shot	false	action	person§Ivanhoe	rides around	person§Brian De Bois-Guilbert
+5628_1	extreme_long_shot	false	action	person§Ivanhoe	rides against		person§Brian De Bois-Guilbert
+5628_2	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	rides against		person§Ivanhoe
+5628_3	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	swings		object§the flail
+5628_4	extreme_long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+5628_5	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+5628_6	extreme_long_shot	false	action	person§Ivanhoe	rides around		person§Brian De Bois-Guilbert
 5628_7	extreme_long_shot	false	action	person§Brian De Bois-Guilbert	turns his horse	
-5827_1	full_shot	false	action	person§Ivanhoe	rides towards	person§Brian De Bois-Guilbert
-5827_2	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-5827_3	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+5827_1	full_shot	false	action	person§Ivanhoe	rides towards		person§Brian De Bois-Guilbert
+5827_2	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+5827_3	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 5827_4	full_shot	false	action	person§Brian De Bois-Guilbert	turns his horse	
 5827_5	full_shot	false	action	person§Ivanhoe	turns his horse	
-5827_6	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-5827_7	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-5827_8	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-5956_1	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-5956_2	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-5956_3	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-5956_4	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6040_1	medium_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6040_2	medium_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6040_3	medium_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+5827_6	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+5827_7	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+5827_8	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+5956_1	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+5956_2	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+5956_3	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+5956_4	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6040_1	medium_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6040_2	medium_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6040_3	medium_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 6108_1	medium_shot	false	expresses	person§Rowena	concern
-6108_2	medium_shot	true	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6165_1	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+6108_2	medium_shot	true	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6165_1	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 6165_2	full_shot	false	action	person§Ivanhoe	rides to the right	
 6165_3	full_shot	false	action	person§Brian De Bois-Guilbert	turns his horse	
-6165_4	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+6165_4	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 6165_5	full_shot	false	action	person§Ivanhoe	rides away	
-6165_6	full_shot	false	action	person§Brian De Bois-Guilbert	rides to	person§Ivanhoe
-6165_7	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+6165_6	full_shot	false	action	person§Brian De Bois-Guilbert	rides to		person§Ivanhoe
+6165_7	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 6165_8	full_shot	false	action	person§Ivanhoe	turns his horse	
 6165_9	full_shot	false	action	person§Brian De Bois-Guilbert	turns his horse	
 6165_10	full_shot	false	action	person§Ivanhoe	rides to the middle of the battlefield	
 6165_11	full_shot	false	action	person§Brian De Bois-Guilbert	rides to the middle of the battlefield	
-6165_12	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6165_13	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6165_14	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6165_15	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6165_16	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6165_17	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6165_18	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+6165_12	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6165_13	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6165_14	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6165_15	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6165_16	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6165_17	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6165_18	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 6547_1	medium_shot	false	expresses	person§prince john	discontent
-6547_2	medium_shot	true	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6547_3	medium_shot	true	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6616_1	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6616_2	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6616_3	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6616_4	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6616_5	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6616_6	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+6547_2	medium_shot	true	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6547_3	medium_shot	true	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6616_1	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6616_2	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6616_3	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6616_4	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6616_5	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6616_6	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
 6733_1	closeup	false	expresses	person§Rebecca	fear
 6733_2	closeup	true	action	person§Ivanhoe	rides	
 6733_3	closeup	true	action	person§Brian De Bois-Guilbert	rides	
-6809_1	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6809_2	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6809_3	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6809_4	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6809_5	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6809_6	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+6809_1	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6809_2	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6809_3	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6809_4	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6809_5	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6809_6	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 6915_1	medium_shot	false	expresses	person§Isaac of York	concern
 6915_2	medium_shot	true	action	person§Ivanhoe	rides	
 6915_3	medium_shot	true	action	person§Brian De Bois-Guilbert	rides	
 6957_1	full_shot	false	action	person§Ivanhoe	rides	
 6957_2	full_shot	false	action	person§Brian De Bois-Guilbert	rides	
-6957_3	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6957_4	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6957_5	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6957_6	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6957_7	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6957_8	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-6957_9	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-6957_10	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+6957_3	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6957_4	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6957_5	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6957_6	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6957_7	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6957_8	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+6957_9	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+6957_10	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
 7137_1	closeup	false	expresses	person§Rowena	fear
-7137_2	closeup	true	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7187_1	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7187_2	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7187_3	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7187_4	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7187_5	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7187_6	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7187_7	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7296_1	medium_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7296_2	medium_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7296_3	medium_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7363_1	closeup	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7397_1	closeup	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7397_2	closeup	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7397_3	closeup	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7432_1	closeup	false	action	person§Brian De Bois-Guilbert	swings	object§the flail
-7473_1	closeup	false	action	person§Ivanhoe	blocks	person§Brian De Bois-Guilbert
-7473_2	closeup	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+7137_2	closeup	true	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7187_1	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7187_2	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7187_3	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7187_4	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7187_5	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7187_6	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7187_7	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7296_1	medium_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7296_2	medium_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7296_3	medium_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7363_1	closeup	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7397_1	closeup	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7397_2	closeup	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7397_3	closeup	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7432_1	closeup	false	action	person§Brian De Bois-Guilbert	swings		object§the flail
+7473_1	closeup	false	action	person§Ivanhoe	blocks		person§Brian De Bois-Guilbert
+7473_2	closeup	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
 7501_1	full_shot	false	action	person§Brian De Bois-Guilbert	rides backwards	
-7501_2	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+7501_2	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 7529_1	closeup	false	expresses	person§Rebecca	fear
-7529_2	closeup	true	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7569_1	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7569_2	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7569_3	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+7529_2	closeup	true	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7569_1	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7569_2	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7569_3	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
 7569_4	american_shot	false	action	person§Brian De Bois-Guilbert	rides backwards	
-7569_5	american_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7569_6	american_shot	false	action	person§Ivanhoe	rides to	person§Brian De Bois-Guilbert
-7569_7	american_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+7569_5	american_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7569_6	american_shot	false	action	person§Ivanhoe	rides to		person§Brian De Bois-Guilbert
+7569_7	american_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
 7695_1	medium_shot	false	expresses	person§prince john	tension
-7695_2	medium_shot	true	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-7695_3	medium_shot	true	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7756_1	full_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-7756_2	full_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+7695_2	medium_shot	true	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+7695_3	medium_shot	true	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7756_1	full_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+7756_2	full_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 7756_3	full_shot	false	action	person§Ivanhoe	rides away	
-7756_4	full_shot	false	action	person§Brian De Bois-Guilbert	rides to	person§Ivanhoe
-7861_1	long_shot	false	action	person§Brian De Bois-Guilbert	tries to hit	person§Ivanhoe
-7861_2	long_shot	false	action	person§Ivanhoe	evades	person§Brian De Bois-Guilbert
-7861_3	long_shot	false	action	person§Ivanhoe	falls from	object§Ivanhoe's horse
+7756_4	full_shot	false	action	person§Brian De Bois-Guilbert	rides to		person§Ivanhoe
+7861_1	long_shot	false	action	person§Brian De Bois-Guilbert	tries to hit		person§Ivanhoe
+7861_2	long_shot	false	action	person§Ivanhoe	evades		person§Brian De Bois-Guilbert
+7861_3	long_shot	false	action	person§Ivanhoe	falls from		object§Ivanhoe's horse
 7929_1	closeup	false	action	person§Ivanhoe	falls to the ground	
 7929_2	closeup	false	expresses	person§Ivanhoe	tension
 7957_1	closeup	false	expresses	person§Rebecca	scaredness
-7957_2	closeup	false	says	person§Rebecca	oh!		person§Rebecca
+7957_2	closeup	false	says	person§Rebecca	oh!	person§Rebecca
 7989_1	closeup	false	expresses	person§Rowena	dismay
 8042_1	long_shot	false	action	person§Ivanhoe	stands up	
-8042_2	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-8123_1	full_shot	false	action	person§Ivanhoe	picks up	object§the axe
-8123_2	full_shot	false	action	person§Ivanhoe	turns towards	person§Brian De Bois-Guilbert
-8163_1	long_shot	false	action	person§Brian De Bois-Guilbert	rides to	person§Ivanhoe
-8163_2	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+8042_2	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+8123_1	full_shot	false	action	person§Ivanhoe	picks up		object§the axe
+8123_2	full_shot	false	action	person§Ivanhoe	turns towards		person§Brian De Bois-Guilbert
+8163_1	long_shot	false	action	person§Brian De Bois-Guilbert	rides to		person§Ivanhoe
+8163_2	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 8163_3	long_shot	false	action	person§Ivanhoe	blocks	
-8263_1	american_shot	false	says	person§the judge	Bla, don't hit the horse!		person§Ivanhoe
-8329_1	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
+8263_1	american_shot	false	says	person§the judge	Bla, don't hit the horse!	person§Ivanhoe
+8329_1	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
 8329_2	long_shot	false	action	person§Ivanhoe	falls to the ground	
 8431_1	closeup	false	expresses	person§prince john	fun
-8431_2	closeup	true	says	person§the audience	oooh!		person§Ivanhoe
-8481_1	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-8481_2	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+8431_2	closeup	true	says	person§the audience	oooh!	person§Ivanhoe
+8481_1	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+8481_2	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
 8481_3	long_shot	false	action	person§Brian De Bois-Guilbert	rides forwards	
 8481_4	long_shot	false	action	person§Ivanhoe	turns around	
-8481_5	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-8481_6	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
-8481_7	long_shot	false	action	person§Brian De Bois-Guilbert	hits	person§Ivanhoe
-8481_8	long_shot	false	action	person§Ivanhoe	hits	person§Brian De Bois-Guilbert
+8481_5	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+8481_6	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
+8481_7	long_shot	false	action	person§Brian De Bois-Guilbert	hits		person§Ivanhoe
+8481_8	long_shot	false	action	person§Ivanhoe	hits		person§Brian De Bois-Guilbert
