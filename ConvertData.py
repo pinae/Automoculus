@@ -8,7 +8,7 @@ import random
 import sys
 
 import Features
-from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, LONG_SHOT, EXTREME_LONG_SHOT
+from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, LONG_SHOT, EXTREME_LONG_SHOT, BEAT_TYPE_NAMES, DEMONSTRAT_TYPE_NAMES
 from Config import SHOT_NAMES
 #from Config import BEAT_TYPE_NAMES, DEMONSTRAT_TYPE_NAMES
 from Config import INTRODUCE, EXPRESS, SAYS, ACTION, SHOW
@@ -20,10 +20,15 @@ class Entity:
     entityType = {"person": PERSON, "object": OBJECT, "place": PLACE}
 
     def __init__(self, text):
-        splitText = text.split("§")
+        splitText = text.strip().split("§")
         self.type = self.entityType[splitText[0]]
         self.name = splitText[1]
 
+    def __str__(self):
+        return DEMONSTRAT_TYPE_NAMES[self.type] + "§" + self.name
+
+    def __repr__(self):
+        return "<Entity: " + str(self) + ">"
 
 class Beat:
     beatType = {"introduce": INTRODUCE, "expresses": EXPRESS, "says": SAYS, "action": ACTION,
@@ -44,10 +49,17 @@ class Beat:
         self.type = self.beatType[splitText[3]]
         self.subject = entityFactory(splitText[4], context)
         self.linetarget = False
-        if self.type == SAYS:
+        if self.type in [SAYS, ACTION]:
             linetargetText = splitText[5].strip('\t').split("\t")[1]
             if len(linetargetText) >= 8:
                 self.linetarget = entityFactory(linetargetText, context)
+
+    def __str__(self):
+        return str(self.shotId) + "_" + str(self.beatId) + ": " + BEAT_TYPE_NAMES[self.type]
+
+    def __repr__(self):
+        return "<Beat " + str(self) + ">"
+
 
 # =============================== Methods ======================================
 
