@@ -5,37 +5,51 @@
 from copy import deepcopy
 from multiprocessing import Process, Queue, Lock
 #import random
+#import sys
+
+import ConvertData
+import orange, orngTree
+import numpy as np
+
+from ConvertData import getSingleFeatureLine
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
 from Config import SHOT_NAMES, TRAIN_FILES, CLOSEUP, ACTION, SAYS, MEDIUM_SHOT, EXPRESS
 #from Config import FULL_SHOT
 from Config import SHOW, INTRODUCE, DETAIL, AMERICAN_SHOT
-import ConvertData
-import orange, orngTree
-import numpy as np
-#import sys
 
 # =============================== Methods ======================================
 def getTrainingExamples(domain, files, shot, leaveoutfeature=-1):
+    '''
+    Returns an orange.ExampleTable with the featureLines converted from all the beatscripts mentioned in files.
+    '''
     examples = orange.ExampleTable(domain)
     for file in files:
         featureLines = ConvertData.getFeatureLinesFromFile(file, shot, leaveout=leaveoutfeature)
         #featureLines = ConvertData.getFeatureLinesFromFileAndModify(file, shot)
-        for line in featureLines:
-            examples.append(orange.Example(domain, line))
+        for featureLine in featureLines:
+            examples.append(orange.Example(domain, featureLine))
             #print line
     return examples
 
 
 def getTestExamples(domain, file, shot, leaveoutfeature=-1):
+    '''
+    Returns an ExampleTable with featureLines converted from the given File.
+    '''
     examples = orange.ExampleTable(domain)
     featureLines = ConvertData.getFeatureLinesFromFile(file, shot, leaveout=leaveoutfeature)
     for line in featureLines:
         examples.append(orange.Example(domain, line))
     return examples
 
+def getTestExample(domain, context, blockList, decisions, shot):
+    featureLine = getSingleFeatureLine(context, blockList, decisions, shot)
+    return orange.Example(domain, featureLine)
 
-def getNormalizationTerms(domain, shot, featureleaveout=-1):
-    referenceData = getTrainingExamples(domain, TRAIN_FILES, shot, featureleaveout)
+def getNormalizationTerms(referenceData):
+    '''
+    Returns (means, vars) for an ExampleTable given in referenceData.
+    '''
     a, c, w = referenceData.to_numpy()
     means = a.mean(0)
     vars = a.var(0) + 0.00000001
@@ -43,6 +57,9 @@ def getNormalizationTerms(domain, shot, featureleaveout=-1):
 
 
 def normalizeData(domain, trainData, means, vars):
+    '''
+    Returns an ExampleTable with normalized Numbers.
+    '''
     a, c, w = trainData.to_numpy()
     a = (a - means) / vars
     A = np.hstack((a, c.reshape(-1, 1)))
@@ -66,6 +83,9 @@ def normalizeDist(distribution):
 
 
 def smoothDistribution(dist):
+    '''
+    Returns a similar distribution which has values > 0 if neighbouring values of the original distribution were > 0.
+    '''
     smoothed = [dist[0]]
     for i in range(1, len(dist)):
         value = 0.6 * dist[i]
@@ -77,13 +97,19 @@ def smoothDistribution(dist):
     return smoothed
 
 
-def trainTree(lock, trainingData, returnQueue):
+def trainTree(trainingData, returnQueue, lock=None):
+    '''
+    Returns a TreeLearner object trained with the given training_data.
+    The object is also placed in the returnQueue.
+    The lock is used for printing and nothing else.
+    '''
     tree = orngTree.TreeLearner(trainingData, mForPruning=2)
     returnQueue.put(tree)
     returnQueue.close()
-    lock.acquire()
-    print("Training for Decision Tree finished.")
-    lock.release()
+    if lock:
+        lock.acquire()
+        print("Training for Decision Tree finished.")
+        lock.release()
     return tree
 
 
@@ -234,6 +260,33 @@ def classifyForCutting(domain, beatscript, classifiers, history, means, vars):
     return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
 
 
+def XValidation(files):
+    domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
+    reference_data = getTrainingExamples(domain, TRAIN_FILES, True)
+    means, vars = getNormalizationTerms(reference_data)
+    for file in files:
+        print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
+              "% fertig.")
+        training_set = [f for f in files if f != file]
+        training_data = getTrainingExamples(domain, training_set, True)
+        training_data = normalizeData(domain, training_data, means, vars)
+        queue = Queue()
+        trained_tree = trainTree(training_data,queue)
+        print("Training finished for: "+file)
+        context, beatList = getContextAndBeatListFromFile(file)
+        blockList = coalesceBeats(beatList)
+        part_blockList = []
+        decisions = []
+        for block in blockList:
+            part_blockList.append(block)
+            datum = getTestExample(domain, context, part_blockList, decisions, True)
+            tree_classification = trained_tree(datum)
+            decisions.append(tree_classification)
+            print("Tree Classification:\t"+str(tree_classification))
+            print("Correct Class:\t\t\t"+str(datum.getclass()))
+            print("------------------------------------")
+        print("__________________________________________")
+
 def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
     shot = orange.EnumVariable(name="Shot", values=SHOT_NAMES)
     treePerformances = []
@@ -257,7 +310,8 @@ def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
             if f != file: trainingSet.append(f)
         testSet = [file]
         trainingData = getTrainingExamples(domain, trainingSet, True, featureleaveout)
-        means, vars = getNormalizationTerms(domain, True, featureleaveout)
+        referenceData = getTrainingExamples(domain, TRAIN_FILES, shot, featureleaveout)
+        means, vars = getNormalizationTerms(referenceData)
         trainingData = normalizeData(domain, trainingData, means, vars)
         cutTrainingData = getTrainingExamples(getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']), featureleaveout),
                                               trainingSet, False, featureleaveout)
@@ -265,7 +319,7 @@ def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
                                         cutTrainingData, means, vars)
         lock = Lock()
         treeReturnQueue = Queue()
-        treeLearningProcess = Process(target=trainTree, args=(lock, trainingData, treeReturnQueue))
+        treeLearningProcess = Process(target=trainTree, args=(trainingData, treeReturnQueue, lock))
         treeLearningProcess.start()
         cutReturnQueue = Queue()
         cutLearningProcess = Process(target=trainSVM, args=(lock, cutTrainingData, cutReturnQueue))
@@ -484,6 +538,9 @@ def main():
     for line in results:
         print(line)
 
+def new_main():
+    XValidation(TRAIN_FILES)
+
 
 if __name__ == "__main__":
-    main()
+    new_main()#main()

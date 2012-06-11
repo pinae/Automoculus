@@ -114,6 +114,12 @@ def readBeatscript(textFile, context):
     return beatList
 
 def isSplittingPoint(block, nextBeat):
+    '''
+    There is certainly a splitting point, where the shotId changes.
+    If there was an introduce or a show-Beat before and the shotId is the same, there is no split.
+    If there was speech or action before, then there is a split.
+    If speech or action is coming and the subjects change, there is a split.
+    '''
     if not len(block): return False
     lastBeat = block[-1]
     if lastBeat.shotId != nextBeat.shotId: return True
@@ -125,6 +131,12 @@ def isSplittingPoint(block, nextBeat):
     else: return True
 
 def coalesceBeats(beatList):
+    '''
+    Returns a blockList for a given beatList. This function uses isSplittingPoint which tries to determine which
+    Beats in a row can be collected into the same block. This is never the case if the Beats share the same shotId.
+    If the shotId is the same, the Blocks are only split if there was speech or action before or if speech or
+    action is coming and the subjects change.
+    '''
     blockList = []
     block = []
     for beat in beatList:
@@ -137,6 +149,10 @@ def coalesceBeats(beatList):
     return blockList
 
 def getContextAndBeatListFromFile(file):
+    '''
+    This function reads the file, extracts a context with readContext and a beatList with readBeatscript.
+    context and beatList is returned.
+    '''
     beatscriptFile = open(file, "r")
     lines = beatscriptFile.readlines()
     context = readContext(lines)

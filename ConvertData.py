@@ -30,6 +30,11 @@ def createDataLine(context, block, leaveout=-1):
 
 
 def getFeatureLine(context, block, shot, lastShotId, leaveout=-1):
+    '''
+    This Function creates a featureLine. This is done by calculating getNumbers() for all Feature-Classes in
+     Features.py and appending the desired class. A featureLine consists of several Numbers and a String at the
+     end for the class.
+    '''
     line = []
     featureClassList = Features.getAllFeatureClasses()
     context = Features.createBeatlist(context, block)
@@ -63,6 +68,9 @@ def getFeatureNames(leaveout=-1):
 
 
 def createFeatureLines(context, beatList, shot, leaveout=-1):
+    '''
+    Returns the list of featureLines converted from the Beats in beatList
+    '''
     featureLines = []
     blockList = coalesceBeats(beatList)
     Features.initializeContextVars(context)
@@ -75,6 +83,9 @@ def createFeatureLines(context, beatList, shot, leaveout=-1):
 
 
 def getFeatureLinesFromFile(file, shot, leaveout=-1):
+    '''
+    Returns a list of featureLines converted from the beatscript given in file.
+    '''
     context, beatList = getContextAndBeatListFromFile(file)
     return createFeatureLines(context, beatList, shot, leaveout)
 
@@ -128,6 +139,9 @@ def getSingleFeatureLineFromFile(file, decisions, shot, leave_out=-1):
     return featureLine
 
 def getSingleFeatureLine(context, blockList, decisions, shot, leave_out=-1):
+    '''
+    Returns a featureLine based on the context and the decisions.
+    '''
     Features.initializeContextVars(context)
     lastShotId, context, blockList = applyDecisionsToBeatscript(context, blockList, decisions)
     featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
