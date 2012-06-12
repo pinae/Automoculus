@@ -19,9 +19,9 @@ from Config import SHOW, INTRODUCE, DETAIL, AMERICAN_SHOT
 
 # =============================== Methods ======================================
 def getTrainingExamples(domain, files, shot, leaveoutfeature=-1):
-    '''
+    """
     Returns an orange.ExampleTable with the featureLines converted from all the beatscripts mentioned in files.
-    '''
+    """
     examples = orange.ExampleTable(domain)
     for file in files:
         featureLines = ConvertData.getFeatureLinesFromFile(file, shot, leaveout=leaveoutfeature)
@@ -33,9 +33,9 @@ def getTrainingExamples(domain, files, shot, leaveoutfeature=-1):
 
 
 def getTestExamples(domain, file, shot, leaveoutfeature=-1):
-    '''
+    """
     Returns an ExampleTable with featureLines converted from the given File.
-    '''
+    """
     examples = orange.ExampleTable(domain)
     featureLines = ConvertData.getFeatureLinesFromFile(file, shot, leaveout=leaveoutfeature)
     for line in featureLines:
@@ -47,9 +47,9 @@ def getTestExample(domain, context, blockList, decisions, shot):
     return orange.Example(domain, featureLine)
 
 def getNormalizationTerms(referenceData):
-    '''
+    """
     Returns (means, vars) for an ExampleTable given in referenceData.
-    '''
+    """
     a, c, w = referenceData.to_numpy()
     means = a.mean(0)
     vars = a.var(0) + 0.00000001
@@ -57,9 +57,9 @@ def getNormalizationTerms(referenceData):
 
 
 def normalizeData(domain, trainData, means, vars):
-    '''
+    """
     Returns an ExampleTable with normalized Numbers.
-    '''
+    """
     a, c, w = trainData.to_numpy()
     a = (a - means) / vars
     A = np.hstack((a, c.reshape(-1, 1)))
@@ -83,9 +83,9 @@ def normalizeDist(distribution):
 
 
 def smoothDistribution(dist):
-    '''
+    """
     Returns a similar distribution which has values > 0 if neighbouring values of the original distribution were > 0.
-    '''
+    """
     smoothed = [dist[0]]
     for i in range(1, len(dist)):
         value = 0.6 * dist[i]
@@ -97,15 +97,16 @@ def smoothDistribution(dist):
     return smoothed
 
 
-def trainTree(trainingData, returnQueue, lock=None):
-    '''
+def trainTree(trainingData, returnQueue=None, lock=None):
+    """
     Returns a TreeLearner object trained with the given training_data.
     The object is also placed in the returnQueue.
     The lock is used for printing and nothing else.
-    '''
+    """
     tree = orngTree.TreeLearner(trainingData, mForPruning=2)
-    returnQueue.put(tree)
-    returnQueue.close()
+    if returnQueue:
+        returnQueue.put(tree)
+        returnQueue.close()
     if lock:
         lock.acquire()
         print("Training for Decision Tree finished.")
@@ -124,16 +125,23 @@ def trainRule(lock, trainingData, returnQueue):
     return ruleLearningClassifier
 
 
-def trainSVM(lock, trainingData, returnQueue):
+def trainSVM(trainingData, returnQueue=None, lock=None):
+    """
+    Returns a svmLearner object trained with the given training_data.
+    The object is also placed in the returnQueue.
+    The lock is used for printing and nothing else.
+    """
     svmLearner = orange.SVMLearner()
     svmLearner.C = 0.78
     svmLearner.svm_type = orange.SVMLearner.C_SVC
     svmClassifier = svmLearner(trainingData)
-    returnQueue.put(svmClassifier)
-    returnQueue.close()
-    lock.acquire()
-    print("Training for SVM finished.")
-    lock.release()
+    if returnQueue:
+        returnQueue.put(svmClassifier)
+        returnQueue.close()
+    if lock:
+        lock.acquire()
+        print("Training for SVM finished.")
+        lock.release()
     return svmClassifier
 
 
@@ -259,6 +267,14 @@ def classifyForCutting(domain, beatscript, classifiers, history, means, vars):
     featureLine = ConvertData.getSingleFeatureLineFromFile(beatscript, history, False)
     return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
 
+def calculateClassification(classifier, domain, context, blocks, decisions, shot_or_cut=True, returnQueue=None):
+    datum = getTestExample(domain, context, blocks, decisions, shot_or_cut)
+    classification = classifier(datum)
+    if returnQueue:
+        returnQueue.put(classification)
+        returnQueue.close()
+    return classification
+
 
 def XValidation(files):
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
@@ -270,22 +286,47 @@ def XValidation(files):
         training_set = [f for f in files if f != file]
         training_data = getTrainingExamples(domain, training_set, True)
         training_data = normalizeData(domain, training_data, means, vars)
-        queue = Queue()
-        trained_tree = trainTree(training_data,queue)
-        print("Training finished for: "+file)
+        print("Trainingsdaten erzeugt. Trainiere Classifier...")
+        print_lock = Lock()
+        svm_queue = Queue(maxsize=1)
+        svm_learning_process = Process(target=trainSVM, args=(training_data, svm_queue, print_lock))
+        svm_learning_process.start()
+        tree_queue = Queue(maxsize=1)
+        tree_learning_process = Process(target=trainTree, args=(training_data, tree_queue, print_lock))
+        tree_learning_process.start()
+        trained_tree = tree_queue.get()
+        trained_svm = svm_queue.get()
+        tree_learning_process.join()
+        svm_learning_process.join()
+        #trained_tree = trainTree(training_data,queue,print_lock)
+        print("Training finished for: " + file)
         context, beatList = getContextAndBeatListFromFile(file)
         blockList = coalesceBeats(beatList)
         part_blockList = []
-        decisions = []
+        tree_decisions = []
+        svm_decisions = []
         for block in blockList:
             part_blockList.append(block)
-            datum = getTestExample(domain, context, part_blockList, decisions, True)
-            tree_classification = trained_tree(datum)
-            decisions.append(tree_classification)
-            print("Tree Classification:\t"+str(tree_classification))
-            print("Correct Class:\t\t\t"+str(datum.getclass()))
+            svm_queue = Queue(maxsize=1)
+            svm_classification_process = Process(target=calculateClassification,
+                args=(trained_svm, domain, context, part_blockList, svm_decisions, True, svm_queue))
+            svm_classification_process.start()
+            tree_queue = Queue(maxsize=1)
+            tree_classification_process = Process(target=calculateClassification,
+                args=(trained_tree, domain, context, part_blockList, tree_decisions, True, tree_queue))
+            tree_classification_process.start()
+            tree_classification = tree_queue.get()
+            svm_classification = svm_queue.get()
+            tree_classification_process.join()
+            svm_classification_process.join()
+            svm_decisions.append(svm_classification)
+            tree_decisions.append(tree_classification)
+            print("Tree Classification:\t" + str(tree_classification))
+            print("SVM Classification:\t" + str(svm_classification))
+            print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
             print("------------------------------------")
         print("__________________________________________")
+
 
 def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
     shot = orange.EnumVariable(name="Shot", values=SHOT_NAMES)
@@ -322,13 +363,13 @@ def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):
         treeLearningProcess = Process(target=trainTree, args=(trainingData, treeReturnQueue, lock))
         treeLearningProcess.start()
         cutReturnQueue = Queue()
-        cutLearningProcess = Process(target=trainSVM, args=(lock, cutTrainingData, cutReturnQueue))
+        cutLearningProcess = Process(target=trainSVM, args=(cutTrainingData, cutReturnQueue, lock))
         cutLearningProcess.start()
         #ruleReturnQueue = Queue()
         #ruleLearningProcess = Process(target=trainRule, args=(lock, trainingData, ruleReturnQueue))
         #ruleLearningProcess.start()
         svmReturnQueue = Queue()
-        svmLearningProcess = Process(target=trainSVM, args=(lock, trainingData, svmReturnQueue))
+        svmLearningProcess = Process(target=trainSVM, args=(trainingData, svmReturnQueue, lock))
         svmLearningProcess.start()
         treeCorrect = 0
         #ruleLearnerCorrect = 0

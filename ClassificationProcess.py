@@ -28,7 +28,7 @@ def trainWithAllExamples(shot):
     #ruleLearningProcess = Process(target=trainRule, args=(lock, trainingData, ruleReturnQueue))
     #ruleLearningProcess.start()
     svmReturnQueue = Queue()
-    svmLearningProcess = Process(target=trainSVM, args=(lock, trainingData, svmReturnQueue))
+    svmLearningProcess = Process(target=trainSVM, args=(trainingData, svmReturnQueue, lock))
     svmLearningProcess.start()
     treeClassifier = treeReturnQueue.get()
     #ruleLearningClassifier = ruleReturnQueue.get()
