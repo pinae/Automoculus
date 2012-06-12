@@ -115,6 +115,7 @@ def main():
     classifiers, means, vars = trainWithAllExamples(True)
     shot = orange.EnumVariable(name="Shot", values=SHOT_NAMES)
     domain = getDomain(shot)
+    #cut_domain = getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']))
     beatscriptFile = open(sys.argv[1], "r")
     lines = beatscriptFile.readlines()
     context = readContext(lines)#
@@ -169,9 +170,7 @@ def main():
                 context["BygoneBlocks"].append(lastBlock)
                 lastBlock = beatList
                 dist = classifyForShot(domain, lastBlock, context, classifiers, means, vars)
-                #cutBeforeThisClassification = classifyForCut(
-                #    getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
-                #    cutClassifiers, means, vars)
+                #cutBeforeThisClassification = classifyForCut(cut_domain, lastBlock, context, cutClassifiers, means, vars)
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")

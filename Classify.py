@@ -271,12 +271,13 @@ def classifyForCutting(domain, beatscript, classifiers, history, means, vars):
     return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
 
 
-def calculateDistributionAndClassification(classifier, domain, context, blocks, decisions, shot_or_cut=True, returnQueue=None):
+def calculateDistributionAndClassification(classifier, domain, context, blocks, decisions, means, vars, shot_or_cut=True, returnQueue=None):
     """
     Calculates a distribution using the given classifier. From that distribution the highest Value is selected as
      classification. Both distribution and classification are returned.
     """
     datum = getTestExample(domain, context, blocks, decisions, shot_or_cut)
+    datum = normalizeData(domain, orange.ExampleTable([datum]), means, vars)[0]
     distribution = classifier(datum, classifier.GetProbabilities)
     classification = orange.Value(distribution.values().index(max(distribution)), domain.class_var)
     if returnQueue:
@@ -339,11 +340,11 @@ def XValidation(files):
             part_blockList.append(block)
             svm_queue = Queue(maxsize=1)
             svm_classification_process = Process(target=calculateDistributionAndClassification,
-                args=(trained_svm, domain, deepcopy(context), part_blockList, decisions, True, svm_queue))
+                args=(trained_svm, domain, deepcopy(context), part_blockList, decisions, means, vars, True, svm_queue))
             svm_classification_process.start()
             tree_queue = Queue(maxsize=1)
             tree_classification_process = Process(target=calculateDistributionAndClassification,
-                args=(trained_tree, domain, deepcopy(context), part_blockList, decisions, True, tree_queue))
+                args=(trained_tree, domain, deepcopy(context), part_blockList, decisions, means, vars, True, tree_queue))
             tree_classification_process.start()
             tree_distribution, tree_classification = tree_queue.get()
             svm_distribution, svm_classification = svm_queue.get()
@@ -633,4 +634,5 @@ def new_main():
 
 
 if __name__ == "__main__":
-    new_main()#main()
+    new_main()
+    #main()
