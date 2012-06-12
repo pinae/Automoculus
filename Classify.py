@@ -43,6 +43,9 @@ def getTestExamples(domain, file, shot, leaveoutfeature=-1):
     return examples
 
 def getTestExample(domain, context, blockList, decisions, shot):
+    """
+    Returns just one Example calculated from the given blockList
+    """
     featureLine = getSingleFeatureLine(context, blockList, decisions, shot)
     return orange.Example(domain, featureLine)
 
@@ -267,19 +270,45 @@ def classifyForCutting(domain, beatscript, classifiers, history, means, vars):
     featureLine = ConvertData.getSingleFeatureLineFromFile(beatscript, history, False)
     return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
 
-def calculateClassification(classifier, domain, context, blocks, decisions, shot_or_cut=True, returnQueue=None):
+
+def calculateDistributionAndClassification(classifier, domain, context, blocks, decisions, shot_or_cut=True, returnQueue=None):
+    """
+    Calculates a distribution using the given classifier. From that distribution the highest Value is selected as
+     classification. Both distribution and classification are returned.
+    """
     datum = getTestExample(domain, context, blocks, decisions, shot_or_cut)
-    classification = classifier(datum)
+    distribution = classifier(datum, classifier.GetProbabilities)
+    classification = orange.Value(distribution.values().index(max(distribution)), domain.class_var)
     if returnQueue:
-        returnQueue.put(classification)
+        returnQueue.put((distribution, classification))
         returnQueue.close()
-    return classification
+    return distribution, classification
+
+
+def calculateBoostingFromDistributions(domain, tree_distribution, svm_distribution):
+    """
+    Calculates a new classification based on the given tree_distribution and svm_distribution.
+     The Used weighting is 3:2.
+    """
+    dist = []
+    for i in range(len(tree_distribution)):
+        dist.append(0.6 * tree_distribution[i] + 0.4 * svm_distribution[i])
+    return orange.Value(dist.index(max(dist)), domain.class_var)
 
 
 def XValidation(files):
+    """
+    Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
+     cross-validation. Instead the training is done with all but one Training files and the remaining beatscript
+     is tested based on the classification from that data. This process is repeated with all files.
+    This function tests the performance for boosted decisions using a treeLearner and a svmLearner.
+    """
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
     reference_data = getTrainingExamples(domain, TRAIN_FILES, True)
     means, vars = getNormalizationTerms(reference_data)
+    correct_histogram = [0, 0, 0, 0, 0, 0, 0]
+    guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    performances = []
     for file in files:
         print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
               "% fertig.")
@@ -294,38 +323,58 @@ def XValidation(files):
         tree_queue = Queue(maxsize=1)
         tree_learning_process = Process(target=trainTree, args=(training_data, tree_queue, print_lock))
         tree_learning_process.start()
+
+        context, beatList = getContextAndBeatListFromFile(file)
+        blockList = coalesceBeats(beatList)
+        part_blockList = []
+        decisions = []
+        correct_classification_count = 0
+
         trained_tree = tree_queue.get()
         trained_svm = svm_queue.get()
         tree_learning_process.join()
         svm_learning_process.join()
-        #trained_tree = trainTree(training_data,queue,print_lock)
         print("Training finished for: " + file)
-        context, beatList = getContextAndBeatListFromFile(file)
-        blockList = coalesceBeats(beatList)
-        part_blockList = []
-        tree_decisions = []
-        svm_decisions = []
         for block in blockList:
             part_blockList.append(block)
             svm_queue = Queue(maxsize=1)
-            svm_classification_process = Process(target=calculateClassification,
-                args=(trained_svm, domain, context, part_blockList, svm_decisions, True, svm_queue))
+            svm_classification_process = Process(target=calculateDistributionAndClassification,
+                args=(trained_svm, domain, deepcopy(context), part_blockList, decisions, True, svm_queue))
             svm_classification_process.start()
             tree_queue = Queue(maxsize=1)
-            tree_classification_process = Process(target=calculateClassification,
-                args=(trained_tree, domain, context, part_blockList, tree_decisions, True, tree_queue))
+            tree_classification_process = Process(target=calculateDistributionAndClassification,
+                args=(trained_tree, domain, deepcopy(context), part_blockList, decisions, True, tree_queue))
             tree_classification_process.start()
-            tree_classification = tree_queue.get()
-            svm_classification = svm_queue.get()
+            tree_distribution, tree_classification = tree_queue.get()
+            svm_distribution, svm_classification = svm_queue.get()
             tree_classification_process.join()
             svm_classification_process.join()
-            svm_decisions.append(svm_classification)
-            tree_decisions.append(tree_classification)
-            print("Tree Classification:\t" + str(tree_classification))
-            print("SVM Classification:\t" + str(svm_classification))
+            boost_classification = calculateBoostingFromDistributions(domain, tree_distribution, svm_distribution)
+            decisions.append(boost_classification)
+            print("Tree Classification:\t" + tree_classification.value)
+            print("SVM Classification:\t" + svm_classification.value)
+            print("Boosted Classification:\t" + boost_classification.value)
+            guessed_histogram[SHOT_NAMES.index(boost_classification.value)] += 1
             print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
+            correct_histogram[block[-1].shot] += 1
+            if boost_classification.value == SHOT_NAMES[block[-1].shot]:
+                correct_classification_count += 1
             print("------------------------------------")
+
+        print("File Performance: "+str(float(correct_classification_count)/len(blockList)*100)+"%")
+        performances.append(float(correct_classification_count)/len(blockList))
         print("__________________________________________")
+
+    performance_sum = 0
+    performance_best = 0
+    performance_last = 1
+    for p in performances:
+        performance_sum += p
+        if p > performance_best: performance_best = p
+        if p < performance_last: performance_last = p
+    print("Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
+          str(performance_last) + " - " + str(performance_best) + ")")
+    return performance_sum / len(performances)
 
 
 def excludedScriptLearnerComparison(domain, files, featureleaveout=-1):

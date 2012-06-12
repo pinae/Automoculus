@@ -119,6 +119,9 @@ def getDecidedBlockListFromFile(file, decisions):
 
 
 def applyDecisionsToBeatscript(context, blockList, decisions):
+    """
+    Applys the decisions to all Beats in the blockList. BygoneBlocks are updated during that process.
+    """
     lastShotId = -1
     context["BygoneBlocks"] = []
     for i, decision in enumerate(decisions):
