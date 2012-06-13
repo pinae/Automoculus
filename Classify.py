@@ -310,6 +310,7 @@ def XValidation(files):
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
     performances = []
+    medium_shot_performances = []
     for file in files:
         print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
               "% fertig.")
@@ -330,6 +331,7 @@ def XValidation(files):
         part_blockList = []
         decisions = []
         correct_classification_count = 0
+        medium_shot_count = 0
 
         trained_tree = tree_queue.get()
         trained_svm = svm_queue.get()
@@ -360,11 +362,23 @@ def XValidation(files):
             correct_histogram[block[-1].shot] += 1
             if boost_classification.value == SHOT_NAMES[block[-1].shot]:
                 correct_classification_count += 1
+            if block[-1].shot == 2: medium_shot_count += 1
             print("------------------------------------")
 
         print("File Performance: "+str(float(correct_classification_count)/len(blockList)*100)+"%")
         performances.append(float(correct_classification_count)/len(blockList))
+        medium_shot_performances.append(float(medium_shot_count)/len(blockList))
         print("__________________________________________")
+
+    performance_sum = 0
+    performance_best = 0
+    performance_last = 1
+    for p in medium_shot_performances:
+        performance_sum += p
+        if p > performance_best: performance_best = p
+        if p < performance_last: performance_last = p
+    print("MS-Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
+          str(performance_last) + " - " + str(performance_best) + ")")
 
     performance_sum = 0
     performance_best = 0

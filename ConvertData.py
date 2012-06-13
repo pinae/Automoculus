@@ -147,6 +147,8 @@ def getSingleFeatureLine(context, blockList, decisions, shot, leave_out=-1):
     '''
     Features.initializeContextVars(context)
     lastShotId, context, blockList = applyDecisionsToBeatscript(context, blockList, decisions)
+    for beat in blockList[len(decisions)]:
+        beat.shot = 0
     featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
     return featureLine
 

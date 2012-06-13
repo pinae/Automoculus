@@ -716,52 +716,52 @@ class PersonAnalyzer(Feature):
 
 
 class DecidedShots(Feature):
-    # TODO: Optimize this!!!
     def calculateNumbers(self, context, block):
-        lastShotId = context["BeatList"][0].shotId
-        lastShot = -3
-        previousLastShot = -3
-        beforePreviousLastShot = -3
-        beforeBeforePreviousLastShot = -3
-        beatsSinceLastShot = 0
-        beatsSincePreviousLastShot = 0
-        beatsSinceBeforePreviousLastShot = 0
-        beatsSinceBeforeBeforePreviousLastShot = 0
-        subjectsSinceLastShot = []
-        subjectsSincePreviousLastShot = []
-        subjectsSinceLastShotHistogram = [0, 0, 0]
-        subjectsSincePreviousLastShotHistogram = [0, 0, 0]
-        beatsSinceLastShotHistogram = [0, 0, 0, 0, 0]
-        beatsSincePreviousLastShotHistogram = [0, 0, 0, 0, 0]
-        for beat in context["BeatList"]:
-            if beat.shotId != lastShotId and abs(beat.shot - lastShot) >= 2:
-                beatsSinceBeforeBeforePreviousLastShot = beatsSinceBeforePreviousLastShot
-                beatsSinceBeforePreviousLastShot = beatsSincePreviousLastShot
-                beatsSincePreviousLastShot = beatsSinceLastShot
-                beatsSinceLastShot = 1
-                beforeBeforePreviousLastShot = beforePreviousLastShot
-                beforePreviousLastShot = previousLastShot
-                previousLastShot = lastShot
-                lastShot = beat.shot
-                lastShotId = beat.shotId
-                subjectsSincePreviousLastShotHistogram = subjectsSinceLastShotHistogram
-                subjectsSincePreviousLastShot = subjectsSinceLastShot
-                subjectsSinceLastShotHistogram = [0, 0, 0]
-                subjectsSinceLastShotHistogram[beat.subject.type] += 1
-                subjectsSinceLastShot = [beat.subject]
-                beatsSincePreviousLastShotHistogram = beatsSinceLastShotHistogram
-                beatsSinceLastShotHistogram = [0, 0, 0, 0, 0]
+        last_shot_id = context["BeatList"][-1].shotId
+        beat_count = 1
+        beat_counts = []
+        last_shot = -3
+        shots = []
+        subject_histograms = [[0, 0, 0]]
+        subject_histograms[-1][context["BeatList"][-1].subject.type] += 1
+        beat_histograms = [[0, 0, 0, 0, 0]]
+        beat_histograms[-1][context["BeatList"][-1].type] += 1
+        subjects = [context["BeatList"][-1].subject]
+        subject_counts = []
+        for i in range(len(context["BeatList"]) - 2, -1, -1):
+            if context["BeatList"][i].shotId != last_shot_id and abs(context["BeatList"][i].shot - last_shot) >= 2:
+                beat_counts.append(beat_count)
+                beat_count = 1
+                last_shot = context["BeatList"][i].shot
+                last_shot_id = context["BeatList"][i].shotId
+                shots.append(last_shot)
+                subject_histograms.append([0, 0, 0])
+                subject_histograms[-1][context["BeatList"][i].subject.type] += 1
+                beat_histograms.append([0, 0, 0, 0, 0])
+                beat_histograms[-1][context["BeatList"][i].type] += 1
+                subject_counts.append(len(subjects))
+                subjects = [context["BeatList"][i].subject]
             else:
-                beatsSinceLastShot += 1
-                if not beat.subject in subjectsSinceLastShot:
-                    subjectsSinceLastShot.append(beat.subject)
-                subjectsSinceLastShotHistogram[beat.subject.type] += 1
-                beatsSinceLastShotHistogram[beat.type] += 1
-        return [beforeBeforePreviousLastShot, beforePreviousLastShot, previousLastShot, lastShot, beatsSinceLastShot,
-                beatsSincePreviousLastShot, beatsSinceBeforePreviousLastShot, beatsSinceBeforeBeforePreviousLastShot,
-                len(subjectsSincePreviousLastShot), len(subjectsSinceLastShot)] + beatsSinceLastShotHistogram +\
-               subjectsSinceLastShotHistogram + beatsSincePreviousLastShotHistogram +\
-               subjectsSincePreviousLastShotHistogram
+                beat_count += 1
+                subject_histograms[-1][context["BeatList"][i].subject.type] += 1
+                beat_histograms[-1][context["BeatList"][i].type] += 1
+                if not context["BeatList"][i].subject in subjects:
+                    subjects.append(context["BeatList"][i].subject)
+            if len(beat_counts) >= 4:
+                break
+        while len(shots) < 4: shots.append(-3)
+        shots.reverse()
+        beat_counts.append(beat_count)
+        beat_counts = beat_counts[:4]
+        while len(beat_counts) < 4: beat_counts.append(0)
+        subject_counts.append(len(subjects))
+        subject_counts = subject_counts[:2]
+        while len(subject_counts) < 2: subject_counts.append(0)
+        subject_counts.reverse()
+        while len(beat_histograms) < 2: beat_histograms.append([0, 0, 0, 0, 0])
+        while len(subject_histograms) < 2: subject_histograms.append([0, 0, 0])
+        return shots + beat_counts + subject_counts + beat_histograms[0] + subject_histograms[0] +\
+               beat_histograms[1] + subject_histograms[1]
 
     def getText(self):
         if self.numbers[0] < 0:
