@@ -1,16 +1,18 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, unicode_literals, print_function
+#from __future__ import division, unicode_literals, print_function
 
 __author__ = 'Klaus'
 
-from Config import *
-import ConvertData
-import orange, orngTree
-from Classify import getTrainingExamples, getDomain, getTestExamples, getNormalizationTerms
-from copy import copy
+from copy import deepcopy
+
 import numpy as np
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
+import orange#, orngTree
+
+from Classify import getTrainingExamples, getDomain, getTestExamples, getNormalizationTerms, classification, normalizeData
+from Config import SHOT_NAMES, TRAIN_FILES
+import ConvertData
 
 def getSVM(C = 1.0, gamma = 0.0):
     svmLearner = orange.SVMLearner()
@@ -21,7 +23,7 @@ def getSVM(C = 1.0, gamma = 0.0):
 
 
 def createCrossValidationSet(leaveOutIndex, domain):
-    trainFiles = copy(TRAIN_FILES)
+    trainFiles = deepcopy(TRAIN_FILES)
     testFile = trainFiles.pop(leaveOutIndex)
     trainData = getTrainingExamples(domain, trainFiles, True)
     testData = getTestExamples(domain, testFile, True)
@@ -36,9 +38,9 @@ def classify(classifier, testFile, domain, decisions, means, vars):
     return classification, correct
 
 
-def getDifference(predicedClass, actualClass):
-    p = SHOT_NAMES.index(predicedClass)
-    a = SHOT_NAMES.index(actualClass)
+def getDifference(predicted_class, actual_class):
+    p = SHOT_NAMES.index(predicted_class)
+    a = SHOT_NAMES.index(actual_class)
     if a == p:
         return 0
     elif abs(a-p) == 1:
@@ -58,19 +60,22 @@ def getPerformance(classifier, domain, testFiles, means, vars):
         blockList = ConvertData.getBlockList(lines, context)
         decisions = []
         for _ in range(len(blockList)):
-            shotClass, correctClass = classify(classifier, testFile, domain, decisions, means, vars)
+            shotClass = classification(classifier,context,blockList,domain,decisions,means, vars,shot=True)
+            correctClass = orange.Value(blockList[-1][-1].shot,domain.class_var)
+            #shotClass, correctClass = classify(classifier, testFile, domain, decisions, means, vars)
             decisions.append(shotClass)
             if correctClass == shotClass:
                 correct += 1
             weightedDiff += getDifference(shotClass, correctClass)
             total += 1
-    return correct/ total, weightedDiff / total
+    return float(correct)/ total, float(weightedDiff) / total
 
 def doAFullRun(C = 1.0, gamma=0.0):
     # classifier konfigurieren
     learner = getSVM(C=C, gamma=gamma)
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    means, vars = getNormalizationTerms(domain)
+    reference_data = getTrainingExamples(domain, TRAIN_FILES, True)
+    means, vars = getNormalizationTerms(reference_data)
     # trainingsdaten und testdaten zusammenstellen
     totalTest = 0.0
     totalTrain = 0.0
@@ -81,10 +86,7 @@ def doAFullRun(C = 1.0, gamma=0.0):
         print("training classifier...")
         trainData, testData , trainFiles, testFile = createCrossValidationSet(i, domain)
         # train normalisieren
-        a, c, w = trainData.to_numpy()
-        a = (a-means)/vars
-        A = np.hstack((a,c.reshape(-1,1)))
-        trainData = orange.ExampleTable(domain, A)
+        trainData = normalizeData(domain, trainData, means, vars)
         # train classifier
         classifier = learner(trainData)
         print("evaluating test-set performance")
@@ -97,7 +99,7 @@ def doAFullRun(C = 1.0, gamma=0.0):
         print("Test Performance     \t: %04f (weighted: %f)"%(testPerf, testW))
         totalTest += testPerf
         totalTrain += trainPerf
-        totalTestW +=testW
+        totalTestW += testW
         totalTrainW += trainW
         # perfomance bestimmen auf train und testdaten
     totalTest /= len(TRAIN_FILES)
@@ -136,7 +138,7 @@ def runExampleForDifferentParams(gammas = (0.0, ), Cs = (1.0, ), i = 5):
             print("Test Performance     \t: %04f (weighted: %f)"%(testPerf, testW))
 
 def createLearningCurve(C = 1.0, gamma=0.0):
-    trainFiles = copy(TRAIN_FILES)
+    trainFiles = deepcopy(TRAIN_FILES)
     # classifier konfigurieren
     learner = getSVM(C=C, gamma=gamma)
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
@@ -165,7 +167,7 @@ def createLearningCurve(C = 1.0, gamma=0.0):
 
 
 def main():
-    doAFullRun()
+    doAFullRun(C=0.79)
     #a, b = createLearningCurve(C=0.78)
     #plt.plot(a)
     #plt.plot(b)

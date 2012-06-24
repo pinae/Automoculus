@@ -54,7 +54,7 @@ def getFeatureNames(leaveout=-1):
     names = []
     featureClassList = Features.getAllFeatureClasses()
     context = createContext()
-    dummybeat = Beat("0_1	full_shot	false	introduce	person§Nobody", context)
+    dummybeat = Beat("0_1\tfull_shot\tfalse\tintroduce\tperson§Nobody", context)
     context = Features.createBeatlist(context, [dummybeat])
     Features.initializeContextVars(context)
     for featureClass in featureClassList:

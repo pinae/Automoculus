@@ -128,14 +128,14 @@ def trainRule(lock, trainingData, returnQueue):
     return ruleLearningClassifier
 
 
-def trainSVM(trainingData, returnQueue=None, lock=None):
+def trainSVM(trainingData, returnQueue=None, lock=None, C=0.79):
     """
     Returns a svmLearner object trained with the given training_data.
     The object is also placed in the returnQueue.
     The lock is used for printing and nothing else.
     """
     svmLearner = orange.SVMLearner()
-    svmLearner.C = 0.78
+    svmLearner.C = C
     svmLearner.svm_type = orange.SVMLearner.C_SVC
     svmClassifier = svmLearner(trainingData)
     if returnQueue:
@@ -148,13 +148,14 @@ def trainSVM(trainingData, returnQueue=None, lock=None):
     return svmClassifier
 
 
-def classification(classifier, context, blockList, domain, decisions, means, vars, returnQueue, shot, leaveout=-1):
+def classification(classifier, context, blockList, domain, decisions, means, vars, returnQueue=None, shot=True, leaveout=-1):
     featureLine = ConvertData.getSingleFeatureLine(context, blockList, decisions, shot, leaveout)
     datum = orange.Example(domain, featureLine)
     datum = normalizeDatum(datum, means, vars)
     classification = classifier(datum)
-    returnQueue.put(classification)
-    returnQueue.close()
+    if returnQueue:
+        returnQueue.put(classification)
+        returnQueue.close()
     return classification
 
 
@@ -297,7 +298,7 @@ def calculateBoostingFromDistributions(domain, tree_distribution, svm_distributi
     return orange.Value(dist.index(max(dist)), domain.class_var)
 
 
-def XValidation(files):
+def XValidation(files, C=0.79):
     """
     Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
      cross-validation. Instead the training is done with all but one Training files and the remaining beatscript
@@ -320,11 +321,11 @@ def XValidation(files):
         print("Trainingsdaten erzeugt. Trainiere Classifier...")
         print_lock = Lock()
         svm_queue = Queue(maxsize=1)
-        svm_learning_process = Process(target=trainSVM, args=(training_data, svm_queue, print_lock))
+        svm_learning_process = Process(target=trainSVM, args=(training_data, svm_queue, print_lock, C))
         svm_learning_process.start()
-        tree_queue = Queue(maxsize=1)
-        tree_learning_process = Process(target=trainTree, args=(training_data, tree_queue, print_lock))
-        tree_learning_process.start()
+        #tree_queue = Queue(maxsize=1)
+        #tree_learning_process = Process(target=trainTree, args=(training_data, tree_queue, print_lock))
+        #tree_learning_process.start()
 
         context, beatList = getContextAndBeatListFromFile(file)
         blockList = coalesceBeats(beatList)
@@ -333,9 +334,9 @@ def XValidation(files):
         correct_classification_count = 0
         medium_shot_count = 0
 
-        trained_tree = tree_queue.get()
+        #trained_tree = tree_queue.get()
         trained_svm = svm_queue.get()
-        tree_learning_process.join()
+        #tree_learning_process.join()
         svm_learning_process.join()
         print("Training finished for: " + file)
         for block in blockList:
@@ -344,19 +345,20 @@ def XValidation(files):
             svm_classification_process = Process(target=calculateDistributionAndClassification,
                 args=(trained_svm, domain, deepcopy(context), part_blockList, decisions, means, vars, True, svm_queue))
             svm_classification_process.start()
-            tree_queue = Queue(maxsize=1)
-            tree_classification_process = Process(target=calculateDistributionAndClassification,
-                args=(trained_tree, domain, deepcopy(context), part_blockList, decisions, means, vars, True, tree_queue))
-            tree_classification_process.start()
-            tree_distribution, tree_classification = tree_queue.get()
+            #tree_queue = Queue(maxsize=1)
+            #tree_classification_process = Process(target=calculateDistributionAndClassification,
+            #    args=(trained_tree, domain, deepcopy(context), part_blockList, decisions, means, vars, True, tree_queue))
+            #tree_classification_process.start()
+            #tree_distribution, tree_classification = tree_queue.get()
             svm_distribution, svm_classification = svm_queue.get()
-            tree_classification_process.join()
+            #tree_classification_process.join()
             svm_classification_process.join()
-            boost_classification = calculateBoostingFromDistributions(domain, tree_distribution, svm_distribution)
+            #boost_classification = calculateBoostingFromDistributions(domain, tree_distribution, svm_distribution)
+            boost_classification = svm_classification
             decisions.append(boost_classification)
-            print("Tree Classification:\t" + tree_classification.value)
+            #print("Tree Classification:\t" + tree_classification.value)
             print("SVM Classification:\t" + svm_classification.value)
-            print("Boosted Classification:\t" + boost_classification.value)
+            #print("Boosted Classification:\t" + boost_classification.value)
             guessed_histogram[SHOT_NAMES.index(boost_classification.value)] += 1
             print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
             correct_histogram[block[-1].shot] += 1
@@ -644,7 +646,10 @@ def main():
         print(line)
 
 def new_main():
-    XValidation(TRAIN_FILES)
+    f = open("C-Performances.csv",'w')
+    for i in range(1,100):
+        f.write(str(float(i)/100)+","+str(XValidation(TRAIN_FILES,float(i)/100)))
+    f.close()
 
 
 if __name__ == "__main__":

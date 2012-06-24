@@ -383,7 +383,7 @@ class SameSubjectPairs(Feature):
     # TODO: Optimize this!
     def calculateNumbers(self, context, block):
         beatlist = copy(context["BeatList"])
-        prev = False
+        prev = None
         for beat in beatlist:
             if beat.invisible:
                 del beat
@@ -994,7 +994,7 @@ class ShowingPerson(Feature):
 class Linetargets(Feature):
     def calculateNumbers(self, context, block):
         numberOfLinetargets = 0
-        lastLinetarget = False
+        lastLinetarget = None
         for beat in block:
             if beat.linetarget:
                 numberOfLinetargets += 1
@@ -1162,9 +1162,9 @@ class ExpositoryPhaseOfTheScene(Feature):
 
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
-    '''
+    """
     Returns a list of all subclasses of Feature defined in, or imported into this module.
-    '''
+    """
     featureClassList = []
     for name, obj in inspect.getmembers(CURRENT_MODULE):
         if inspect.isclass(obj) and issubclass(obj, Feature) and (obj != Feature):
@@ -1173,11 +1173,11 @@ def getAllFeatureClasses():
 
 
 def createBeatlist(context, block):
-    '''
+    """
     This function reconstructs a beatList from the BygoneBlocks in the context and the given new block.
     The beatList is saved in the context. It is necessary to do this before calculating a featureLine,
      because otherwise there is no correct BeatList in the context, which is used by the Feature-Classes.
-    '''
+    """
     beatlist = []
     for bblock in context["BygoneBlocks"]:
         for beat in bblock:
