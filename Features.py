@@ -5,7 +5,7 @@
 import inspect
 import sys
 from copy import copy
-from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, LONG_SHOT, EXTREME_LONG_SHOT
+from Config import DETAIL, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, EXTREME_LONG_SHOT
 from Config import SHOT_NAMES
 from Config import BEAT_TYPE_NAMES, DEMONSTRAT_TYPE_NAMES
 from Config import INTRODUCE, EXPRESS, SAYS, ACTION, SHOW
