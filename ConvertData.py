@@ -4,6 +4,7 @@
 # =============================== Imports ======================================
 #import inspect
 #import os
+from copy import deepcopy
 import random
 import sys
 
@@ -30,11 +31,11 @@ def createDataLine(context, block, leaveout=-1):
 
 
 def getFeatureLine(context, block, shot, lastShotId, leaveout=-1):
-    '''
+    """
     This Function creates a featureLine. This is done by calculating getNumbers() for all Feature-Classes in
      Features.py and appending the desired class. A featureLine consists of several Numbers and a String at the
      end for the class.
-    '''
+    """
     line = []
     featureClassList = Features.getAllFeatureClasses()
     context = Features.createBeatlist(context, block)
@@ -50,63 +51,62 @@ def getFeatureLine(context, block, shot, lastShotId, leaveout=-1):
     return line
 
 
-def getFeatureNames(leaveout=-1):
+def getFeatureNames(leave_out=-1):
     names = []
     featureClassList = Features.getAllFeatureClasses()
     context = createContext()
-    dummybeat = Beat("0_1\tfull_shot\tfalse\tintroduce\tperson§Nobody", context)
-    context = Features.createBeatlist(context, [dummybeat])
+    dummy_beat = Beat("0_1\tfull_shot\tfalse\tintroduce\tperson§Nobody", context)
+    context = Features.createBeatlist(context, [dummy_beat])
     Features.initializeContextVars(context)
     for featureClass in featureClassList:
-        feature = featureClass(context, [dummybeat])
+        feature = featureClass(context, [dummy_beat])
         names += feature.getNames()
         #print(len(names))
     #print(names[0])
-    if leaveout >= 0:
-        names.pop(leaveout)
+    if leave_out >= 0:
+        names.pop(leave_out)
     return names
 
 
-def createFeatureLines(context, beatList, shot, leaveout=-1):
-    '''
+def createFeatureLines(context, beatList, shot, leave_out=-1):
+    """
     Returns the list of featureLines converted from the Beats in beatList
-    '''
+    """
     featureLines = []
     blockList = coalesceBeats(beatList)
     Features.initializeContextVars(context)
     lastShotId = -1
     for block in blockList:
-        featureLines.append(getFeatureLine(context, block, shot, lastShotId, leaveout))
+        featureLines.append(getFeatureLine(context, block, shot, lastShotId, leave_out))
         context["BygoneBlocks"].append(block)
         lastShotId = block[-1].shotId
     return featureLines
 
 
-def getFeatureLinesFromFile(file, shot, leaveout=-1):
-    '''
+def getFeatureLinesFromFile(file, shot, leave_out=-1):
+    """
     Returns a list of featureLines converted from the beatscript given in file.
-    '''
+    """
     context, beatList = getContextAndBeatListFromFile(file)
-    return createFeatureLines(context, beatList, shot, leaveout)
+    return createFeatureLines(context, beatList, shot, leave_out)
 
 
-def getFeatureLinesFromFileAndModify(file, shot):
+def getFeatureLinesFromFileAndModify(file, shot, leave_out=-1):
+    # TODO: This should create entirely new sets of FeatureLines
     context, beatList = getContextAndBeatListFromFile(file)
-    originalList = []
-    for beat in beatList:
-        originalList.append(beat)
+    originalList = deepcopy(beatList)
     for i in range(0, 2):
         for beat in originalList:
             beatList.append(beat)
             if beat.type == SAYS:
                 if random.randint(0, 1):
                     beatList.append(beat)
-    return createFeatureLines(context, beatList, shot)
+    return createFeatureLines(context, beatList, shot, leave_out)
 
 
 def getDecidedBlockListFromFile(file, decisions):
-    beatscriptFile = open(file, "r")
-    lines = beatscriptFile.readlines()
+    beatscript_file = open(file, "r")
+    lines = beatscript_file.readlines()
     context = readContext(lines)
     blockList = getBlockList(lines, context)
     relevantBlockList = []
@@ -142,13 +142,18 @@ def getSingleFeatureLineFromFile(file, decisions, shot, leave_out=-1):
     return featureLine
 
 def getSingleFeatureLine(context, blockList, decisions, shot, leave_out=-1):
-    '''
+    """
     Returns a featureLine based on the context and the decisions.
-    '''
+    """
     Features.initializeContextVars(context)
     lastShotId, context, blockList = applyDecisionsToBeatscript(context, blockList, decisions)
-    for beat in blockList[len(decisions)]:
-        beat.shot = 0
+    #for beat in blockList[len(decisions)]: # This is for preventing the classifier to cheat by using the correct class
+    #    beat.shot = 0
+    #for block in blockList: # Check if the decisions are correct
+    #    sout = ""
+    #    for beat in block:
+    #        sout += SHOT_NAMES[beat.shot] + ",\t"
+    #    print(sout)
     featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
     return featureLine
 

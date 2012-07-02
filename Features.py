@@ -175,44 +175,45 @@ class Climax(Feature):
         return ["Höhepunktphase?"]
 
 
-        #class DramaturgicalFactor(Feature):
-        # In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
-        # Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
-        # Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
-        # werden Actions, Expressions und Says.
+class DramaturgicalFactor(Feature):
+    """
+    In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
+    Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
+     Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
+     werden Actions, Expressions und Says.
+    """
+    def calculateNumbers(self, context, block):
+        SubjectChanges = 0
+        prevSubject = None
+        i = -1
+        while not prevSubject:
+            try:
+                previousBlock = context["BygoneBlocks"][i]
+            except IndexError:
+                break
+            for beat in previousBlock:
+                if beat.type in [ACTION, EXPRESS, SAYS]:
+                    prevSubject = beat.subject
+            i -= 1
+        for beat in block:
+            if beat.type in [ACTION, EXPRESS, SAYS]:
+                if prevSubject != beat.subject:
+                    SubjectChanges += 1
+                prevSubject = beat.subject
+                #print str(SubjectChanges)
+        if not context["NoConflictIntroduction"]:
+            if context["NoClimax"]:
+                context["DramaturgicalFactor"] += 3 * SubjectChanges
+        else:
+            context["DramaturgicalFactor"] += SubjectChanges
+        return [context["DramaturgicalFactor"]]
 
-#    def calculateNumbers(self, context, block):
-#        SubjectChanges = 0
-#        prevSubject = False
-#        i = -1
-#        while not prevSubject:
-#            try:
-#                previousBlock = context["BygoneBlocks"][i]
-#            except IndexError:
-#                break
-#            for beat in previousBlock:
-#                if beat.type in [ACTION, EXPRESS, SAYS]:
-#                    prevSubject = beat.subject
-#            i -= 1
-#        for beat in block:
-#            if beat.type in [ACTION, EXPRESS, SAYS]:
-#                if prevSubject != beat.subject:
-#                    SubjectChanges += 1
-#                prevSubject = beat.subject
-#                #print str(SubjectChanges)
-#        if not context["NoConflictIntroduction"]:
-#            if context["NoClimax"]:
-#                context["DramaturgicalFactor"] += 3 * SubjectChanges
-#        else:
-#            context["DramaturgicalFactor"] += SubjectChanges
-#        return [context["DramaturgicalFactor"]]
 
+    def getText(self):
+        return "Dramaturgischer-Spannungsfaktor: " + str(self.numbers[0])
 
-#    def getText(self):
-#        return "Dramaturgischer-Spannungsfaktor: " + str(self.numbers[0])
-
-#    def getNames(self):
-#        return ["Dramaturgischer-Spannungsfaktor"]
+    def getNames(self):
+        return ["Dramaturgischer-Spannungsfaktor"]
 
 
 class MiniDramaturgyFactor(Feature):
@@ -222,7 +223,7 @@ class MiniDramaturgyFactor(Feature):
     # werden Actions, Expressions und Says.
     def calculateNumbers(self, context, block):
         SubjectChanges = 0
-        prevSubject = False
+        prevSubject = None
         i = -1
         while not prevSubject:
             try:
@@ -240,10 +241,10 @@ class MiniDramaturgyFactor(Feature):
                 prevSubject = beat.subject
         if not context["NoConflictIntroduction"]:
             if context["NoClimax"]:
-                context["DramaturgicalFactor"] += SubjectChanges
+                context["MiniDramaturgicalFactor"] += SubjectChanges
         else:
-            context["DramaturgicalFactor"] = 0
-        return [context["DramaturgicalFactor"]]
+            context["MiniDramaturgicalFactor"] = 0
+        return [context["MiniDramaturgicalFactor"]]
 
     def getText(self):
         return "Minidramaturgiefaktor: " + str(self.numbers[0])

@@ -18,52 +18,52 @@ from Config import SHOT_NAMES, TRAIN_FILES, CLOSEUP, ACTION, SAYS, MEDIUM_SHOT, 
 from Config import SHOW, INTRODUCE, DETAIL, AMERICAN_SHOT
 
 # =============================== Methods ======================================
-def getTrainingExamples(domain, files, shot, leaveoutfeature=-1):
+def getTrainingExamples(domain, files, shot, leave_out_feature=-1):
     """
-    Returns an orange.ExampleTable with the featureLines converted from all the beatscripts mentioned in files.
+    Returns an orange.ExampleTable with the feature_lines converted from all the beatscripts mentioned in files.
     """
     examples = orange.ExampleTable(domain)
     for file in files:
-        featureLines = ConvertData.getFeatureLinesFromFile(file, shot, leaveout=leaveoutfeature)
-        #featureLines = ConvertData.getFeatureLinesFromFileAndModify(file, shot)
-        for featureLine in featureLines:
-            examples.append(orange.Example(domain, featureLine))
+        feature_lines = ConvertData.getFeatureLinesFromFile(file, shot, leave_out=leave_out_feature)
+        #feature_lines = ConvertData.getFeatureLinesFromFileAndModify(file, shot)
+        for feature_line in feature_lines:
+            examples.append(orange.Example(domain, feature_line))
             #print line
     return examples
 
 
-def getTestExamples(domain, file, shot, leaveoutfeature=-1):
+def getTestExamples(domain, file, shot, leave_out_feature=-1):
     """
-    Returns an ExampleTable with featureLines converted from the given File.
+    Returns an ExampleTable with feature_lines converted from the given File.
     """
     examples = orange.ExampleTable(domain)
-    featureLines = ConvertData.getFeatureLinesFromFile(file, shot, leaveout=leaveoutfeature)
-    for line in featureLines:
+    feature_lines = ConvertData.getFeatureLinesFromFile(file, shot, leave_out=leave_out_feature)
+    for line in feature_lines:
         examples.append(orange.Example(domain, line))
     return examples
 
-def getTestExample(domain, context, blockList, decisions, shot):
+def getTestExample(domain, context, block_list, decisions, shot):
     """
     Returns just one Example calculated from the given blockList
     """
-    featureLine = getSingleFeatureLine(context, blockList, decisions, shot)
-    return orange.Example(domain, featureLine)
+    feature_line = getSingleFeatureLine(context, block_list, decisions, shot)
+    return orange.Example(domain, feature_line)
 
-def getNormalizationTerms(referenceData):
+def getNormalizationTerms(reference_data):
     """
     Returns (means, vars) for an ExampleTable given in referenceData.
     """
-    a, c, w = referenceData.to_numpy()
+    a, c, w = reference_data.to_numpy()
     means = a.mean(0)
     vars = a.var(0) + 0.00000001
     return means, vars
 
 
-def normalizeData(domain, trainData, means, vars):
+def normalizeData(domain, train_data, means, vars):
     """
     Returns an ExampleTable with normalized Numbers.
     """
-    a, c, w = trainData.to_numpy()
+    a, c, w = train_data.to_numpy()
     a = (a - means) / vars
     A = np.hstack((a, c.reshape(-1, 1)))
     return orange.ExampleTable(domain, A)
@@ -135,7 +135,7 @@ def trainSVM(trainingData, returnQueue=None, lock=None, C=0.79):
     The lock is used for printing and nothing else.
     """
     svmLearner = orange.SVMLearner()
-    svmLearner.C = C
+    #svmLearner.C = C
     svmLearner.svm_type = orange.SVMLearner.C_SVC
     svmClassifier = svmLearner(trainingData)
     if returnQueue:
@@ -167,7 +167,7 @@ def distribution(classifier, datum, returnQueue):
 
 
 def getDomain(enumVariable, leaveoutfeature=-1):
-    featureNames = ConvertData.getFeatureNames(leaveout=leaveoutfeature)
+    featureNames = ConvertData.getFeatureNames(leave_out=leaveoutfeature)
     attributes = []
     for name in featureNames:
         attributes.append(orange.FloatVariable(name=name))
