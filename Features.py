@@ -389,14 +389,12 @@ class PreviousBlockToNowTargetPair(Feature):
         return ["Target des vorletzten Blocks und des aktuellen Blocks stimmen überein"]
 
 
-class LastSevenBeatTypes(Feature):
+class LastTwelveBeatTypes(Feature):
     def calculateNumbers(self, context, block):
-        types = []
-        #subjects = []
-        for i in range(0, 7 - len(context["BeatList"])):
-            types.append(-1)
-        for i in range(max(0, len(context["BeatList"]) - 7), len(context["BeatList"])):
-            types.append(context["BeatList"][i].type)
+        types = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+        for i in range(len(types),0,-1):
+            if len(context["BeatList"]) >= i:
+                types[-i] = context["BeatList"][-i].type
         return types
 
     def getText(self):
@@ -418,9 +416,9 @@ class LastSevenBeatTypes(Feature):
 
 class SameSubjectPairs(Feature):
     def calculateNumbers(self, context, block):
-        beatlist = copy(context["BeatList"])
+        beat_list = copy(context["BeatList"])
         prev = None
-        for beat in beatlist:
+        for beat in beat_list:
             if beat.invisible:
                 del beat
                 continue
@@ -431,41 +429,41 @@ class SameSubjectPairs(Feature):
             prev = beat
         pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         #pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        if len(beatlist) >= 2:
-            if beatlist[-1].subject == beatlist[-2].subject: pairings[0] = 1
-        if len(beatlist) >= 3:
-            if beatlist[-1].subject == beatlist[-3].subject: pairings[1] = 1
-            if beatlist[-2].subject == beatlist[-3].subject: pairings[2] = 1
-        if len(beatlist) >= 4:
-            if beatlist[-1].subject == beatlist[-4].subject: pairings[3] = 1
-            if beatlist[-2].subject == beatlist[-4].subject: pairings[4] = 1
-            if beatlist[-3].subject == beatlist[-4].subject: pairings[5] = 1
-        if len(beatlist) >= 5:
-            if beatlist[-1].subject == beatlist[-5].subject: pairings[6] = 1
-            if beatlist[-2].subject == beatlist[-5].subject: pairings[7] = 1
-            if beatlist[-3].subject == beatlist[-5].subject: pairings[8] = 1
-            if beatlist[-4].subject == beatlist[-5].subject: pairings[9] = 1
-        if len(beatlist) >= 6:
-            if beatlist[-1].subject == beatlist[-6].subject: pairings[10] = 1
-            if beatlist[-2].subject == beatlist[-6].subject: pairings[11] = 1
-            if beatlist[-3].subject == beatlist[-6].subject: pairings[12] = 1
-            if beatlist[-4].subject == beatlist[-6].subject: pairings[13] = 1
-            if beatlist[-5].subject == beatlist[-6].subject: pairings[14] = 1
-        if len(beatlist) >= 7:
-            if beatlist[-1].subject == beatlist[-7].subject: pairings[15] = 1
-            if beatlist[-2].subject == beatlist[-7].subject: pairings[16] = 1
-            if beatlist[-3].subject == beatlist[-7].subject: pairings[17] = 1
-            if beatlist[-4].subject == beatlist[-7].subject: pairings[18] = 1
-            if beatlist[-5].subject == beatlist[-7].subject: pairings[19] = 1
-            if beatlist[-6].subject == beatlist[-7].subject: pairings[20] = 1
-        #if len(beatlist) >= 8:
-        #    if beatlist[-1].subject == beatlist[-8].subject: pairings[21] = 1
-        #    if beatlist[-2].subject == beatlist[-8].subject: pairings[22] = 1
-        #    if beatlist[-3].subject == beatlist[-8].subject: pairings[23] = 1
-        #    if beatlist[-4].subject == beatlist[-8].subject: pairings[24] = 1
-        #    if beatlist[-5].subject == beatlist[-8].subject: pairings[25] = 1
-        #    if beatlist[-6].subject == beatlist[-8].subject: pairings[26] = 1
-        #    if beatlist[-6].subject == beatlist[-8].subject: pairings[27] = 1
+        if len(beat_list) >= 2:
+            if beat_list[-1].subject == beat_list[-2].subject: pairings[0] = 1
+        if len(beat_list) >= 3:
+            if beat_list[-1].subject == beat_list[-3].subject: pairings[1] = 1
+            if beat_list[-2].subject == beat_list[-3].subject: pairings[2] = 1
+        if len(beat_list) >= 4:
+            if beat_list[-1].subject == beat_list[-4].subject: pairings[3] = 1
+            if beat_list[-2].subject == beat_list[-4].subject: pairings[4] = 1
+            if beat_list[-3].subject == beat_list[-4].subject: pairings[5] = 1
+        if len(beat_list) >= 5:
+            if beat_list[-1].subject == beat_list[-5].subject: pairings[6] = 1
+            if beat_list[-2].subject == beat_list[-5].subject: pairings[7] = 1
+            if beat_list[-3].subject == beat_list[-5].subject: pairings[8] = 1
+            if beat_list[-4].subject == beat_list[-5].subject: pairings[9] = 1
+        if len(beat_list) >= 6:
+            if beat_list[-1].subject == beat_list[-6].subject: pairings[10] = 1
+            if beat_list[-2].subject == beat_list[-6].subject: pairings[11] = 1
+            if beat_list[-3].subject == beat_list[-6].subject: pairings[12] = 1
+            if beat_list[-4].subject == beat_list[-6].subject: pairings[13] = 1
+            if beat_list[-5].subject == beat_list[-6].subject: pairings[14] = 1
+        if len(beat_list) >= 7:
+            if beat_list[-1].subject == beat_list[-7].subject: pairings[15] = 1
+            if beat_list[-2].subject == beat_list[-7].subject: pairings[16] = 1
+            if beat_list[-3].subject == beat_list[-7].subject: pairings[17] = 1
+            if beat_list[-4].subject == beat_list[-7].subject: pairings[18] = 1
+            if beat_list[-5].subject == beat_list[-7].subject: pairings[19] = 1
+            if beat_list[-6].subject == beat_list[-7].subject: pairings[20] = 1
+        #if len(beat_list) >= 8:
+        #    if beat_list[-1].subject == beat_list[-8].subject: pairings[21] = 1
+        #    if beat_list[-2].subject == beat_list[-8].subject: pairings[22] = 1
+        #    if beat_list[-3].subject == beat_list[-8].subject: pairings[23] = 1
+        #    if beat_list[-4].subject == beat_list[-8].subject: pairings[24] = 1
+        #    if beat_list[-5].subject == beat_list[-8].subject: pairings[25] = 1
+        #    if beat_list[-6].subject == beat_list[-8].subject: pairings[26] = 1
+        #    if beat_list[-6].subject == beat_list[-8].subject: pairings[27] = 1
         return pairings
 
     def getText(self):
