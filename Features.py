@@ -380,7 +380,6 @@ class LastSevenBeatTypes(Feature):
 
 
 class SameSubjectPairs(Feature):
-    # TODO: Optimize this!
     def calculateNumbers(self, context, block):
         beatlist = copy(context["BeatList"])
         prev = None
@@ -393,109 +392,43 @@ class SameSubjectPairs(Feature):
                     del beat
                     continue
             prev = beat
-        pairings = []
+        pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        #pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         if len(beatlist) >= 2:
-            if beatlist[-1].subject == beatlist[-2].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-        else:
-            pairings += [0]
+            if beatlist[-1].subject == beatlist[-2].subject: pairings[0] = 1
         if len(beatlist) >= 3:
-            if beatlist[-1].subject == beatlist[-3].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-2].subject == beatlist[-3].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-        else:
-            pairings += [0, 0]
+            if beatlist[-1].subject == beatlist[-3].subject: pairings[1] = 1
+            if beatlist[-2].subject == beatlist[-3].subject: pairings[2] = 1
         if len(beatlist) >= 4:
-            if beatlist[-1].subject == beatlist[-4].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-2].subject == beatlist[-4].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-3].subject == beatlist[-4].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-        else:
-            pairings += [0, 0, 0]
+            if beatlist[-1].subject == beatlist[-4].subject: pairings[3] = 1
+            if beatlist[-2].subject == beatlist[-4].subject: pairings[4] = 1
+            if beatlist[-3].subject == beatlist[-4].subject: pairings[5] = 1
         if len(beatlist) >= 5:
-            if beatlist[-1].subject == beatlist[-5].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-2].subject == beatlist[-5].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-3].subject == beatlist[-5].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-4].subject == beatlist[-5].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-        else:
-            pairings += [0, 0, 0, 0]
+            if beatlist[-1].subject == beatlist[-5].subject: pairings[6] = 1
+            if beatlist[-2].subject == beatlist[-5].subject: pairings[7] = 1
+            if beatlist[-3].subject == beatlist[-5].subject: pairings[8] = 1
+            if beatlist[-4].subject == beatlist[-5].subject: pairings[9] = 1
         if len(beatlist) >= 6:
-            if beatlist[-1].subject == beatlist[-6].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-2].subject == beatlist[-6].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-3].subject == beatlist[-6].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-4].subject == beatlist[-6].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-5].subject == beatlist[-6].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-        else:
-            pairings += [0, 0, 0, 0, 0]
+            if beatlist[-1].subject == beatlist[-6].subject: pairings[10] = 1
+            if beatlist[-2].subject == beatlist[-6].subject: pairings[11] = 1
+            if beatlist[-3].subject == beatlist[-6].subject: pairings[12] = 1
+            if beatlist[-4].subject == beatlist[-6].subject: pairings[13] = 1
+            if beatlist[-5].subject == beatlist[-6].subject: pairings[14] = 1
         if len(beatlist) >= 7:
-            if beatlist[-1].subject == beatlist[-7].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-2].subject == beatlist[-7].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-3].subject == beatlist[-7].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-4].subject == beatlist[-7].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-5].subject == beatlist[-7].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-            if beatlist[-6].subject == beatlist[-7].subject:
-                pairings.append(1)
-            else:
-                pairings.append(0)
-        else:
-            pairings += [0, 0, 0, 0, 0, 0]
+            if beatlist[-1].subject == beatlist[-7].subject: pairings[15] = 1
+            if beatlist[-2].subject == beatlist[-7].subject: pairings[16] = 1
+            if beatlist[-3].subject == beatlist[-7].subject: pairings[17] = 1
+            if beatlist[-4].subject == beatlist[-7].subject: pairings[18] = 1
+            if beatlist[-5].subject == beatlist[-7].subject: pairings[19] = 1
+            if beatlist[-6].subject == beatlist[-7].subject: pairings[20] = 1
+        #if len(beatlist) >= 8:
+        #    if beatlist[-1].subject == beatlist[-8].subject: pairings[21] = 1
+        #    if beatlist[-2].subject == beatlist[-8].subject: pairings[22] = 1
+        #    if beatlist[-3].subject == beatlist[-8].subject: pairings[23] = 1
+        #    if beatlist[-4].subject == beatlist[-8].subject: pairings[24] = 1
+        #    if beatlist[-5].subject == beatlist[-8].subject: pairings[25] = 1
+        #    if beatlist[-6].subject == beatlist[-8].subject: pairings[26] = 1
+        #    if beatlist[-6].subject == beatlist[-8].subject: pairings[27] = 1
         return pairings
 
     def getText(self):
@@ -580,9 +513,37 @@ class SameSubjectPairs(Feature):
         else:
             out += "Subjects -5 und -7 sind nicht gleich.\t"
         if self.numbers[20]:
-            out += "Subjects -6 und -7 sind gleich."
+            out += "Subjects -6 und -7 sind gleich.\t"
         else:
-            out += "Subjects -6 und -7 sind nicht gleich."
+            out += "Subjects -6 und -7 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -1 und -8 sind gleich.\t"
+        #else:
+        #    out += "Subjects -1 und -8 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -2 und -8 sind gleich.\t"
+        #else:
+        #    out += "Subjects -2 und -8 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -3 und -8 sind gleich.\t"
+        #else:
+        #    out += "Subjects -3 und -8 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -4 und -8 sind gleich.\t"
+        #else:
+        #    out += "Subjects -4 und -8 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -5 und -8 sind gleich.\t"
+        #else:
+        #    out += "Subjects -5 und -8 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -6 und -8 sind gleich.\t"
+        #else:
+        #    out += "Subjects -6 und -8 sind nicht gleich.\t"
+        #if self.numbers[21]:
+        #    out += "Subjects -7 und -8 sind gleich."
+        #else:
+        #    out += "Subjects -7 und -8 sind nicht gleich."
         return out
 
     def getNames(self):
@@ -607,6 +568,13 @@ class SameSubjectPairs(Feature):
                 "Subjects -4 und -7 sind gleich?",
                 "Subjects -5 und -7 sind gleich?",
                 "Subjects -6 und -7 sind gleich?"]
+                #"Subjects -1 und -8 sind gleich?",
+                #"Subjects -2 und -8 sind gleich?",
+                #"Subjects -3 und -8 sind gleich?",
+                #"Subjects -4 und -8 sind gleich?",
+                #"Subjects -5 und -8 sind gleich?",
+                #"Subjects -6 und -8 sind gleich?",
+                #"Subjects -7 und -8 sind gleich?"]
 
 
 class InvisibleCount(Feature):
@@ -624,7 +592,6 @@ class InvisibleCount(Feature):
 
 
 class PersonAnalyzer(Feature):
-    # TODO: Optimize this!!
     def calculateNumbers(self, context, block):
         personHistogram = {}
         personBeatCount = 0
@@ -657,23 +624,15 @@ class PersonAnalyzer(Feature):
                 mainCharacterBlockBeatCount += 1
             if beat.subject == protagonist:
                 protagonistBlockBeatCount += 1
-        lastBeatsFeatureProtagonist = []
+        lastBeatsFeatureProtagonist = [0,0,0]
         if len(context["BeatList"]) >= 3:
             if context["BeatList"][-3].subject == protagonist:
-                lastBeatsFeatureProtagonist.append(1)
-            else:
-                lastBeatsFeatureProtagonist.append(0)
-        else: lastBeatsFeatureProtagonist.append(0)
+                lastBeatsFeatureProtagonist[0]=1
         if len(context["BeatList"]) >= 2:
             if context["BeatList"][-2].subject == protagonist:
-                lastBeatsFeatureProtagonist.append(1)
-            else:
-                lastBeatsFeatureProtagonist.append(0)
-        else: lastBeatsFeatureProtagonist.append(0)
+                lastBeatsFeatureProtagonist[1]=1
         if context["BeatList"][-1].subject == protagonist:
-            lastBeatsFeatureProtagonist.append(1)
-        else:
-            lastBeatsFeatureProtagonist.append(0)
+            lastBeatsFeatureProtagonist[2]=1
         return [len(personHistogram), len(context["MainCharacters"]),
                 int(round(100.0 * mainCharacterBlockBeatCount / len(block))),
                 int(round(100.0 * protagonistBeatCount / personBeatCount)), protagonistChange,
