@@ -371,6 +371,23 @@ class PreviousBlockChangeTargetChange(Feature):
         return ["Target hat zu beginn des vorherigen Blocks gewechselt"]
 
 
+class PreviousBlockToNowTargetPair(Feature):
+    def calculateNumbers(self, context, block):
+        bygoneTarget = -1
+        if len(context["BygoneBlocks"]) >= 2:
+            bygoneTarget = context["BygoneBlocks"][-2][-1].subject
+        return [bygoneTarget == block[0].subject]
+
+    def getText(self):
+        if self.numbers[0]:
+            return "Target des vorletzten und des aktuellen Blocks stimmen überein."
+        else:
+            return "Targets des vorletzten Blocks und des aktuellen Blocks sind unterschiedlich."
+
+    def getNames(self):
+        return ["Target des vorletzten Blocks und des aktuellen Blocks stimmen überein"]
+
+
 class LastSevenBeatTypes(Feature):
     def calculateNumbers(self, context, block):
         types = []
