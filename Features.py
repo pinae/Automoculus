@@ -819,16 +819,17 @@ class DecidedShots(Feature):
 
 class ShotHistogram(Feature):
     def calculateNumbers(self, context, block):
-        lastShotId = context["BeatList"][-1].shotId
-        shotHistogram = [0, 0, 0, 0, 0, 0, 0]
+        last_shot_id = context["BeatList"][0].shotId
+        shot_histogram = [0, 0, 0, 0, 0, 0, 0]
+        shot_histogram[context["BeatList"][0].shot] += 1
+        total = 1
         for beat in context["BeatList"]:
-            if beat.shotId != lastShotId:
-                shotHistogram[beat.shot] += 1
-        total = 0
-        for i in shotHistogram: total += i
-        for i in range(0, len(shotHistogram)):
-            if total > 0: shotHistogram[i] = int(round(100.0 * shotHistogram[i] / total))
-        return shotHistogram
+            if beat.shotId != last_shot_id:
+                shot_histogram[beat.shot] += 1
+                total += 1
+        for i in range(0, len(shot_histogram)):
+            if total > 0: shot_histogram[i] = int(round(100.0 * shot_histogram[i] / total))
+        return shot_histogram
 
     def getText(self):
         out = ""
@@ -844,38 +845,51 @@ class ShotHistogram(Feature):
 
 class PersonsInTheShot(Feature):
     def calculateNumbers(self, context, block):
-        beatlist = copy(context["BeatList"])
-        lastShotId = beatlist[-1].shotId
-        emoPersons = {}
-        sayPersons = {}
-        for beat in beatlist:
-            if beat.shotId == lastShotId:
-                if beat.subject in emoPersons.keys():
+        beat_list = copy(context["BeatList"])
+        last_shot_id = beat_list[-1].shotId
+        emo_persons = {}
+        say_persons = {}
+        act_persons = {}
+        for beat in beat_list:
+            if beat.shotId == last_shot_id:
+                if beat.subject in emo_persons.keys():
                     if beat.type == EXPRESS:
-                        emoPersons[beat.subject] += 1
-                    if beat.type == SAYS:
-                        sayPersons[beat.subject] += 1
+                        emo_persons[beat.subject] += 1
                 else:
-                    emoPersons[beat.subject] = 0
-                    sayPersons[beat.subject] = 0
-        lastFive = []
+                    emo_persons[beat.subject] = 0
+                if beat.subject in say_persons.keys():
+                    if beat.type == SAYS:
+                        say_persons[beat.subject] += 1
+                else:
+                    say_persons[beat.subject] = 0
+                if beat.subject in act_persons.keys():
+                    if beat.type == ACTION:
+                        act_persons[beat.subject] += 1
+                else:
+                    act_persons[beat.subject] = 0
+        last_five = []
         i = 1
-        while i < len(beatlist) and len(lastFive) < 5:
-            if not beatlist[-i].subject in lastFive:
-                lastFive.append(beatlist[-i].subject)
+        while i < len(beat_list) and len(last_five) < 5:
+            if not beat_list[-i].subject in last_five:
+                last_five.append(beat_list[-i].subject)
             i += 1
-        emoPersonsArray = []
-        sayPersonsArray = []
-        for person in lastFive:
-            if person in emoPersons.keys():
-                emoPersonsArray.append(emoPersons[person])
-            if person in sayPersons.keys():
-                sayPersonsArray.append(sayPersons[person])
-        while len(emoPersonsArray) < 5:
-            emoPersonsArray.append(0)
-        while len(sayPersonsArray) < 5:
-            sayPersonsArray.append(0)
-        return emoPersonsArray + sayPersonsArray
+        emo_persons_array = []
+        say_persons_array = []
+        act_persons_array = []
+        for person in last_five:
+            if person in emo_persons.keys():
+                emo_persons_array.append(emo_persons[person])
+            if person in say_persons.keys():
+                say_persons_array.append(say_persons[person])
+            if person in act_persons.keys():
+                act_persons_array.append(act_persons[person])
+        while len(emo_persons_array) < 5:
+            emo_persons_array.append(0)
+        while len(say_persons_array) < 5:
+            say_persons_array.append(0)
+        while len(act_persons_array) < 5:
+            act_persons_array.append(0)
+        return emo_persons_array + say_persons_array + act_persons_array
 
     def getText(self):
         out = ""
@@ -885,6 +899,9 @@ class PersonsInTheShot(Feature):
         for i in range(5, 10):
             out += "Die " + str(i - 5) + ".letzte Figur hat seit dem letzten Schnitt " + str(
                 self.numbers[i]) + " mal geredet.\t"
+        for i in range(10, 15):
+            out += "Die " + str(i - 10) + ".letzte Figur hat seit dem letzten Schnitt " + str(
+                self.numbers[i]) + " mal gehandelt.\t"
         return out.strip("\t")
 
     def getNames(self):
@@ -893,24 +910,26 @@ class PersonsInTheShot(Feature):
             names.append("Anzahl der Emotionalen Beats der " + str(i) + ".letzten Figur seit dem letzten Schnitt")
         for i in range(0, 5):
             names.append("Anzahl der Speak-Beats der " + str(i) + ".letzten Figur seit dem letzten Schnitt")
+        for i in range(0, 5):
+            names.append("Anzahl der Act-Beats der " + str(i) + ".letzten Figur seit dem letzten Schnitt")
         return names
 
 
 class ShowingObject(Feature):
     def calculateNumbers(self, context, block):
-        showingOnlyObjects = True
-        noVisibleBeats = True
+        showing_only_objects = True
+        no_visible_beats = True
         for beat in block:
             if not((beat.type in [INTRODUCE, SHOW] and beat.subject.type == OBJECT) or beat.invisible):
-                showingOnlyObjects = False
+                showing_only_objects = False
             if beat.type in [INTRODUCE, SHOW] and not beat.invisible:
-                noVisibleBeats = False
-        if showingOnlyObjects and not noVisibleBeats:
+                no_visible_beats = False
+        if showing_only_objects and not no_visible_beats:
             if len(context["BygoneBlocks"]) > 0:
                 if context["BygoneBlocks"][-1][-1].shot != DETAIL:
-                    return [1]
+                    return [2]
                 else:
-                    return [0]
+                    return [-1]
             else:
                 return [1]
         else:
@@ -928,19 +947,19 @@ class ShowingObject(Feature):
 
 class ShowingPlace(Feature):
     def calculateNumbers(self, context, block):
-        showingOnlyObjects = True
-        noVisibleBeats = True
+        showing_no_place = True
+        no_visible_beats = True
         for beat in block:
             if not((beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE) or beat.invisible):
-                showingOnlyObjects = False
+                showing_no_place = False
             if beat.type in [INTRODUCE, SHOW] and not beat.invisible:
-                noVisibleBeats = False
-        if showingOnlyObjects and not noVisibleBeats:
+                no_visible_beats = False
+        if showing_no_place and not no_visible_beats:
             if len(context["BygoneBlocks"]) > 0:
                 if context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT,EXTREME_LONG_SHOT+1):
-                    return [1]
+                    return [2]
                 else:
-                    return [0]
+                    return [-1]
             else:
                 return [1]
         else:
@@ -989,26 +1008,26 @@ class ShowingPerson(Feature):
 
 class Linetargets(Feature):
     def calculateNumbers(self, context, block):
-        numberOfLinetargets = 0
-        lastLinetarget = None
+        number_of_linetargets = 0
+        last_linetarget = None
         for beat in block:
             if beat.linetarget:
-                numberOfLinetargets += 1
-                lastLinetarget = beat.linetarget
-        lastLinetargetIsSubjects = []
+                number_of_linetargets += 1
+                last_linetarget = beat.linetarget
+        last_linetarget_is_subjects = []
         for i in range(1, 9):
             if len(context["BeatList"]) > i:
-                if context["BeatList"][-i].subject is lastLinetarget:
-                    lastLinetargetIsSubjects.append(1)
-                else: lastLinetargetIsSubjects.append(0)
-            else: lastLinetargetIsSubjects.append(0)
-        if lastLinetarget:
-            return lastLinetargetIsSubjects + [numberOfLinetargets, lastLinetarget.type != PERSON,
-                                               lastLinetarget in context["MainCharacters"],
-                                               lastLinetarget == context["protagonist"]]
+                if context["BeatList"][-i].subject is last_linetarget:
+                    last_linetarget_is_subjects.append(1)
+                else: last_linetarget_is_subjects.append(0)
+            else: last_linetarget_is_subjects.append(0)
+        if last_linetarget:
+            return last_linetarget_is_subjects + [number_of_linetargets, last_linetarget.type != PERSON,
+                                               last_linetarget in context["MainCharacters"],
+                                               last_linetarget == context["protagonist"]]
         else:
-            return lastLinetargetIsSubjects + [numberOfLinetargets, 0, lastLinetarget in context["MainCharacters"],
-                                               lastLinetarget == context["protagonist"]]
+            return last_linetarget_is_subjects + [number_of_linetargets, 0, last_linetarget in context["MainCharacters"],
+                                               last_linetarget == context["protagonist"]]
 
     def getText(self):
         if self.numbers[0]: out = "Das Linetarget ist gleich dem Subjekt des letzten Beats.\t"
