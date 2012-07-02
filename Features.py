@@ -5,7 +5,7 @@
 import inspect
 import sys
 from copy import copy
-from Config import DETAIL, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, EXTREME_LONG_SHOT
+from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, EXTREME_LONG_SHOT
 from Config import SHOT_NAMES
 from Config import BEAT_TYPE_NAMES, DEMONSTRAT_TYPE_NAMES
 from Config import INTRODUCE, EXPRESS, SAYS, ACTION, SHOW
@@ -352,6 +352,25 @@ class BlockChangeTargetChange(Feature):
         return ["Target hat zu beginn des Blocks gewechselt"]
 
 
+class PreviousBlockChangeTargetChange(Feature):
+    def calculateNumbers(self, context, block):
+        if len(context["BygoneBlocks"]) >= 2:
+            if context["BygoneBlocks"][-1][-1].subject == context["BygoneBlocks"][-2][-1].subject: return [0]
+            else: return [1]
+        else: return [-1]
+
+    def getText(self):
+        if self.numbers[0] == 1:
+            return "Es gab einen Targetwechsel zu beginn des vorherigen Blocks."
+        elif self.numbers[0] == 0:
+            return "Target des vorletzten Blocks hat auch den letzten Block begonnen."
+        else:
+            return "Es gibt noch keinen vorletzten Block."
+
+    def getNames(self):
+        return ["Target hat zu beginn des vorherigen Blocks gewechselt"]
+
+
 class LastSevenBeatTypes(Feature):
     def calculateNumbers(self, context, block):
         types = []
@@ -513,9 +532,9 @@ class SameSubjectPairs(Feature):
         else:
             out += "Subjects -5 und -7 sind nicht gleich.\t"
         if self.numbers[20]:
-            out += "Subjects -6 und -7 sind gleich.\t"
+            out += "Subjects -6 und -7 sind gleich."
         else:
-            out += "Subjects -6 und -7 sind nicht gleich.\t"
+            out += "Subjects -6 und -7 sind nicht gleich."
         #if self.numbers[21]:
         #    out += "Subjects -1 und -8 sind gleich.\t"
         #else:
@@ -1016,13 +1035,13 @@ class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! 
     def calculateNumbers(self, context, block):
         cutCriteria = []
         if len(context["BygoneBlocks"]) >= 2:
-            #if context["BygoneBlocks"][-1][0].subject == context["BygoneBlocks"][-2][-1].subject and (
-            #    context["BygoneBlocks"][-2][-1].shot >= MEDIUM_SHOT and
-            #    context["BygoneBlocks"][-1][0].type in [SAYS, ACTION]) or (
-            #    context["BygoneBlocks"][-2][-1].shot >= CLOSEUP and context["BygoneBlocks"][-1][0].type == SAYS):
-            #    cutCriteria.append(0)
-            #else:
-            #    cutCriteria.append(1)
+            if context["BygoneBlocks"][-1][0].subject == context["BygoneBlocks"][-2][-1].subject and (
+                context["BygoneBlocks"][-2][-1].shot >= MEDIUM_SHOT and
+                context["BygoneBlocks"][-1][0].type in [SAYS, ACTION]) or (
+                context["BygoneBlocks"][-2][-1].shot >= CLOSEUP and context["BygoneBlocks"][-1][0].type == SAYS):
+                cutCriteria.append(0)
+            else:
+                cutCriteria.append(1)
             if context["BygoneBlocks"][-2][-1].shot == context["BygoneBlocks"][-1][-1].shot:
                 cut = False
                 subjects_of_history = set()
@@ -1062,7 +1081,7 @@ class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! 
                 cutCriteria.append(1)
             else: cutCriteria.append(0)
         else:
-            #cutCriteria.append(1)
+            cutCriteria.append(1)
             cutCriteria.append(1)
             cutCriteria.append(1)
             cutCriteria.append(0)
@@ -1084,7 +1103,7 @@ class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! 
     def getNames(self):
         return ["Handgeschriebenes Schnittkriterium 1.", "Handgeschriebenes Schnittkriterium 2.",
                 "Handgeschriebenes Schnittkriterium 3.", "Handgeschriebenes Schnittkriterium 4.",
-                "Handgeschriebenes Schnittkriterium 5."]
+                "Handgeschriebenes Schnittkriterium 5.", "Handgeschriebenes Schnittkriterium 6."]
 
 
 class ExpositoryPhaseOfTheScene(Feature):
