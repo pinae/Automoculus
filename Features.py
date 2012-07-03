@@ -47,23 +47,18 @@ class BlockBeatTypeCount(Feature):
         beatCount = [0, 0, 0, 0, 0]
         for beat in block:
             beatCount[beat.type] += 1
-        beatCount.pop(1)
         return beatCount
 
     def getText(self):
         output = "BeatTyp(Block): "
         for i, cnt in enumerate(self.numbers):
-            if i >= 1: nameindex = i + 1
-            else: nameindex = i
-            output += BEAT_TYPE_NAMES[nameindex] + ":" + str(cnt) + " "
+            output += BEAT_TYPE_NAMES[i] + ":" + str(cnt) + " "
         return output
 
     def getNames(self):
         names = []
-        for i in range(0, len(self.numbers)):
-            if i >= 1: nameindex = i + 1
-            else: nameindex = i
-            names.append("Anzahl " + BEAT_TYPE_NAMES[nameindex] + " im aktuellen Block")
+        for i in range(len(self.numbers)):
+            names.append("Anzahl " + BEAT_TYPE_NAMES[i] + " im aktuellen Block")
         return names
 
 
@@ -72,19 +67,18 @@ class AlloverBeatTypeCount(Feature):
         beatCount = [0, 0, 0, 0, 0]
         for beat in context["BeatList"]:
             beatCount[beat.type] += 1
-        beatCount.pop(0)
         return beatCount
 
     def getText(self):
         output = "BeatTyp(gesamt): "
         for i, cnt in enumerate(self.numbers):
-            output += BEAT_TYPE_NAMES[i + 1] + ":" + str(cnt) + " "
+            output += BEAT_TYPE_NAMES[i] + ":" + str(cnt) + " "
         return output
 
     def getNames(self):
         names = []
-        for i in range(0, len(self.numbers)):
-            names.append("Anzahl " + BEAT_TYPE_NAMES[i + 1] + " bisher insgesamt")
+        for i in range(len(self.numbers)):
+            names.append("Anzahl " + BEAT_TYPE_NAMES[i] + " bisher insgesamt")
         return names
 
 
@@ -92,13 +86,13 @@ class EstablishingShot(Feature):
     def calculateNumbers(self, context, block):
         if len(context["BygoneBlocks"])>=2:
           if context["ThereWasNoEstablishingShot"]:
-            introducePlace = False
+            introduce_place = False
             for beat in context["BygoneBlocks"][-1]:
                 if beat.type in [INTRODUCE, SHOW]:
                     if beat.subject.type == PLACE and not beat.invisible:
-                        introducePlace = True
+                        introduce_place = True
                         # Quick&Dirty: Establishing-Shot, wenn ein Ort introduced wird und die Einstellungsgröße mindestens full-shot ist.
-            if (context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1)) and introducePlace:
+            if (context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1)) and introduce_place:
                 context["ThereWasNoEstablishingShot"] = False
                 return [1]
             else:
@@ -122,10 +116,10 @@ class ConflictIntroduction(Feature):
     def calculateNumbers(self, context, block):
         context["BeforeWasNoConflictIntroduction"] = context["NoConflictIntroduction"]
         if context["NoConflictIntroduction"] and not context["ThereWasNoEstablishingShot"]:
-            blockWithExpress = False
+            block_with_express = False
             for beat in block:
-                if beat.type == EXPRESS and not beat.invisible: blockWithExpress = True
-            if blockWithExpress:
+                if beat.type == EXPRESS and not beat.invisible: block_with_express = True
+            if block_with_express:
                 context["NoConflictIntroduction"] = False
                 return [1]
             else:
@@ -145,19 +139,19 @@ class ConflictIntroduction(Feature):
 
 class Climax(Feature):
     def calculateNumbers(self, context, block):
-        blockWithExpress = False
+        block_with_express = False
         for beat in block:
-            if beat.type == EXPRESS and not beat.invisible: blockWithExpress = True
+            if beat.type == EXPRESS and not beat.invisible: block_with_express = True
         if context["NoClimax"]:
             if not context["BeforeWasNoConflictIntroduction"]:
-                if blockWithExpress:
+                if block_with_express:
                     context["NoClimax"] = False
                     return [1]
                 else:
                     return [0]
             else: return [0]
         else:
-            if blockWithExpress:
+            if block_with_express:
                 return [1]
             else:
                 context["NoClimax"] = True
@@ -183,29 +177,29 @@ class DramaturgicalFactor(Feature):
      werden Actions, Expressions und Says.
     """
     def calculateNumbers(self, context, block):
-        SubjectChanges = 0
-        prevSubject = None
+        subject_changes = 0
+        prev_subject = None
         i = -1
-        while not prevSubject:
+        while not prev_subject:
             try:
                 previousBlock = context["BygoneBlocks"][i]
             except IndexError:
                 break
             for beat in previousBlock:
                 if beat.type in [ACTION, EXPRESS, SAYS]:
-                    prevSubject = beat.subject
+                    prev_subject = beat.subject
             i -= 1
         for beat in block:
             if beat.type in [ACTION, EXPRESS, SAYS]:
-                if prevSubject != beat.subject:
-                    SubjectChanges += 1
-                prevSubject = beat.subject
-                #print str(SubjectChanges)
+                if prev_subject != beat.subject:
+                    subject_changes += 1
+                prev_subject = beat.subject
+                #print str(subject_changes)
         if not context["NoConflictIntroduction"]:
             if context["NoClimax"]:
-                context["DramaturgicalFactor"] += 3 * SubjectChanges
+                context["DramaturgicalFactor"] += 3 * subject_changes
         else:
-            context["DramaturgicalFactor"] += SubjectChanges
+            context["DramaturgicalFactor"] += subject_changes
         return [context["DramaturgicalFactor"]]
 
 
@@ -222,26 +216,26 @@ class MiniDramaturgyFactor(Feature):
     # Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
     # werden Actions, Expressions und Says.
     def calculateNumbers(self, context, block):
-        SubjectChanges = 0
-        prevSubject = None
+        subject_changes = 0
+        prev_subject = None
         i = -1
-        while not prevSubject:
+        while not prev_subject:
             try:
-                previousBlock = context["BygoneBlocks"][i]
+                previous_block = context["BygoneBlocks"][i]
             except IndexError:
                 break
-            for beat in previousBlock:
+            for beat in previous_block:
                 if beat.type in [ACTION, EXPRESS, SAYS]:
-                    prevSubject = beat.subject
+                    prev_subject = beat.subject
             i -= 1
         for beat in block:
             if beat.type in [ACTION, EXPRESS, SAYS]:
-                if prevSubject != beat.subject:
-                    SubjectChanges += 1
-                prevSubject = beat.subject
+                if prev_subject != beat.subject:
+                    subject_changes += 1
+                prev_subject = beat.subject
         if not context["NoConflictIntroduction"]:
             if context["NoClimax"]:
-                context["MiniDramaturgicalFactor"] += SubjectChanges
+                context["MiniDramaturgicalFactor"] += subject_changes
         else:
             context["MiniDramaturgicalFactor"] = 0
         return [context["MiniDramaturgicalFactor"]]
@@ -255,22 +249,22 @@ class MiniDramaturgyFactor(Feature):
 
 class Dialogue(Feature):
     def calculateNumbers(self, context, block):
-        lastSaySubject = False
+        last_say_subject = False
         dialogue = False
-        actcounter = 0
+        act_counter = 0
         for beat in context["BeatList"]:
             if beat.type == SAYS:
-                if lastSaySubject:
-                    if actcounter <= 1:
-                        if beat.subject != lastSaySubject:
+                if last_say_subject:
+                    if act_counter <= 1:
+                        if beat.subject != last_say_subject:
                             dialogue = True
                     else:
                         dialogue = False
-                lastSaySubject = beat.subject
-                actcounter = 0
+                last_say_subject = beat.subject
+                act_counter = 0
             if beat.type == ACTION and not beat.invisible:
-                actcounter += 1
-                if actcounter > 1:
+                act_counter += 1
+                if act_counter > 1:
                     dialogue = False
         context["DialoguePart"] = dialogue
         if dialogue: return [1]
@@ -320,10 +314,10 @@ class EmotionalDialogueReaction(Feature):
 
 class BlockChangeBeatType(Feature):
     def calculateNumbers(self, context, block):
-        bygoneType = -1
+        bygone_type = -1
         if len(context["BygoneBlocks"]) > 0:
-            bygoneType = context["BygoneBlocks"][-1][-1].type
-        return [bygoneType, block[-1].type]
+            bygone_type = context["BygoneBlocks"][-1][-1].type
+        return [bygone_type, block[-1].type]
 
     def getText(self):
         if self.numbers[0] < 0:
