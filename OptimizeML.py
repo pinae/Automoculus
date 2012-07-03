@@ -24,13 +24,10 @@ def getDataMatrix(file_set):
     for file in file_set:
         feature_lines = ConvertData.getFeatureLinesFromFile(file, True)
         for line in feature_lines:
-            for i in range(len(line)-1):
-                if type(line[i]) == bool:
-                    if line[i]: line[i] = 1
-                    else: line[i] = 0
             classes.append(SHOT_NAMES.index(line.pop()))
             matrix.append(np.array(line))
     return np.array(matrix), np.array(classes)
+
 
 def getSVM(C = 1.0, gamma = 0.0):
     svmLearner = orange.SVMLearner()

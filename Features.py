@@ -371,7 +371,8 @@ class PreviousBlockToNowTargetPair(Feature):
         bygoneTarget = -1
         if len(context["BygoneBlocks"]) >= 2:
             bygoneTarget = context["BygoneBlocks"][-2][-1].subject
-        return [bygoneTarget == block[0].subject]
+        if bygoneTarget == block[0].subject: return [1]
+        else: return [0]
 
     def getText(self):
         if self.numbers[0]:
