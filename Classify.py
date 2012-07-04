@@ -18,6 +18,21 @@ from Config import SHOT_NAMES, TRAIN_FILES, CLOSEUP, ACTION, SAYS, MEDIUM_SHOT, 
 from Config import SHOW, INTRODUCE, DETAIL, AMERICAN_SHOT
 
 # =============================== Methods ======================================
+
+def getDataMatrix(file_set, shot=True):
+    """
+    Returns an Numpy-Array with the feature_lines converted from all the beatscripts mentioned in files.
+    """
+    matrix = []
+    classes = []
+    for file in file_set:
+        feature_lines = ConvertData.getFeatureLinesFromFile(file, shot)
+        for line in feature_lines:
+            classes.append(SHOT_NAMES.index(line.pop()))
+            matrix.append(np.array(line))
+    return np.array(matrix), np.array(classes)
+
+
 def getTrainingExamples(domain, files, shot, leave_out_feature=-1):
     """
     Returns an orange.ExampleTable with the feature_lines converted from all the beatscripts mentioned in files.
@@ -42,12 +57,14 @@ def getTestExamples(domain, file, shot, leave_out_feature=-1):
         examples.append(orange.Example(domain, line))
     return examples
 
+
 def getTestExample(domain, context, block_list, decisions, shot):
     """
     Returns just one Example calculated from the given blockList
     """
     feature_line = getSingleFeatureLine(context, block_list, decisions, shot)
     return orange.Example(domain, feature_line)
+
 
 def getNormalizationTerms(reference_data):
     """
@@ -59,6 +76,10 @@ def getNormalizationTerms(reference_data):
     return means, vars
 
 
+def getNpNormalizationTerms(matrix):
+    return matrix.mean(0), matrix.var(0) + 0.00000001
+
+
 def normalizeData(domain, train_data, means, vars):
     """
     Returns an ExampleTable with normalized Numbers.
@@ -66,6 +87,22 @@ def normalizeData(domain, train_data, means, vars):
     a, c, w = train_data.to_numpy()
     a = (a - means) / vars
     A = np.hstack((a, c.reshape(-1, 1)))
+    return orange.ExampleTable(domain, A)
+
+
+def normalizeNpData(matrix, means, vars):
+    """
+    Returns normalized data, using the given means and vars.
+    """
+    matrix = (matrix - means) / vars
+    return matrix
+
+
+def convertToExampleTable(domain, feature_vectors, classes):
+    """
+    Combines a matrix with feature vectors with the according classes and creates a ExampleTable with this data.
+    """
+    A = np.hstack((feature_vectors, classes.reshape(-1, 1)))
     return orange.ExampleTable(domain, A)
 
 
@@ -277,8 +314,12 @@ def calculateDistributionAndClassification(classifier, domain, context, blocks, 
     Calculates a distribution using the given classifier. From that distribution the highest Value is selected as
      classification. Both distribution and classification are returned.
     """
-    datum = getTestExample(domain, context, blocks, decisions, shot_or_cut)
-    datum = normalizeData(domain, orange.ExampleTable([datum]), means, vars)[0]
+    #datum = getTestExample(domain, context, blocks, decisions, shot_or_cut)
+    feature_line = getSingleFeatureLine(context, blocks, decisions, shot_or_cut)
+    feature_line.pop()
+    feature_vectors = normalizeNpData(np.array([np.array(feature_line)]), means, vars)
+    #datum = normalizeData(domain, orange.ExampleTable([datum]), means, vars)[0]
+    datum = convertToExampleTable(domain, feature_vectors, np.array([0]))[0]
     distribution = classifier(datum, classifier.GetProbabilities)
     classification = orange.Value(distribution.values().index(max(distribution)), domain.class_var)
     if returnQueue:
@@ -404,8 +445,8 @@ def FakeHistoryXValidation(files, C=0.79):
      faked History.
     """
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    reference_data = getTrainingExamples(domain, TRAIN_FILES, True)
-    means, vars = getNormalizationTerms(reference_data)
+    reference_data, _ = getDataMatrix(TRAIN_FILES, True)
+    means, vars = getNpNormalizationTerms(reference_data)
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
     performances = []
@@ -414,8 +455,9 @@ def FakeHistoryXValidation(files, C=0.79):
         print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
               "% fertig.")
         training_set = [f for f in files if f != file]
-        training_data = getTrainingExamples(domain, training_set, True)
-        training_data = normalizeData(domain, training_data, means, vars)
+        training_data, training_data_classes = getDataMatrix(training_set, True)
+        training_data = normalizeNpData(training_data, means, vars)
+        training_data = convertToExampleTable(domain, training_data, training_data_classes)
         print("Trainingsdaten erzeugt. Trainiere Classifier...")
         print_lock = Lock()
         svm_queue = Queue(maxsize=1)
