@@ -503,6 +503,14 @@ def FakeHistoryXValidation(files, C=0.79):
             #decisions.append(boost_classification)
             #print("Tree Classification:\t" + tree_classification.value)
             print("SVM Classification:\t" + svm_classification.value)
+            feature_line = getSingleFeatureLine(context, part_blockList, decisions, True)
+            feature_line.pop()
+            feature_vectors = normalizeNpData(np.array([np.array(feature_line)]), means, vars)
+            datum = convertToExampleTable(domain, feature_vectors, np.array([0]))[0]
+            distribution = trained_svm(datum, trained_svm.GetProbabilities)
+            classification = orange.Value(distribution.values().index(max(distribution)), domain.class_var)
+            print("SVM Classification:\t" + classification.value)
+            if classification.value != trained_svm(datum).value: print("Oha! Dist und Class sind unterschiedlich.")
             #print("Boosted Classification:\t" + boost_classification.value)
             guessed_histogram[SHOT_NAMES.index(boost_classification.value)] += 1
             print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
