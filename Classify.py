@@ -445,7 +445,7 @@ def FakeHistoryXValidation(files, C=0.79):
      faked History.
     """
     domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    reference_data, _ = getDataMatrix(TRAIN_FILES, True)
+    reference_data, _ = getDataMatrix(TRAIN_FILES)
     means, vars = getNpNormalizationTerms(reference_data)
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
@@ -455,7 +455,7 @@ def FakeHistoryXValidation(files, C=0.79):
         print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
               "% fertig.")
         training_set = [f for f in files if f != file]
-        training_data, training_data_classes = getDataMatrix(training_set, True)
+        training_data, training_data_classes = getDataMatrix(training_set)
         training_data = normalizeNpData(training_data, means, vars)
         training_data = convertToExampleTable(domain, training_data, training_data_classes)
         print("Trainingsdaten erzeugt. Trainiere Classifier...")
