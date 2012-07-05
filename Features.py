@@ -5,6 +5,7 @@
 import inspect
 import sys
 from copy import copy
+import itertools
 from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, EXTREME_LONG_SHOT
 from Config import SHOT_NAMES
 from Config import BEAT_TYPE_NAMES, DEMONSTRAT_TYPE_NAMES
@@ -815,13 +816,11 @@ class DecidedShots(Feature):
 
 class ShotHistogram(Feature):
     def calculateNumbers(self, context, block):
-        last_shot_id = context["BeatList"][0].shotId
         shot_histogram = [0, 0, 0, 0, 0, 0, 0]
-        shot_histogram[context["BeatList"][0].shot] += 1
-        total = 1
-        for beat in context["BeatList"]:
-            if beat.shotId != last_shot_id:
-                shot_histogram[beat.shot] += 1
+        #shot_histogram[context["BeatList"][0].shot] += 1
+        total = 0
+        for block in context["BygoneBlocks"]:
+                shot_histogram[block[-1].shot] += 1
                 total += 1
         for i in range(0, len(shot_histogram)):
             if total > 0: shot_histogram[i] = float(shot_histogram[i]) / total
@@ -1189,11 +1188,5 @@ def createBeatList(context, block):
     The beatList is saved in the context. It is necessary to do this before calculating a featureLine,
      because otherwise there is no correct BeatList in the context, which is used by the Feature-Classes.
     """
-    beat_list = []
-    for bygone_block in context["BygoneBlocks"]:
-        for beat in bygone_block:
-            beat_list.append(beat)
-    for beat in block:
-        beat_list.append(beat)
-    context["BeatList"] = beat_list
+    context["BeatList"] = [b for b in itertools.chain(*context["BygoneBlocks"])] + block
     return context

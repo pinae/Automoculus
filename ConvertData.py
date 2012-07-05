@@ -10,7 +10,7 @@ import sys
 
 import Features
 
-from Config import SHOT_NAMES
+from Config import SHOT_NAMES, DETAIL
 from Config import SAYS
 from Config import DELIMITER
 from Beatscript import Beat, createContext, readContext, readBeatscript, coalesceBeats, getContextAndBeatListFromFile, getBlockList
@@ -38,7 +38,7 @@ def getFeatureLine(context, block, shot, lastShotId, leaveout=-1):
     """
     line = []
     featureClassList = Features.getAllFeatureClasses()
-    context = Features.createBeatlist(context, block)
+    context = Features.createBeatList(context, block)
     for featureClass in featureClassList:
         feature = featureClass(context, block)
         line += feature.getNumbers()

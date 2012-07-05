@@ -30,7 +30,7 @@ def getDataMatrix(file_set, shot=True):
         for line in feature_lines:
             classes.append(SHOT_NAMES.index(line.pop()))
             matrix.append(np.array(line))
-    return np.array(matrix), np.array(classes)
+    return np.array(matrix, dtype=np.float64), np.array(classes)
 
 
 def getTrainingExamples(domain, files, shot, leave_out_feature=-1):
