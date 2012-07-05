@@ -19,7 +19,7 @@ from Beatscript import Beat, createContext, readContext, readBeatscript, coalesc
 def createDataLine(context, block, leaveout=-1):
     dataLine = [str(block[0].shotId) + "_" + str(block[0].beatId), str(block[0].shot)]
     featureClassList = Features.getAllFeatureClasses()
-    context = Features.createBeatlist(context, block)
+    context = Features.createBeatList(context, block)
     for featureClass in featureClassList:
         #print featureClass.__name__
         feature = featureClass(context, block)
@@ -30,7 +30,7 @@ def createDataLine(context, block, leaveout=-1):
     return dataLine
 
 
-def getFeatureLine(context, block, shot, lastShotId, leaveout=-1):
+def getFeatureLine(context, block, shot, lastShotId, leave_out=-1):
     """
     This Function creates a featureLine. This is done by calculating getNumbers() for all Feature-Classes in
      Features.py and appending the desired class. A featureLine consists of several Numbers and a String at the
@@ -38,12 +38,12 @@ def getFeatureLine(context, block, shot, lastShotId, leaveout=-1):
     """
     line = []
     featureClassList = Features.getAllFeatureClasses()
-    context = Features.createBeatlist(context, block)
+    context = Features.createBeatList(context, block)
     for featureClass in featureClassList:
         feature = featureClass(context, block)
         line += feature.getNumbers()
-    if leaveout >= 0:
-        line.pop(leaveout)
+    if leave_out >= 0:
+        line.pop(leave_out)
     if shot:
         line.append(SHOT_NAMES[block[0].shot])
     else:#is there a cut?
@@ -56,7 +56,7 @@ def getFeatureNames(leave_out=-1):
     featureClassList = Features.getAllFeatureClasses()
     context = createContext()
     dummy_beat = Beat("0_1\tfull_shot\tfalse\tintroduce\tperson§Nobody", context)
-    context = Features.createBeatlist(context, [dummy_beat])
+    context = Features.createBeatList(context, [dummy_beat])
     Features.initializeContextVars(context)
     for featureClass in featureClassList:
         feature = featureClass(context, [dummy_beat])
@@ -127,7 +127,8 @@ def applyDecisionsToBeatscript(context, blockList, decisions):
     for i, decision in enumerate(decisions):
         block = blockList[i]
         for beat in block:
-            beat.shot = Beat.shotType[decision.value]
+            #beat.shot = Beat.shotType[decision.value]
+            beat.shot = decision
         context["BygoneBlocks"].append(block)
         lastShotId = block[-1].shotId
     return lastShotId, context, blockList
