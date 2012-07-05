@@ -623,37 +623,37 @@ class InvisibleCount(Feature):
 
 class PersonAnalyzer(Feature):
     def calculateNumbers(self, context, block):
-        personHistogram = {}
-        personBeatCount = 0
+        person_histogram = {}
+        person_beat_count = 0
         for beat in context["BeatList"]:
             if beat.subject.type == PERSON:
-                personBeatCount += 1
-                if beat.subject in personHistogram:
-                    personHistogram[beat.subject] += 1
+                person_beat_count += 1
+                if beat.subject in person_histogram:
+                    person_histogram[beat.subject] += 1
                 else:
-                    personHistogram[beat.subject] = 1
+                    person_histogram[beat.subject] = 1
         context["MainCharacters"] = []
-        protagonistBeatCount = 0
+        protagonist_beat_count = 0
         protagonist = block[-1].subject
-        for person in personHistogram:
-            if personHistogram[person] >= personBeatCount / len(personHistogram):
+        for person in person_histogram:
+            if person_histogram[person] >= person_beat_count / len(person_histogram):
                 context["MainCharacters"].append(person)
-            if personHistogram[person] >= protagonistBeatCount:
+            if person_histogram[person] >= protagonist_beat_count:
                 protagonist = person
-                protagonistBeatCount = personHistogram[person]
-        if protagonistBeatCount > 0 and "protagonist" in context:
+                protagonist_beat_count = person_histogram[person]
+        if protagonist_beat_count > 0 and "protagonist" in context:
             if context["protagonist"] != protagonist:
                 protagonistChange = 1
             else: protagonistChange = 0
         else: protagonistChange = 0
         context["protagonist"] = protagonist
-        mainCharacterBlockBeatCount = 0
-        protagonistBlockBeatCount = 0
+        main_character_block_beat_count = 0
+        protagonist_block_beat_count = 0
         for beat in block:
             if beat.subject in context["MainCharacters"]:
-                mainCharacterBlockBeatCount += 1
+                main_character_block_beat_count += 1
             if beat.subject == protagonist:
-                protagonistBlockBeatCount += 1
+                protagonist_block_beat_count += 1
         lastBeatsFeatureProtagonist = [0,0,0]
         if len(context["BeatList"]) >= 3:
             if context["BeatList"][-3].subject == protagonist:
@@ -663,21 +663,24 @@ class PersonAnalyzer(Feature):
                 lastBeatsFeatureProtagonist[1]=1
         if context["BeatList"][-1].subject == protagonist:
             lastBeatsFeatureProtagonist[2]=1
-        return [len(personHistogram), len(context["MainCharacters"]),
-                int(round(100.0 * mainCharacterBlockBeatCount / len(block))),
-                int(round(100.0 * protagonistBeatCount / personBeatCount)), protagonistChange,
-                int(round(100.0 * protagonistBlockBeatCount / len(block)))] + lastBeatsFeatureProtagonist
+        protagonist_ratio = 0
+        if person_beat_count > 0: protagonist_ratio = float(protagonist_beat_count) / person_beat_count
+        return [len(person_histogram), len(context["MainCharacters"]),
+                float(main_character_block_beat_count) / len(block),
+                protagonist_ratio, protagonistChange,
+                float(protagonist_block_beat_count) / len(block)] + lastBeatsFeatureProtagonist
+
 
     def getText(self):
         out = "Bisher kamen " + str(self.numbers[0]) + " Figuren vor.\t"
         out += "Es gibt " + str(self.numbers[1]) + " Hauptfiguren.\t"
-        out += str(self.numbers[2]) + "% der Beats im aktuellen Block handeln von Hauptfiguren.\t"
-        out += "Der Protagonist kommt in " + str(self.numbers[3]) + "% der Beats vor.\t"
+        out += str(round(self.numbers[2]*100)) + "% der Beats im aktuellen Block handeln von Hauptfiguren.\t"
+        out += "Der Protagonist kommt in " + str(round(self.numbers[3]*100)) + "% der Beats vor.\t"
         if self.numbers[4]:
             out += "Der Protagonist hat sich in diesem Block geändert.\t"
         else:
             out += "Es ist der gleiche Protagonist wie bisher.\t"
-        out += "Der Protagonist kommt in " + str(self.numbers[5]) + "% der Beats des aktuellen Blocks vor.\t"
+        out += "Der Protagonist kommt in " + str(round(self.numbers[5]*100)) + "% der Beats des aktuellen Blocks vor.\t"
         if self.numbers[6]:
             out += "Der Protagonist kommt im 3.letzten Beat vor.\t"
         else:
@@ -821,13 +824,13 @@ class ShotHistogram(Feature):
                 shot_histogram[beat.shot] += 1
                 total += 1
         for i in range(0, len(shot_histogram)):
-            if total > 0: shot_histogram[i] = int(round(100.0 * shot_histogram[i] / total))
+            if total > 0: shot_histogram[i] = float(shot_histogram[i]) / total
         return shot_histogram
 
     def getText(self):
         out = ""
         for i in range(0, 7):
-            out += str(self.numbers[i]) + "% " + SHOT_NAMES[i] + ".\t"
+            out += str(round(self.numbers[i]*100)) + "% " + SHOT_NAMES[i] + ".\t"
         return out.strip("\t")
 
     def getNames(self):
@@ -1063,15 +1066,15 @@ class Linetargets(Feature):
 
 class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! Ist alles um einen Block verschoben? - Nein, shot wird benutzt.
     def calculateNumbers(self, context, block):
-        cutCriteria = []
+        cut_criteria = []
         if len(context["BygoneBlocks"]) >= 2:
             if context["BygoneBlocks"][-1][0].subject == context["BygoneBlocks"][-2][-1].subject and (
                 context["BygoneBlocks"][-2][-1].shot >= MEDIUM_SHOT and
                 context["BygoneBlocks"][-1][0].type in [SAYS, ACTION]) or (
                 context["BygoneBlocks"][-2][-1].shot >= CLOSEUP and context["BygoneBlocks"][-1][0].type == SAYS):
-                cutCriteria.append(0)
+                cut_criteria.append(0)
             else:
-                cutCriteria.append(1)
+                cut_criteria.append(1)
             if context["BygoneBlocks"][-2][-1].shot == context["BygoneBlocks"][-1][-1].shot:
                 cut = False
                 subjects_of_history = set()
@@ -1083,9 +1086,9 @@ class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! 
                 for subject in subjects_of_today:
                     if not subject in subjects_of_history:
                         cut = True
-                if cut: cutCriteria.append(1)
-                else: cutCriteria.append(0)
-            else: cutCriteria.append(1)
+                if cut: cut_criteria.append(1)
+                else: cut_criteria.append(0)
+            else: cut_criteria.append(1)
             if context["BygoneBlocks"][-2][-1].shot >= AMERICAN_SHOT and\
                context["BygoneBlocks"][-1][-1].shot >= MEDIUM_SHOT:
                 cut = False
@@ -1103,29 +1106,29 @@ class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! 
                 for beat in context["BygoneBlocks"][-1]:
                     if beat.type in [SHOW, INTRODUCE] and len(context["BygoneBlocks"]) >= 5:
                         cut = True
-                if cut: cutCriteria.append(1)
-                else: cutCriteria.append(0)
-            else: cutCriteria.append(1)
+                if cut: cut_criteria.append(1)
+                else: cut_criteria.append(0)
+            else: cut_criteria.append(1)
             if context["BygoneBlocks"][-1][0].subject != context["BygoneBlocks"][-2][0].subject and\
                context["BygoneBlocks"][-1][0].type == SAYS and context["BygoneBlocks"][-2][0].type == SAYS:
-                cutCriteria.append(1)
-            else: cutCriteria.append(0)
+                cut_criteria.append(1)
+            else: cut_criteria.append(0)
         else:
-            cutCriteria.append(1)
-            cutCriteria.append(1)
-            cutCriteria.append(1)
-            cutCriteria.append(0)
+            cut_criteria.append(1)
+            cut_criteria.append(1)
+            cut_criteria.append(1)
+            cut_criteria.append(0)
         if len(context["BygoneBlocks"]) >= 2:
             if context["BygoneBlocks"][-2][-1].shot == DETAIL:
-                cutCriteria.append(1)
-            else: cutCriteria.append(0)
-        else: cutCriteria.append(0)
+                cut_criteria.append(1)
+            else: cut_criteria.append(0)
+        else: cut_criteria.append(0)
         if len(context["BygoneBlocks"]) >= 1:
             if context["BygoneBlocks"][-1][0].type == EXPRESS:
-                cutCriteria.append(1)
-            else: cutCriteria.append(0)
-        else: cutCriteria.append(0)
-        return cutCriteria
+                cut_criteria.append(1)
+            else: cut_criteria.append(0)
+        else: cut_criteria.append(0)
+        return cut_criteria
 
     def getText(self):
         return "Die Handarbeit sagt " + str(self.numbers)
@@ -1139,18 +1142,18 @@ class HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! 
 class ExpositoryPhaseOfTheScene(Feature):
     def calculateNumbers(self, context, block):
         if context["ExpositoryPhase"]:
-            shownPlace = False
-            emotionallySituatedPersons = set()
-            allPersons = set()
-            for beat in block: allPersons.add(beat.subject)
-            beatlist = copy(context["BeatList"])
-            for beat in beatlist:
-                allPersons.add(beat.subject)
-                if beat.linetarget and beat.linetarget.type == PERSON: allPersons.add(beat.linetarget)
-                if beat.type == EXPRESS: emotionallySituatedPersons.add(beat.subject)
-                if beat.type == SHOW and beat.subject.type == PERSON: emotionallySituatedPersons.add(beat.subject)
-                if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE: shownPlace = True
-            if (shownPlace and emotionallySituatedPersons is allPersons) or (shownPlace and len(beatlist) > 15):
+            shown_place = False
+            emotionally_situated_persons = set()
+            all_persons = set()
+            for beat in block: all_persons.add(beat.subject)
+            beat_list = copy(context["BeatList"])
+            for beat in beat_list:
+                all_persons.add(beat.subject)
+                if beat.linetarget and beat.linetarget.type == PERSON: all_persons.add(beat.linetarget)
+                if beat.type == EXPRESS: emotionally_situated_persons.add(beat.subject)
+                if beat.type == SHOW and beat.subject.type == PERSON: emotionally_situated_persons.add(beat.subject)
+                if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE: shown_place = True
+            if (shown_place and emotionally_situated_persons is all_persons) or (shown_place and len(beat_list) > 15):
                 context["ExpositoryPhase"] = False
                 return [0]
             else:
@@ -1180,17 +1183,17 @@ def getAllFeatureClasses():
     return featureClassList
 
 
-def createBeatlist(context, block):
+def createBeatList(context, block):
     """
     This function reconstructs a beatList from the BygoneBlocks in the context and the given new block.
     The beatList is saved in the context. It is necessary to do this before calculating a featureLine,
      because otherwise there is no correct BeatList in the context, which is used by the Feature-Classes.
     """
-    beatlist = []
-    for bblock in context["BygoneBlocks"]:
-        for beat in bblock:
-            beatlist.append(beat)
+    beat_list = []
+    for bygone_block in context["BygoneBlocks"]:
+        for beat in bygone_block:
+            beat_list.append(beat)
     for beat in block:
-        beatlist.append(beat)
-    context["BeatList"] = beatlist
+        beat_list.append(beat)
+    context["BeatList"] = beat_list
     return context
