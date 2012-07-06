@@ -107,12 +107,14 @@ def test(f, use_classified_shot, use_history = True):
     except StopIteration:
         true_classes = np.array(true_classes)
         predictions = np.array(predictions)
-        score = np.sum(true_classes == predictions) / len(predictions)
+        #score = np.sum(true_classes == predictions) / len(predictions)
+        #score = np.sum(np.abs(true_classes - predictions)**2) / len(predictions)
+        #score = np.sum(np.abs(true_classes - predictions)) / len(predictions)
+        score = np.sum(np.abs(true_classes - predictions) > 1) / len(predictions)
         return score
 
 
-
-if __name__ == "__main__":
+"""
     data = [getDataMatrix([f]) for f in TRAIN_FILES]
     X, y = zip(*data)
     X = np.vstack(X)
@@ -127,15 +129,16 @@ if __name__ == "__main__":
 
     train_scores = []
     scores = []
+    lengths = []
     for i, f in enumerate(data):
             X, y = zip(*(data[:i] + data[i+1:]))
             X = np.vstack(X)
             y = np.hstack(y)
             X_scaled = scaler.transform(X) # normalize
-            X_scaled = pca.transform(X_scaled)
+            #X_scaled = pca.transform(X_scaled)
             #clf = svm.SVC(C=10, gamma=0.0001)
-            clf = svm.SVC()
-            #clf = linear_model.LogisticRegression(C=0.04)
+            #clf = svm.SVC()
+            clf = linear_model.LogisticRegression(C=0.04)
             #clf = tree.DecisionTreeClassifier()
             #clf = KNeighborsClassifier(19)
             #clf = Perceptron()
@@ -144,28 +147,42 @@ if __name__ == "__main__":
             clf.fit(X_scaled, y)
             X_test, y_test = data[i]
             X_test = scaler.transform(X_test)
-            X_test = pca.transform(X_test)
-            score =np.sum(clf.predict(X_test) == y_test) / len(y_test)
+            #X_test = pca.transform(X_test)
+            #score = np.sum(np.abs(clf.predict(X_test) - y_test)) / len(y_test)
+            score = np.sum(clf.predict(X_test) == y_test) / len(y_test)
             scores.append(score)
+            #train_score = np.sum(np.abs(clf.predict(X_scaled) - y)) / len(y)
             train_score = np.sum(clf.predict(X_scaled) == y) / len(y)
             train_scores.append(train_score)
+            lengths.append(len(y))
             print("{:.4}\t\t{:.4}".format(train_score, score))
 
-    print(np.array(scores).mean())
+    print( np.sum(np.array(scores) * np.array(lengths))/np.sum(lengths))
+    print(np.mean(scores))
+"""
 
 
-#    for i, f in enumerate(TRAIN_FILES):
-#        X, y = getDataMatrix(TRAIN_FILES[:i] + TRAIN_FILES[i+1:])
-#        X = np.array(X, dtype=np.float64) # convert to float
-#        scaler = sklearn.preprocessing.Scaler()
-#        X_scaled = scaler.fit_transform(X)
-#        clf = linear_model.LogisticRegression()
-#        clf.fit(X_scaled, y)
-#
-#        s1 = test(f, use_classified_shot=True)
-#        s2 = test(f, use_classified_shot=False)
-#        s3 = test(f, use_classified_shot=False, use_history=False)
-#        print(s1,"\t\t",s2, "\t\t", s3, "\t\t", f)
+
+if __name__ == "__main__":
+    results = []
+    X, y = getDataMatrix(TRAIN_FILES)
+    scaler = preprocessing.Scaler()
+    scaler.fit(X)
+    
+    for i, f in enumerate(TRAIN_FILES):
+        X, y = getDataMatrix(TRAIN_FILES[:i] + TRAIN_FILES[i+1:])
+        X_scaled = scaler.transform(X)
+        clf = linear_model.LogisticRegression(C=0.04)
+        clf.fit(X_scaled, y)
+
+        s1 = test(f, use_classified_shot=True)
+        s2 = test(f, use_classified_shot=False)
+        #s3 = test(f, use_classified_shot=False, use_history=False)
+        print(("{:.2%}\t\t"*2).format(s1, s2))
+        results.append((s1, s2))
+    r = np.array(results)
+    print("Average:")
+    print(("{:.2%}\t\t"*2).format(*r.mean(0)))
 
 
 
