@@ -7,11 +7,11 @@ from multiprocessing import Process, Queue, Lock
 #import random
 #import sys
 
-import ConvertData
-import orange, orngTree
+#import orange, orngTree
 import numpy as np
+from sklearn import svm, tree
 
-from ConvertData import getSingleFeatureLine
+from ConvertData import getSingleFeatureLine, getFeatureLinesFromFile
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
 from Config import SHOT_NAMES, TRAIN_FILES, CLOSEUP, ACTION, SAYS, MEDIUM_SHOT, EXPRESS
 #from Config import FULL_SHOT
@@ -26,7 +26,7 @@ def getDataMatrix(file_set, shot=True):
     matrix = []
     classes = []
     for file in file_set:
-        feature_lines = ConvertData.getFeatureLinesFromFile(file, shot)
+        feature_lines = getFeatureLinesFromFile(file, shot)
         for line in feature_lines:
             classes.append(SHOT_NAMES.index(line.pop()))
             matrix.append(np.array(line))
@@ -66,50 +66,50 @@ def getTestExample(domain, context, block_list, decisions, shot):
     return orange.Example(domain, feature_line)
 
 
-def getNormalizationTerms(reference_data):
-    """
-    Returns (means, vars) for an ExampleTable given in referenceData.
-    """
-    a, c, w = reference_data.to_numpy()
-    means = a.mean(0)
-    vars = a.var(0) + 0.00000001
-    return means, vars
+#def getNormalizationTerms(reference_data):
+#    """
+#    Returns (means, vars) for an ExampleTable given in referenceData.
+#    """
+#    a, c, w = reference_data.to_numpy()
+#    means = a.mean(0)
+#    vars = a.var(0) + 0.00000001
+#    return means, vars
+#
+#
+#def getNpNormalizationTerms(matrix):
+#    return matrix.mean(0), matrix.var(0) + 0.00000001
 
 
-def getNpNormalizationTerms(matrix):
-    return matrix.mean(0), matrix.var(0) + 0.00000001
+#def normalizeData(domain, train_data, means, vars):
+#    """
+#    Returns an ExampleTable with normalized Numbers.
+#    """
+#    a, c, w = train_data.to_numpy()
+#    a = (a - means) / vars
+#    A = np.hstack((a, c.reshape(-1, 1)))
+#    return orange.ExampleTable(domain, A)
 
 
-def normalizeData(domain, train_data, means, vars):
-    """
-    Returns an ExampleTable with normalized Numbers.
-    """
-    a, c, w = train_data.to_numpy()
-    a = (a - means) / vars
-    A = np.hstack((a, c.reshape(-1, 1)))
-    return orange.ExampleTable(domain, A)
+#def normalizeNpData(matrix, means, vars):
+#    """
+#    Returns normalized data, using the given means and vars.
+#    """
+#    matrix = (matrix - means) / vars
+#    return matrix
 
 
-def normalizeNpData(matrix, means, vars):
-    """
-    Returns normalized data, using the given means and vars.
-    """
-    matrix = (matrix - means) / vars
-    return matrix
-
-
-def convertToExampleTable(domain, feature_vectors, classes):
-    """
-    Combines a matrix with feature vectors with the according classes and creates a ExampleTable with this data.
-    """
-    A = np.hstack((feature_vectors, classes.reshape(-1, 1)))
-    return orange.ExampleTable(domain, A)
-
-
-def normalizeDatum(datum, means, vars):
-    for i in range(len(datum) - 1):
-        datum[i] = orange.Value((datum[i].value - means[i]) / vars[i])
-    return datum
+#def convertToExampleTable(domain, feature_vectors, classes):
+#    """
+#    Combines a matrix with feature vectors with the according classes and creates a ExampleTable with this data.
+#    """
+#    A = np.hstack((feature_vectors, classes.reshape(-1, 1)))
+#    return orange.ExampleTable(domain, A)
+#
+#
+#def normalizeDatum(datum, means, vars):
+#    for i in range(len(datum) - 1):
+#        datum[i] = orange.Value((datum[i].value - means[i]) / vars[i])
+#    return datum
 
 
 def normalizeDist(distribution):
@@ -137,52 +137,71 @@ def smoothDistribution(dist):
     return smoothed
 
 
-def trainTree(trainingData, returnQueue=None, lock=None):
+def trainTree(training_data, training_data_classes, returnQueue=None, lock=None):
     """
     Returns a TreeLearner object trained with the given training_data.
     The object is also placed in the returnQueue.
     The lock is used for printing and nothing else.
     """
-    tree = orngTree.TreeLearner(trainingData, mForPruning=2)
+    tree_classifier = tree.DecisionTreeClassifier()
+    tree_classifier.fit(training_data, training_data_classes)
     if returnQueue:
-        returnQueue.put(tree)
+        returnQueue.put(tree_classifier)
         returnQueue.close()
     if lock:
         lock.acquire()
         print("Training for Decision Tree finished.")
         lock.release()
-    return tree
+    return tree_classifier
 
 
-def trainRule(lock, trainingData, returnQueue):
-    ruleLearner = orange.RuleLearner()
-    ruleLearningClassifier = ruleLearner(trainingData)
-    returnQueue.put(ruleLearningClassifier)
-    returnQueue.close()
-    lock.acquire()
-    print("Training for Rule Induction finished.")
-    lock.release()
-    return ruleLearningClassifier
+#def trainRule(lock, trainingData, returnQueue):
+#    ruleLearner = orange.RuleLearner()
+#    ruleLearningClassifier = ruleLearner(trainingData)
+#    returnQueue.put(ruleLearningClassifier)
+#    returnQueue.close()
+#    lock.acquire()
+#    print("Training for Rule Induction finished.")
+#    lock.release()
+#    return ruleLearningClassifier
 
 
-def trainSVM(trainingData, returnQueue=None, lock=None, C=0.79):
+def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None):
     """
     Returns a svmLearner object trained with the given training_data.
     The object is also placed in the returnQueue.
     The lock is used for printing and nothing else.
     """
-    svmLearner = orange.SVMLearner()
-    #svmLearner.C = C
-    svmLearner.svm_type = orange.SVMLearner.C_SVC
-    svmClassifier = svmLearner(trainingData)
+    svm_classifier = svm.SVC(probability = True)
+    svm_classifier.fit(training_data, training_data_classes)
     if returnQueue:
-        returnQueue.put(svmClassifier)
+        returnQueue.put(svm_classifier)
         returnQueue.close()
     if lock:
         lock.acquire()
         print("Training for SVM finished.")
         lock.release()
-    return svmClassifier
+    return svm_classifier
+
+
+#def Orange_trainSVM(trainingData, returnQueue=None, lock=None, C=0.79):
+#    """
+#    Returns a svmLearner object trained with the given training_data.
+#    The object is also placed in the returnQueue.
+#    The lock is used for printing and nothing else.
+#    """
+#    svmLearner = orange.SVMLearner()
+#    #svmLearner.C = C
+#    svmLearner.svm_type = orange.SVMLearner.C_SVC
+#    svmClassifier = svmLearner(trainingData)
+#    if returnQueue:
+#        returnQueue.put(svmClassifier)
+#        returnQueue.close()
+#    if lock:
+#        lock.acquire()
+#        print("Training for SVM finished.")
+#        lock.release()
+#    return svmClassifier
 
 
 def classification(classifier, context, blockList, domain, decisions, means, vars, returnQueue=None, shot=True, leaveout=-1):

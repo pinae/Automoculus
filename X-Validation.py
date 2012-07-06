@@ -13,24 +13,6 @@ from Config import TRAIN_FILES, SHOT_NAMES
 from ConvertData import getSingleFeatureLine
 
 
-def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None):
-    """
-    Returns a svmLearner object trained with the given training_data.
-    The object is also placed in the returnQueue.
-    The lock is used for printing and nothing else.
-    """
-    svm_classifier = svm.SVC(probability = True)
-    svm_classifier.fit(training_data, training_data_classes)
-    if returnQueue:
-        returnQueue.put(svm_classifier)
-        returnQueue.close()
-    if lock:
-        lock.acquire()
-        print("Training for SVM finished.")
-        lock.release()
-    return svm_classifier
-
-
 def calculateDistributionAndClassification(classifier, context, blocks, decisions, scaler, shot_or_cut=True, returnQueue=None):
     """
     Calculates a distribution using the given classifier. From that distribution the highest Value is selected as
@@ -44,7 +26,7 @@ def calculateDistributionAndClassification(classifier, context, blocks, decision
     #print(distribution.tolist())
     classification = distribution.tolist().index(max(distribution.tolist()))
     classification = int(classifier.predict(feature_vector)[0])
-    print(classifier.predict(feature_vector))
+    #print(classifier.predict(feature_vector))
     if returnQueue:
         returnQueue.put((distribution, classification))
         returnQueue.close()
@@ -158,7 +140,7 @@ def XValidation(files, fake_decisions = False):
 
 # =============================== Main =========================================
 def main():
-    XValidation(TRAIN_FILES)
+    XValidation(TRAIN_FILES, False)
 
 if __name__ == "__main__":
     main()
