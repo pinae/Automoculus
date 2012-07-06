@@ -423,8 +423,8 @@ class SameSubjectPairs(Feature):
                     del beat
                     continue
             prev = beat
-        pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        #pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        #pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         if len(beat_list) >= 2:
             if beat_list[-1].subject == beat_list[-2].subject: pairings[0] = 1
         if len(beat_list) >= 3:
@@ -452,14 +452,14 @@ class SameSubjectPairs(Feature):
             if beat_list[-4].subject == beat_list[-7].subject: pairings[18] = 1
             if beat_list[-5].subject == beat_list[-7].subject: pairings[19] = 1
             if beat_list[-6].subject == beat_list[-7].subject: pairings[20] = 1
-        #if len(beat_list) >= 8:
-        #    if beat_list[-1].subject == beat_list[-8].subject: pairings[21] = 1
-        #    if beat_list[-2].subject == beat_list[-8].subject: pairings[22] = 1
-        #    if beat_list[-3].subject == beat_list[-8].subject: pairings[23] = 1
-        #    if beat_list[-4].subject == beat_list[-8].subject: pairings[24] = 1
-        #    if beat_list[-5].subject == beat_list[-8].subject: pairings[25] = 1
-        #    if beat_list[-6].subject == beat_list[-8].subject: pairings[26] = 1
-        #    if beat_list[-6].subject == beat_list[-8].subject: pairings[27] = 1
+        if len(beat_list) >= 8:
+            if beat_list[-1].subject == beat_list[-8].subject: pairings[21] = 1
+            if beat_list[-2].subject == beat_list[-8].subject: pairings[22] = 1
+            if beat_list[-3].subject == beat_list[-8].subject: pairings[23] = 1
+            if beat_list[-4].subject == beat_list[-8].subject: pairings[24] = 1
+            if beat_list[-5].subject == beat_list[-8].subject: pairings[25] = 1
+            if beat_list[-6].subject == beat_list[-8].subject: pairings[26] = 1
+            if beat_list[-6].subject == beat_list[-8].subject: pairings[27] = 1
         return pairings
 
     def getText(self):
@@ -544,37 +544,37 @@ class SameSubjectPairs(Feature):
         else:
             out += "Subjects -5 und -7 sind nicht gleich.\t"
         if self.numbers[20]:
-            out += "Subjects -6 und -7 sind gleich."
+            out += "Subjects -6 und -7 sind gleich.\t"
         else:
-            out += "Subjects -6 und -7 sind nicht gleich."
-        #if self.numbers[21]:
-        #    out += "Subjects -1 und -8 sind gleich.\t"
-        #else:
-        #    out += "Subjects -1 und -8 sind nicht gleich.\t"
-        #if self.numbers[21]:
-        #    out += "Subjects -2 und -8 sind gleich.\t"
-        #else:
-        #    out += "Subjects -2 und -8 sind nicht gleich.\t"
-        #if self.numbers[21]:
-        #    out += "Subjects -3 und -8 sind gleich.\t"
-        #else:
-        #    out += "Subjects -3 und -8 sind nicht gleich.\t"
-        #if self.numbers[21]:
-        #    out += "Subjects -4 und -8 sind gleich.\t"
-        #else:
-        #    out += "Subjects -4 und -8 sind nicht gleich.\t"
-        #if self.numbers[21]:
-        #    out += "Subjects -5 und -8 sind gleich.\t"
-        #else:
-        #    out += "Subjects -5 und -8 sind nicht gleich.\t"
-        #if self.numbers[21]:
-        #    out += "Subjects -6 und -8 sind gleich.\t"
-        #else:
-        #    out += "Subjects -6 und -8 sind nicht gleich.\t"
-        #if self.numbers[21]:
-        #    out += "Subjects -7 und -8 sind gleich."
-        #else:
-        #    out += "Subjects -7 und -8 sind nicht gleich."
+            out += "Subjects -6 und -7 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -1 und -8 sind gleich.\t"
+        else:
+            out += "Subjects -1 und -8 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -2 und -8 sind gleich.\t"
+        else:
+            out += "Subjects -2 und -8 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -3 und -8 sind gleich.\t"
+        else:
+            out += "Subjects -3 und -8 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -4 und -8 sind gleich.\t"
+        else:
+            out += "Subjects -4 und -8 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -5 und -8 sind gleich.\t"
+        else:
+            out += "Subjects -5 und -8 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -6 und -8 sind gleich.\t"
+        else:
+            out += "Subjects -6 und -8 sind nicht gleich.\t"
+        if self.numbers[21]:
+            out += "Subjects -7 und -8 sind gleich."
+        else:
+            out += "Subjects -7 und -8 sind nicht gleich."
         return out
 
     def getNames(self):
@@ -598,14 +598,14 @@ class SameSubjectPairs(Feature):
                 "Subjects -3 und -7 sind gleich?",
                 "Subjects -4 und -7 sind gleich?",
                 "Subjects -5 und -7 sind gleich?",
-                "Subjects -6 und -7 sind gleich?"]
-                #"Subjects -1 und -8 sind gleich?",
-                #"Subjects -2 und -8 sind gleich?",
-                #"Subjects -3 und -8 sind gleich?",
-                #"Subjects -4 und -8 sind gleich?",
-                #"Subjects -5 und -8 sind gleich?",
-                #"Subjects -6 und -8 sind gleich?",
-                #"Subjects -7 und -8 sind gleich?"]
+                "Subjects -6 und -7 sind gleich?",
+                "Subjects -1 und -8 sind gleich?",
+                "Subjects -2 und -8 sind gleich?",
+                "Subjects -3 und -8 sind gleich?",
+                "Subjects -4 und -8 sind gleich?",
+                "Subjects -5 und -8 sind gleich?",
+                "Subjects -6 und -8 sind gleich?",
+                "Subjects -7 und -8 sind gleich?"]
 
 
 class InvisibleCount(Feature):
