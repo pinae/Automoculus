@@ -8,7 +8,7 @@ import numpy as np
 from sklearn import cross_validation, preprocessing, svm, linear_model
 
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
-from Classify import getDataMatrix
+from Classify import getDataMatrix, trainSVM
 from Config import TRAIN_FILES, SHOT_NAMES
 from ConvertData import getSingleFeatureLine
 

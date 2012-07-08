@@ -1170,6 +1170,38 @@ class ExpositoryPhaseOfTheScene(Feature):
         return ["Expositionsphase?"]
 
 
+class TalkersGoSilent(Feature):
+    def calculateNumbers(self, context, block):
+        talkers_go_silent_value = max(context["TalkersGoSilentValue"]-1,0)
+        if block[-1].type == EXPRESS:
+            beat_list = context["BeatList"]
+            i = 1
+            expresses = 1
+            actor = None
+            while len(beat_list) > i:
+                i += 1
+                if not actor and beat_list[-i].type == EXPRESS:
+                    expresses += 1
+                    continue
+                if beat_list[-i].type == ACTION:
+                    actor = beat_list[-i].subject
+                    continue
+                if actor:
+                    if (beat_list[-i].type == SAYS) and (beat_list[-i].subject != actor):
+                        context["TalkersGoSilentValue"] = expresses+5
+                        return [expresses+5]
+                    else: return [talkers_go_silent_value]
+                else: return [talkers_go_silent_value]
+            return [talkers_go_silent_value]
+        else: return [talkers_go_silent_value]
+
+    def getText(self):
+        return "Der 'Tratscher-werden-leise-Wert' ist "+str(self.numbers[0])
+
+    def getNames(self):
+        return ["Tratscher-werden-leise-Wert"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """

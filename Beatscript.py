@@ -71,7 +71,7 @@ def entityFactory(entityText, context):
 
 def createContext():
     context = {"Entities": {}, "KnownEntities": set(), "BygoneBlocks": [], "protagonist": False, "MainCharacters": [],
-               "ExpositoryPhase": True}
+               "ExpositoryPhase": True, "TalkersGoSilentValue": 0}
     return context
 
 def addEntityList(context, entityListLine):
