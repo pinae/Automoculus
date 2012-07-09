@@ -1202,6 +1202,29 @@ class TalkersGoSilent(Feature):
         return ["Tratscher-werden-leise-Wert"]
 
 
+class WhatDidSubjectDo(Feature):
+    def calculateNumbers(self, context, block):
+        beats_with_this_subject_count = [0, 0, 0, 0, 0]
+        subject_was_linetarget_count = 0
+        for beat in context["BeatList"]:
+            if beat.subject == block[-1].subject:
+                beats_with_this_subject_count[beat.type] += 1
+            if beat.linetarget and beat.linetarget == block[-1].subject:
+                subject_was_linetarget_count += 1
+        return beats_with_this_subject_count + [subject_was_linetarget_count]
+
+    def getText(self):
+        out = ""
+        for i, type in enumerate(BEAT_TYPE_NAMES):
+            out += "Das letzte Subject ist in " + str(
+                self.numbers[i]) + " " + type + "-Beats als Subject vorgekommen.\t"
+        return out + "Das letzte Subject war " + str(self.numbers[5]) + " mal Linetarget."
+
+    def getNames(self):
+        return ["Anzahl " + type + "-Beats, in denen das letzte Subject auch Subject war" for type in
+                BEAT_TYPE_NAMES] + ["Anzahl Beats in denen das Subject des letzten Beats Linetarget war"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """

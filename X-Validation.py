@@ -140,7 +140,7 @@ def XValidation(files, fake_decisions = False):
 
 # =============================== Main =========================================
 def main():
-    XValidation(TRAIN_FILES, False)
+    XValidation(TRAIN_FILES, True)
 
 if __name__ == "__main__":
     main()
