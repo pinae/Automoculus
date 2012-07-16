@@ -1225,6 +1225,10 @@ class WhatDidSubjectDo(Feature):
                 BEAT_TYPE_NAMES] + ["Anzahl Beats in denen das Subject des letzten Beats Linetarget war"]
 
 
+# BlockSimilarity
+
+# SameShotSince
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """

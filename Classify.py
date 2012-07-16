@@ -11,7 +11,7 @@ from multiprocessing import Process, Queue, Lock
 import numpy as np
 from sklearn import svm, tree
 
-from ConvertData import getSingleFeatureLine, getFeatureLinesFromFile
+from ConvertData import getSingleFeatureLine, getFeatureLinesFromFile, getFeatureLine
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
 from Config import SHOT_NAMES, TRAIN_FILES, CLOSEUP, ACTION, SAYS, MEDIUM_SHOT, EXPRESS
 #from Config import FULL_SHOT
@@ -33,37 +33,37 @@ def getDataMatrix(file_set, shot=True):
     return np.array(matrix, dtype=np.float64), np.array(classes)
 
 
-def getTrainingExamples(domain, files, shot, leave_out_feature=-1):
-    """
-    Returns an orange.ExampleTable with the feature_lines converted from all the beatscripts mentioned in files.
-    """
-    examples = orange.ExampleTable(domain)
-    for file in files:
-        feature_lines = ConvertData.getFeatureLinesFromFile(file, shot, leave_out=leave_out_feature)
-        #feature_lines = ConvertData.getFeatureLinesFromFileAndModify(file, shot)
-        for feature_line in feature_lines:
-            examples.append(orange.Example(domain, feature_line))
-            #print line
-    return examples
-
-
-def getTestExamples(domain, file, shot, leave_out_feature=-1):
-    """
-    Returns an ExampleTable with feature_lines converted from the given File.
-    """
-    examples = orange.ExampleTable(domain)
-    feature_lines = ConvertData.getFeatureLinesFromFile(file, shot, leave_out=leave_out_feature)
-    for line in feature_lines:
-        examples.append(orange.Example(domain, line))
-    return examples
-
-
-def getTestExample(domain, context, block_list, decisions, shot):
-    """
-    Returns just one Example calculated from the given blockList
-    """
-    feature_line = getSingleFeatureLine(context, block_list, decisions, shot)
-    return orange.Example(domain, feature_line)
+#def getTrainingExamples(domain, files, shot, leave_out_feature=-1):
+#    """
+#    Returns an orange.ExampleTable with the feature_lines converted from all the beatscripts mentioned in files.
+#    """
+#    examples = orange.ExampleTable(domain)
+#    for file in files:
+#        feature_lines = ConvertData.getFeatureLinesFromFile(file, shot, leave_out=leave_out_feature)
+#        #feature_lines = ConvertData.getFeatureLinesFromFileAndModify(file, shot)
+#        for feature_line in feature_lines:
+#            examples.append(orange.Example(domain, feature_line))
+#            #print line
+#    return examples
+#
+#
+#def getTestExamples(domain, file, shot, leave_out_feature=-1):
+#    """
+#    Returns an ExampleTable with feature_lines converted from the given File.
+#    """
+#    examples = orange.ExampleTable(domain)
+#    feature_lines = ConvertData.getFeatureLinesFromFile(file, shot, leave_out=leave_out_feature)
+#    for line in feature_lines:
+#        examples.append(orange.Example(domain, line))
+#    return examples
+#
+#
+#def getTestExample(domain, context, block_list, decisions, shot):
+#    """
+#    Returns just one Example calculated from the given blockList
+#    """
+#    feature_line = getSingleFeatureLine(context, block_list, decisions, shot)
+#    return orange.Example(domain, feature_line)
 
 
 #def getNormalizationTerms(reference_data):
@@ -137,22 +137,22 @@ def smoothDistribution(dist):
     return smoothed
 
 
-def trainTree(training_data, training_data_classes, returnQueue=None, lock=None):
-    """
-    Returns a TreeLearner object trained with the given training_data.
-    The object is also placed in the returnQueue.
-    The lock is used for printing and nothing else.
-    """
-    tree_classifier = tree.DecisionTreeClassifier()
-    tree_classifier.fit(training_data, training_data_classes)
-    if returnQueue:
-        returnQueue.put(tree_classifier)
-        returnQueue.close()
-    if lock:
-        lock.acquire()
-        print("Training for Decision Tree finished.")
-        lock.release()
-    return tree_classifier
+#def trainTree(training_data, training_data_classes, returnQueue=None, lock=None):
+#    """
+#    Returns a TreeLearner object trained with the given training_data.
+#    The object is also placed in the returnQueue.
+#    The lock is used for printing and nothing else.
+#    """
+#    tree_classifier = tree.DecisionTreeClassifier()
+#    tree_classifier.fit(training_data, training_data_classes)
+#    if returnQueue:
+#        returnQueue.put(tree_classifier)
+#        returnQueue.close()
+#    if lock:
+#        lock.acquire()
+#        print("Training for Decision Tree finished.")
+#        lock.release()
+#    return tree_classifier
 
 
 #def trainRule(lock, trainingData, returnQueue):
@@ -204,11 +204,11 @@ def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None):
 #    return svmClassifier
 
 
-def classification(classifier, context, blockList, domain, decisions, means, vars, returnQueue=None, shot=True, leaveout=-1):
-    featureLine = ConvertData.getSingleFeatureLine(context, blockList, decisions, shot, leaveout)
-    datum = orange.Example(domain, featureLine)
-    datum = normalizeDatum(datum, means, vars)
-    classification = classifier(datum)
+def classification(classifier, context, blockList, decisions, scaler, returnQueue=None, shot=True, leaveout=-1):
+    feature_line = getSingleFeatureLine(context, blockList, decisions, shot, leaveout)
+    class_from_file = feature_line.pop()
+    feature_line = scaler.transform(feature_line)
+    classification = classifier.predict(feature_line)
     if returnQueue:
         returnQueue.put(classification)
         returnQueue.close()
@@ -216,18 +216,18 @@ def classification(classifier, context, blockList, domain, decisions, means, var
 
 
 def distribution(classifier, datum, returnQueue):
-    distribution = normalizeDist(classifier(datum, classifier.GetProbabilities))
+    distribution = normalizeDist(classifier.predict_proba(datum).tolist()[0])
     returnQueue.put(distribution)
     returnQueue.close()
     return distribution
 
 
-def getDomain(enumVariable, leaveoutfeature=-1):
-    featureNames = ConvertData.getFeatureNames(leave_out=leaveoutfeature)
-    attributes = []
-    for name in featureNames:
-        attributes.append(orange.FloatVariable(name=name))
-    return orange.Domain(attributes, enumVariable)
+#def getDomain(enumVariable, leaveoutfeature=-1):
+#    featureNames = ConvertData.getFeatureNames(leave_out=leaveoutfeature)
+#    attributes = []
+#    for name in featureNames:
+#        attributes.append(orange.FloatVariable(name=name))
+#    return orange.Domain(attributes, enumVariable)
 
 
 def cutBeforeThisBlock(blockList, decisions, keepingPropability):
@@ -279,53 +279,51 @@ def cutBeforeThisBlock(blockList, decisions, keepingPropability):
     return cut
 
 
-def distributionOfClassification(domain, featureLine, classifiers, dist, means, vars):
-    boostDatum = orange.Example(domain, featureLine)
-    boostDatum = normalizeDatum(boostDatum, means, vars)
-    treeDistributionReturnQueue = Queue()
-    computeTreeDistribution = Process(target=distribution,
-                                      args=(classifiers[0], boostDatum, treeDistributionReturnQueue))
-    computeTreeDistribution.start()
-    #ruleDistributionReturnQueue = Queue()
-    #computeRuleDistribution = Process(target=distribution,
-    #                                  args=(classifiers[1], boostDatum, ruleDistributionReturnQueue))
-    #computeRuleDistribution.start()
+def distributionOfClassification(feature_line, classifiers, dist):
+    svm = classifiers[0]
+    #boostDatum = orange.Example(domain, featureLine)
+    #boostDatum = normalizeDatum(boostDatum, means, vars)
+    #treeDistributionReturnQueue = Queue()
+    #computeTreeDistribution = Process(target=distribution,
+    #                                  args=(classifiers[0], boostDatum, treeDistributionReturnQueue))
+    #computeTreeDistribution.start()
     svmDistributionReturnQueue = Queue()
     computeSVMDistribution = Process(target=distribution,
-                                     args=(classifiers[1], boostDatum, svmDistributionReturnQueue))
+                                     args=(svm, feature_line, svmDistributionReturnQueue))
     computeSVMDistribution.start()
-    treeDistribution = treeDistributionReturnQueue.get()
-    #ruleDistribution = ruleDistributionReturnQueue.get()
+    #treeDistribution = treeDistributionReturnQueue.get()
     svmDistribution = svmDistributionReturnQueue.get()
-    computeTreeDistribution.join()
-    #computeRuleDistribution.join()
+    #computeTreeDistribution.join()
     computeSVMDistribution.join()
-    for i in range(0, len(dist)):
-        #dist[i] = (treeDistribution[i] * 0.39 + ruleDistribution[i] * 0.33 + svmDistribution[i] * 0.28)
-        dist[i] = (treeDistribution[i] * 0.60 + svmDistribution[i] * 0.40)
-    return smoothDistribution(dist)
+    #for i in range(len(dist)):
+    #    dist[i] = (treeDistribution[i] * 0.60 + svmDistribution[i] * 0.40)
+    #return smoothDistribution(dist)
+    return svmDistribution
 
 
-def classifyForShot(domain, block, context, classifiers, means, vars):
-    featureLine = ConvertData.getFeatureLine(context, block, True, -1)
-    return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0, 0, 0, 0, 0, 0],
-                                        means=means, vars=vars)
+def classifyForShot(block, context, classifiers, scaler):
+    feature_line = getFeatureLine(context, block, True, -1)
+    class_from_line = feature_line.pop()
+    feature_line = scaler.transform(feature_line)
+    return distributionOfClassification(feature_line, classifiers, dist=[0, 0, 0, 0, 0, 0, 0])
 
 
-def classifyForCut(domain, block, context, classifiers, means, vars):
-    featureLine = ConvertData.getFeatureLine(context, block, False, -1)
-    return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
+def classifyForCut(block, context, classifiers, scaler):
+    feature_line = getFeatureLine(context, block, False)
+    class_from_line = feature_line.pop()
+    feature_line = scaler.transform(feature_line)
+    return distributionOfClassification(feature_line, classifiers, dist=[0, 0])
 
 
-def classifyForDistribution(domain, beatscript, classifiers, history, means, vars):
-    boostFeatureLine = ConvertData.getSingleFeatureLineFromFile(beatscript, history, True)
-    return distributionOfClassification(domain, boostFeatureLine, classifiers, dist=[0, 0, 0, 0, 0, 0, 0],
-                                        means=means, vars=vars)
+#def classifyForDistribution(domain, beatscript, classifiers, history, means, vars):
+#    boostFeatureLine = ConvertData.getSingleFeatureLineFromFile(beatscript, history, True)
+#    return distributionOfClassification(domain, boostFeatureLine, classifiers, dist=[0, 0, 0, 0, 0, 0, 0],
+#                                        means=means, vars=vars)
 
 
-def classifyForCutting(domain, beatscript, classifiers, history, means, vars):
-    featureLine = ConvertData.getSingleFeatureLineFromFile(beatscript, history, False)
-    return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
+#def classifyForCutting(domain, beatscript, classifiers, history, means, vars):
+#    featureLine = ConvertData.getSingleFeatureLineFromFile(beatscript, history, False)
+#    return distributionOfClassification(domain, featureLine, classifiers, dist=[0, 0], means=means, vars=vars)
 
 
 def calculateDistributionAndClassification(classifier, domain, context, blocks, decisions, means, vars, shot_or_cut=True, returnQueue=None):

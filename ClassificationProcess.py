@@ -3,44 +3,37 @@
 
 # =============================== Imports ======================================
 from multiprocessing import Process, Queue, Lock
-
-import orange#, orngTree
-from Config import SHOT_NAMES, TRAIN_FILES, PERSON, OBJECT, PLACE
-from Classify import getDomain, getTrainingExamples, trainTree, trainSVM, classifyForShot#, trainRule
-from Classify import getNormalizationTerms, classifyForCut
-
+import pickle
 import sys
+
+from sklearn import preprocessing
+
+from Config import TRAIN_FILES, PERSON, OBJECT, PLACE
+from Classify import getDataMatrix, trainSVM, classifyForShot
 from Beatscript import readContext, readBeatscript, getBeatsBetweenFrames
 import Features
-import pickle
 
 # =============================== Methods ======================================
 def trainWithAllExamples(shot):
-    if shot: domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    else: domain = getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']))
-    trainingData = getTrainingExamples(domain, TRAIN_FILES, shot)
-    means, vars = getNormalizationTerms(trainingData)
+    #if shot: domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
+    #else: domain = getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']))
+    #trainingData = getTrainingExamples(domain, TRAIN_FILES, shot)
+    #means, vars = getNormalizationTerms(trainingData)
+    training_data, training_data_classes = getDataMatrix(TRAIN_FILES, shot)
+    scaler = preprocessing.Scaler()
+    training_data = scaler.fit_transform(training_data, training_data_classes)
     lock = Lock()
-    treeReturnQueue = Queue()
-    treeLearningProcess = Process(target=trainTree, args=(trainingData, treeReturnQueue, lock))
-    treeLearningProcess.start()
-    #ruleReturnQueue = Queue()
-    #ruleLearningProcess = Process(target=trainRule, args=(lock, trainingData, ruleReturnQueue))
-    #ruleLearningProcess.start()
+    #treeReturnQueue = Queue()
+    #treeLearningProcess = Process(target=trainTree, args=(training_data, training_data_classes, treeReturnQueue, lock))
+    #treeLearningProcess.start()
     svmReturnQueue = Queue()
-    svmLearningProcess = Process(target=trainSVM, args=(trainingData, svmReturnQueue, lock))
+    svmLearningProcess = Process(target=trainSVM, args=(training_data, training_data_classes, svmReturnQueue, lock))
     svmLearningProcess.start()
-    treeClassifier = treeReturnQueue.get()
-    #ruleLearningClassifier = ruleReturnQueue.get()
+    #treeClassifier = treeReturnQueue.get()
     svmClassifier = svmReturnQueue.get()
-    treeLearningProcess.join()
-    #ruleLearningProcess.join()
+    #treeLearningProcess.join()
     svmLearningProcess.join()
-    #file = open(filename, 'wb')
-    #cPickle.Pickler(file, cPickle.HIGHEST_PROTOCOL).dump((treeClassifier, ruleLearningClassifier, svmClassifier))
-    #file.close()
-    #return treeClassifier, ruleLearningClassifier, svmClassifier
-    return (treeClassifier, svmClassifier), means, vars
+    return (svmClassifier,), scaler
 
 
 # =============================== Interactions =========================================
@@ -111,13 +104,13 @@ def determine_targets(context, current_block):
 
 def main():
     # Initialization and Training
-    cutClassifiers, means, vars = trainWithAllExamples(False)
-    classifiers, means, vars = trainWithAllExamples(True)
-    shot = orange.EnumVariable(name="Shot", values=SHOT_NAMES)
-    domain = getDomain(shot)
+    #cutClassifiers, means, vars = trainWithAllExamples(False)
+    classifiers, scaler = trainWithAllExamples(True)
+    #shot = orange.EnumVariable(name="Shot", values=SHOT_NAMES)
+    #domain = getDomain(shot)
     #cut_domain = getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']))
-    beatscriptFile = open(sys.argv[1], "r")
-    lines = beatscriptFile.readlines()
+    beatscript_file = open(sys.argv[1], "r")
+    lines = beatscript_file.readlines()
     context = readContext(lines)#
     beatscript = readBeatscript(lines, context)
     Features.initializeContextVars(context)
@@ -128,7 +121,7 @@ def main():
     sys.stdout.write("Training finished." + "\n")
     sys.stdout.flush()
     # Get Distribution
-    dist = classifyForShot(domain, lastBlock, context, classifiers, means, vars)
+    dist = classifyForShot(lastBlock, context, classifiers, scaler)
     #cutBeforeThisClassification = classifyForCut(
     #                getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
     #                cutClassifiers, means, vars)
@@ -148,9 +141,9 @@ def main():
             decisions = []
             for block in context["BygoneBlocks"]:
                 blockList.append(block)
-                decisions.append(orange.Value(shot, SHOT_NAMES[block[0].shot]))
+                decisions.append(block[0].shot)
             blockList.append(lastBlock)
-            decisions.append(orange.Value(shot, SHOT_NAMES[dist.index(max(dist))]))
+            decisions.append(dist.index(max(dist)))
             #if len(decisions) >= 2:
             #        keepingPropability = dist[SHOT_NAMES.index(str(decisions[-2]))]
             #else:
@@ -169,7 +162,7 @@ def main():
             if beatList :
                 context["BygoneBlocks"].append(lastBlock)
                 lastBlock = beatList
-                dist = classifyForShot(domain, lastBlock, context, classifiers, means, vars)
+                dist = classifyForShot(lastBlock, context, classifiers, scaler)
                 #cutBeforeThisClassification = classifyForCut(cut_domain, lastBlock, context, cutClassifiers, means, vars)
                 sys.stdout.write("yes\n")
             else:
