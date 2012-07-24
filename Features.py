@@ -1225,7 +1225,42 @@ class WhatDidSubjectDo(Feature):
                 BEAT_TYPE_NAMES] + ["Anzahl Beats in denen das Subject des letzten Beats Linetarget war"]
 
 
-# BlockSimilarity
+class BlockSimilarity(Feature):
+    def calculateNumbers(self, context, block):
+        similarity_factors = []
+        blocks_to_compare = 7
+        for i in range(1, min(blocks_to_compare, len(context["BygoneBlocks"]))):
+            factor = 0
+            block_index = 0
+            bygone_index = 0
+            while len(block) > block_index and len(context["BygoneBlocks"][-i]) > bygone_index:
+                if block[block_index].type == context["BygoneBlocks"][-i][bygone_index].type:
+                    factor += 1
+                    block_index += 1
+                    bygone_index += 1
+                else:
+                    if len(context["BygoneBlocks"][-i]) > bygone_index + 1 and\
+                       block[block_index].type == context["BygoneBlocks"][-i][bygone_index + 1].type:
+                        bygone_index += 1
+                    elif len(block) > block_index + 1 and\
+                         block[block_index + 1].type == context["BygoneBlocks"][-i][bygone_index].type:
+                        block_index += 1
+                    else:
+                        block_index += 1
+                        bygone_index += 1
+            similarity_factors.append(factor)
+        while len(similarity_factors) < blocks_to_compare: similarity_factors.append(0)
+        return similarity_factors
+
+    def getText(self):
+        out = ""
+        for i, factor in enumerate(self.numbers):
+            out += "Der " + str(i) + ". letzte Block hat eine Ähnlichkeit von " + str(factor) + "\t"
+        return out.strip("\t")
+
+    def getNames(self):
+        return ["Ähnlichkeit des " + str(x) + ". letzten Blocks zum aktuellen Block" for x in range(self.numbers)]
+
 
 class SameShotSince(Feature):
     def calculateNumbers(self, context, block):
@@ -1233,12 +1268,12 @@ class SameShotSince(Feature):
         if len(context["BygoneBlocks"]) >= 1:
             lastShot = context["BygoneBlocks"][-1][0].shot
         count = 1
-        while len(context["BygoneBlocks"]) > count and context["BygoneBlocks"][-1*count-1][0].shot == lastShot:
+        while len(context["BygoneBlocks"]) > count and context["BygoneBlocks"][-1 * count - 1][0].shot == lastShot:
             count += 1
         return [count]
 
     def getText(self):
-        return "Eine andere Einstellungsgröße liegt "+str(self.numbers[0])+" Blöcke zurück."
+        return "Eine andere Einstellungsgröße liegt " + str(self.numbers[0]) + " Blöcke zurück."
 
     def getNames(self):
         return ["Anzahl Blöcke seit denen die letzte Einstellungsgröße zu sehen war"]
