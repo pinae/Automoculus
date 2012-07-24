@@ -1227,7 +1227,22 @@ class WhatDidSubjectDo(Feature):
 
 # BlockSimilarity
 
-# SameShotSince
+class SameShotSince(Feature):
+    def calculateNumbers(self, context, block):
+        lastShot = None
+        if len(context["BygoneBlocks"]) >= 1:
+            lastShot = context["BygoneBlocks"][-1][0].shot
+        count = 1
+        while len(context["BygoneBlocks"]) > count and context["BygoneBlocks"][-1*count-1][0].shot == lastShot:
+            count += 1
+        return [count]
+
+    def getText(self):
+        return "Eine andere Einstellungsgröße liegt "+str(self.numbers[0])+" Blöcke zurück."
+
+    def getNames(self):
+        return ["Anzahl Blöcke seit denen die letzte Einstellungsgröße zu sehen war"]
+
 
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
