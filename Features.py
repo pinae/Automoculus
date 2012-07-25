@@ -1312,6 +1312,39 @@ class AppearanceAnalyzer(Feature):
         return ["Anzahl Auftritte", "Anzahl Blöcke seit letztem Auftritt"]
 
 
+class ShowAnalyzer(Feature):
+    def calculateNumbers(self, context, block):
+        shows_since = 0
+        shows_counter = 0
+        for bygone_block in context["BygoneBlocks"]:
+            shows_in_the_block = False
+            for beat in bygone_block:
+                if beat.type == SHOW:
+                    shows_in_the_block = True
+            if shows_in_the_block:
+                shows_since = 0
+                shows_counter += 1
+            else:
+                shows_since += 1
+        shows_in_the_block = False
+        for beat in block:
+            if beat.type == SHOW:
+                shows_in_the_block = True
+        if shows_in_the_block:
+            shows_since = 0
+            shows_counter += 1
+        else:
+            shows_since += 1
+        return [shows_counter, shows_since]
+
+    def getText(self):
+        return "Es gab "+str(self.numbers[0])+" Blöcke mit Show-Beats.\tDer Show-Beat liegt "+\
+               str(self.numbers[1])+" Blöcke zurück."
+
+    def getNames(self):
+        return ["Anzahl Blöcke mit Show-Beat", "Anzahl Blöcke seit letztem Show-Beat"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
