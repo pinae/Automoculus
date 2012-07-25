@@ -1279,6 +1279,39 @@ class SameShotSince(Feature):
         return ["Anzahl Blöcke seit denen die letzte Einstellungsgröße zu sehen war"]
 
 
+class AppearanceAnalyzer(Feature):
+    def calculateNumbers(self, context, block):
+        introduce_since = 0
+        appearance_counter = 0
+        for bygone_block in context["BygoneBlocks"]:
+            person_introduce = False
+            for beat in bygone_block:
+                if beat.type == INTRODUCE and beat.subject.type == PERSON:
+                    person_introduce = True
+            if person_introduce:
+                introduce_since = 0
+                appearance_counter += 1
+            else:
+                introduce_since += 1
+        person_introduce = False
+        for beat in block:
+            if beat.type == INTRODUCE and beat.subject.type == PERSON:
+                person_introduce = True
+        if person_introduce:
+            introduce_since = 0
+            appearance_counter += 1
+        else:
+            introduce_since += 1
+        return [appearance_counter, introduce_since]
+
+    def getText(self):
+        return "Es gab "+str(self.numbers[0])+" Auftritte.\tDer letzte Auftritt liegt "+\
+               str(self.numbers[1])+" Blöcke zurück."
+
+    def getNames(self):
+        return ["Anzahl Auftritte", "Anzahl Blöcke seit letztem Auftritt"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
