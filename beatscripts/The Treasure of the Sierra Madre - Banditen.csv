@@ -1,0 +1,399 @@
+#Film:	The Treasure of the Sierra Madre
+#Scene:	Banditen
+#FPS:	24
+#Context:	person§Dobbs, person§Curtin, person§Howard, person§Cody, 
+#EntityList:	object§Curtin's teacup, object§Curtin's gun, object§Cody's rifle, object§Dobb's plate, object§Dobb's rifle, object§Howard's plate, object§Howard's gun, person§Bandit 1, person§Bandit 2, person§Bandit 3, person§Bandit 4, person§Bandit 5, person§Bandit 6, object§gold watch, object§a rock, object§the hill, person§Policeman 1, person§Policeman 2, person§Policeman 3, person§Policeman 4, person§Policeman 5, person§Policeman 6, object§Cody's purse, object§letter from Cody's wife, person§Dobbs, person§Curtin, person§Howard, person§Cody, 
+0_1	full_shot	false	introduce	object§Curtin's teacup	
+0_2	full_shot	false	introduce	object§Curtin's gun	
+0_3	full_shot	false	introduce	object§Cody's rifle	
+0_4	full_shot	false	action	person§Curtin	eats	
+0_5	full_shot	false	action	person§Cody	waves to		person§Curtin
+0_6	full_shot	false	action	person§Curtin	nods	
+0_7	full_shot	false	action	person§Curtin	puts away		object§Curtin's teacup
+175_1	american_shot	false	introduce	object§Dobb's plate	
+175_2	american_shot	false	introduce	object§Dobb's rifle	
+175_3	american_shot	false	action	person§Dobbs	looks araound	
+175_4	american_shot	false	action	person§Dobbs	puts away		object§Dobb's plate
+175_5	american_shot	false	action	person§Dobbs	turns to the front	
+268_1	american_shot	false	introduce	object§Howard's plate	
+268_2	american_shot	false	introduce	object§Howard's gun	
+268_3	american_shot	false	action	person§Howard	puts away		object§Howard's plate
+268_4	american_shot	false	action	person§Howard	lies down	
+268_5	american_shot	false	action	person§Howard	takes		object§Howard's gun
+435_1	full_shot	false	action	person§Curtin	takes		object§Curtin's gun
+435_2	full_shot	false	introduce	person§Bandit 1	
+435_3	full_shot	false	action	person§Bandit 1	walks around the corner	
+435_4	full_shot	false	introduce	person§Bandit 2	
+435_5	full_shot	false	action	person§Bandit 2	walks around the corner	
+435_6	full_shot	false	introduce	person§Bandit 3	
+435_7	full_shot	false	action	person§Bandit 3	rides around the corner	
+435_8	full_shot	false	introduce	person§Bandit 4	
+435_9	full_shot	false	action	person§Bandit 4	rides around the corner	
+435_10	full_shot	false	introduce	person§Bandit 5	
+435_11	full_shot	false	action	person§Bandit 5	rides around the corner	
+435_12	full_shot	false	introduce	person§Bandit 6	
+435_13	full_shot	false	action	person§Bandit 6	walks around the corner	
+1007_1	closeup	false	expresses	person§Howard	concern
+1070_1	long_shot	false	action	person§Bandit 1	walks	
+1070_2	long_shot	false	action	person§Bandit 2	walks	
+1070_3	long_shot	false	action	person§Bandit 3	rides	
+1070_4	long_shot	false	action	person§Bandit 4	rides	
+1070_5	long_shot	false	action	person§Bandit 5	rides	
+1070_6	long_shot	false	action	person§Bandit 6	walks	
+1172_1	full_shot	false	action	person§Dobbs	takes		object§Dobb's rifle
+1172_2	full_shot	false	action	person§Bandit 4	rides	
+1172_3	full_shot	false	action	person§Bandit 5	rides	
+1172_4	full_shot	false	action	person§Bandit 6	walks	
+1172_5	full_shot	false	says	person§Bandit 4	bla	person§Bandit 1	person§Bandit 2	person§Bandit 3	person§Bandit 5	person§Bandit 6
+1172_6	full_shot	false	action	person§Bandit 4	turns towards		person§Dobbs
+1364_1	american_shot	false	says	person§Curtin	bla ...	person§Howard
+1364_2	american_shot	false	action	person§Curtin	crwls towards		person§Howard
+1364_3	american_shot	false	expresses	person§Curtin	concern
+1364_4	american_shot	false	says	person§Curtin	.. bla	person§Howard
+1364_5	american_shot	false	says	person§Howard	bla	person§Curtin
+1364_6	american_shot	false	expresses	person§Howard	self assureness
+1364_7	american_shot	false	expresses	person§Curtin	confusion
+1559_1	long_shot	false	says	person§Bandit 2	bla	person§Bandit 1	person§Bandit 3	person§Bandit 4	person§Bandit 5	person§Bandit 6
+1559_2	long_shot	false	says	person§Bandit 4	bla	person§Bandit 1	person§Bandit 2	person§Bandit 3	person§Bandit 5	person§Bandit 6
+1682_1	medium_shot	false	says	person§Howard	bla	person§Curtin
+1682_2	medium_shot	false	says	person§Curtin	bla	person§Howard
+1682_3	medium_shot	false	expresses	person§Howard	excitement
+1682_4	medium_shot	false	says	person§Howard	bla	person§Curtin
+1682_5	medium_shot	false	action	person§Curtin	crawls away	
+2032_1	long_shot	false	action	person§Bandit 4	walks towards		person§Dobbs
+2032_2	long_shot	false	says	person§Dobbs	bla	person§Bandit 4
+2032_3	long_shot	false	expresses	person§Bandit 4	anger
+2032_4	long_shot	false	says	person§Bandit 4	bla	person§Dobbs
+2163_1	full_shot	false	says	person§Bandit 4	bla ...	person§Bandit 1	person§Bandit 2
+2163_2	full_shot	false	action	person§Bandit 1	walks to		person§Bandit 4
+2163_3	full_shot	false	action	person§Bandit 2	walks to		person§Bandit 4
+2163_4	full_shot	false	says	person§Bandit 4	... bla	person§Bandit 1	person§Bandit 2
+2163_5	full_shot	false	expresses	person§Bandit 4	excitement
+2371_1	closeup	false	expresses	person§Dobbs	tension
+2371_2	closeup	false	says	person§Dobbs	bla	person§Bandit 4
+2406_1	medium_shot	false	says	person§Bandit 4	bla	person§Dobbs
+2512_1	closeup	false	says	person§Dobbs	bla	person§Bandit 4
+2562_1	medium_shot	false	says	person§Bandit 4	bla	person§Dobbs
+2562_2	medium_shot	false	expresses	person§Bandit 4	anger
+2562_3	medium_shot	false	says	person§Bandit 4	bla	person§Dobbs
+2562_4	medium_shot	false	action	person§Bandit 4	reaces for a gun	
+2768_1	full_shot	false	says	person§Dobbs	Don't come closer	person§Bandit 4
+2768_2	full_shot	false	action	person§Dobbs	aims with		object§Dobb's rifle
+2768_3	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+2939_1	medium_shot	false	says	person§Bandit 4	bla	person§Dobbs
+2939_2	medium_shot	false	expresses	person§Bandit 4	false friendliness
+2939_3	medium_shot	false	says	person§Bandit 4	bla	person§Dobbs
+3084_1	closeup	false	expresses	person§Dobbs	mistrust
+3084_2	closeup	false	says	person§Dobbs	I need my gun myself.	person§Bandit 4
+3137_1	medium_shot	false	expresses	person§Bandit 4	anger
+3137_2	medium_shot	false	says	person§Bandit 4	bla	person§Dobbs
+3285_1	full_shot	false	says	person§Dobbs	bla	person§Bandit 4
+3285_2	full_shot	false	action	person§Dobbs	fires		object§Dobb's rifle
+3340_1	medium_shot	false	expresses	person§Bandit 4	surprise
+3340_2	medium_shot	false	expresses	person§Bandit 4	anger
+3405_1	closeup	false	expresses	person§Dobbs	tension
+3405_2	closeup	false	action	person§Dobbs	reloads		object§Dobb's rifle
+3405_3	closeup	true	says	person§Bandit 4	alright	person§Dobbs
+3442_1	american_shot	false	says	person§Bandit 4	bla	person§Bandit 1
+3442_2	american_shot	false	action	person§Bandit 4	turns to go	
+3442_3	american_shot	false	expresses	person§Bandit 1	surprise
+3442_4	american_shot	false	action	person§Bandit 4	pushes		person§Bandit 1
+3442_5	american_shot	false	action	person§Bandit 1	turns to go	
+3617_1	closeup	false	expresses	person§Dobbs	tension
+3653_1	long_shot	false	action	person§Bandit 4	walks to		person§Bandit 1
+3653_2	long_shot	false	action	person§Bandit 1	conspirates with		person§Bandit 4
+3653_3	long_shot	false	action	person§Bandit 2	conspirates with		person§Bandit 4
+3653_4	long_shot	false	action	person§Bandit 3	conspirates with		person§Bandit 4
+3653_5	long_shot	false	action	person§Bandit 5	conspirates with		person§Bandit 4
+3653_6	long_shot	false	action	person§Bandit 6	conspirates with		person§Bandit 4
+3724_1	medium_shot	false	expresses	person§Howard	tension
+3724_2	medium_shot	false	action	person§Curtin	lies down	
+3724_3	medium_shot	false	expresses	person§Curtin	tension
+3785_1	closeup	false	expresses	person§Cody	fear
+3861_1	full_shot	false	action	person§Bandit 4	walks to his mule	
+3861_2	full_shot	false	action	person§Dobbs	observes	
+3969_1	medium_shot	false	expresses	person§Dobbs	tension
+4010_1	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4010_2	full_shot	false	action	person§Bandit 1	walks forward	
+4010_3	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4010_4	full_shot	false	introduce	object§gold watch	
+4010_5	full_shot	false	action	person§Bandit 1	shows		object§gold watch
+4010_6	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4367_1	medium_shot	false	expresses	person§Dobbs	tension
+4367_2	medium_shot	true	says	person§Bandit 4	bla	person§Dobbs
+4470_1	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4470_2	full_shot	false	action	person§Bandit 1	walks forward	
+4470_3	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4470_4	full_shot	false	action	person§Bandit 1	shows		object§gold watch
+4470_5	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4615_1	closeup	false	expresses	person§Dobbs	determination
+4615_2	closeup	false	says	person§Dobbs	bla	person§Bandit 4
+4673_1	full_shot	false	action	person§Bandit 1	waves the		object§gold watch
+4673_2	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4705_1	medium_shot	false	action	person§Howard	aims	
+4705_2	medium_shot	true	says	person§Bandit 4	bla	person§Dobbs
+4768_1	full_shot	false	action	person§Bandit 1	waves the		object§gold watch
+4768_2	full_shot	false	expresses	person§Bandit 4	anger
+4768_3	full_shot	false	says	person§Bandit 4	bla	person§Dobbs
+4768_4	full_shot	false	action	person§Bandit 4	reaches for a gun	
+4795_1	medium_shot	false	action	person§Howard	shoots	
+4804_1	detail	false	action	person§Bandit 1	gets shot at his		object§gold watch
+4816_1	medium_shot	false	action	person§Bandit 1	looks at the rotating		object§gold watch
+4816_2	medium_shot	false	says	person§Bandit 1	bla	person§Bandit 4
+4918_1	closeup	false	expresses	person§Howard	contempt
+4952_1	medium_shot	false	expresses	person§Curtin	admiration
+4974_1	closeup	false	says	person§Howard	bla	person§Curtin
+5016_1	full_shot	false	expresses	person§Bandit 4	fear
+5016_2	full_shot	false	action	person§Bandit 4	flees	
+5016_3	full_shot	false	action	person§Bandit 1	is stunned	
+5085_1	closeup	false	action	person§Dobbs	looks at		person§Howard
+5085_2	closeup	true	says	person§Bandit 4	bla	person§Bandit 1
+5085_3	closeup	false	expresses	person§Dobbs	joy
+5175_1	full_shot	false	says	person§Bandit 4	bla	person§Bandit 1	person§Bandit 2	person§Bandit 3	person§Bandit 5	person§Bandit 6
+5175_2	full_shot	false	action	person§Bandit 1	flees	
+5175_3	full_shot	false	action	person§Bandit 2	flees	
+5175_4	full_shot	false	action	person§Bandit 3	flees	
+5175_5	full_shot	false	action	person§Bandit 5	flees	
+5175_6	full_shot	false	action	person§Bandit 6	flees	
+5230_1	medium_shot	false	expresses	person§Howard	interest
+5260_1	closeup	false	expresses	person§Dobbs	patience
+5260_2	closeup	true	says	person§Bandit 1	bla	person§Bandit 3	person§Bandit 5
+5260_3	closeup	true	action	person§Bandit 2	shoots	
+5260_4	closeup	false	action	person§Dobbs	aims	
+5334_1	extreme_long_shot	false	action	person§Howard	shoots	
+5334_2	extreme_long_shot	false	action	person§Bandit 1	shoots	
+5334_3	extreme_long_shot	false	action	person§Bandit 5	shoots	
+5334_4	extreme_long_shot	false	action	person§Curtin	shoots	
+5334_5	extreme_long_shot	false	action	person§Bandit 4	shoots	
+5334_6	extreme_long_shot	false	action	person§Bandit 6	shoots	
+5334_7	extreme_long_shot	false	action	person§Howard	shoots	
+5334_8	extreme_long_shot	false	action	person§Bandit 3	shoots	
+5334_9	extreme_long_shot	false	action	person§Curtin	shoots	
+5334_10	extreme_long_shot	false	action	person§Bandit 4	shoots	
+5443_1	closeup	false	expresses	person§Dobbs	concentration
+5443_2	closeup	false	action	person§Dobbs	shoots	
+5443_3	closeup	false	action	person§Dobbs	reloads	
+5443_4	closeup	false	action	person§Dobbs	shoots	
+5508_1	medium_shot	false	action	person§Howard	shoots	
+5508_2	medium_shot	false	action	person§Howard	shoots	
+5550_1	medium_shot	false	action	person§Curtin	aims	
+5558_1	american_shot	false	action	person§Cody	shoots	
+5558_2	american_shot	false	action	person§Cody	reloads	
+5582_1	american_shot	false	action	person§Howard	shoots	
+5607_1	american_shot	false	action	person§Dobbs	shoots	
+5607_2	american_shot	false	action	person§Dobbs	reloads	
+5651_1	extreme_long_shot	false	action	person§Bandit 1	flees	
+5651_2	extreme_long_shot	false	action	person§Bandit 4	shoots	
+5651_3	extreme_long_shot	false	action	person§Bandit 6	shoots	
+5651_4	extreme_long_shot	false	action	person§Bandit 2	flees	
+5651_5	extreme_long_shot	true	action	person§Curtin	shoots	
+5651_6	extreme_long_shot	false	action	person§Bandit 3	flees	
+5651_7	extreme_long_shot	false	action	person§Bandit 1	shoots	
+5651_8	extreme_long_shot	true	action	person§Dobbs	shoots	
+5651_9	extreme_long_shot	false	action	person§Bandit 5	shoots	
+5651_10	extreme_long_shot	false	action	person§Bandit 5	flees	
+5651_11	extreme_long_shot	false	action	person§Bandit 4	shoots	
+5651_12	extreme_long_shot	true	action	person§Cody	shoots	
+5651_13	extreme_long_shot	false	action	person§Bandit 6	flees	
+5651_14	extreme_long_shot	false	action	person§Bandit 3	shoots	
+5775_1	full_shot	false	action	person§Curtin	shoots	
+5775_2	full_shot	false	action	person§Howard	shoots	
+5837_1	medium_shot	false	action	person§Curtin	tries to shoot	
+5837_2	medium_shot	false	expresses	person§Curtin	surprise
+5837_3	medium_shot	false	action	person§Curtin	reloads	
+5884_1	medium_shot	false	action	person§Dobbs	shoots	
+5884_2	medium_shot	false	action	person§Dobbs	hides	
+5884_3	medium_shot	false	action	person§Dobbs	reloads	
+5920_1	american_shot	false	action	person§Cody	shoots	
+5920_2	american_shot	false	action	person§Cody	hides	
+5970_1	full_shot	false	action	person§Dobbs	shoots at		person§Bandit 1
+5970_2	full_shot	false	action	person§Bandit 1	flees	
+5970_3	full_shot	false	action	person§Bandit 3	flees	
+6020_1	medium_shot	false	action	person§Howard	aims	
+6020_2	medium_shot	false	action	person§Howard	shoots	
+6044_1	american_shot	false	action	person§Dobbs	shoots	
+6044_2	american_shot	false	action	person§Bandit 3	flees	
+6044_3	american_shot	false	action	person§Dobbs	hides	
+6044_4	american_shot	false	action	person§Dobbs	reloads	
+6141_1	long_shot	false	introduce	object§a rock	
+6141_2	long_shot	false	action	person§Bandit 1	hides behind		object§a rock
+6218_1	closeup	false	expresses	person§Howard	determination
+6218_2	closeup	false	action	person§Howard	aims	
+6218_3	closeup	false	action	person§Howard	shoots	
+6267_1	full_shot	false	action	person§Bandit 1	dies	
+6317_1	american_shot	false	action	person§Dobbs	reloads		object§Dobb's rifle
+6368_1	closeup	false	expresses	person§Howard	mistrust
+6416_1	long_shot	false	action	person§Howard	aims	
+6416_2	long_shot	false	action	person§Curtin	aims	
+6461_1	american_shot	false	action	person§Dobbs	aims	
+6525_1	medium_shot	false	expresses	person§Curtin	confusion
+6581_1	full_shot	false	action	person§Dobbs	crawls to		person§Howard
+6581_2	full_shot	false	says	person§Dobbs	bla	person§Howard
+6581_3	full_shot	false	says	person§Howard	bla	person§Dobbs
+6581_4	full_shot	false	action	person§Curtin	reloads		object§Curtin's gun
+6581_5	full_shot	false	says	person§Dobbs	bla	person§Howard	person§Curtin
+6581_6	full_shot	false	says	person§Curtin	bla	person§Dobbs
+6581_7	full_shot	false	says	person§Dobbs	bla	person§Curtin	person§Howard
+6581_8	full_shot	false	says	person§Curtin	bla	person§Dobbs
+6581_9	full_shot	false	says	person§Howard	bla	person§Cody
+6581_10	full_shot	false	action	person§Curtin	crawls towards		person§Cody
+7630_1	full_shot	false	action	person§Curtin	crawls	
+7630_2	full_shot	true	action	person§Bandit 2	shoots	
+7630_3	full_shot	true	action	person§Bandit 5	shoots	
+7703_1	long_shot	false	action	person§Bandit 3	shoots	
+7703_2	long_shot	false	action	person§Bandit 4	shoots	
+7703_3	long_shot	false	action	person§Bandit 6	shoots	
+7728_1	american_shot	false	action	person§Howard	shoots	
+7728_2	american_shot	false	action	person§Dobbs	shoots	
+7728_3	american_shot	true	action	person§Bandit 2	shoots	
+7763_1	american_shot	false	action	person§Curtin	reaches		person§Cody
+7763_2	american_shot	false	action	person§Curtin	turns		person§Cody
+7763_3	american_shot	false	action	person§Curtin	takes		object§Cody's rifle
+8244_1	american_shot	false	action	person§Dobbs	shoots	
+8244_2	american_shot	false	action	person§Howard	aims	
+8244_3	american_shot	false	action	person§Dobbs	aims	
+8244_4	american_shot	false	action	person§Howard	shoots	
+8244_5	american_shot	false	action	person§Dobbs	shoots	
+8341_1	full_shot	false	action	person§Curtin	flees	
+8341_2	full_shot	true	action	person§Bandit 2	shoots	
+8341_3	full_shot	true	action	person§Bandit 5	shoots	
+8341_4	full_shot	false	action	person§Curtin	falls down	
+8341_5	full_shot	true	action	person§Bandit 4	shoots	
+8341_6	full_shot	true	action	person§Bandit 6	shoots	
+8438_1	american_shot	false	expresses	person§Dobbs	tension
+8438_2	american_shot	false	action	person§Howard	hides	
+8438_3	american_shot	false	action	person§Dobbs	looks around	
+8483_1	full_shot	false	action	person§Curtin	crawls to		person§Howard
+8483_2	full_shot	false	says	person§Curtin	bla	person§Howard	person§Dobbs
+8483_3	full_shot	false	expresses	person§Dobbs	shock
+8483_4	full_shot	false	says	person§Dobbs	bla	person§Curtin	person§Howard
+8483_5	full_shot	true	action	person§Bandit 4	chopps wood	
+8483_6	full_shot	false	action	person§Dobbs	looks to		person§Bandit 4
+8483_7	full_shot	false	action	person§Howard	looks to		person§Bandit 4
+8483_8	full_shot	false	action	person§Curtin	looks to		person§Bandit 4
+8483_9	full_shot	false	says	person§Dobbs	bla	person§Howard	person§Curtin
+8483_10	full_shot	false	says	person§Howard	bla	person§Dobbs
+8957_1	medium_shot	false	expresses	person§Curtin	concern
+8957_2	medium_shot	false	says	person§Curtin	bla	person§Howard
+8957_3	medium_shot	false	says	person§Howard	bla	person§Curtin
+9108_1	full_shot	false	says	person§Howard	bla	person§Dobbs	person§Curtin
+9108_2	full_shot	false	action	person§Dobbs	crawls away	
+9108_3	full_shot	false	action	person§Curtin	crawls away	
+9108_4	full_shot	false	action	person§Howard	turns	
+9436_1	medium_shot	false	expresses	person§Howard	confusion
+9436_2	medium_shot	false	action	person§Howard	looks around	
+9479_1	medium_shot	false	expresses	person§Curtin	fear
+9479_2	medium_shot	false	action	person§Curtin	looks around	
+9529_1	medium_shot	false	action	person§Howard	looks around	
+9575_1	medium_shot	false	action	person§Dobbs	looks around	
+9575_2	medium_shot	true	says	person§Bandit 3	bla
+9575_3	medium_shot	false	expresses	person§Dobbs	concern
+9575_4	medium_shot	false	action	person§Dobbs	aims	
+9696_1	full_shot	false	action	person§Dobbs	looks	
+9752_1	medium_shot	false	expresses	person§Dobbs	concern
+9752_2	medium_shot	true	action	person§Bandit 2	rides	
+9752_3	medium_shot	true	action	person§Bandit 5	rides	
+9835_1	medium_shot	false	action	person§Howard	looks	
+9835_2	medium_shot	false	expresses	person§Howard	confusion
+9921_1	medium_shot	false	action	person§Curtin	crawls away	
+9951_1	american_shot	false	expresses	person§Howard	concern
+9951_2	american_shot	false	action	person§Dobbs	crawls to		person§Howard
+9951_3	american_shot	false	says	person§Dobbs	bla	person§Howard
+9951_4	american_shot	false	action	person§Curtin	crawls to		person§Howard
+9951_5	american_shot	false	says	person§Howard	bla	person§Dobbs
+9951_6	american_shot	false	says	person§Curtin	bla	person§Dobbs
+9951_7	american_shot	false	says	person§Howard	bla ...	person§Curtin
+9951_8	american_shot	false	action	person§Dobbs	crawls away	
+9951_9	american_shot	false	says	person§Howard	... bla	person§Curtin
+9951_10	american_shot	false	action	person§Curtin	crawls to		person§Howard
+10100_1	full_shot	false	introduce	object§the hill	
+10100_2	full_shot	false	action	person§Dobbs	climbs 		object§the hill
+10200_1	american_shot	false	expresses	person§Howard	concern
+10250_1	long_shot	false	action	person§Dobbs	climbs		object§the hill
+10250_2	long_shot	false	action	person§Dobbs	waves to		person§Howard
+10250_3	long_shot	false	says	person§Dobbs	bla ...	person§Howard	person§Curtin
+10350_1	american_shot	true	says	person§Dobbs	bla ...	person§Howard	person§Curtin
+10350_2	american_shot	false	action	person§Howard	stands up	
+10350_3	american_shot	false	action	person§Curtin	stands up	
+10450_1	long_shot	false	action	person§Dobbs	looks	
+10500_1	extreme_long_shot	false	action	person§Bandit 2	rides	
+10500_2	extreme_long_shot	false	action	person§Bandit 3	rides	
+10500_3	extreme_long_shot	false	action	person§Bandit 4	rides	
+10500_4	extreme_long_shot	false	action	person§Bandit 5	rides	
+10500_5	extreme_long_shot	false	action	person§Bandit 6	rides	
+10500_6	extreme_long_shot	false	introduce	person§Policeman 1	
+10500_7	extreme_long_shot	false	action	person§Policeman 1	rides	
+10500_8	extreme_long_shot	false	introduce	person§Policeman 2	
+10500_9	extreme_long_shot	false	action	person§Policeman 2	rides	
+10500_10	extreme_long_shot	false	introduce	person§Policeman 3	
+10500_11	extreme_long_shot	false	action	person§Policeman 3	rides	
+10500_12	extreme_long_shot	false	introduce	person§Policeman 4	
+10500_13	extreme_long_shot	false	action	person§Policeman 4	rides	
+10500_14	extreme_long_shot	false	introduce	person§Policeman 5	
+10500_15	extreme_long_shot	false	action	person§Policeman 5	rides	
+10500_16	extreme_long_shot	false	introduce	person§Policeman 6	
+10500_17	extreme_long_shot	false	action	person§Policeman 6	rides	
+10700_1	american_shot	false	expresses	person§Dobbs	joy
+10700_2	american_shot	false	expresses	person§Howard	surprise
+10700_3	american_shot	false	says	person§Dobbs	bla	person§Curtin	person§Howard
+10700_4	american_shot	false	expresses	person§Curtin	joy
+10700_5	american_shot	false	says	person§Dobbs	bla	person§Curtin	person§Howard
+10900_1	extreme_long_shot	false	action	person§Bandit 2	rides	
+10900_2	extreme_long_shot	false	action	person§Bandit 3	rides	
+10900_3	extreme_long_shot	false	action	person§Bandit 4	rides	
+10900_4	extreme_long_shot	false	action	person§Bandit 5	rides	
+10900_5	extreme_long_shot	false	action	person§Bandit 6	rides	
+10900_6	extreme_long_shot	true	says	person§Dobbs	bla
+10900_7	extreme_long_shot	false	action	person§Policeman 1	rides	
+10900_8	extreme_long_shot	false	action	person§Policeman 2	rides	
+10900_9	extreme_long_shot	false	action	person§Policeman 3	rides	
+10900_10	extreme_long_shot	false	action	person§Policeman 4	rides	
+10900_11	extreme_long_shot	false	action	person§Policeman 5	rides	
+10900_12	extreme_long_shot	false	action	person§Policeman 6	rides	
+11000_1	american_shot	false	says	person§Howard	bla	person§Dobbs
+11000_2	american_shot	false	says	person§Dobbs	bla	person§Howard
+11000_3	american_shot	false	expresses	person§Curtin	joy
+11200_1	extreme_long_shot	false	action	person§Bandit 2	rides	
+11200_2	extreme_long_shot	false	action	person§Bandit 3	rides	
+11200_3	extreme_long_shot	false	action	person§Bandit 4	rides	
+11200_4	extreme_long_shot	false	action	person§Bandit 5	rides	
+11200_5	extreme_long_shot	false	action	person§Bandit 6	rides	
+11200_6	extreme_long_shot	true	says	person§Howard	bla
+11200_7	extreme_long_shot	false	action	person§Policeman 1	rides	
+11200_8	extreme_long_shot	false	action	person§Policeman 2	rides	
+11200_9	extreme_long_shot	false	action	person§Policeman 3	rides	
+11200_10	extreme_long_shot	false	action	person§Policeman 4	rides	
+11200_11	extreme_long_shot	false	action	person§Policeman 5	rides	
+11200_12	extreme_long_shot	false	action	person§Policeman 6	rides	
+11300_1	american_shot	false	says	person§Dobbs	bla	person§Howard
+11300_2	american_shot	false	expresses	person§Howard	concern
+11300_3	american_shot	false	says	person§Howard	bls	person§Dobbs
+11400_1	long_shot	false	show	person§Cody	
+11400_2	long_shot	true	says	person§Dobbs	bla
+11500_1	long_shot	false	action	person§Curtin	walks towards		person§Cody
+11500_2	long_shot	false	action	person§Howard	walks towards		person§Cody
+11500_3	long_shot	false	action	person§Dobbs	walks towards		person§Cody
+11500_4	long_shot	false	expresses	person§Curtin	sorrow
+11500_5	long_shot	false	action	person§Howard	searches		person§Cody
+11500_6	long_shot	false	expresses	person§Dobbs	sorrow
+11500_7	long_shot	false	introduce	object§Cody's purse	
+11500_8	long_shot	false	action	person§Howard	opens		object§Cody's purse
+11500_9	long_shot	false	says	person§Howard	bls	person§Curtin	person§Dobbs
+11500_10	long_shot	false	introduce	object§letter from Cody's wife	
+11500_11	long_shot	false	action	person§Howard	sits down	
+11500_12	long_shot	false	action	person§Howard	reads the		object§letter from Cody's wife
+11500_13	long_shot	false	says	person§Howard	bla	person§Dobbs	person§Curtin
+11900_1	american_shot	false	action	person§Dobbs	rolls a cigarette	
+11900_2	american_shot	false	says	person§Howard	bla	person§Dobbs	person§Curtin
+11900_3	american_shot	false	says	person§Curtin	bla	person§Howard
+12100_1	closeup	false	says	person§Curtin	bla	person§Howard	person§Dobbs
+12250_1	closeup	false	action	person§Dobbs	smokes	
+12250_2	closeup	true	says	person§Curtin	bla	person§Howard	person§Dobbs
+12350_1	american_shot	false	says	person§Curtin	bla	person§Howard	person§Dobbs
+12450_1	closeup	false	says	person§Curtin	bla	person§Howard	person§Dobbs
+12450_2	closeup	false	expresses	person§Curtin	misery
+12550_1	closeup	false	expresses	person§Howard	sorrow
+12600_1	closeup	false	says	person§Curtin	bla	person§Howard	person§Dobbs
+12600_2	closeup	false	expresses	person§Curtin	misery
+12700_1	full_shot	false	says	person§Dobbs	bla	person§Curtin	person§Howard
+12700_2	full_shot	false	action	person§Howard	puts away		object§Cody's purse

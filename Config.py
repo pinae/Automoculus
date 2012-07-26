@@ -21,6 +21,7 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv", "Double Indemnity - E
                "The Count of Monte Christo - Messerkampf.csv", "The Count of Monte Christo - Verschwörer.csv",
                "The Maltese Falcon - Beginn.csv",
                "The Treasure of the Sierra Madre - Ausbeuter.csv",
+               "The Treasure of the Sierra Madre - Banditen.csv",
                "The Woman in the Window - Abenteuerlust.csv",
                "The Woman in the Window - Ampel.csv",
                "The Woman in the Window - Bar.csv"]
