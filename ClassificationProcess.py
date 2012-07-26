@@ -103,13 +103,17 @@ def determine_targets(context, current_block):
 
 
 def main():
+    if len(sys.argv) < 2:
+        print("Usage: python ClassificationProcess.py <Beatscript-Filename>")
+        return 1
     # Initialization and Training
-    #cutClassifiers, means, vars = trainWithAllExamples(False)
     classifiers, scaler = trainWithAllExamples(True)
-    #shot = orange.EnumVariable(name="Shot", values=SHOT_NAMES)
-    #domain = getDomain(shot)
-    #cut_domain = getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']))
-    beatscript_file = open(sys.argv[1], "r")
+    try:
+        beatscript_file = open(sys.argv[1], "r")
+    except IOError:
+        print("Error: The Beatscipt could not be opened.")
+        print("Usage: python ClassificationProcess.py <Beatscript-Filename>")
+        return 1
     lines = beatscript_file.readlines()
     context = readContext(lines)#
     beatscript = readBeatscript(lines, context)
