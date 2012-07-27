@@ -1,0 +1,189 @@
+#Film:	The Treasure of the Sierra Madre
+#Scene:	Goldverlust
+#FPS:	24
+#Context:	person§Dobbs, 
+#EntityList:	object§Mule 1, place§ruins, object§Mule 2, object§Mule 3, object§Mule 4, object§waterhole, person§Bandit, person§tired Bandit, person§dumb Bandit, object§Dobb's trousers, object§Dobb's shoes, object§Dobb's gun, object§a stone, object§machete, object§gold sack, object§gold, person§Dobbs, 
+0_1	american_shot	false	action	person§Dobbs	stands up	
+0_2	american_shot	false	expresses	person§Dobbs	exhaustion
+0_3	american_shot	false	introduce	object§Mule 1	
+0_4	american_shot	false	action	person§Dobbs	walks	
+0_5	american_shot	false	action	person§Dobbs	falls down	
+0_6	american_shot	false	action	person§Dobbs	stands up	
+777_1	closeup	false	expresses	person§Dobbs	exhaustion
+882_1	extreme_long_shot	false	introduce	place§ruins	
+882_2	extreme_long_shot	false	introduce	object§Mule 2	
+882_3	extreme_long_shot	false	introduce	object§Mule 3	
+882_4	extreme_long_shot	false	introduce	object§Mule 4	
+882_5	extreme_long_shot	false	action	person§Dobbs	walks to the		place§ruins
+1000_1	medium_shot	false	action	person§Dobbs	walks	
+1000_2	medium_shot	false	introduce	object§waterhole	
+1269_1	closeup	false	expresses	person§Dobbs	relief
+1329_1	full_shot	false	action	person§Dobbs	supports himself on		object§Mule 2
+1329_2	full_shot	false	action	person§Dobbs	supports himself on		object§Mule 3
+1329_3	full_shot	false	action	person§Dobbs	falls forward	
+1424_1	full_shot	false	action	person§Dobbs	runs to the		object§waterhole
+1424_2	full_shot	false	action	person§Dobbs	drinks	
+1584_1	medium_shot	false	action	person§Dobbs	drinks	
+1669_1	medium_shot	false	action	person§Dobbs	waters his head	
+1983_1	american_shot	false	action	person§Dobbs	looks into the water	
+1983_2	american_shot	false	introduce	person§Bandit	
+2301_1	medium_shot	false	action	person§Dobbs	looks to the		person§Bandit
+2386_1	medium_shot	false	show	person§Bandit	
+2386_2	medium_shot	false	expresses	person§Bandit	emotionlessness
+2502_1	full_shot	false	action	person§Dobbs	turns to the		person§Bandit
+2593_1	closeup	false	expresses	person§Bandit	recognitzion
+2677_1	closeup	false	expresses	person§Dobbs	appal
+2677_2	closeup	true	says	person§Bandit	bla	person§Dobbs
+2737_1	closeup	false	says	person§Bandit	bla	person§Dobbs
+2824_1	full_shot	false	introduce	person§tired Bandit	
+2824_2	full_shot	false	introduce	person§dumb Bandit	
+2824_3	full_shot	false	action	person§Dobbs	stands up	
+2824_4	full_shot	false	says	person§Bandit	bla	person§Dobbs
+2824_5	full_shot	false	says	person§Dobbs	bla	person§Bandit
+3016_1	closeup	false	expresses	person§Dobbs	misery
+3016_2	closeup	false	says	person§Dobbs	bla	person§Bandit
+3016_3	closeup	true	says	person§Bandit	bueno	person§Dobbs
+3156_1	american_shot	false	expresses	person§tired Bandit	tiredness
+3156_2	american_shot	false	expresses	person§dumb Bandit	dumbness
+3156_3	american_shot	true	says	person§Bandit	bla	person§Dobbs
+3257_1	medium_shot	false	action	person§Bandit	looks to his hand	
+3257_2	medium_shot	false	action	person§tired Bandit	walks to		person§Bandit
+3257_3	medium_shot	false	says	person§Bandit	bla	person§Dobbs
+3443_1	closeup	false	says	person§Dobbs	bla	person§Bandit
+3443_2	closeup	false	action	person§Dobbs	searches his pockets	
+3443_3	closeup	true	says	person§Bandit	bla	person§Dobbs
+3816_1	medium_shot	false	action	person§Bandit	lights a cigarette	
+3816_2	medium_shot	false	action	person§tired Bandit	rolls a cigarette	
+3816_3	medium_shot	false	says	person§Bandit	bla	person§Dobbs
+3816_4	medium_shot	true	says	person§Dobbs	bla	person§Bandit
+3816_5	medium_shot	false	expresses	person§Bandit	ironic joy
+3816_6	medium_shot	false	action	person§Bandit	nudges		person§tired Bandit
+3816_7	medium_shot	false	says	person§Bandit	bls	person§Dobbs
+4141_1	medium_shot	false	expresses	person§dumb Bandit	joy
+4141_2	medium_shot	false	says	person§dumb Bandit	Hahahahaha	person§Bandit
+4206_1	closeup	true	says	person§Bandit	bla	person§Dobbs
+4206_2	closeup	false	says	person§Dobbs	bla	person§Bandit
+4454_1	medium_shot	false	says	person§Bandit	bla	person§Dobbs
+4572_1	closeup	false	says	person§Dobbs	No, I don't think so	person§Bandit
+4572_2	closeup	false	expresses	person§Dobbs	shame for the lie
+4728_1	american_shot	false	introduce	object§Dobb's trousers	
+4728_2	american_shot	false	action	person§tired Bandit	pulls at		object§Dobb's trousers
+4728_3	american_shot	false	introduce	object§Dobb's shoes	
+4728_4	american_shot	false	says	person§tired Bandit	Are you alone?	person§Dobbs
+4728_5	american_shot	true	says	person§Dobbs	no	person§tired Bandit
+4818_1	closeup	false	expresses	person§Dobbs	fear
+4818_2	closeup	false	says	person§Dobbs	bla	person§Bandit
+4913_1	american_shot	false	action	person§tired Bandit	puts on his hat	
+4913_2	american_shot	true	says	person§Dobbs	bla	person§Bandit
+4969_1	full_shot	false	action	person§Dobbs	takes a step to the side	
+4969_2	full_shot	false	says	person§Dobbs	bla	person§Bandit
+4969_3	full_shot	false	says	person§Bandit	bla	person§dumb Bandit
+4969_4	full_shot	false	action	person§dumb Bandit	looks at		object§Dobb's shoes
+4969_5	full_shot	false	action	person§dumb Bandit	looks for	friends	person§Dobbs
+5288_1	american_shot	false	expresses	person§Dobbs	despair
+5333_1	closeup	false	says	person§Bandit	bla
+5554_1	american_shot	true	says	person§dumb Bandit	*whistle*	person§Bandit
+5554_2	american_shot	false	action	person§Dobbs	looks to		person§dumb Bandit
+5596_1	full_shot	false	says	person§dumb Bandit	bla	person§Bandit
+5653_1	closeup	false	expresses	person§Bandit	disbelief
+5653_2	closeup	false	says	person§Bandit	bla	person§Dobbs
+5848_1	american_shot	false	says	person§Dobbs	bla	person§Bandit
+5899_1	closeup	false	expresses	person§Bandit	recognition
+5899_2	closeup	false	action	person§Bandit	looks to		person§Dobbs
+5988_1	american_shot	false	action	person§Bandit	stands up	
+5988_2	american_shot	false	says	person§Bandit	bls	person§Dobbs
+6143_1	medium_shot	false	says	person§Dobbs	bls	person§Bandit
+6209_1	full_shot	false	says	person§Bandit	bla	person§Dobbs
+6209_2	full_shot	false	action	person§Dobbs	walks some steps away	
+6209_3	full_shot	false	action	person§Bandit	walks to		object§Mule 1
+6209_4	full_shot	false	expresses	person§Dobbs	tension
+6209_5	full_shot	false	action	person§dumb Bandit	sits down before		person§Dobbs
+6209_6	full_shot	false	action	person§tired Bandit	sits down before		person§Dobbs
+6477_1	closeup	false	expresses	person§Dobbs	determination
+6477_2	closeup	false	says	person§Dobbs	bla	person§Bandit
+6590_1	medium_shot	false	action	person§Bandit	searches		object§Mule 1
+6590_2	medium_shot	false	says	person§Bandit	bla	person§Dobbs
+6656_1	closeup	false	says	person§Dobbs	yeah	person§Bandit
+6727_1	long_shot	false	action	person§dumb Bandit	looks for		object§Dobb's shoes
+6727_2	long_shot	false	says	person§Dobbs	bla	person§Bandit
+6727_3	long_shot	false	action	person§Dobbs	walks to		object§Mule 2
+7055_1	medium_shot	false	action	person§Bandit	walks to		person§Dobbs
+7102_1	long_shot	false	action	person§Dobbs	pushes		object§Mule 2
+7102_2	long_shot	false	action	person§Dobbs	pushes		object§Mule 3
+7102_3	long_shot	false	action	person§Dobbs	pushes		object§Mule 4
+7281_1	american_shot	false	says	person§Dobbs	bla	person§Bandit
+7281_2	american_shot	true	says	person§Bandit	bla	person§Dobbs
+7281_3	american_shot	false	expresses	person§Dobbs	anger
+7281_4	american_shot	false	says	person§Dobbs	bla	person§Bandit
+7281_5	american_shot	false	introduce	object§Dobb's gun	
+7281_6	american_shot	false	action	person§Dobbs	pulls		object§Dobb's gun
+7488_1	medium_shot	false	says	person§Bandit	bla	person§Dobbs
+7622_1	full_shot	true	says	person§Bandit	bla	person§Dobbs
+7622_2	full_shot	false	introduce	object§a stone	
+7622_3	full_shot	false	action	person§tired Bandit	reaches for		object§a stone
+7703_1	medium_shot	false	expresses	person§Bandit	anger
+7703_2	medium_shot	false	says	person§Bandit	bla	person§Dobbs
+7825_1	long_shot	false	expresses	person§Dobbs	fear
+7825_2	long_shot	false	action	person§Dobbs	stps away from		person§tired Bandit
+7825_3	long_shot	false	action	person§Bandit	walks towards		person§Dobbs
+7875_1	medium_shot	false	expresses	person§tired Bandit	determination
+7895_1	closeup	false	expresses	person§Dobbs	despair
+7911_1	medium_shot	false	expresses	person§dumb Bandit	determination
+7929_1	american_shot	false	expresses	person§Dobbs	desperate planning
+7947_1	closeup	false	expresses	person§Bandit	determination
+7947_2	closeup	false	action	person§Bandit	goes forward	
+7964_1	american_shot	false	action	person§Dobbs	tries to shoot	
+7964_2	american_shot	true	action	person§Bandit	laughs	
+7964_3	american_shot	false	expresses	person§Dobbs	despair
+7964_4	american_shot	true	action	person§tired Bandit	laughs	
+7964_5	american_shot	false	action	person§Dobbs	tries to shoot	
+7964_6	american_shot	true	action	person§dumb Bandit	laughs	
+7964_7	american_shot	false	action	person§Dobbs	tries to shoot	
+8040_1	full_shot	false	action	person§Dobbs	throws away		object§Dobb's gun
+8040_2	full_shot	false	action	person§Dobbs	runs to		object§Mule 4
+8075_1	medium_shot	false	action	person§dumb Bandit	hits Dobbs with		object§a stone
+8075_2	medium_shot	false	action	person§Dobbs	falls down	
+8075_3	medium_shot	false	introduce	object§machete	
+8075_4	medium_shot	false	action	person§Bandit	pulls the		object§machete
+8075_5	medium_shot	false	action	person§Bandit	hits		person§Dobbs
+8185_1	american_shot	false	action	person§Bandit	stands up	
+8185_2	american_shot	false	action	person§tired Bandit	looks down at		person§Dobbs
+8185_3	american_shot	false	action	person§dumb Bandit	looks down at		person§Dobbs
+8206_1	medium_shot	false	action	person§Bandit	kills		person§Dobbs
+8258_1	american_shot	false	action	person§tired Bandit	looks down at		person§Dobbs
+8258_2	american_shot	false	action	person§dumb Bandit	looks down at		person§Dobbs
+8258_3	american_shot	false	action	person§Bandit	looks down at		person§Dobbs
+8287_1	long_shot	false	action	person§Bandit	takes		object§Dobb's gun
+8287_2	long_shot	false	action	person§dumb Bandit	takes		object§Dobb's shoes
+8287_3	long_shot	false	expresses	person§tired Bandit	anger
+8287_4	long_shot	false	says	person§tired Bandit	bla	person§dumb Bandit
+8287_5	long_shot	false	expresses	person§dumb Bandit	anger
+8287_6	long_shot	false	says	person§dumb Bandit	bla	person§tired Bandit
+8287_7	long_shot	false	says	person§tired Bandit	bla	person§dumb Bandit
+8287_8	long_shot	false	says	person§dumb Bandit	bla	person§tired Bandit
+8287_9	long_shot	false	says	person§tired Bandit	bla	person§dumb Bandit
+8287_10	long_shot	false	action	person§dumb Bandit	hits		person§tired Bandit
+8287_11	long_shot	false	action	person§tired Bandit	hits		person§dumb Bandit
+8287_12	long_shot	false	action	person§dumb Bandit	hits		person§tired Bandit
+8287_13	long_shot	false	action	person§tired Bandit	hits		person§dumb Bandit
+8287_14	long_shot	false	action	person§dumb Bandit	hits		person§tired Bandit
+8287_15	long_shot	false	action	person§tired Bandit	falls into the		object§waterhole
+8287_16	long_shot	false	says	person§Bandit	bla	person§tired Bandit	person§dumb Bandit
+8287_17	long_shot	false	action	person§Bandit	heads for		object§Mule 3
+8287_18	long_shot	false	action	person§dumb Bandit	heads for		object§Mule 3
+8287_19	long_shot	false	action	person§tired Bandit	heads for		object§Mule 3
+9121_1	extreme_long_shot	false	action	person§Bandit	runs after		object§Mule 1
+9121_2	extreme_long_shot	false	action	person§tired Bandit	runs after		object§Mule 1
+9121_3	extreme_long_shot	false	action	person§dumb Bandit	pulls up		object§Dobb's trousers
+9121_4	extreme_long_shot	false	action	person§dumb Bandit	runs after		object§Mule 1
+9380_1	long_shot	false	action	person§Bandit	runs after		object§Mule 4
+9380_2	long_shot	false	action	person§tired Bandit	runs after		object§Mule 4
+9477_1	full_shot	false	action	person§tired Bandit	unpacks		object§Mule 1
+9477_2	full_shot	false	action	person§dumb Bandit	unpacks		object§Mule 2
+9477_3	full_shot	false	action	person§Bandit	unpacks		object§Mule 3
+9477_4	full_shot	false	introduce	object§gold sack	
+9477_5	full_shot	false	action	person§Bandit	opens a		object§gold sack
+9477_6	full_shot	false	action	person§Bandit	throws to the ground a		object§gold sack
+9477_7	full_shot	false	action	person§Bandit	hits it with the		object§machete
+9477_8	full_shot	false	introduce	object§gold	
+9477_9	full_shot	false	action	person§Bandit	kicks away the		object§gold
