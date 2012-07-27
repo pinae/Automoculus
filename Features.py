@@ -1395,10 +1395,47 @@ class DialogueAnswerExpected(Feature):
 
     def getText(self):
         if self.numbers[0]: return "Der aktuelle Block lässt eine Antwort im Dialog erwarten."
-        else: "Die Struktur des aktuellen Blocks lässt nicht unbedingt eine Antwort in einem Dialog erwarten."
+        else: return "Die Struktur des aktuellen Blocks lässt nicht unbedingt eine Antwort in einem Dialog erwarten."
 
     def getNames(self):
         return ["Aktueller Block lässt Antwort erwarten?"]
+
+
+class DialogueAnswerWasExpected(Feature):
+    def calculateNumbers(self, context, block):
+        if len(context["BygoneBlocks"]) >= 1:
+            answering_subjects = set()
+            for beat in block:
+                if beat.type == SAYS:
+                    answering_subjects.add(beat.subject)
+            previous_subjects = set()
+            for beat in context["BygoneBlocks"][-1]:
+                previous_subjects.add(beat.subject)
+            if context["BygoneBlocks"][-1][-1].type == SAYS and context["BygoneBlocks"][-1][-1].linetarget and\
+               not context["BygoneBlocks"][-1][-1].linetarget in previous_subjects:
+                if context["BygoneBlocks"][-1][-1].linetarget and\
+                   context["BygoneBlocks"][-1][-1].linetarget in answering_subjects:
+                    return [1, 1]
+                else: return [1, 0]
+            elif len(context["BygoneBlocks"][-1]) >= 2 and context["BygoneBlocks"][-1][-1].type == EXPRESS and\
+                 context["BygoneBlocks"][-1][-2].type == SAYS and context["BygoneBlocks"][-1][-2].linetarget and\
+                 not block[-2].linetarget in previous_subjects:
+                if context["BygoneBlocks"][-1][-2].linetarget and\
+                   context["BygoneBlocks"][-1][-2].linetarget in answering_subjects:
+                    return [2, 1]
+                else: return [2, 0]
+            else: return [0, 0]
+        else: return [0, 0]
+
+    def getText(self):
+        if self.numbers[0] and self.numbers[1]:
+            return "Der leste vergangene Block lässt eine Antwort im Dialog erwarten und diese Antwort kommt im aktuellen Block."
+        elif self.numbers[0] and not self.numbers[1]:
+            return "Der leste vergangene Block lässt eine Antwort im Dialog erwarten, was aber durch den aktuellen Block als falsche Annahme entlarvt wird."
+        else: return "Die Struktur des letzten vergangenen Blocks lässt ohnehin nicht unbedingt eine Antwort in einem Dialog erwarten."
+
+    def getNames(self):
+        return ["Letzter vergangener Block lässt Antwort erwarten?", "Erwartete Antwort wird im aktuellen Block gegeben?"]
 
 
 # =============================== Helper Methods ===============================
