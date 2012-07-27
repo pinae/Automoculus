@@ -1429,9 +1429,9 @@ class DialogueAnswerWasExpected(Feature):
 
     def getText(self):
         if self.numbers[0] and self.numbers[1]:
-            return "Der leste vergangene Block lässt eine Antwort im Dialog erwarten und diese Antwort kommt im aktuellen Block."
+            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten und diese Antwort kommt im aktuellen Block."
         elif self.numbers[0] and not self.numbers[1]:
-            return "Der leste vergangene Block lässt eine Antwort im Dialog erwarten, was aber durch den aktuellen Block als falsche Annahme entlarvt wird."
+            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten, was aber durch den aktuellen Block als falsche Annahme entlarvt wird."
         else: return "Die Struktur des letzten vergangenen Blocks lässt ohnehin nicht unbedingt eine Antwort in einem Dialog erwarten."
 
     def getNames(self):
