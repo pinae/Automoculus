@@ -1345,6 +1345,42 @@ class ShowAnalyzer(Feature):
         return ["Anzahl Blöcke mit Show-Beat", "Anzahl Blöcke seit letztem Show-Beat"]
 
 
+class DialogueBlocks(Feature):
+    def calculateNumbers(self, context, block):
+        dialogue_blocks = []
+        subjects = set()
+        for beat in block:
+            subjects.add(beat.subject)
+            if beat.linetarget and beat.linetarget.type == PERSON:
+                subjects.add(beat.linetarget)
+        if len(subjects) == 2: dialogue_blocks.append(1)
+        else: dialogue_blocks.append(0)
+        for i in range(-1,-4,-1):
+            if len(context["BygoneBlocks"]) >= -i:
+                subjects = set()
+                for beat in context["BygoneBlocks"][i]:
+                    subjects.add(beat.subject)
+                    if beat.linetarget and beat.linetarget.type == PERSON:
+                        subjects.add(beat.linetarget)
+                if len(subjects) == 2: dialogue_blocks.append(1)
+                else: dialogue_blocks.append(0)
+            else: dialogue_blocks.append(0)
+        return dialogue_blocks
+
+    def getText(self):
+        if self.numbers[0]: out = "Der aktuelle Block ist ein Dialogblock."
+        else: out = "Der aktuelle Block ist kein Dialogblock."
+        for i in range(1,len(self.numbers)):
+            if self.numbers[i]: out += "\tDer "+str(i)+". letzte Block war ein Dialogblock."
+            else: out += "\tDer "+str(i)+". letzte Block war kein Dialogblock."
+        return out
+
+    def getNames(self):
+        names = ["Aktueller Block ist Dialogblock?"]
+        for i in range(1,len(self.numbers)): names.append(str(i)+". letzter Block war Dialogblock?")
+        return names
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
