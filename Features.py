@@ -1381,6 +1381,26 @@ class DialogueBlocks(Feature):
         return names
 
 
+class DialogueAnswerExpected(Feature):
+    def calculateNumbers(self, context, block):
+        subjects = set()
+        for beat in block:
+            subjects.add(beat.subject)
+        if block[-1].type == SAYS and block[-1].linetarget and not block[-1].linetarget in subjects:
+            return [1]
+        elif len(block) >= 2 and block[-1].type == EXPRESS and block[-2].type == SAYS and block[-2].linetarget and\
+            not block[-2].linetarget in subjects:
+            return [2]
+        else: return [0]
+
+    def getText(self):
+        if self.numbers[0]: return "Der aktuelle Block lässt eine Antwort im Dialog erwarten."
+        else: "Die Struktur des aktuellen Blocks lässt nicht unbedingt eine Antwort in einem Dialog erwarten."
+
+    def getNames(self):
+        return ["Aktueller Block lässt Antwort erwarten?"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
