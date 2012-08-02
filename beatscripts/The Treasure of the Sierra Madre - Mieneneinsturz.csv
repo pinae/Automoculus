@@ -1,0 +1,81 @@
+#Film:	The Treasure of the Sierra Madre
+#Scene:	Mieneneinsturz
+#FPS:	24
+#Context:	person§Dobbs, 
+#EntityList:	object§the wall, place§the mine, person§Curtin, object§a slide, place§entrance to the mine, person§Howard, object§a mule, person§the fate of the mine, object§timber of the ceiling, object§rocks, object§some dust, person§Dobbs, 
+0_1	american_shot	false	show	person§Dobbs	
+0_2	american_shot	false	introduce	object§the wall	
+0_3	american_shot	false	action	person§Dobbs	hacks		object§the wall
+170_1	full_shot	false	introduce	place§the mine	
+170_2	full_shot	false	introduce	person§Curtin	
+170_3	full_shot	false	introduce	object§a slide	
+170_4	full_shot	false	action	person§Curtin	pulls		object§a slide
+253_1	long_shot	false	introduce	place§entrance to the mine	
+253_2	long_shot	false	introduce	person§Howard	
+253_3	long_shot	false	introduce	object§a mule	
+253_4	long_shot	false	action	person§Howard	pulls		object§a mule
+253_5	long_shot	false	action	person§Curtin	pulls		object§a slide
+530_1	american_shot	false	action	person§Dobbs	hacks at		object§the wall
+530_2	american_shot	false	introduce	person§the fate of the mine	
+530_3	american_shot	false	expresses	person§Dobbs	startle
+530_4	american_shot	false	action	person§Dobbs	looks around		place§the mine
+663_1	closeup	false	expresses	person§Dobbs	fear
+703_1	detail	false	introduce	object§timber of the ceiling	
+703_2	detail	false	action	person§the fate of the mine	breaks the		object§timber of the ceiling
+721_1	american_shot	false	action	person§the fate of the mine	throws the	at Dobbs	object§timber of the ceiling
+721_2	american_shot	false	action	person§Dobbs	falls down	
+721_3	american_shot	false	introduce	object§rocks	
+721_4	american_shot	false	action	person§the fate of the mine	throws		object§rocks
+797_1	long_shot	true	action	person§the fate of the mine	throws		object§rocks
+797_2	long_shot	false	expresses	person§Curtin	anxiety
+797_3	long_shot	false	action	person§Curtin	walks to		place§the mine
+797_4	long_shot	false	introduce	object§some dust	
+797_5	long_shot	false	action	person§the fate of the mine	spits out		object§some dust
+797_6	long_shot	false	action	person§Curtin	runs to		place§the mine
+1173_1	closeup	false	expresses	person§Curtin	anxiety
+1173_2	closeup	false	says	person§Curtin	Dobbs!	person§Dobbs
+1200_1	detail	false	show	place§the mine	
+1200_2	detail	false	show	object§some dust	
+1261_1	closeup	false	expresses	person§Curtin	consideration
+1376_1	detail	false	show	place§the mine	
+1376_2	detail	false	show	object§some dust	
+1428_1	closeup	false	expresses	person§Curtin	weighing of interests
+1428_2	closeup	false	action	person§Curtin	turns away	
+1428_3	closeup	false	action	person§Curtin	runs to		place§the mine
+1428_4	closeup	false	expresses	person§Curtin	worry
+1698_1	full_shot	false	show	place§the mine	
+1698_2	full_shot	false	show	object§rocks	
+1698_3	full_shot	false	show	object§timber of the ceiling	
+1698_4	full_shot	false	says	person§Curtin	Dobbs!	person§Dobbs
+1698_5	full_shot	false	action	person§Curtin	climbs through the		object§rocks
+1831_1	medium_shot	false	action	person§Curtin	heaves away the		object§timber of the ceiling
+1831_2	medium_shot	false	expresses	person§Curtin	alarm
+2031_1	full_shot	false	action	person§Curtin	reaches		person§Dobbs
+2031_2	full_shot	false	action	person§Curtin	lifts		person§Dobbs
+2031_3	full_shot	false	action	person§Curtin	pulls Dobbs out of		place§the mine
+2455_1	full_shot	false	action	person§Howard	urges		object§a mule
+2455_2	full_shot	true	says	person§Curtin	Howard!	person§Howard
+2455_3	full_shot	false	action	person§Howard	turns	
+2455_4	full_shot	false	expresses	person§Howard	alarm
+2455_5	full_shot	true	says	person§Curtin	Howard!	person§Howard
+2455_6	full_shot	false	action	person§Howard	heads to		person§Curtin
+2600_1	full_shot	false	action	person§Curtin	pulls Dobbs out of		place§the mine
+2600_2	full_shot	false	says	person§Curtin	Howard, come quick!	person§Howard
+2600_3	full_shot	false	action	person§Curtin	lies to the ground		person§Dobbs
+2600_4	full_shot	false	action	person§Howard	kneels over		person§Dobbs
+2600_5	full_shot	false	says	person§Howard	bla	person§Curtin
+2600_6	full_shot	false	expresses	person§Curtin	relief
+2933_1	medium_shot	false	says	person§Howard	bla	person§Dobbs
+2933_2	medium_shot	false	action	person§Dobbs	opens his eyes	
+2933_3	medium_shot	false	expresses	person§Dobbs	exhaustion
+2933_4	medium_shot	false	says	person§Dobbs	bla	person§Howard
+3044_1	american_shot	false	says	person§Curtin	A part of the mine caved in on you	person§Dobbs
+3099_1	medium_shot	false	says	person§Dobbs	bla	person§Howard	person§Curtin
+3314_1	american_shot	true	says	person§Howard	No bones broken?	person§Dobbs
+3314_2	american_shot	false	expresses	person§Curtin	thoughtfulness
+3314_3	american_shot	true	says	person§Dobbs	I don't think so.	person§Howard
+3411_1	medium_shot	false	says	person§Dobbs	Who pulled me out?	person§Howard
+3411_2	medium_shot	false	says	person§Howard	Curtin, here, did.	person§Dobbs
+3411_3	medium_shot	false	says	person§Dobbs	I owe my life to you, partner.	person§Curtin
+3609_1	american_shot	false	expresses	person§Curtin	thoughtfulness
+3609_2	american_shot	false	says	person§Curtin	Forget it.	person§Dobbs

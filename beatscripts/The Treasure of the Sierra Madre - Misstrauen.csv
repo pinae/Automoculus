@@ -1,0 +1,100 @@
+#Film:	The Treasure of the Sierra Madre
+#Scene:	Misstrauen
+#FPS:	24
+#Context:	person§Dobbs, person§Curtin, 
+#EntityList:	place§encampment, object§Dobb's gun, object§Curtin's gun, person§Dobbs, person§Curtin, 
+0_1	long_shot	false	introduce	place§encampment	
+0_2	long_shot	false	show	person§Curtin	
+0_3	long_shot	false	show	person§Dobbs	
+0_4	long_shot	false	expresses	person§Dobbs	unrest
+0_5	long_shot	false	says	person§Curtin	bla	person§Dobbs
+0_6	long_shot	false	says	person§Dobbs	bla	person§Curtin
+0_7	long_shot	false	says	person§Curtin	bla ...	person§Dobbs
+260_1	closeup	true	says	person§Curtin	... bla	person§Dobbs
+260_2	closeup	false	expresses	person§Dobbs	acrimony
+260_3	closeup	false	says	person§Dobbs	bla	person§Curtin
+260_4	closeup	true	says	person§Curtin	bla ...	person§Dobbs
+470_1	full_shot	false	says	person§Curtin	... bla	person§Dobbs
+654_1	full_shot	false	action	person§Dobbs	laughs	
+654_2	full_shot	false	expresses	person§Dobbs	sick joke
+654_3	full_shot	false	says	person§Curtin	bla	person§Dobbs
+841_1	closeup	false	expresses	person§Curtin	mistrust
+841_2	closeup	false	says	person§Curtin	bla	person§Dobbs
+892_1	full_shot	false	says	person§Dobbs	bla	person§Curtin
+892_2	full_shot	false	says	person§Curtin	bla	person§Dobbs
+892_3	full_shot	false	says	person§Dobbs	bla	person§Curtin
+892_4	full_shot	false	action	person§Dobbs	laughs	
+892_5	full_shot	false	says	person§Curtin	bla	person§Dobbs
+892_6	full_shot	false	says	person§Dobbs	bla	person§Curtin
+1383_1	full_shot	false	says	person§Curtin	bla	person§Dobbs
+1383_2	full_shot	false	says	person§Dobbs	bla	person§Curtin
+1383_3	full_shot	false	expresses	person§Curtin	interest
+1383_4	full_shot	false	says	person§Curtin	bla	person§Dobbs
+1383_5	full_shot	false	says	person§Dobbs	bla	person§Curtin
+1679_1	closeup	false	says	person§Dobbs	bla	person§Curtin
+1679_2	closeup	true	says	person§Curtin	bla	person§Dobbs
+1679_3	closeup	false	says	person§Dobbs	bla	person§Curtin
+2023_1	closeup	false	says	person§Curtin	bla	person§Dobbs
+2156_1	closeup	false	expresses	person§Dobbs	mania
+2156_2	closeup	false	says	person§Dobbs	bla	person§Curtin
+2218_1	closeup	true	says	person§Dobbs	bla	person§Curtin
+2218_2	closeup	false	says	person§Curtin	bla	person§Dobbs
+2380_1	full_shot	false	says	person§Dobbs	bla	person§Curtin
+2380_2	full_shot	false	action	person§Dobbs	points at		person§Curtin
+2380_3	full_shot	false	says	person§Dobbs	bla	person§Curtin
+2380_4	full_shot	false	action	person§Curtin	sits up	
+2380_5	full_shot	false	says	person§Curtin	What suspicions are that?	person§Dobbs
+2380_6	full_shot	false	says	person§Dobbs	bla	person§Curtin
+2725_1	closeup	false	expresses	person§Curtin	letdown
+2725_2	closeup	true	says	person§Dobbs	bla	person§Curtin
+2859_1	closeup	false	expresses	person§Dobbs	discomposure
+2859_2	closeup	false	says	person§Dobbs	bla	person§Curtin
+3096_1	closeup	false	expresses	person§Curtin	frustration
+3096_2	closeup	false	action	person§Curtin	moves	
+3136_1	full_shot	false	action	person§Dobbs	stands up	
+3136_2	full_shot	false	introduce	object§Dobb's gun	
+3136_3	full_shot	false	action	person§Dobbs	pulls		object§Dobb's gun
+3136_4	full_shot	false	says	person§Dobbs	bla	person§Curtin
+3136_5	full_shot	false	action	person§Curtin	freezes	
+3136_6	full_shot	false	says	person§Dobbs	bla	person§Curtin
+3136_7	full_shot	false	action	person§Curtin	puts his hands up	
+3349_1	american_shot	false	says	person§Dobbs	Was I right, or was I? You and your Sundayscools talk abou protecting people's goods.	person§Curtin
+3553_1	full_shot	false	says	person§Dobbs	bla	person§Curtin
+3553_2	full_shot	false	action	person§Curtin	jumps forward	
+3553_3	full_shot	false	action	person§Dobbs	shoots		object§Dobb's gun
+3553_4	full_shot	false	action	person§Curtin	tackles down		person§Dobbs
+3553_5	full_shot	false	introduce	object§Curtin's gun	
+3553_6	full_shot	false	action	person§Curtin	pulls		object§Curtin's gun
+3688_1	detail	false	action	person§Curtin	prevents	from getting his gun	person§Dobbs
+3688_2	detail	false	action	person§Dobbs	grabs		object§Dobb's gun
+3688_3	detail	false	action	person§Curtin	aims at		person§Dobbs
+3688_4	detail	false	says	person§Curtin	Let it go!	person§Dobbs
+3688_5	detail	false	action	person§Curtin	takes		object§Dobb's gun
+3758_1	american_shot	false	action	person§Curtin	stands up	
+3758_2	american_shot	false	says	person§Curtin	bla	person§Dobbs
+3758_3	american_shot	false	says	person§Dobbs	bla	person§Curtin
+3758_4	american_shot	false	says	person§Curtin	bla	person§Dobbs
+3987_1	american_shot	false	says	person§Curtin	bla	person§Dobbs
+3987_2	american_shot	false	expresses	person§Curtin	touch
+4180_1	closeup	false	expresses	person§Dobbs	insanity
+4180_2	closeup	false	says	person§Dobbs	If you really mean that, give me bach my gun.	person§Curtin
+4248_1	american_shot	false	action	person§Curtin	removes the bullets from		object§Dobb's gun
+4248_2	american_shot	false	action	person§Curtin	hands Dobb's gun to		person§Dobbs
+4440_1	american_shot	false	says	person§Dobbs	My pal!	person§Curtin
+4440_2	american_shot	false	action	person§Dobbs	stands up	
+4539_1	full_shot	false	says	person§Curtin	bla	person§Dobbs
+4539_2	full_shot	false	says	person§Dobbs	bla ...	person§Curtin
+4790_1	full_shot	false	says	person§Dobbs	... bla	person§Curtin
+4790_2	full_shot	false	says	person§Curtin	bla	person§Dobbs
+4838_1	closeup	false	expresses	person§Dobbs	fuss
+4838_2	closeup	false	says	person§Dobbs	bla	person§Curtin
+4887_1	closeup	false	says	person§Curtin	bla	person§Dobbs
+4943_1	closeup	false	says	person§Dobbs	bla	person§Curtin
+5089_1	closeup	false	says	person§Curtin	bla	person§Dobbs
+5161_1	closeup	false	action	person§Dobbs	laughs	
+5288_1	closeup	false	expresses	person§Curtin	mistrust
+5288_2	closeup	true	says	person§Dobbs	bla ...	person§Curtin
+5347_1	closeup	false	says	person§Dobbs	... bla	person§Curtin
+5529_1	closeup	false	action	person§Curtin	reseats himself	
+5602_1	long_shot	false	action	person§Dobbs	laughs	
+5602_2	long_shot	false	action	person§Curtin	waits	
