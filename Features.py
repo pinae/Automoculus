@@ -1531,6 +1531,21 @@ class DialogueAnswerWasExpected(Feature):
         return ["Letzter vergangener Block lässt Antwort erwarten?", "Erwartete Antwort wird im aktuellen Block gegeben?"]
 
 
+class NumberOfPersonInTheBlock(Feature):
+    def calculateNumbers(self, context, block):
+        persons = set()
+        for beat in block:
+            if beat.subject.type == PERSON: persons.add(beat.subject)
+            if beat.linetarget and beat.linetarget.type == PERSON: persons.add(beat.linetarget)
+        return [len(persons)]
+
+    def getText(self):
+        return "Im aktuellen Block kommen "+str(self.numbers[0])+" Personen vor."
+
+    def getNames(self):
+        return ["Anzahl Personen im aktuellen Block"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
