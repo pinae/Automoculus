@@ -21,6 +21,7 @@ def initializeContextVars(context):
     context["BeforeWasNoConflictIntroduction"] = True
     context["NoClimax"] = True
     context["DramaturgicalFactor"] = 0
+    context["MiniDramaturgicalFactor"] = 0
 
 # =============================== Base Class ===================================
 class Feature:
@@ -83,7 +84,31 @@ class AlloverBeatTypeCount(Feature):
         return names
 
 
+class PlaceShowingBlock(Feature):
+    """
+    If the block introduces or shows a place it is time for an establishing shot. Mostly.
+    """
+    def calculateNumbers(self, context, block):
+        place_showing_block = 0
+        for beat in block:
+            if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible:
+                place_showing_block = 1
+        return [place_showing_block]
+
+    def getText(self):
+        if self.numbers[0]: return "In diesem Block wird ein Ort gezeigt."
+        else: return "Im aktuellen Block wird kein Ort gezeigt."
+
+    def getNames(self):
+        return ["Ort im aktuellen Block?"]
+
+
 class EstablishingShot(Feature):
+    """
+    If you want to know if there was an establishing shot you have to check if there was a block with a INTRODUCE
+    or SHOW-beat which shows a place. This shot should have been classified as FULL-SHOT or wider, otherwise the
+    audience couldn't have gained a sense of orientation in that place.
+    """
     def calculateNumbers(self, context, block):
         if len(context["BygoneBlocks"])>=2:
           if context["ThereWasNoEstablishingShot"]:
@@ -92,7 +117,6 @@ class EstablishingShot(Feature):
                 if beat.type in [INTRODUCE, SHOW]:
                     if beat.subject.type == PLACE and not beat.invisible:
                         introduce_place = True
-                        # Quick&Dirty: Establishing-Shot, wenn ein Ort introduced wird und die Einstellungsgröße mindestens full-shot ist.
             if (context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1)) and introduce_place:
                 context["ThereWasNoEstablishingShot"] = False
                 return [1]
@@ -114,17 +138,32 @@ class EstablishingShot(Feature):
 
 
 class ConflictIntroduction(Feature):
+    """
+    If you want to know if the block is in a phase of conflict introduction or climax you have to check if there
+    was an establishing shot. If there was an establishing shot you can check each beat after that block if there
+    is an EXPRESS. That block marks the beginning of a conflict introduction which ends with a climax which starts
+    with a block which contains an EXPRESS-beat.
+    """
+    # TODO: Does that make sense?
     def calculateNumbers(self, context, block):
         context["BeforeWasNoConflictIntroduction"] = context["NoConflictIntroduction"]
-        if context["NoConflictIntroduction"] and not context["ThereWasNoEstablishingShot"]:
-            block_with_express = False
-            for beat in block:
-                if beat.type == EXPRESS and not beat.invisible: block_with_express = True
-            if block_with_express:
-                context["NoConflictIntroduction"] = False
-                return [1]
-            else:
-                return [0]
+        if context["NoConflictIntroduction"]:
+            there_was_an_establishing_shot = False
+            for bygone_block in context["BygoneBlocks"]:
+                for beat in bygone_block:
+                    if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
+                       beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                        there_was_an_establishing_shot = True
+            if there_was_an_establishing_shot:
+                block_with_express = False
+                for beat in block:
+                    if beat.type == EXPRESS and not beat.invisible: block_with_express = True
+                if block_with_express:
+                    context["NoConflictIntroduction"] = False
+                    return [1]
+                else:
+                    return [0]
+            else: return [1]
         else:
             return [1]
 
@@ -144,7 +183,24 @@ class Climax(Feature):
         for beat in block:
             if beat.type == EXPRESS and not beat.invisible: block_with_express = True
         if context["NoClimax"]:
-            if not context["BeforeWasNoConflictIntroduction"]:
+            there_was_an_establishing_shot = False
+            there_was_a_conflict_introduction = False
+            for bygone_block in context["BygoneBlocks"]:
+                for beat in bygone_block:
+                    if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE and not beat.invisible and\
+                       beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                        there_was_an_establishing_shot = True
+                    if there_was_an_establishing_shot:
+                        if beat.type == EXPRESS and not beat.invisible:
+                            there_was_a_conflict_introduction = True
+                if there_was_a_conflict_introduction:
+                    bygone_block_with_express = False
+                    for beat in bygone_block:
+                        if beat.type == EXPRESS and not beat.invisible: bygone_block_with_express = True
+                    if bygone_block_with_express:
+                        there_was_a_conflict_introduction = False
+            if there_was_an_establishing_shot and block_with_express: there_was_a_conflict_introduction = True
+            if there_was_a_conflict_introduction:
                 if block_with_express:
                     context["NoClimax"] = False
                     return [1]
@@ -174,8 +230,8 @@ class DramaturgicalFactor(Feature):
     """
     In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
     Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
-     Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
-     werden Actions, Expressions und Says.
+    Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
+    werden Actions, Expressions und Says.
     """
     def calculateNumbers(self, context, block):
         subject_changes = 0
@@ -195,12 +251,27 @@ class DramaturgicalFactor(Feature):
                 if prev_subject != beat.subject:
                     subject_changes += 1
                 prev_subject = beat.subject
-                #print str(subject_changes)
-        if not context["NoConflictIntroduction"]:
-            if context["NoClimax"]:
+
+        there_was_an_establishing_shot = False
+        there_was_a_conflict_introduction = False
+        for bygone_block in context["BygoneBlocks"]:
+            for beat in bygone_block:
+                if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE and not beat.invisible and\
+                   beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                    there_was_an_establishing_shot = True
+                if there_was_an_establishing_shot:
+                    if beat.type == EXPRESS and not beat.invisible: there_was_a_conflict_introduction = True
+        if there_was_an_establishing_shot:
+            for beat in block:
+                if beat.type == EXPRESS and not beat.invisible: there_was_a_conflict_introduction = True
+        if there_was_a_conflict_introduction:
+
+            if context["NoClimax"]: #TODO: Remove dependency
                 context["DramaturgicalFactor"] += 3 * subject_changes
+            else:
+                context["DramaturgicalFactor"] += subject_changes
         else:
-            context["DramaturgicalFactor"] += subject_changes
+            context["DramaturgicalFactor"] = 0
         return [context["DramaturgicalFactor"]]
 
 
@@ -212,10 +283,13 @@ class DramaturgicalFactor(Feature):
 
 
 class MiniDramaturgyFactor(Feature):
-    # In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
-    # Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
-    # Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
-    # werden Actions, Expressions und Says.
+    """
+    In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
+    Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
+    Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
+    werden Actions, Expressions und Says. Während einer Höhepunktphase wird nichts
+    erhöht, da sich dann die Spannung nicht mehr steigern kann.
+    """
     def calculateNumbers(self, context, block):
         subject_changes = 0
         prev_subject = None
@@ -234,9 +308,11 @@ class MiniDramaturgyFactor(Feature):
                 if prev_subject != beat.subject:
                     subject_changes += 1
                 prev_subject = beat.subject
-        if not context["NoConflictIntroduction"]:
+        if not context["NoConflictIntroduction"]: #TODO: Remove dependency
             if context["NoClimax"]:
                 context["MiniDramaturgicalFactor"] += subject_changes
+            else:
+                context["MiniDramaturgicalFactor"] += 0
         else:
             context["MiniDramaturgicalFactor"] = 0
         return [context["MiniDramaturgicalFactor"]]
@@ -1016,7 +1092,7 @@ class Linetargets(Feature):
                     last_linetarget_is_subjects.append(1)
                 else: last_linetarget_is_subjects.append(0)
             else: last_linetarget_is_subjects.append(0)
-        if last_linetarget:
+        if last_linetarget: #TODO: Remove depenencys
             return last_linetarget_is_subjects + [number_of_linetargets, last_linetarget.type != PERSON,
                                                last_linetarget in context["MainCharacters"],
                                                last_linetarget == context["protagonist"]]
@@ -1379,6 +1455,63 @@ class DialogueBlocks(Feature):
         names = ["Aktueller Block ist Dialogblock?"]
         for i in range(1,len(self.numbers)): names.append(str(i)+". letzter Block war Dialogblock?")
         return names
+
+
+class DialogueAnswerExpected(Feature):
+    def calculateNumbers(self, context, block):
+        subjects = set()
+        for beat in block:
+            subjects.add(beat.subject)
+        if block[-1].type == SAYS and block[-1].linetarget and not block[-1].linetarget in subjects:
+            return [1]
+        elif len(block) >= 2 and block[-1].type == EXPRESS and block[-2].type == SAYS and block[-2].linetarget and\
+            not block[-2].linetarget in subjects:
+            return [2]
+        else: return [0]
+
+    def getText(self):
+        if self.numbers[0]: return "Der aktuelle Block lässt eine Antwort im Dialog erwarten."
+        else: return "Die Struktur des aktuellen Blocks lässt nicht unbedingt eine Antwort in einem Dialog erwarten."
+
+    def getNames(self):
+        return ["Aktueller Block lässt Antwort erwarten?"]
+
+
+class DialogueAnswerWasExpected(Feature):
+    def calculateNumbers(self, context, block):
+        if len(context["BygoneBlocks"]) >= 1:
+            answering_subjects = set()
+            for beat in block:
+                if beat.type == SAYS:
+                    answering_subjects.add(beat.subject)
+            previous_subjects = set()
+            for beat in context["BygoneBlocks"][-1]:
+                previous_subjects.add(beat.subject)
+            if context["BygoneBlocks"][-1][-1].type == SAYS and context["BygoneBlocks"][-1][-1].linetarget and\
+               not context["BygoneBlocks"][-1][-1].linetarget in previous_subjects:
+                if context["BygoneBlocks"][-1][-1].linetarget and\
+                   context["BygoneBlocks"][-1][-1].linetarget in answering_subjects:
+                    return [1, 1]
+                else: return [1, 0]
+            elif len(context["BygoneBlocks"][-1]) >= 2 and context["BygoneBlocks"][-1][-1].type == EXPRESS and\
+                 context["BygoneBlocks"][-1][-2].type == SAYS and context["BygoneBlocks"][-1][-2].linetarget and\
+                 not block[-2].linetarget in previous_subjects:
+                if context["BygoneBlocks"][-1][-2].linetarget and\
+                   context["BygoneBlocks"][-1][-2].linetarget in answering_subjects:
+                    return [2, 1]
+                else: return [2, 0]
+            else: return [0, 0]
+        else: return [0, 0]
+
+    def getText(self):
+        if self.numbers[0] and self.numbers[1]:
+            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten und diese Antwort kommt im aktuellen Block."
+        elif self.numbers[0] and not self.numbers[1]:
+            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten, was aber durch den aktuellen Block als falsche Annahme entlarvt wird."
+        else: return "Die Struktur des letzten vergangenen Blocks lässt ohnehin nicht unbedingt eine Antwort in einem Dialog erwarten."
+
+    def getNames(self):
+        return ["Letzter vergangener Block lässt Antwort erwarten?", "Erwartete Antwort wird im aktuellen Block gegeben?"]
 
 
 # =============================== Helper Methods ===============================
