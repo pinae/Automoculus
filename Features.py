@@ -140,32 +140,40 @@ class EstablishingShot(Feature):
 class ConflictIntroduction(Feature):
     """
     If you want to know if the block is in a phase of conflict introduction or climax you have to check if there
-    was an establishing shot. If there was an establishing shot you can check each beat after that block if there
-    is an EXPRESS. That block marks the beginning of a conflict introduction which ends with a climax which starts
-    with a block which contains an EXPRESS-beat.
+    was an establishing shot.
+    A conflict is usually showed to the audience which has more information than the figures. When the figure realizes
+    that there is a conflict the audience already knows of it. The realization of the figure is marked by an EXPRESS-
+    Beat. But when the figure expresses the realization there must have been something that happened or was said so the
+    figure got additional information.
+    So this algorithm searches for EXPRESS-Beats in the current block if there was an establishing shot. When there is
+    an EXPRESS in the current block, it searches for the ACT- or SAY-beat which gave the decisive information. This is
+    either a SAY or ACT directly before the EXPRESS or a SAY or ACT with the figure in linetargets.
     """
-    # TODO: Does that make sense?
     def calculateNumbers(self, context, block):
         context["BeforeWasNoConflictIntroduction"] = context["NoConflictIntroduction"]
-        if context["NoConflictIntroduction"]:
-            there_was_an_establishing_shot = False
-            for bygone_block in context["BygoneBlocks"]:
-                for beat in bygone_block:
-                    if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
-                       beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
-                        there_was_an_establishing_shot = True
-            if there_was_an_establishing_shot:
-                block_with_express = False
-                for beat in block:
-                    if beat.type == EXPRESS and not beat.invisible: block_with_express = True
-                if block_with_express:
-                    context["NoConflictIntroduction"] = False
-                    return [1]
-                else:
-                    return [0]
-            else: return [1]
-        else:
-            return [1]
+        there_was_an_establishing_shot = False
+        for bygone_block in context["BygoneBlocks"]:
+            for beat in bygone_block:
+                if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
+                   beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                    there_was_an_establishing_shot = True
+        if there_was_an_establishing_shot:
+            if EXPRESS in [beat.type for beat in block]:
+                reason_found = False
+                express_subject = None
+                for i in range(1,len(context["BeatList"])+1):
+                    beat = context["BeatList"][-i]
+                    if beat.type == EXPRESS and not express_subject:
+                        express_subject = beat.subject
+                        if i+1 <= len(context["BeatList"]) and context["BeatList"][-i-1].type in [SAYS, ACTION]:
+                            context["NoConflictIntroduction"] = False
+                            return [1]
+                        else: continue
+                    if express_subject and beat.type in [SAYS, ACTION] and\
+                       beat.linetarget and beat.linetarget == express_subject:
+                        context["NoConflictIntroduction"] = False
+                        return [1]
+        return [0]
 
     def getText(self):
         if not self.numbers[0]:
@@ -178,52 +186,61 @@ class ConflictIntroduction(Feature):
 
 
 class Climax(Feature):
+    """
+    After an establishing shot and a conflict introduction there could be a climax. A climax provokes an emotional
+    reaction by the subject of the conflict introduction. Before that EXPRESS there needs to be a minimum of one other
+    figure to ACT or SAY something. Otherwise the conflict could not have been acted out.
+    """
     def calculateNumbers(self, context, block):
-        block_with_express = False
-        for beat in block:
-            if beat.type == EXPRESS and not beat.invisible: block_with_express = True
-        if context["NoClimax"]:
-            there_was_an_establishing_shot = False
-            there_was_a_conflict_introduction = False
-            for bygone_block in context["BygoneBlocks"]:
-                for beat in bygone_block:
-                    if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE and not beat.invisible and\
-                       beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
-                        there_was_an_establishing_shot = True
-                    if there_was_an_establishing_shot:
-                        if beat.type == EXPRESS and not beat.invisible:
-                            there_was_a_conflict_introduction = True
-                if there_was_a_conflict_introduction:
-                    bygone_block_with_express = False
-                    for beat in bygone_block:
-                        if beat.type == EXPRESS and not beat.invisible: bygone_block_with_express = True
-                    if bygone_block_with_express:
-                        there_was_a_conflict_introduction = False
-            if there_was_an_establishing_shot and block_with_express: there_was_a_conflict_introduction = True
-            if there_was_a_conflict_introduction:
-                if block_with_express:
-                    context["NoClimax"] = False
-                    return [1]
-                else:
-                    return [0]
-            else: return [0]
-        else:
-            if block_with_express:
-                return [1]
-            else:
-                context["NoClimax"] = True
-                context["NoConflictIntroduction"] = True
-                context["BeforeWasNoConflictIntroduction"] = True
-                return [0]
+        there_was_a_climax = 0
+        subjects = set()
+        linetargets = set()
+        conflict_subject = None
+        there_was_an_establishing_shot = False
+        for bygone_block in context["BygoneBlocks"]:
+            for beat in bygone_block:
+                if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
+                   beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                    there_was_an_establishing_shot = True
+        if there_was_an_establishing_shot:
+            express_subject = None
+            express_position = -1
+            i = len(context["BeatList"])-len(block)-1
+            while i>=0:
+                beat = context["BeatList"][i]
+                if beat.type == EXPRESS:
+                    if i-1 >= 0 and context["BeatList"][i-1].type in [SAYS, ACTION]:
+                        conflict_subject = beat.subject
+                        conflict_position = i
+                        break
+                    express_subject = beat.subject
+                    express_position = i
+                if express_subject and beat.type in [SAYS, ACTION] and\
+                   beat.linetarget and beat.linetarget == express_subject:
+                    conflict_subject = express_subject
+                    conflict_position = express_position
+                    break
+                i -= 1
+        if conflict_subject: #there was a conflict introduction
+            for i in range(conflict_position,len(context["BeatList"])):
+                beat = context["BeatList"][i]
+                subjects.add(beat.subject)
+                if beat.linetarget: linetargets.add(beat.linetarget)
+                if beat.type == EXPRESS and len(subjects) >= 2:
+                    there_was_a_climax = 1
+        if there_was_a_climax:
+            context["NoConflictIntroduction"] = True
+            context["BeforeWasNoConflictIntroduction"] = True
+        return [there_was_a_climax,len(subjects),len(linetargets)]
 
-    def getText(self):
+    def getText(self):#TODO: Append subject and linetarget count
         if not self.numbers[0]:
             return "Keine Höhepunktphase."
         else:
-            return "Höhepunktphase."
+            return "Höhepunktphase mit "+str(self.numbers[1])+" Akteuren und "+str(self.numbers[2])+" Bezugspersonen."
 
     def getNames(self):
-        return ["Höhepunktphase?"]
+        return ["Höhepunktphase?", "Anzahl Subjects in der Phase", "Anzahl Linetargets in der Phase"]
 
 
 class DramaturgicalFactor(Feature):
