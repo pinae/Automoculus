@@ -1,0 +1,49 @@
+#Film:	The Woman in the Window
+#Scene:	Mord
+#FPS:	24
+#Context:	person§Professor Richard Wanley, person§Alice Reed, 
+#EntityList:	object§the couch, person§Frank, place§Alice's apartment, object§scissors, person§Professor Richard Wanley, person§Alice Reed, 
+0_1	american_shot	false	show	person§Professor Richard Wanley	
+0_2	american_shot	false	introduce	object§the couch	
+0_3	american_shot	false	action	person§Professor Richard Wanley	looks for		person§Alice Reed
+41_1	american_shot	false	introduce	person§Frank	
+41_2	american_shot	false	action	person§Frank	walks towards		person§Professor Richard Wanley
+41_3	american_shot	false	says	person§Frank	Who are you?	person§Professor Richard Wanley
+72_1	full_shot	false	action	person§Professor Richard Wanley	stands up	
+72_2	full_shot	false	says	person§Professor Richard Wanley	My name is ...	person§Frank
+72_3	full_shot	true	says	person§Alice Reed	Frank!	person§Frank
+155_1	long_shot	false	introduce	place§Alice's apartment	
+155_2	long_shot	false	action	person§Alice Reed	runs to		person§Frank
+155_3	long_shot	false	introduce	object§scissors	
+155_4	long_shot	false	says	person§Alice Reed	bla	person§Frank
+155_5	long_shot	false	says	person§Frank	bla	person§Alice Reed
+155_6	long_shot	false	action	person§Frank	slaps		person§Alice Reed
+155_7	long_shot	true	says	person§Professor Richard Wanley	stop that!	person§Frank
+261_1	long_shot	false	action	person§Frank	jumps at		person§Professor Richard Wanley
+261_2	long_shot	false	says	person§Frank	bla!	person§Professor Richard Wanley
+295_1	medium_shot	false	action	person§Frank	hits	in the face	person§Professor Richard Wanley
+295_2	medium_shot	false	action	person§Professor Richard Wanley	falls down on		object§the couch
+323_1	american_shot	false	action	person§Frank	attacks	on the couch	person§Professor Richard Wanley
+374_1	full_shot	false	expresses	person§Alice Reed	fear
+408_1	american_shot	false	action	person§Frank	strangles		person§Professor Richard Wanley
+408_2	american_shot	false	expresses	person§Professor Richard Wanley	horror
+408_3	american_shot	true	says	person§Alice Reed	Stop!	person§Frank
+472_1	closeup	false	expresses	person§Frank	emotionless cruelty
+472_2	closeup	true	says	person§Alice Reed	bla	person§Frank
+516_1	closeup	false	expresses	person§Professor Richard Wanley	suffocation
+516_2	closeup	false	action	person§Professor Richard Wanley	struggles against the grip of		person§Frank
+558_1	closeup	false	action	person§Frank	strangles		person§Professor Richard Wanley
+567_1	closeup	false	expresses	person§Professor Richard Wanley	suffocation
+567_2	closeup	false	action	person§Professor Richard Wanley	struggles against the grip of		person§Frank
+596_1	closeup	false	action	person§Frank	strangles		person§Professor Richard Wanley
+611_1	closeup	false	action	person§Professor Richard Wanley	reaches for help	
+640_1	full_shot	false	action	person§Alice Reed	grabs the		object§scissors
+640_2	full_shot	false	action	person§Alice Reed	stands up	
+640_3	full_shot	false	action	person§Alice Reed	runs	
+684_1	closeup	false	action	person§Professor Richard Wanley	reaches for help	
+684_2	closeup	false	action	person§Alice Reed	hands the	to Professor Richard Wanley	object§scissors
+700_1	medium_shot	false	expresses	person§Alice Reed	coldheartedness
+727_1	closeup	false	action	person§Professor Richard Wanley	stabs	with the scissors	person§Frank
+774_1	medium_shot	false	expresses	person§Alice Reed	detachment
+797_1	american_shot	false	action	person§Frank	falls to the floor	
+944_1	medium_shot	false	expresses	person§Alice Reed	turbulence

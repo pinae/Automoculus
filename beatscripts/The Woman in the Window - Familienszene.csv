@@ -1,0 +1,38 @@
+#Film:	The Woman in the Window
+#Scene:	Familienszene
+#FPS:	24
+#Context:	
+#EntityList:	object§sign, place§station, person§boy, person§girl, person§Wanley's wife, object§hat of Wanley's wife, person§Professor Richard Wanley, 
+0_1	long_shot	false	introduce	object§sign	
+0_2	long_shot	false	introduce	place§station	
+0_3	long_shot	false	introduce	person§boy	
+0_4	long_shot	false	introduce	person§girl	
+0_5	long_shot	false	introduce	person§Wanley's wife	
+0_6	long_shot	false	introduce	object§hat of Wanley's wife	
+0_7	long_shot	false	action	person§Wanley's wife	waves the		object§hat of Wanley's wife
+0_8	long_shot	false	introduce	person§Professor Richard Wanley	
+0_9	long_shot	false	says	person§Wanley's wife	bla	person§Professor Richard Wanley
+260_1	closeup	false	says	person§Professor Richard Wanley	bla	person§Wanley's wife
+315_1	medium_shot	false	says	person§Wanley's wife	bla	person§Professor Richard Wanley
+315_2	medium_shot	false	says	person§Professor Richard Wanley	bla	person§Wanley's wife
+315_3	medium_shot	false	says	person§Wanley's wife	bla ...	person§Professor Richard Wanley
+539_1	full_shot	false	says	person§Wanley's wife	... bla	person§Professor Richard Wanley
+539_2	full_shot	false	action	person§boy	nudges		person§Wanley's wife
+539_3	full_shot	false	says	person§boy	Mama, they're going	person§Wanley's wife
+539_4	full_shot	false	says	person§Wanley's wife	bla	person§boy
+539_5	full_shot	false	says	person§Wanley's wife	bla	person§Professor Richard Wanley
+539_6	full_shot	false	says	person§Professor Richard Wanley	bla	person§Wanley's wife
+539_7	full_shot	false	says	person§Wanley's wife	bla	person§Professor Richard Wanley
+539_8	full_shot	false	says	person§Professor Richard Wanley	bla	person§Wanley's wife
+539_9	full_shot	false	action	person§Professor Richard Wanley	kisses		person§Wanley's wife
+539_10	full_shot	false	action	person§boy	nudges		person§Wanley's wife
+539_11	full_shot	false	says	person§boy	bla	person§Wanley's wife
+539_12	full_shot	false	says	person§Professor Richard Wanley	bla	person§boy	person§girl	person§Wanley's wife
+539_13	full_shot	false	says	person§Wanley's wife	bla	person§boy	person§girl
+539_14	full_shot	false	action	person§Professor Richard Wanley	kisses		person§girl
+539_15	full_shot	false	action	person§Professor Richard Wanley	kisses		person§boy
+539_16	full_shot	false	says	person§Wanley's wife	bla	person§Professor Richard Wanley
+539_17	full_shot	false	says	person§Professor Richard Wanley	bla	person§boy	person§girl
+539_18	full_shot	false	action	person§Wanley's wife	departs for the train	
+539_19	full_shot	false	action	person§boy	departs for the train	
+539_20	full_shot	false	action	person§girl	departs for the train	
