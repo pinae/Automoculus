@@ -344,13 +344,46 @@ class MiniDramaturgyFactor(Feature):
                 if prev_subject != beat.subject:
                     subject_changes += 1
                 prev_subject = beat.subject
-        if not context["NoConflictIntroduction"]: #TODO: Remove dependency
-            if context["NoClimax"]:
-                context["MiniDramaturgicalFactor"] += subject_changes
-            else:
-                context["MiniDramaturgicalFactor"] += 0
-        else:
-            context["MiniDramaturgicalFactor"] = 0
+
+        there_was_a_climax = False
+        subjects = set()
+        linetargets = set()
+        conflict_subject = None
+        there_was_an_establishing_shot = False
+        for bygone_block in context["BygoneBlocks"]:
+            for beat in bygone_block:
+                if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
+                   beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                    there_was_an_establishing_shot = True
+        if there_was_an_establishing_shot:
+            express_subject = None
+            express_position = -1
+            i = len(context["BeatList"])-len(block)-1
+            while i>=0:
+                beat = context["BeatList"][i]
+                if beat.type == EXPRESS:
+                    if i-1 >= 0 and context["BeatList"][i-1].type in [SAYS, ACTION]:
+                        conflict_subject = beat.subject
+                        conflict_position = i
+                        break
+                    express_subject = beat.subject
+                    express_position = i
+                if express_subject and beat.type in [SAYS, ACTION] and\
+                   beat.linetarget and beat.linetarget == express_subject:
+                    conflict_subject = express_subject
+                    conflict_position = express_position
+                    break
+                i -= 1
+        if conflict_subject: #there was a conflict introduction
+            for i in range(conflict_position,len(context["BeatList"])):
+                beat = context["BeatList"][i]
+                subjects.add(beat.subject)
+                if beat.linetarget: linetargets.add(beat.linetarget)
+                if beat.type == EXPRESS and len(subjects) >= 2:
+                    there_was_a_climax = True
+            if there_was_a_climax: context["MiniDramaturgicalFactor"] += 0
+            else: context["MiniDramaturgicalFactor"] += subject_changes
+        else: context["MiniDramaturgicalFactor"] = 0
         return [context["MiniDramaturgicalFactor"]]
 
     def getText(self):
