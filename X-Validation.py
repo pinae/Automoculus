@@ -33,6 +33,95 @@ def calculateDistributionAndClassification(classifier, context, blocks, decision
     return distribution, classification
 
 
+def testAllButFile(file, files, scaler, return_queue, fake_decisions=False):
+    training_set = [f for f in files if f != file]
+    training_data, training_data_classes = getDataMatrix(training_set)
+    training_data = scaler.transform(training_data, training_data_classes)
+    trained_svm = trainSVM(training_data, training_data_classes)
+    context, beatList = getContextAndBeatListFromFile(file)
+    blockList = coalesceBeats(beatList)
+    part_blockList = []
+    decisions = []
+    correct_classification_count = 0
+    medium_shot_count = 0
+    correct_histogram = [0, 0, 0, 0, 0, 0, 0]
+    guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    for block in blockList:
+        # prepare blocklist and decision-list
+        part_blockList.append(block)
+        if fake_decisions:
+            decisions = []
+            for i in range(len(part_blockList)-1):
+                decisions.append(part_blockList[i][-1].shot)
+        svm_distribution, svm_classification = calculateDistributionAndClassification(trained_svm, deepcopy(context), part_blockList, decisions, scaler, True)
+        boost_classification = svm_classification
+        if not fake_decisions:
+            decisions.append(boost_classification)
+        guessed_histogram[boost_classification] += 1
+        correct_histogram[block[-1].shot] += 1
+        if boost_classification == block[-1].shot:
+            correct_classification_count += 1
+        if block[-1].shot == 2: medium_shot_count += 1
+    performance = float(correct_classification_count)/len(blockList)
+    medium_shot_performance = float(medium_shot_count)/len(blockList)
+    return_queue.put((correct_histogram, guessed_histogram, performance, medium_shot_performance))
+    return_queue.close()
+
+
+def ParallelXValidation(files, fake_decisions = False):
+    """
+    Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
+     cross-validation. Instead the training is done with all but one Training files and the remaining beatscript
+     is tested based on the classification from that data. This process is repeated with all files.
+    In this case the decision history is faked by using the original classes from the testfile.
+    This function tests the performance for boosted decisions using a treeLearner and a svmLearner, each with
+     faked History.
+    """
+    reference_data, _ = getDataMatrix(TRAIN_FILES)
+    scaler = preprocessing.Scaler()
+    scaler.fit(reference_data)
+    correct_histogram = [0, 0, 0, 0, 0, 0, 0]
+    guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    performances = []
+    medium_shot_performances = []
+    test_processes = []
+    return_queues = []
+    for file in files:
+        return_queues.append(Queue(maxsize=1))
+        test_processes.append(Process(target=testAllButFile, args=(file, files, scaler, return_queues[-1], fake_decisions)))
+        test_processes[-1].start()
+    for i, process in enumerate(test_processes):
+        file_correct_histogram, file_guessed_histogram, file_performance, file_medium_shot_performance = return_queues[i].get()
+        process.join()
+        for i, value in enumerate(file_correct_histogram):
+            correct_histogram[i] += value
+        for i, value in enumerate(file_guessed_histogram):
+            guessed_histogram[i] += value
+        performances.append(file_performance)
+        medium_shot_performances.append(file_medium_shot_performance)
+
+    performance_sum = 0
+    performance_best = 0
+    performance_last = 1
+    for p in medium_shot_performances:
+        performance_sum += p
+        if p > performance_best: performance_best = p
+        if p < performance_last: performance_last = p
+    print("MS-Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
+          str(performance_last) + " - " + str(performance_best) + ")")
+
+    performance_sum = 0
+    performance_best = 0
+    performance_last = 1
+    for p in performances:
+        performance_sum += p
+        if p > performance_best: performance_best = p
+        if p < performance_last: performance_last = p
+    print("Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
+          str(performance_last) + " - " + str(performance_best) + ")")
+    return performance_sum / len(performances)
+
+
 def XValidation(files, fake_decisions = False):
     """
     Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
@@ -140,7 +229,8 @@ def XValidation(files, fake_decisions = False):
 
 # =============================== Main =========================================
 def main():
-    XValidation(TRAIN_FILES, True)
+    #XValidation(TRAIN_FILES, True)
+    ParallelXValidation(TRAIN_FILES, True)
 
 if __name__ == "__main__":
     main()

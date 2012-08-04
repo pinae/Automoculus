@@ -32,7 +32,7 @@ def createDataLine(context, block, leaveout=-1):
 
 def getFeatureLine(context, block, shot, lastShotId, leave_out=-1):
     """
-    This Function creates a featureLine. This is done by calculating getNumbers() for all Feature-Classes in
+    This function creates a featureLine. This is done by calculating getNumbers() for all Feature-Classes in
      Features.py and appending the desired class. A featureLine consists of several Numbers and a String at the
      end for the class.
     """
