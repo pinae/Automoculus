@@ -8,7 +8,7 @@ import numpy as np
 from sklearn import cross_validation, preprocessing, svm, linear_model
 
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
-from Classify import getDataMatrix, trainSVM
+from Classify import getDataMatrix, trainSVM, pointMetric
 from Config import TRAIN_FILES, SHOT_NAMES
 from ConvertData import getSingleFeatureLine
 
@@ -138,6 +138,7 @@ def XValidation(files, fake_decisions = False):
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
     performances = []
+    allover_point_sum = 0.0
     medium_shot_performances = []
     for file in files:
         print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
@@ -161,6 +162,7 @@ def XValidation(files, fake_decisions = False):
         decisions = []
         correct_classification_count = 0
         medium_shot_count = 0
+        metric_sum = 0
 
         #trained_tree = tree_queue.get()
         trained_svm = svm_queue.get()
@@ -195,6 +197,15 @@ def XValidation(files, fake_decisions = False):
             #print("Boosted Classification:\t" + boost_classification.value)
             guessed_histogram[boost_classification] += 1
             print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
+            if len(decisions)>= 2:
+                previous_guessed_class = decisions[-2]
+                previous_correct_class = part_blockList[-2][-1].shot
+            else:
+                previous_guessed_class = decisions[-1]
+                previous_correct_class = part_blockList[-1][-1].shot
+            metric_value = pointMetric(svm_classification,block[-1].shot,previous_guessed_class,previous_correct_class)
+            print("Wrongness:\t\t\t" + str(metric_value))
+            metric_sum += metric_value
             correct_histogram[block[-1].shot] += 1
             if boost_classification == block[-1].shot:
                 correct_classification_count += 1
@@ -202,8 +213,10 @@ def XValidation(files, fake_decisions = False):
             print("------------------------------------")
 
         print("File Performance: "+str(float(correct_classification_count)/len(blockList)*100)+"%")
+        print("File Wrongness: "+str(float(metric_sum)/len(blockList))+" Points ( 0 - 5 )")
         performances.append(float(correct_classification_count)/len(blockList))
         medium_shot_performances.append(float(medium_shot_count)/len(blockList))
+        allover_point_sum += float(metric_sum)/len(blockList)
         print("__________________________________________")
 
     performance_sum = 0
@@ -225,12 +238,13 @@ def XValidation(files, fake_decisions = False):
         if p < performance_last: performance_last = p
     print("Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
           str(performance_last) + " - " + str(performance_best) + ")")
-    return performance_sum / len(performances)
+    print("Wrongness:\t" + str(allover_point_sum / len(performances)))
+    return allover_point_sum / len(performances)
 
 # =============================== Main =========================================
 def main():
-    #XValidation(TRAIN_FILES, True)
-    ParallelXValidation(TRAIN_FILES, True)
+    XValidation(TRAIN_FILES, False)
+    #ParallelXValidation(TRAIN_FILES, True)
 
 if __name__ == "__main__":
     main()

@@ -189,6 +189,16 @@ def classifyForCut(block, context, classifiers, scaler):
     return distributionOfClassification(feature_line, classifiers, dist=[0, 0])
 
 
+def pointMetric(guessed_class, correct_class, previous_guessed_class, previous_correct_class):
+    if correct_class == DETAIL:
+        if guessed_class != correct_class: return 4 + min(
+            abs((guessed_class - previous_guessed_class) - (correct_class - previous_correct_class)), 1)
+        else: return min(abs((guessed_class - previous_guessed_class) - (correct_class - previous_correct_class)), 1)
+    else:
+        return 2 * min(abs(correct_class - guessed_class), 2) + min(
+            abs((guessed_class - previous_guessed_class) - (correct_class - previous_correct_class)), 1)
+
+
 # =============================== Main =========================================
 def main():
     print("nothing to do")
