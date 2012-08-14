@@ -395,24 +395,24 @@ class MiniDramaturgyFactor(Feature):
 
 class Dialogue(Feature):
     def calculateNumbers(self, context, block):
-        last_say_subject =None
-        dialogue = 0
+        """
+        Dialogue returns 1 if there were two SAY-Beats from different subjects and not more than one ACT-Beat in
+        between.
+        """
+        i = -1
         act_counter = 0
-        for beat in context["BeatList"]:
-            if beat.type == SAYS:
-                if last_say_subject:
-                    if act_counter <= 1:
-                        if beat.subject != last_say_subject:
-                            dialogue = 1
-                    else:
-                        dialogue = 0
-                last_say_subject = beat.subject
-                act_counter = 0
+        say_subject = None
+        while -i < len(context["BeatList"]):
+            beat = context["BeatList"][i]
             if beat.type == ACTION and not beat.invisible:
                 act_counter += 1
-                if act_counter > 1:
-                    dialogue = 1
-        return [dialogue]
+            if act_counter >= 2: return [0] # Too many ACTS
+            if beat.type == SAYS:
+                if say_subject and say_subject != beat.subject:
+                    return [1] # Found the second SAYS and there were not more than one ACT
+                else: say_subject = beat.subject
+            i -= 1
+        return [0] # There were
 
     def getText(self):
         if self.numbers[0]:
