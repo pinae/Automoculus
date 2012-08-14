@@ -194,12 +194,13 @@ def classifyForCut(block, context, classifiers, scaler):
 
 def pointMetric(guessed_class, correct_class, previous_guessed_class, previous_correct_class):
     if correct_class == DETAIL:
-        if guessed_class != correct_class: return 4 + min(
-            abs((guessed_class - previous_guessed_class) - (correct_class - previous_correct_class)), 1)
-        else: return min(abs((guessed_class - previous_guessed_class) - (correct_class - previous_correct_class)), 1)
+        if guessed_class != correct_class: return 5
+        else: return 0
     else:
-        return 2 * min(abs(correct_class - guessed_class), 2) + min(
-            abs((guessed_class - previous_guessed_class) - (correct_class - previous_correct_class)), 1)
+        if (correct_class-previous_correct_class)-(guessed_class-previous_guessed_class) >= 0:
+            direction_value = 0
+        else: direction_value = 1
+        return 2 * min(abs(correct_class - guessed_class), 2) + direction_value
 
 
 # =============================== Main =========================================
