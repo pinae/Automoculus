@@ -197,12 +197,16 @@ def XValidation(files, fake_decisions = False):
             #print("Boosted Classification:\t" + boost_classification.value)
             guessed_histogram[boost_classification] += 1
             print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
-            if len(decisions)>= 2:
-                previous_guessed_class = decisions[-2]
+            if len(part_blockList)>= 2:
                 previous_correct_class = part_blockList[-2][-1].shot
+                if len(decisions) >= 2:
+                    previous_guessed_class = decisions[-2]
+                else: previous_guessed_class = previous_correct_class
             else:
-                previous_guessed_class = decisions[-1]
                 previous_correct_class = part_blockList[-1][-1].shot
+                if len(decisions) >= 1:
+                    previous_guessed_class = decisions[-1]
+                else: previous_guessed_class = previous_correct_class
             metric_value = pointMetric(svm_classification,block[-1].shot,previous_guessed_class,previous_correct_class)
             print("Wrongness:\t\t\t" + str(metric_value))
             metric_sum += metric_value
@@ -243,7 +247,7 @@ def XValidation(files, fake_decisions = False):
 
 # =============================== Main =========================================
 def main():
-    XValidation(TRAIN_FILES, False)
+    XValidation(TRAIN_FILES, True)
     #ParallelXValidation(TRAIN_FILES, True)
 
 if __name__ == "__main__":
