@@ -5,7 +5,7 @@ from copy import deepcopy
 from multiprocessing import Lock, Queue, Process
 
 import numpy as np
-from sklearn import cross_validation, preprocessing, svm, linear_model
+from sklearn import preprocessing
 
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
 from Classify import getDataMatrix, trainSVM, pointMetric
