@@ -1645,6 +1645,27 @@ class NumberOfPersonInTheBlock(Feature):
         return ["Anzahl Personen im aktuellen Block", "Anteil Personenzahl an den Gesamtbeats"]
 
 
+class KnownSubjectsInBlock(Feature):
+    def calculateNumbers(self, context, block):
+        subjects = set()
+        for bygone_block in context["BygoneBlocks"]:
+            for beat in bygone_block:
+                subjects.add(beat.subject)
+        number_of_beats_with_known_subjects_in_the_block = 0
+        for beat in block:
+            if beat.subject in subjects: number_of_beats_with_known_subjects_in_the_block += 1
+        return [number_of_beats_with_known_subjects_in_the_block,
+                float(100 * number_of_beats_with_known_subjects_in_the_block) / len(block)]
+
+    def getText(self):
+        return "Im aktuellen Block handeln " + str(
+            self.numbers[0]) + " Beats von vorher bekannten Personen, was " + str(self.numbers[1]) + "% der Beats sind."
+
+    def getNames(self):
+        return ["Anzahl Beats im aktuellen Block mit vorher bekannten Subjects",
+                "Anteil Beats mit vorher bekannten Subjects"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
