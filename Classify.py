@@ -183,10 +183,24 @@ def classifyForCut(block, context, classifiers, scaler):
     classifiers is compted and a single mixed distribution is returned. This function is for computing the decision
     if there should be a cut or not.
     """
-    feature_line = getFeatureLine(context, block, False)
+    if len(context["BygoneBlocks"]) >= 1:
+        last_shot_id = context["BygoneBlocks"][-1][-1].shotId
+    else: last_shot_id = 0
+    feature_line = getFeatureLine(context, block, True, last_shot_id)
     feature_line.pop()
     feature_line = scaler.transform(feature_line)
     return distributionOfClassification(feature_line, classifiers, dist=[0, 0])
+
+
+def pointMetric(guessed_class, correct_class, previous_guessed_class, previous_correct_class):
+    if correct_class == DETAIL:
+        if guessed_class != correct_class: return 5
+        else: return 0
+    else:
+        if (correct_class-previous_correct_class)-(guessed_class-previous_guessed_class) >= 0:
+            direction_value = 0
+        else: direction_value = 1
+        return 2 * min(abs(correct_class - guessed_class), 2) + direction_value
 
 
 # =============================== Main =========================================

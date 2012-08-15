@@ -233,7 +233,7 @@ class Climax(Feature):
             context["BeforeWasNoConflictIntroduction"] = True
         return [there_was_a_climax,len(subjects),len(linetargets)]
 
-    def getText(self):#TODO: Append subject and linetarget count
+    def getText(self):
         if not self.numbers[0]:
             return "Keine Höhepunktphase."
         else:
@@ -269,28 +269,47 @@ class DramaturgicalFactor(Feature):
                     subject_changes += 1
                 prev_subject = beat.subject
 
+        there_was_a_climax = False
+        subjects = set()
+        linetargets = set()
+        conflict_subject = None
         there_was_an_establishing_shot = False
-        there_was_a_conflict_introduction = False
         for bygone_block in context["BygoneBlocks"]:
             for beat in bygone_block:
-                if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE and not beat.invisible and\
+                if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
                    beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
                     there_was_an_establishing_shot = True
-                if there_was_an_establishing_shot:
-                    if beat.type == EXPRESS and not beat.invisible: there_was_a_conflict_introduction = True
         if there_was_an_establishing_shot:
-            for beat in block:
-                if beat.type == EXPRESS and not beat.invisible: there_was_a_conflict_introduction = True
-        if there_was_a_conflict_introduction:
-
-            if context["NoClimax"]: #TODO: Remove dependency
-                context["DramaturgicalFactor"] += 3 * subject_changes
-            else:
+            express_subject = None
+            express_position = -1
+            i = len(context["BeatList"])-len(block)-1
+            while i>=0:
+                beat = context["BeatList"][i]
+                if beat.type == EXPRESS:
+                    if i-1 >= 0 and context["BeatList"][i-1].type in [SAYS, ACTION]:
+                        conflict_subject = beat.subject
+                        conflict_position = i
+                        break
+                    express_subject = beat.subject
+                    express_position = i
+                if express_subject and beat.type in [SAYS, ACTION] and\
+                   beat.linetarget and beat.linetarget == express_subject:
+                    conflict_subject = express_subject
+                    conflict_position = express_position
+                    break
+                i -= 1
+        if conflict_subject: #there was a conflict introduction
+            for i in range(conflict_position,len(context["BeatList"])):
+                beat = context["BeatList"][i]
+                subjects.add(beat.subject)
+                if beat.linetarget: linetargets.add(beat.linetarget)
+                if beat.type == EXPRESS and len(subjects) >= 2:
+                    there_was_a_climax = True
+            if there_was_a_climax:
                 context["DramaturgicalFactor"] += subject_changes
-        else:
-            context["DramaturgicalFactor"] = 0
+            else: context["DramaturgicalFactor"] += 3 * subject_changes
+        else: context["DramaturgicalFactor"] = 0
         return [context["DramaturgicalFactor"]]
-
 
     def getText(self):
         return "Dramaturgischer-Spannungsfaktor: " + str(self.numbers[0])
@@ -325,13 +344,46 @@ class MiniDramaturgyFactor(Feature):
                 if prev_subject != beat.subject:
                     subject_changes += 1
                 prev_subject = beat.subject
-        if not context["NoConflictIntroduction"]: #TODO: Remove dependency
-            if context["NoClimax"]:
-                context["MiniDramaturgicalFactor"] += subject_changes
-            else:
-                context["MiniDramaturgicalFactor"] += 0
-        else:
-            context["MiniDramaturgicalFactor"] = 0
+
+        there_was_a_climax = False
+        subjects = set()
+        linetargets = set()
+        conflict_subject = None
+        there_was_an_establishing_shot = False
+        for bygone_block in context["BygoneBlocks"]:
+            for beat in bygone_block:
+                if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
+                   beat.shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1):
+                    there_was_an_establishing_shot = True
+        if there_was_an_establishing_shot:
+            express_subject = None
+            express_position = -1
+            i = len(context["BeatList"])-len(block)-1
+            while i>=0:
+                beat = context["BeatList"][i]
+                if beat.type == EXPRESS:
+                    if i-1 >= 0 and context["BeatList"][i-1].type in [SAYS, ACTION]:
+                        conflict_subject = beat.subject
+                        conflict_position = i
+                        break
+                    express_subject = beat.subject
+                    express_position = i
+                if express_subject and beat.type in [SAYS, ACTION] and\
+                   beat.linetarget and beat.linetarget == express_subject:
+                    conflict_subject = express_subject
+                    conflict_position = express_position
+                    break
+                i -= 1
+        if conflict_subject: #there was a conflict introduction
+            for i in range(conflict_position,len(context["BeatList"])):
+                beat = context["BeatList"][i]
+                subjects.add(beat.subject)
+                if beat.linetarget: linetargets.add(beat.linetarget)
+                if beat.type == EXPRESS and len(subjects) >= 2:
+                    there_was_a_climax = True
+            if there_was_a_climax: context["MiniDramaturgicalFactor"] += 0
+            else: context["MiniDramaturgicalFactor"] += subject_changes
+        else: context["MiniDramaturgicalFactor"] = 0
         return [context["MiniDramaturgicalFactor"]]
 
     def getText(self):
@@ -343,7 +395,38 @@ class MiniDramaturgyFactor(Feature):
 
 class Dialogue(Feature):
     def calculateNumbers(self, context, block):
-        last_say_subject = False
+        """
+        Dialogue returns 1 if there were two SAY-Beats from different subjects and not more than one ACT-Beat in
+        between.
+        """
+        i = -1
+        act_counter = 0
+        say_subject = None
+        while -i < len(context["BeatList"]):
+            beat = context["BeatList"][i]
+            if beat.type == ACTION and not beat.invisible:
+                act_counter += 1
+            if act_counter >= 2: return [0] # Too many ACTS
+            if beat.type == SAYS:
+                if say_subject and say_subject != beat.subject:
+                    return [1] # Found the second SAYS and there were not more than one ACT
+                else: say_subject = beat.subject
+            i -= 1
+        return [0] # There were
+
+    def getText(self):
+        if self.numbers[0]:
+            return "Dialogpassage."
+        else:
+            return "Handlungspassage."
+
+    def getNames(self):
+        return ["Dialog- oder Handlungspassage?"]
+
+
+class EmotionalDialogueReaction(Feature):
+    def calculateNumbers(self, context, block):
+        last_say_subject =None
         dialogue = False
         act_counter = 0
         for beat in context["BeatList"]:
@@ -360,22 +443,7 @@ class Dialogue(Feature):
                 act_counter += 1
                 if act_counter > 1:
                     dialogue = False
-        context["DialoguePart"] = dialogue
-        if dialogue: return [1]
-        else: return [0]
 
-    def getText(self):
-        if self.numbers[0]:
-            return "Dialogpassage."
-        else:
-            return "Handlungspassage."
-
-    def getNames(self):
-        return ["Dialog- oder Handlungspassage?"]
-
-
-class EmotionalDialogueReaction(Feature):
-    def calculateNumbers(self, context, block):
         if len(context["BeatList"]) >= 3:
             lastsayer = context["BeatList"][-1].subject
             for i in range(0, len(context["BeatList"]) - 2):
@@ -388,7 +456,7 @@ class EmotionalDialogueReaction(Feature):
                 return [1]
             elif context["BeatList"][-1].type == EXPRESS and not context["BeatList"][-1].invisible and\
                  context["BeatList"][-2].type == SAYS and\
-                 context["BeatList"][-2].subject != context["BeatList"][-1].subject and context["DialoguePart"] and\
+                 context["BeatList"][-2].subject != context["BeatList"][-1].subject and dialogue and\
                  context["BeatList"][-1].subject == lastsayer:
                 return [1]
             else:
@@ -706,13 +774,13 @@ class InvisibleCount(Feature):
         i = 0
         for beat in block:
             if beat.invisible: i += 1
-        return [i]
+        return [i, 100*float(i)/len(block)]
 
     def getText(self):
-        return "Im Block sind " + str(self.numbers[0]) + " unsichtbare beats."
+        return "Im Block sind " + str(self.numbers[0]) + " unsichtbare beats, also "+str(self.numbers[1])+"%."
 
     def getNames(self):
-        return ["Anzahl unsichtbarer Beats im aktuellen Block"]
+        return ["Anzahl unsichtbarer Beats im aktuellen Block", "Anteil unsichtbarer Beats im aktuellen Block"]
 
 
 class PersonAnalyzer(Feature):
@@ -726,12 +794,12 @@ class PersonAnalyzer(Feature):
                     person_histogram[beat.subject] += 1
                 else:
                     person_histogram[beat.subject] = 1
-        context["MainCharacters"] = []
+        main_characters = set()
         protagonist_beat_count = 0
         protagonist = block[-1].subject
         for person in person_histogram:
             if person_histogram[person] >= person_beat_count / len(person_histogram):
-                context["MainCharacters"].append(person)
+                main_characters.add(person)
             if person_histogram[person] >= protagonist_beat_count:
                 protagonist = person
                 protagonist_beat_count = person_histogram[person]
@@ -744,7 +812,7 @@ class PersonAnalyzer(Feature):
         main_character_block_beat_count = 0
         protagonist_block_beat_count = 0
         for beat in block:
-            if beat.subject in context["MainCharacters"]:
+            if beat.subject in main_characters:
                 main_character_block_beat_count += 1
             if beat.subject == protagonist:
                 protagonist_block_beat_count += 1
@@ -759,7 +827,7 @@ class PersonAnalyzer(Feature):
             lastBeatsFeatureProtagonist[2]=1
         protagonist_ratio = 0
         if person_beat_count > 0: protagonist_ratio = float(protagonist_beat_count) / person_beat_count
-        return [len(person_histogram), len(context["MainCharacters"]),
+        return [len(person_histogram), len(main_characters),
                 float(main_character_block_beat_count) / len(block),
                 protagonist_ratio, protagonistChange,
                 float(protagonist_block_beat_count) / len(block)] + lastBeatsFeatureProtagonist
@@ -1096,6 +1164,25 @@ class ShowingPerson(Feature):
 
 class Linetargets(Feature):
     def calculateNumbers(self, context, block):
+        person_histogram = {}
+        person_beat_count = 0
+        for beat in context["BeatList"]:
+            if beat.subject.type == PERSON:
+                person_beat_count += 1
+                if beat.subject in person_histogram:
+                    person_histogram[beat.subject] += 1
+                else:
+                    person_histogram[beat.subject] = 1
+        main_characters = set()
+        protagonist_beat_count = 0
+        protagonist = context["BeatList"][0].subject
+        for person in person_histogram:
+            if person_histogram[person] >= person_beat_count / len(person_histogram):
+                main_characters.add(person)
+            if person_histogram[person] >= protagonist_beat_count:
+                protagonist = person
+                protagonist_beat_count = person_histogram[person]
+
         number_of_linetargets = 0
         last_linetarget = None
         for beat in block:
@@ -1109,13 +1196,13 @@ class Linetargets(Feature):
                     last_linetarget_is_subjects.append(1)
                 else: last_linetarget_is_subjects.append(0)
             else: last_linetarget_is_subjects.append(0)
-        if last_linetarget: #TODO: Remove depenencys
+        if last_linetarget:
             return last_linetarget_is_subjects + [number_of_linetargets, last_linetarget.type != PERSON,
-                                               last_linetarget in context["MainCharacters"],
-                                               last_linetarget == context["protagonist"]]
+                                               last_linetarget in main_characters,
+                                               last_linetarget == protagonist]
         else:
-            return last_linetarget_is_subjects + [number_of_linetargets, 0, last_linetarget in context["MainCharacters"],
-                                               last_linetarget == context["protagonist"]]
+            return last_linetarget_is_subjects + [number_of_linetargets, 0, last_linetarget in main_characters,
+                                               last_linetarget == protagonist]
 
     def getText(self):
         if self.numbers[0]: out = "Das Linetarget ist gleich dem Subjekt des letzten Beats.\t"

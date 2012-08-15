@@ -5,10 +5,10 @@ from copy import deepcopy
 from multiprocessing import Lock, Queue, Process
 
 import numpy as np
-from sklearn import cross_validation, preprocessing, svm, linear_model
+from sklearn import preprocessing
 
 from Beatscript import getContextAndBeatListFromFile, coalesceBeats
-from Classify import getDataMatrix, trainSVM
+from Classify import getDataMatrix, trainSVM, pointMetric
 from Config import TRAIN_FILES, SHOT_NAMES
 from ConvertData import getSingleFeatureLine
 
@@ -33,6 +33,95 @@ def calculateDistributionAndClassification(classifier, context, blocks, decision
     return distribution, classification
 
 
+def testAllButFile(file, files, scaler, return_queue, fake_decisions=False):
+    training_set = [f for f in files if f != file]
+    training_data, training_data_classes = getDataMatrix(training_set)
+    training_data = scaler.transform(training_data, training_data_classes)
+    trained_svm = trainSVM(training_data, training_data_classes)
+    context, beatList = getContextAndBeatListFromFile(file)
+    blockList = coalesceBeats(beatList)
+    part_blockList = []
+    decisions = []
+    correct_classification_count = 0
+    medium_shot_count = 0
+    correct_histogram = [0, 0, 0, 0, 0, 0, 0]
+    guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    for block in blockList:
+        # prepare blocklist and decision-list
+        part_blockList.append(block)
+        if fake_decisions:
+            decisions = []
+            for i in range(len(part_blockList)-1):
+                decisions.append(part_blockList[i][-1].shot)
+        svm_distribution, svm_classification = calculateDistributionAndClassification(trained_svm, deepcopy(context), part_blockList, decisions, scaler, True)
+        boost_classification = svm_classification
+        if not fake_decisions:
+            decisions.append(boost_classification)
+        guessed_histogram[boost_classification] += 1
+        correct_histogram[block[-1].shot] += 1
+        if boost_classification == block[-1].shot:
+            correct_classification_count += 1
+        if block[-1].shot == 2: medium_shot_count += 1
+    performance = float(correct_classification_count)/len(blockList)
+    medium_shot_performance = float(medium_shot_count)/len(blockList)
+    return_queue.put((correct_histogram, guessed_histogram, performance, medium_shot_performance))
+    return_queue.close()
+
+
+def ParallelXValidation(files, fake_decisions = False):
+    """
+    Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
+     cross-validation. Instead the training is done with all but one Training files and the remaining beatscript
+     is tested based on the classification from that data. This process is repeated with all files.
+    In this case the decision history is faked by using the original classes from the testfile.
+    This function tests the performance for boosted decisions using a treeLearner and a svmLearner, each with
+     faked History.
+    """
+    reference_data, _ = getDataMatrix(TRAIN_FILES)
+    scaler = preprocessing.Scaler()
+    scaler.fit(reference_data)
+    correct_histogram = [0, 0, 0, 0, 0, 0, 0]
+    guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    performances = []
+    medium_shot_performances = []
+    test_processes = []
+    return_queues = []
+    for file in files:
+        return_queues.append(Queue(maxsize=1))
+        test_processes.append(Process(target=testAllButFile, args=(file, files, scaler, return_queues[-1], fake_decisions)))
+        test_processes[-1].start()
+    for i, process in enumerate(test_processes):
+        file_correct_histogram, file_guessed_histogram, file_performance, file_medium_shot_performance = return_queues[i].get()
+        process.join()
+        for i, value in enumerate(file_correct_histogram):
+            correct_histogram[i] += value
+        for i, value in enumerate(file_guessed_histogram):
+            guessed_histogram[i] += value
+        performances.append(file_performance)
+        medium_shot_performances.append(file_medium_shot_performance)
+
+    performance_sum = 0
+    performance_best = 0
+    performance_last = 1
+    for p in medium_shot_performances:
+        performance_sum += p
+        if p > performance_best: performance_best = p
+        if p < performance_last: performance_last = p
+    print("MS-Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
+          str(performance_last) + " - " + str(performance_best) + ")")
+
+    performance_sum = 0
+    performance_best = 0
+    performance_last = 1
+    for p in performances:
+        performance_sum += p
+        if p > performance_best: performance_best = p
+        if p < performance_last: performance_last = p
+    print("Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
+          str(performance_last) + " - " + str(performance_best) + ")")
+    return performance_sum / len(performances)
+
+
 def XValidation(files, fake_decisions = False):
     """
     Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
@@ -49,6 +138,7 @@ def XValidation(files, fake_decisions = False):
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
     performances = []
+    allover_point_sum = 0.0
     medium_shot_performances = []
     for file in files:
         print("X-Validation: ca. " + str(int(round(float(files.index(file)) / len(files) * 100))) +
@@ -72,6 +162,7 @@ def XValidation(files, fake_decisions = False):
         decisions = []
         correct_classification_count = 0
         medium_shot_count = 0
+        metric_sum = 0
 
         #trained_tree = tree_queue.get()
         trained_svm = svm_queue.get()
@@ -106,6 +197,19 @@ def XValidation(files, fake_decisions = False):
             #print("Boosted Classification:\t" + boost_classification.value)
             guessed_histogram[boost_classification] += 1
             print("Correct Class:\t\t" + SHOT_NAMES[block[-1].shot])
+            if len(part_blockList)>= 2:
+                previous_correct_class = part_blockList[-2][-1].shot
+                if len(decisions) >= 2:
+                    previous_guessed_class = decisions[-2]
+                else: previous_guessed_class = previous_correct_class
+            else:
+                previous_correct_class = part_blockList[-1][-1].shot
+                if len(decisions) >= 1:
+                    previous_guessed_class = decisions[-1]
+                else: previous_guessed_class = previous_correct_class
+            metric_value = pointMetric(svm_classification,block[-1].shot,previous_guessed_class,previous_correct_class)
+            print("Wrongness:\t\t\t" + str(metric_value))
+            metric_sum += metric_value
             correct_histogram[block[-1].shot] += 1
             if boost_classification == block[-1].shot:
                 correct_classification_count += 1
@@ -113,8 +217,10 @@ def XValidation(files, fake_decisions = False):
             print("------------------------------------")
 
         print("File Performance: "+str(float(correct_classification_count)/len(blockList)*100)+"%")
+        print("File Wrongness: "+str(float(metric_sum)/len(blockList))+" Points ( 0 - 5 )")
         performances.append(float(correct_classification_count)/len(blockList))
         medium_shot_performances.append(float(medium_shot_count)/len(blockList))
+        allover_point_sum += float(metric_sum)/len(blockList)
         print("__________________________________________")
 
     performance_sum = 0
@@ -136,11 +242,13 @@ def XValidation(files, fake_decisions = False):
         if p < performance_last: performance_last = p
     print("Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
           str(performance_last) + " - " + str(performance_best) + ")")
-    return performance_sum / len(performances)
+    print("Wrongness:\t" + str(allover_point_sum / len(performances)))
+    return allover_point_sum / len(performances)
 
 # =============================== Main =========================================
 def main():
     XValidation(TRAIN_FILES, True)
+    #ParallelXValidation(TRAIN_FILES, True)
 
 if __name__ == "__main__":
     main()
