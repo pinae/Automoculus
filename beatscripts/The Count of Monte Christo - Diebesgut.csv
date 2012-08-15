@@ -1,0 +1,130 @@
+#Film:	The Count of Monte Christo
+#Scene:	Diebesgut
+#FPS:	24
+#Context:	
+#EntityList:	person§bound sailor 1, person§bound sailor 2, person§Thief 1, place§ship, person§Thief 2, object§chest, person§Thief 3, person§Thief 4, person§Thief 5, object§a board, object§lock, object§a dagger, object§much gold, person§Danglars, person§the count's man, person§another one of the count's men, object§a cart, person§soldier 1, person§soldier 2, person§soldier 3, person§soldier 4, person§soldier 5, object§the weapon of soldier 1, object§the weapon of soldier 2, object§the weapon of soldier 3, object§the weapon of soldier 4, object§the weapon of soldier 5, person§General, person§Rider, person§the count, object§Danglar's walkingstick, object§a stick, object§a long stick, object§a rope, 
+0_1	long_shot	false	introduce	person§bound sailor 1	
+0_2	long_shot	false	introduce	person§bound sailor 2	
+0_3	long_shot	false	introduce	person§Thief 1	
+0_4	long_shot	false	introduce	place§ship	
+0_5	long_shot	false	introduce	person§Thief 2	
+0_6	long_shot	false	introduce	object§chest	
+0_7	long_shot	false	introduce	person§Thief 3	
+0_8	long_shot	false	action	person§Thief 2	carrys the		object§chest
+0_9	long_shot	false	action	person§Thief 3	carrys the		object§chest
+0_10	long_shot	false	introduce	person§Thief 4	
+0_11	long_shot	false	introduce	person§Thief 5	
+449_1	full_shot	false	introduce	object§a board	
+449_2	full_shot	false	action	person§Thief 3	puts the	on the board	object§chest
+449_3	full_shot	false	action	person§Thief 2	puts the	on the board	object§chest
+449_4	full_shot	false	action	person§Thief 2	lets the chest slide on		object§a board
+449_5	full_shot	false	action	person§Thief 4	stops the		object§chest
+449_6	full_shot	false	action	person§Thief 5	holds the		object§chest
+528_1	detail	false	introduce	object§lock	
+528_2	detail	false	introduce	object§a dagger	
+528_3	detail	false	action	person§Thief 5	opens the	with a dagger	object§lock
+528_4	detail	false	action	person§Thief 5	opens the		object§chest
+528_5	detail	false	introduce	object§much gold	
+539_1	closeup	false	introduce	person§Danglars	
+539_2	closeup	false	expresses	person§Danglars	joy
+539_3	closeup	false	says	person§Danglars	Bla	person§Thief 5
+788_1	closeup	false	introduce	person§the count's man	
+788_2	closeup	false	action	person§the count's man	closes the		object§chest
+878_1	american_shot	false	introduce	person§another one of the count's men	
+878_2	american_shot	false	introduce	object§a cart	
+878_3	american_shot	false	action	person§the count's man	heaves the	on the cart	object§chest
+878_4	american_shot	false	action	person§another one of the count's men	places the chest on		object§a cart
+937_1	closeup	false	expresses	person§the count's man	contempt
+937_2	closeup	false	action	person§the count's man	drives away		object§a cart
+937_3	closeup	false	expresses	person§Danglars	contempt
+1212_1	long_shot	false	show	object§a cart	
+1212_2	long_shot	false	action	person§the count's man	drives away		object§a cart
+1281_1	long_shot	false	introduce	person§soldier 1	
+1281_2	long_shot	false	introduce	person§soldier 2	
+1281_3	long_shot	false	introduce	person§soldier 3	
+1281_4	long_shot	false	action	person§Thief 4	runs to the		place§ship
+1281_5	long_shot	false	action	person§Thief 5	runs to the		place§ship
+1281_6	long_shot	false	action	person§Danglars	runs to the		place§ship
+1421_1	full_shot	false	introduce	person§soldier 4	
+1421_2	full_shot	false	introduce	person§soldier 5	
+1421_3	full_shot	false	introduce	object§the weapon of soldier 1	
+1421_4	full_shot	false	action	person§soldier 1	pulls		object§the weapon of soldier 1
+1421_5	full_shot	false	introduce	object§the weapon of soldier 2	
+1421_6	full_shot	false	action	person§soldier 2	pulls		object§the weapon of soldier 2
+1421_7	full_shot	false	introduce	object§the weapon of soldier 3	
+1421_8	full_shot	false	action	person§soldier 3	pulls		object§the weapon of soldier 3
+1421_9	full_shot	false	introduce	object§the weapon of soldier 4	
+1421_10	full_shot	false	action	person§soldier 4	pulls		object§the weapon of soldier 4
+1421_11	full_shot	false	introduce	object§the weapon of soldier 5	
+1421_12	full_shot	false	action	person§soldier 5	pulls		object§the weapon of soldier 5
+1457_1	full_shot	false	introduce	person§General	
+1457_2	full_shot	false	introduce	person§Rider	
+1457_3	full_shot	false	action	person§General	arrives	
+1457_4	full_shot	false	action	person§Rider	arrives	
+1496_1	american_shot	false	says	person§General	Philippe Danglars?	person§Danglars
+1532_1	medium_shot	false	says	person§Danglars	yeah.	person§General
+1593_1	long_shot	false	says	person§General	bla	person§Danglars
+1672_1	closeup	false	expresses	person§Danglars	tension
+1672_2	closeup	false	action	person§Danglars	looks to		object§a cart
+1711_1	long_shot	false	show	object§a cart	
+1711_2	long_shot	false	action	person§the count's man	drives away		object§a cart
+1758_1	closeup	false	expresses	person§Danglars	self assuredness
+1758_2	closeup	false	says	person§Danglars	bla	person§General
+1810_1	full_shot	true	introduce	person§the count
+1810_2	full_shot	true	says	person§the count	bla	person§Danglars
+1810_3	full_shot	false	action	person§Danglars	turns to		person§the count
+1810_4	full_shot	false	action	person§the count	steps forward	
+1861_1	closeup	false	action	person§the count	points to the side	
+1861_2	closeup	false	says	person§the count	bla	person§Danglars
+1947_1	american_shot	false	expresses	person§Danglars	fear
+2012_1	american_shot	false	show	person§General	
+2012_2	american_shot	false	show	person§Rider	
+2045_1	closeup	false	expresses	person§Danglars	anger
+2045_2	closeup	false	says	person§Danglars	bla	person§General	person§the count
+2161_1	medium_shot	false	says	person§Danglars	bla	person§the count
+2161_2	medium_shot	false	introduce	object§Danglar's walkingstick	
+2161_3	medium_shot	false	action	person§Danglars	takes		object§Danglar's walkingstick
+2161_4	medium_shot	false	action	person§Danglars	attacks		person§the count
+2258_1	closeup	false	expresses	person§the count	self assuredness
+2258_2	closeup	false	action	person§the count	evades		object§Danglar's walkingstick
+2265_1	full_shot	false	action	person§Danglars	attacks		person§the count
+2265_2	full_shot	false	action	person§the count	ckicks away		object§Danglar's walkingstick
+2291_1	detail	false	show	object§Danglar's walkingstick	
+2308_1	closeup	false	expresses	person§Danglars	surprise
+2332_1	closeup	false	expresses	person§the count	calmness
+2352_1	detail	false	introduce	object§a stick	
+2352_2	detail	false	action	person§Danglars	grabs		object§a stick
+2370_1	closeup	false	action	person§Danglars	throws		object§a stick
+2397_1	closeup	false	action	person§the count	catches		object§a stick
+2405_1	long_shot	false	action	person§the count	throws away		object§a stick
+2405_2	long_shot	false	action	person§Danglars	jumps to the side	
+2460_1	detail	false	introduce	object§a long stick	
+2460_2	detail	false	action	person§Danglars	grabs		object§a long stick
+2489_1	closeup	false	introduce	object§a rope	
+2489_2	closeup	false	action	person§the count	grabs		object§a rope
+2506_1	long_shot	false	action	person§Danglars	swings		object§a long stick
+2515_1	closeup	false	expresses	person§the count	concentration
+2515_2	closeup	false	action	person§the count	blocks		object§a long stick
+2535_1	long_shot	false	action	person§Danglars	attacks		person§the count
+2546_1	medium_shot	false	action	person§Danglars	storms to		person§the count
+2546_2	medium_shot	false	action	person§the count	evades	
+2591_1	full_shot	false	action	person§Danglars	falls from the		place§ship
+2591_2	full_shot	false	action	person§Danglars	strangles himself with		object§a rope
+2591_3	full_shot	false	action	person§the count	kicks at		person§Danglars
+2591_4	full_shot	false	action	person§Danglars	grabs a leg of		person§the count
+2616_1	closeup	false	expresses	person§Danglars	fear
+2616_2	closeup	false	says	person§Danglars	Who are you?	person§the count
+2709_1	medium_shot	false	says	person§the count	bla	person§Danglars
+2820_1	closeup	false	expresses	person§Danglars	recognition
+2820_2	closeup	false	says	person§Danglars	bla	person§the count
+2876_1	american_shot	false	action	person§the count	kicks		person§Danglars
+2876_2	american_shot	false	action	person§Danglars	falls down	
+2876_3	american_shot	false	action	person§Danglars	is strangled by		object§a rope
+2906_1	full_shot	false	show	person§Danglars	
+2906_2	full_shot	false	action	person§Danglars	is strangled by		object§a rope
+2941_1	medium_shot	false	expresses	person§the count	nothing
+2941_2	medium_shot	false	action	person§the count	walks away	
+2979_1	full_shot	false	action	person§the count	walks away	
+2979_2	full_shot	false	says	person§the count	bla	person§Rider
+3078_1	full_shot	false	show	person§Danglars	
+3078_2	full_shot	false	action	person§Danglars	is strangled by		object§a rope
