@@ -1635,13 +1635,14 @@ class NumberOfPersonInTheBlock(Feature):
         for beat in block:
             if beat.subject.type == PERSON: persons.add(beat.subject)
             if beat.linetarget and beat.linetarget.type == PERSON: persons.add(beat.linetarget)
-        return [len(persons)]
+        return [len(persons),float(len(persons)*100)/len(block)]
 
     def getText(self):
-        return "Im aktuellen Block kommen "+str(self.numbers[0])+" Personen vor."
+        return "Im aktuellen Block kommen "+str(self.numbers[0])+" Personen vor. Das sind " + str(
+            self.numbers[1]) + "% der Beatzahl."
 
     def getNames(self):
-        return ["Anzahl Personen im aktuellen Block"]
+        return ["Anzahl Personen im aktuellen Block", "Anteil Personenzahl an den Gesamtbeats"]
 
 
 # =============================== Helper Methods ===============================
