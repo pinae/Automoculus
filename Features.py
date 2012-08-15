@@ -84,6 +84,17 @@ class AlloverBeatTypeCount(Feature):
         return names
 
 
+class BlockBeatCount(Feature):
+    def calculateNumbers(self, context, block):
+        return [len(block)]
+
+    def getText(self):
+        return "Der Block besteht aus " + str(self.numbers[0]) + " Beats."
+
+    def getNames(self):
+        return ["Anzahl Beats im Block"]
+
+
 class PlaceShowingBlock(Feature):
     """
     If the block introduces or shows a place it is time for an establishing shot. Mostly.
