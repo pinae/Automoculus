@@ -1,0 +1,179 @@
+#Film:	The Count of Monte Christo
+#Scene:	Elba
+#FPS:	24
+#Context:	
+#EntityList:	object§boat, person§Edmond Dantés, person§Mondego, person§rowing sailor, place§beach on Elba, object§bottle of wine, person§riding soldier 1, person§riding soldier 2, person§riding soldier 3, person§riding soldier 4, object§Dantés pistol, object§dangerous bullet, object§Mondego's gun, object§riding soldier 2's sword, object§riding soldier 3's sword, object§riding soldier 4's sword, place§hill, person§Napoleon Bonaparte, 
+0_1	extreme_long_shot	false	introduce	object§boat	
+0_2	extreme_long_shot	false	introduce	person§Edmond Dantés	
+0_3	extreme_long_shot	false	introduce	person§Mondego	
+0_4	extreme_long_shot	false	introduce	person§rowing sailor	
+0_5	extreme_long_shot	false	action	person§rowing sailor	rows the		object§boat
+0_6	extreme_long_shot	false	introduce	place§beach on Elba	
+0_7	extreme_long_shot	false	says	person§Edmond Dantés	bla	person§rowing sailor
+0_8	extreme_long_shot	false	action	person§Edmond Dantés	leaves the		object§boat
+184_1	full_shot	false	action	person§Mondego	stmbles	
+184_2	full_shot	false	says	person§Edmond Dantés	bla	person§Mondego
+302_1	extreme_long_shot	false	action	person§Mondego	walks to the		place§beach on Elba
+302_2	extreme_long_shot	false	says	person§Mondego	bla	person§Edmond Dantés
+409_1	medium_shot	false	introduce	object§bottle of wine	
+409_2	medium_shot	false	says	person§Mondego	bla	person§Edmond Dantés
+409_3	medium_shot	false	action	person§Mondego	drinks from the		object§bottle of wine
+409_4	medium_shot	false	says	person§Edmond Dantés	bla	person§Mondego
+409_5	medium_shot	true	introduce	person§riding soldier 1
+409_6	medium_shot	false	action	person§Edmond Dantés	looks for		person§riding soldier 1
+850_1	extreme_long_shot	false	show	person§riding soldier 1	
+850_2	extreme_long_shot	false	introduce	person§riding soldier 2	
+850_3	extreme_long_shot	false	introduce	person§riding soldier 3	
+850_4	extreme_long_shot	false	introduce	person§riding soldier 4	
+850_5	extreme_long_shot	true	says	person§Mondego	English dragoons	person§Edmond Dantés
+930_1	medium_shot	false	says	person§Edmond Dantés	Hallo!	person§riding soldier 1	person§riding soldier 2	person§riding soldier 3	person§riding soldier 4
+974_1	long_shot	false	show	person§riding soldier 1	
+974_2	long_shot	false	show	person§riding soldier 2	
+974_3	long_shot	false	show	person§riding soldier 3	
+974_4	long_shot	false	show	person§riding soldier 4	
+974_5	long_shot	false	action	person§riding soldier 4	rides	
+974_6	long_shot	false	action	person§riding soldier 1	rides	
+974_7	long_shot	false	action	person§riding soldier 3	rides	
+974_8	long_shot	false	action	person§riding soldier 2	rides	
+1017_1	medium_shot	false	introduce	object§Dantés pistol	
+1017_2	medium_shot	false	action	person§Edmond Dantés	pulls		object§Dantés pistol
+1017_3	medium_shot	false	says	person§Mondego	bla	person§Edmond Dantés
+1017_4	medium_shot	false	action	person§Edmond Dantés	holds up		object§Dantés pistol
+1078_1	detail	false	action	person§Edmond Dantés	fires		object§Dantés pistol
+1101_1	long_shot	false	show	person§riding soldier 1	
+1101_2	long_shot	false	show	person§riding soldier 2	
+1101_3	long_shot	false	show	person§riding soldier 3	
+1101_4	long_shot	false	show	person§riding soldier 4	
+1101_5	long_shot	false	action	person§riding soldier 1	turns to		person§Edmond Dantés
+1147_1	medium_shot	false	says	person§Mondego	bla	person§Edmond Dantés
+1147_2	medium_shot	false	says	person§Edmond Dantés	bla	person§Mondego
+1147_3	medium_shot	false	action	person§Edmond Dantés	looks to		person§riding soldier 1
+1222_1	long_shot	false	action	person§riding soldier 1	rides towards		person§Edmond Dantés
+1222_2	long_shot	false	action	person§riding soldier 2	rides towards		person§Edmond Dantés
+1222_3	long_shot	false	action	person§riding soldier 3	rides towards		person§Edmond Dantés
+1222_4	long_shot	false	action	person§riding soldier 4	rides towards		person§Edmond Dantés
+1261_1	medium_shot	false	says	person§Edmond Dantés	We're french sailors	person§riding soldier 1
+1296_1	long_shot	false	action	person§riding soldier 1	rides towards		person§Edmond Dantés
+1296_2	long_shot	false	action	person§riding soldier 2	rides towards		person§Edmond Dantés
+1296_3	long_shot	false	action	person§riding soldier 3	rides towards		person§Edmond Dantés
+1296_4	long_shot	false	action	person§riding soldier 4	rides towards		person§Edmond Dantés
+1296_5	long_shot	true	says	person§Edmond Dantés	bla	person§riding soldier 1
+1296_6	long_shot	false	action	person§riding soldier 2	fires at		person§Edmond Dantés
+1357_1	detail	false	introduce	object§dangerous bullet	
+1357_2	detail	false	action	person§Edmond Dantés	lifts his foot	
+1375_1	medium_shot	false	expresses	person§Edmond Dantés	fear
+1375_2	medium_shot	false	says	person§Edmond Dantés	We come in peace!	person§riding soldier 1
+1375_3	medium_shot	false	action	person§Mondego	grabs		person§Edmond Dantés
+1375_4	medium_shot	false	says	person§Mondego	Edmind, come on.	person§Edmond Dantés
+1444_1	long_shot	false	action	person§riding soldier 3	fires at		person§Edmond Dantés
+1458_1	closeup	false	expresses	person§Edmond Dantés	terror
+1458_2	closeup	false	says	person§Edmond Dantés	We mean no harm!	person§riding soldier 1
+1499_1	full_shot	false	action	person§riding soldier 1	aims at		person§Edmond Dantés
+1521_1	medium_shot	false	expresses	person§Edmond Dantés	misery
+1521_2	medium_shot	false	introduce	object§Mondego's gun	
+1521_3	medium_shot	false	action	person§Mondego	pulls		object§Mondego's gun
+1521_4	medium_shot	false	action	person§Mondego	aims at		person§riding soldier 1
+1537_1	detail	false	action	person§Mondego	fires		object§Mondego's gun
+1547_1	american_shot	false	action	person§riding soldier 1	falls from his horse	
+1568_1	full_shot	false	action	person§riding soldier 1	falls to the ground	
+1588_1	american_shot	false	action	person§Edmond Dantés	runs	
+1588_2	american_shot	false	action	person§Mondego	fires		object§Mondego's gun
+1588_3	american_shot	false	action	person§Mondego	runs	
+1641_1	american_shot	false	introduce	object§riding soldier 2's sword	
+1641_2	american_shot	false	action	person§riding soldier 2	pulls		object§riding soldier 2's sword
+1641_3	american_shot	false	introduce	object§riding soldier 3's sword	
+1641_4	american_shot	false	action	person§riding soldier 3	pulls		object§riding soldier 3's sword
+1641_5	american_shot	false	introduce	object§riding soldier 4's sword	
+1641_6	american_shot	false	action	person§riding soldier 4	pulls		object§riding soldier 4's sword
+1665_1	extreme_long_shot	false	introduce	place§hill	
+1665_2	extreme_long_shot	false	action	person§riding soldier 3	gallops on the		place§beach on Elba
+1665_3	extreme_long_shot	false	action	person§riding soldier 4	gallops on the		place§beach on Elba
+1665_4	extreme_long_shot	false	action	person§riding soldier 2	gallops on the		place§beach on Elba
+1665_5	extreme_long_shot	false	action	person§Edmond Dantés	climbs the		place§hill
+1665_6	extreme_long_shot	false	action	person§Mondego	climbs the		place§hill
+1735_1	full_shot	false	action	person§riding soldier 2	leaves his horse	
+1735_2	full_shot	false	action	person§riding soldier 2	aims at		person§Edmond Dantés
+1819_1	extreme_long_shot	false	action	person§riding soldier 2	fires at		person§Edmond Dantés
+1847_1	long_shot	false	action	person§Mondego	hides on the		place§hill
+1847_2	long_shot	false	action	person§Edmond Dantés	hides on the		place§hill
+1884_1	american_shot	false	action	person§riding soldier 2	fires at		person§Edmond Dantés
+1884_2	american_shot	false	action	person§Edmond Dantés	crawls on the ground	
+1920_1	long_shot	false	action	person§riding soldier 3	walks to the		place§hill
+1920_2	long_shot	false	action	person§riding soldier 4	walks to the		place§hill
+1920_3	long_shot	false	action	person§riding soldier 2	walks to the		place§hill
+1956_1	american_shot	false	action	person§Mondego	crawls to		person§riding soldier 3
+1956_2	american_shot	false	action	person§riding soldier 3	climbs the		place§hill
+1976_1	full_shot	false	action	person§Mondego	crawls to		person§riding soldier 3
+1976_2	full_shot	false	action	person§riding soldier 3	stands up	
+1995_1	medium_shot	false	action	person§Mondego	swings		object§Mondego's gun
+2004_1	closeup	false	expresses	person§Mondego	furor
+2012_1	detail	false	action	person§Mondego	hits		person§riding soldier 3
+2019_1	medium_shot	false	action	person§riding soldier 3	moves	
+2026_1	medium_shot	false	action	person§Mondego	fights		person§riding soldier 3
+2033_1	full_shot	false	action	person§Mondego	kicks		person§riding soldier 3
+2033_2	full_shot	false	action	person§Edmond Dantés	walks to		person§Mondego
+2059_1	medium_shot	false	action	person§riding soldier 3	falls down	
+2074_1	long_shot	false	action	person§Edmond Dantés	runs down the		place§hill
+2088_1	extreme_long_shot	false	action	person§riding soldier 4	hits		person§Edmond Dantés
+2088_2	extreme_long_shot	false	action	person§Edmond Dantés	blocks	
+2088_3	extreme_long_shot	false	action	person§Edmond Dantés	hits		person§riding soldier 4
+2088_4	extreme_long_shot	false	action	person§Edmond Dantés	makes a step	
+2088_5	extreme_long_shot	false	action	person§riding soldier 2	hits		person§Edmond Dantés
+2088_6	extreme_long_shot	false	action	person§Edmond Dantés	blocks	
+2088_7	extreme_long_shot	false	action	person§Edmond Dantés	hits		person§riding soldier 2
+2088_8	extreme_long_shot	false	action	person§Edmond Dantés	makes a step	
+2088_9	extreme_long_shot	false	action	person§riding soldier 3	hits		person§Edmond Dantés
+2088_10	extreme_long_shot	false	action	person§Edmond Dantés	blocks	
+2088_11	extreme_long_shot	false	action	person§Edmond Dantés	hits		person§riding soldier 3
+2088_12	extreme_long_shot	false	action	person§Edmond Dantés	makes a step	
+2196_1	full_shot	false	action	person§riding soldier 4	falls down the		place§hill
+2223_1	full_shot	false	action	person§riding soldier 2	hits		person§Mondego
+2223_2	full_shot	false	action	person§Mondego	blocks	
+2223_3	full_shot	false	action	person§Mondego	hits		person§riding soldier 2
+2223_4	full_shot	false	action	person§Mondego	stumbles	
+2268_1	full_shot	false	action	person§riding soldier 2	hits		person§Mondego
+2268_2	full_shot	false	action	person§Mondego	blocks	
+2268_3	full_shot	false	action	person§Mondego	kicks		person§riding soldier 2
+2268_4	full_shot	false	action	person§Mondego	flees up the		place§hill
+2308_1	american_shot	false	action	person§riding soldier 2	hits		person§Mondego
+2308_2	american_shot	false	action	person§Mondego	blocks	
+2340_1	medium_shot	false	action	person§Mondego	hits		person§riding soldier 2
+2370_1	american_shot	false	action	person§Mondego	flees from		person§riding soldier 2
+2400_1	american_shot	false	action	person§Mondego	runs to		person§Edmond Dantés
+2400_2	american_shot	false	action	person§Edmond Dantés	runs to		person§Mondego
+2401_1	full_shot	false	action	person§Edmond Dantés	runs to		person§riding soldier 2
+2401_2	full_shot	false	action	person§Mondego	runs to		person§riding soldier 3
+2430_1	american_shot	false	action	person§riding soldier 2	hits		person§Edmond Dantés
+2430_2	american_shot	false	action	person§Edmond Dantés	blocks		person§riding soldier 2
+2435_1	full_shot	false	action	person§Mondego	hits		person§riding soldier 3
+2450_1	medium_shot	false	action	person§Edmond Dantés	falls down	
+2450_2	medium_shot	false	expresses	person§Edmond Dantés	fear
+2470_1	medium_shot	false	action	person§Mondego	hits		person§riding soldier 2
+2470_2	medium_shot	false	action	person§riding soldier 4	climbs the		place§hill
+2520_1	american_shot	false	action	person§Edmond Dantés	hits		person§riding soldier 4
+2559_1	american_shot	false	action	person§riding soldier 3	aims at		person§Mondego
+2580_1	medium_shot	false	action	person§Edmond Dantés	aims at		person§riding soldier 3
+2595_1	long_shot	false	action	person§Edmond Dantés	fires at		person§riding soldier 3
+2609_1	detail	false	action	person§riding soldier 3	evades	
+2650_1	medium_shot	false	action	person§riding soldier 3	aims at		person§Edmond Dantés
+2650_2	medium_shot	true	introduce	person§Napoleon Bonaparte
+2650_3	medium_shot	false	action	person§Napoleon Bonaparte	kicks		person§riding soldier 3
+2699_1	american_shot	false	action	person§riding soldier 3	falls down the		place§hill
+2720_1	medium_shot	false	says	person§Edmond Dantés	bla	person§Mondego
+2750_1	american_shot	false	action	person§Edmond Dantés	crawls up the		place§hill
+2750_2	american_shot	false	action	person§Mondego	crawls up the		place§hill
+2770_1	long_shot	false	action	person§Edmond Dantés	crawls up the		place§hill
+2770_2	long_shot	false	action	person§Mondego	crawls up the		place§hill
+2770_3	long_shot	false	show	person§Napoleon Bonaparte	
+2770_4	long_shot	false	says	person§Napoleon Bonaparte	bla	person§Edmond Dantés
+3017_1	full_shot	false	says	person§Napoleon Bonaparte	bla	person§riding soldier 2
+3050_1	american_shot	false	show	person§riding soldier 2	
+3050_2	american_shot	true	says	person§Napoleon Bonaparte	bla	person§riding soldier 2
+3100_1	closeup	false	says	person§Napoleon Bonaparte	bla	person§riding soldier 2
+3200_1	full_shot	false	says	person§Napoleon Bonaparte	bla	person§Edmond Dantés	person§Mondego
+3263_1	medium_shot	false	says	person§Edmond Dantés	bla	person§Napoleon Bonaparte
+3382_1	full_shot	false	show	person§Napoleon Bonaparte	
+3382_2	full_shot	true	says	person§Edmond Dantés	bla	person§Napoleon Bonaparte
+3450_1	medium_shot	false	says	person§Edmond Dantés	bla	person§Napoleon Bonaparte
+3450_2	medium_shot	false	action	person§Edmond Dantés	points to		person§Mondego
+3450_3	medium_shot	false	says	person§Edmond Dantés	bla	person§Napoleon Bonaparte
