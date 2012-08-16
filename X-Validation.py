@@ -44,6 +44,7 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False):
     decisions = []
     correct_classification_count = 0
     medium_shot_count = 0
+    metric_sum = 0
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
     for block in blockList:
@@ -62,9 +63,20 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False):
         if boost_classification == block[-1].shot:
             correct_classification_count += 1
         if block[-1].shot == 2: medium_shot_count += 1
+        if len(part_blockList) >= 2:
+            previous_correct_class = part_blockList[-2][-1].shot
+            if len(decisions) >= 2:
+                previous_guessed_class = decisions[-2]
+            else: previous_guessed_class = previous_correct_class
+        else:
+            previous_correct_class = part_blockList[-1][-1].shot
+            if len(decisions) >= 1:
+                previous_guessed_class = decisions[-1]
+            else: previous_guessed_class = previous_correct_class
+        metric_sum += pointMetric(svm_classification, block[-1].shot, previous_guessed_class, previous_correct_class)
     performance = float(correct_classification_count)/len(blockList)
     medium_shot_performance = float(medium_shot_count)/len(blockList)
-    return_queue.put((correct_histogram, guessed_histogram, performance, medium_shot_performance))
+    return_queue.put((correct_histogram, guessed_histogram, performance, medium_shot_performance, float(metric_sum)/len(blockList)))
     return_queue.close()
 
 
@@ -83,6 +95,7 @@ def ParallelXValidation(files, fake_decisions = False):
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
     performances = []
+    allover_point_sum = 0.0
     medium_shot_performances = []
     test_processes = []
     return_queues = []
@@ -91,7 +104,7 @@ def ParallelXValidation(files, fake_decisions = False):
         test_processes.append(Process(target=testAllButFile, args=(file, files, scaler, return_queues[-1], fake_decisions)))
         test_processes[-1].start()
     for i, process in enumerate(test_processes):
-        file_correct_histogram, file_guessed_histogram, file_performance, file_medium_shot_performance = return_queues[i].get()
+        file_correct_histogram, file_guessed_histogram, file_performance, file_medium_shot_performance, file_pint_sum = return_queues[i].get()
         process.join()
         for i, value in enumerate(file_correct_histogram):
             correct_histogram[i] += value
@@ -99,6 +112,7 @@ def ParallelXValidation(files, fake_decisions = False):
             guessed_histogram[i] += value
         performances.append(file_performance)
         medium_shot_performances.append(file_medium_shot_performance)
+        allover_point_sum += file_pint_sum
 
     performance_sum = 0
     performance_best = 0
@@ -119,7 +133,8 @@ def ParallelXValidation(files, fake_decisions = False):
         if p < performance_last: performance_last = p
     print("Performance:\t" + str(performance_sum / len(performances) * 100.0) + "%\t(" +
           str(performance_last) + " - " + str(performance_best) + ")")
-    return performance_sum / len(performances)
+    print("Wrongness:\t" + str(allover_point_sum / len(performances)))
+    return allover_point_sum / len(performances)
 
 
 def XValidation(files, fake_decisions = False):
@@ -247,8 +262,8 @@ def XValidation(files, fake_decisions = False):
 
 # =============================== Main =========================================
 def main():
-    XValidation(TRAIN_FILES, True)
-    #ParallelXValidation(TRAIN_FILES, True)
+    #XValidation(TRAIN_FILES, True)
+    ParallelXValidation(TRAIN_FILES, True)
 
 if __name__ == "__main__":
     main()
