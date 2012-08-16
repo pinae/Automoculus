@@ -1,0 +1,70 @@
+#Film:	Wings of Liberty
+#Scene:	Kerrygans Rettung
+#FPS:	24
+#Context:	
+#EntityList:	place§Zerg cave, person§Tychus, person§Raynor, person§Space Marine 1, person§Space Marine 2, person§Space Marine 3, object§Tychus' gun, person§Kerrygan, object§cigar, person§General, object§Raynor's gun, object§burning ship, 
+0_1	long_shot	false	introduce	place§Zerg cave	
+0_2	long_shot	false	introduce	person§Tychus	
+0_3	long_shot	false	introduce	person§Raynor	
+0_4	long_shot	false	introduce	person§Space Marine 1	
+0_5	long_shot	false	introduce	person§Space Marine 2	
+0_6	long_shot	false	introduce	person§Space Marine 3	
+0_7	long_shot	false	action	person§Space Marine 3	walks forward	
+0_8	long_shot	false	action	person§Raynor	walks forward	
+0_9	long_shot	false	action	person§Space Marine 1	walks forward	
+0_10	long_shot	false	action	person§Space Marine 2	walks forward	
+0_11	long_shot	false	introduce	object§Tychus' gun	
+0_12	long_shot	false	action	person§Tychus	walks forward	
+0_13	long_shot	false	action	person§Raynor	lifts his hand	
+0_14	long_shot	false	introduce	person§Kerrygan	
+396_1	full_shot	false	show	person§Kerrygan	
+396_2	full_shot	false	expresses	person§Kerrygan	fatigue
+532_1	american_shot	false	show	person§Raynor	
+532_2	american_shot	false	action	person§Tychus	walks forward	
+711_1	closeup	false	show	person§Kerrygan	
+711_2	closeup	false	action	person§Raynor	knees	
+711_3	closeup	false	expresses	person§Raynor	pity
+810_1	closeup	false	action	person§Raynor	lifts the head of		person§Kerrygan
+810_2	closeup	false	expresses	person§Kerrygan	relief
+1011_1	medium_shot	false	expresses	person§Raynor	relief
+1011_2	medium_shot	false	action	person§Tychus	steps forward	
+1098_1	closeup	false	action	person§Tychus	opens his helm	
+1098_2	closeup	false	introduce	object§cigar	
+1098_3	closeup	false	expresses	person§Tychus	unforgiveness
+1098_4	closeup	true	introduce	person§General
+1098_5	closeup	false	says	person§Tychus	bla	person§General
+1098_6	closeup	true	says	person§General	bla	person§Tychus
+1098_7	closeup	false	action	person§Tychus	spits out his		object§cigar
+1417_1	closeup	false	expresses	person§Kerrygan	helplessness
+1417_2	closeup	false	action	person§Tychus	points his gun at		person§Kerrygan
+1513_1	closeup	false	says	person§Raynor	bla	person§Tychus
+1513_2	closeup	false	expresses	person§Raynor	anger
+1605_1	medium_shot	false	says	person§Tychus	bla...	person§Raynor
+1724_1	closeup	false	expresses	person§Raynor	disappointment
+1724_2	closeup	true	says	person§Tychus	...bla...	person§Raynor
+1815_1	closeup	false	expresses	person§Kerrygan	helplessness
+1815_2	closeup	true	says	person§Tychus	...bla	person§Raynor
+1815_3	closeup	false	action	person§Kerrygan	looks to		person§Raynor
+1881_1	closeup	false	says	person§Raynor	bla...	person§Tychus
+1992_1	detail	false	introduce	object§Raynor's gun	
+1992_2	detail	true	says	person§Raynor	...bla	person§Tychus
+1992_3	detail	false	action	person§Raynor	looses		object§Raynor's gun
+2082_1	closeup	false	expresses	person§Tychus	sorrow
+2082_2	closeup	false	says	person§Tychus	bla...	person§Raynor
+2185_1	detail	false	show	object§Tychus' gun	
+2185_2	detail	true	says	person§Tychus	...bla	person§Raynor
+2234_1	american_shot	false	action	person§Raynor	pulls		object§Raynor's gun
+2234_2	american_shot	false	action	person§Raynor	turns in front of		person§Kerrygan
+2234_3	american_shot	false	action	person§Tychus	shoots		object§Tychus' gun
+2253_1	closeup	false	action	person§Raynor	aims at		person§Tychus
+2253_2	closeup	false	action	person§Raynor	shoots	
+2282_1	medium_shot	false	show	person§Kerrygan	
+2282_2	medium_shot	false	action	person§Raynor	carrys		person§Kerrygan
+2282_3	medium_shot	false	expresses	person§Kerrygan	confusion
+2282_4	medium_shot	false	says	person§Kerrygan	Jim?	person§Raynor
+2561_1	closeup	false	expresses	person§Raynor	relief
+2561_2	closeup	false	says	person§Raynor	bla	person§Kerrygan
+2781_1	closeup	false	expresses	person§Kerrygan	relief
+2781_2	closeup	false	action	person§Kerrygan	closes her eyes	
+2950_1	extreme_long_shot	false	action	person§Raynor	carrys		person§Kerrygan
+2950_2	extreme_long_shot	false	introduce	object§burning ship	
