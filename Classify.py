@@ -52,13 +52,15 @@ def smoothDistribution(dist):
     return smoothed
 
 
-def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None):
+def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None, C=None, gamma=None):
     """
     Returns a svmLearner object trained with the given training_data.
     The object is also placed in the returnQueue.
     The lock is used for printing and nothing else.
     """
-    svm_classifier = svm.SVC(probability = True)
+    if C and gamma:
+        svm_classifier = svm.SVC(probability = True, C=C, gamma=gamma)
+    else: svm_classifier = svm.SVC(probability = True)
     svm_classifier.fit(training_data, training_data_classes)
     if returnQueue:
         returnQueue.put(svm_classifier)
