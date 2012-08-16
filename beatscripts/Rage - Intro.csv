@@ -1,0 +1,38 @@
+#Film:	Rage
+#Scene:	Intro
+#FPS:	24
+#Context:	
+#EntityList:	place§space, person§meteor, person§space vessel control, place§ship, person§Captain, person§Robot, object§jupiter, object§moon, person§cryo passenger, object§screen, object§earth, 
+0_1	extreme_long_shot	false	introduce	place§space	
+0_2	extreme_long_shot	false	introduce	person§meteor	
+0_3	extreme_long_shot	true	introduce	person§space vessel control
+0_4	extreme_long_shot	true	says	person§space vessel control	bla
+538_1	medium_shot	false	introduce	place§ship	
+538_2	medium_shot	false	introduce	person§Captain	
+538_3	medium_shot	false	introduce	person§Robot	
+538_4	medium_shot	false	action	person§Robot	dresses		person§Captain
+538_5	medium_shot	false	says	person§Captain	bla	person§space vessel control
+682_1	extreme_long_shot	false	introduce	object§jupiter	
+682_2	extreme_long_shot	true	says	person§space vessel control	bla	person§Captain
+682_3	extreme_long_shot	false	action	person§meteor	passes		object§jupiter
+978_1	detail	false	show	person§Captain	
+978_2	detail	true	says	person§space vessel control	bla	person§Captain
+978_3	detail	false	action	person§Robot	injects something into the suit of the		person§Captain
+978_4	detail	true	says	person§Captain	bla	person§space vessel control
+1237_1	extreme_long_shot	false	introduce	object§moon	
+1237_2	extreme_long_shot	false	action	person§meteor	hits	with some particles	object§moon
+1237_3	extreme_long_shot	true	says	person§Captain	bla	person§space vessel control
+1402_1	long_shot	false	action	person§meteor	crashes with		object§moon
+1402_2	long_shot	true	says	person§space vessel control	bla	person§Captain
+1767_1	long_shot	false	show	place§ship	
+1767_2	long_shot	false	introduce	person§cryo passenger	
+1767_3	long_shot	false	action	person§Robot	encloses		person§Captain
+1767_4	long_shot	false	action	person§Robot	encloses		person§Captain
+2021_1	closeup	false	show	person§cryo passenger	
+2021_2	closeup	true	says	person§Captain	bla	person§space vessel control
+2085_1	detail	false	introduce	object§screen	
+2085_2	detail	true	says	person§space vessel control	bla	person§Captain
+2250_1	extreme_long_shot	false	show	person§meteor	
+2250_2	extreme_long_shot	true	says	person§space vessel control	bla	person§Captain
+2250_3	extreme_long_shot	false	introduce	object§earth	
+2250_4	extreme_long_shot	false	action	person§meteor	hits the		object§earth

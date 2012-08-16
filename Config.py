@@ -37,6 +37,7 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv",
                "The Woman in the Window - Bar.csv",
                "The Woman in the Window - Familienszene.csv",
                "The Woman in the Window - Mord.csv",
+               "Rage - Intro.csv",
                "Wings of Liberty - Kerrygans Rettung.csv"]
 
 PROJECT_PATH = path.dirname(path.abspath(__file__))
