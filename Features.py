@@ -170,7 +170,6 @@ class ConflictIntroduction(Feature):
                     there_was_an_establishing_shot = True
         if there_was_an_establishing_shot:
             if EXPRESS in [beat.type for beat in block]:
-                reason_found = False
                 express_subject = None
                 for i in range(1,len(context["BeatList"])+1):
                     beat = context["BeatList"][-i]
