@@ -529,7 +529,7 @@ class PreviousBlockChangeTargetChange(Feature):
     def getText(self):
         if self.numbers[0] == 1:
             return "Es gab einen Targetwechsel zu beginn des vorherigen Blocks."
-        elif self.numbers[0] == 0:
+        elif not self.numbers[0]:
             return "Target des vorletzten Blocks hat auch den letzten Block begonnen."
         else:
             return "Es gibt noch keinen vorletzten Block."
