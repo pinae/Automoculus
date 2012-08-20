@@ -1,0 +1,73 @@
+#Film:	Warcraft III
+#Scene:	Arthas betrayal
+#FPS:	24
+#Context:	person§Arthas, 
+#EntityList:	object§bells, person§magical bellringing-force, place§belltower, object§chains, object§Arthas' hood, person§guard 1, person§guard 2, object§drawbridge, person§bridge guard, person§the people, object§petal, place§throneroom, person§the old king, object§the crown, person§palace guard 1, person§palace guard 2, object§doors, object§Frostmourne, person§Arthas, 
+0_1	detail	false	introduce	object§bells	
+0_2	detail	true	introduce	person§magical bellringing-force
+0_3	detail	false	action	person§magical bellringing-force	rings the		object§bells
+388_1	long_shot	false	introduce	place§belltower	
+388_2	long_shot	false	introduce	object§chains	
+388_3	long_shot	false	action	person§magical bellringing-force	shakes the		object§chains
+388_4	long_shot	false	show	person§Arthas	
+388_5	long_shot	false	introduce	object§Arthas' hood	
+388_6	long_shot	false	action	person§Arthas	strides	
+388_7	long_shot	false	introduce	person§guard 1	
+388_8	long_shot	false	introduce	person§guard 2	
+388_9	long_shot	false	action	person§guard 2	follows		person§Arthas
+388_10	long_shot	false	action	person§guard 1	follows		person§Arthas
+626_1	long_shot	false	introduce	object§drawbridge	
+626_2	long_shot	true	introduce	person§bridge guard
+626_3	long_shot	false	action	person§bridge guard	lowers the		object§drawbridge
+626_4	long_shot	false	action	person§Arthas	strides	
+626_5	long_shot	false	action	person§guard 2	follows		person§Arthas
+626_6	long_shot	false	action	person§guard 1	follows		person§Arthas
+801_1	extreme_long_shot	false	introduce	person§the people	
+801_2	extreme_long_shot	false	action	person§the people	cheer for		person§Arthas
+801_3	extreme_long_shot	false	action	person§Arthas	strides	
+801_4	extreme_long_shot	false	action	person§guard 2	follows		person§Arthas
+801_5	extreme_long_shot	false	action	person§guard 1	follows		person§Arthas
+801_6	extreme_long_shot	false	action	person§Arthas	stops	
+1065_1	full_shot	false	action	person§Arthas	reaches out	
+1177_1	detail	false	introduce	object§petal	
+1177_2	detail	false	action	person§Arthas	catches a		object§petal
+1177_3	detail	false	action	person§Arthas	feels the		object§petal
+1177_4	detail	false	action	person§Arthas	throws away the		object§petal
+1357_1	full_shot	false	action	person§Arthas	looks up	
+1357_2	full_shot	false	expresses	person§Arthas	coldness
+1357_3	full_shot	false	action	person§Arthas	walks on	
+1483_1	long_shot	false	introduce	place§throneroom	
+1483_2	long_shot	false	introduce	person§the old king	
+1483_3	long_shot	false	introduce	object§the crown	
+1483_4	long_shot	false	introduce	person§palace guard 1	
+1483_5	long_shot	false	introduce	person§palace guard 2	
+1483_6	long_shot	false	introduce	object§doors	
+1483_7	long_shot	false	action	person§the old king	looks up	
+1483_8	long_shot	false	expresses	person§the old king	tension
+1611_1	full_shot	false	action	person§Arthas	opens the		object§doors
+1611_2	full_shot	false	action	person§Arthas	strides into the		place§throneroom
+1611_3	full_shot	false	action	person§guard 2	follows		person§Arthas
+1611_4	full_shot	false	action	person§guard 1	follows		person§Arthas
+1758_1	extreme_long_shot	false	action	person§Arthas	strides to the middle of the		place§throneroom
+1917_1	long_shot	false	introduce	object§Frostmourne	
+1917_2	long_shot	false	action	person§Arthas	pulls		object§Frostmourne
+1917_3	long_shot	false	action	person§the old king	stands up	
+1917_4	long_shot	false	action	person§Arthas	kneels down	
+1917_5	long_shot	false	says	person§the old king	Ah, my son!	person§Arthas
+2098_1	detail	false	show	object§Frostmourne	
+2098_2	detail	true	says	person§Arthas	You no longer need to scrifice for you'r people.	person§the old king
+2098_3	detail	true	says	person§Arthas	You no longer need to scrifice for you'r crown.	person§the old king
+2098_4	detail	true	says	person§Arthas	I've taken care of everything.	person§the old king
+2501_1	medium_shot	false	action	person§Arthas	stands up	
+2501_2	medium_shot	false	action	person§Arthas	removes		object§Arthas' hood
+2501_3	medium_shot	false	expresses	person§Arthas	determination
+2501_4	medium_shot	false	action	person§Arthas	lifts		object§Frostmourne
+2501_5	medium_shot	false	action	person§Arthas	goes forward	
+2645_1	american_shot	false	action	person§Arthas	goes forward to		person§the old king
+2686_1	detail	false	action	person§Arthas	goes forward	
+2686_2	detail	true	says	person§the old king	What is this? What are you doing, my son?	person§Arthas
+2686_3	detail	true	says	person§Arthas	Succeeding you!	person§the old king
+2686_4	detail	true	action	person§Arthas	stabs		person§the old king
+3102_1	detail	false	action	person§the old king	looses		object§the crown
+3168_1	detail	false	show	object§bells	
+3168_2	detail	false	says	person§Arthas	bla
