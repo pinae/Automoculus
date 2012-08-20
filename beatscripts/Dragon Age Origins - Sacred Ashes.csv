@@ -1,0 +1,192 @@
+#Film:	Dragon Age Origins
+#Scene:	Sacred Ashes
+#FPS:	24
+#Context:	
+#EntityList:	person§commander, person§witch, person§warrior, place§mountain, person§archer, person§villian 1, object§throwing axe, object§shield, person§villian 2, person§villian 3, person§villian 4, person§villian 5, person§villian 6, person§villian 7, person§villian 8, person§villian 9, object§cliff, person§firemage, object§fireball, person§skeleton 1, person§skeleton 2, person§villian 10, person§villian 11, object§bow, person§villian 12, person§villian 13, person§skeleton 3, person§skeleton 4, person§villian 14, person§villian 15, person§villian 16, person§villian 17, person§villian 18, person§villian 19, person§villian 20, person§villian 21, person§villian 22, person§villian 23, person§dragon, 
+0_1	medium_shot	false	introduce	person§commander	
+0_2	medium_shot	true	introduce	person§witch
+0_3	medium_shot	false	says	person§commander	bla	person§witch
+0_4	medium_shot	false	action	person§commander	walks forward	
+0_5	medium_shot	false	show	person§witch	
+0_6	medium_shot	false	action	person§witch	walks forward	
+0_7	medium_shot	false	action	person§witch	stops	
+0_8	medium_shot	false	says	person§witch	bla	person§commander
+0_9	medium_shot	false	action	person§witch	walks forward	
+0_10	medium_shot	false	introduce	person§warrior	
+473_1	extreme_long_shot	false	introduce	place§mountain	
+473_2	extreme_long_shot	false	introduce	person§archer	
+733_1	medium_shot	false	action	person§commander	stops	
+733_2	medium_shot	false	action	person§commander	removes his hood	
+733_3	medium_shot	false	action	person§commander	lifts his hand	
+733_4	medium_shot	false	says	person§commander	Hold!	person§witch	person§warrior	person§archer
+1026_1	medium_shot	true	introduce	person§villian 1
+1026_2	medium_shot	false	introduce	object§throwing axe	
+1026_3	medium_shot	false	action	person§villian 1	throws	at the commander	object§throwing axe
+1026_4	medium_shot	false	introduce	object§shield	
+1026_5	medium_shot	false	action	person§commander	blocks	
+1128_1	american_shot	false	action	person§warrior	readiesw himself	
+1128_2	american_shot	false	action	person§commander	is on guard	
+1128_3	american_shot	false	action	person§villian 1	attacks		person§commander
+1185_1	american_shot	false	action	person§commander	blocks		person§villian 1
+1185_2	american_shot	false	introduce	person§villian 2	
+1185_3	american_shot	false	action	person§warrior	hits		person§villian 1
+1185_4	american_shot	false	action	person§commander	stabs		person§villian 2
+1272_1	medium_shot	false	introduce	person§villian 3	
+1272_2	medium_shot	false	action	person§villian 3	strikes out at		person§commander
+1272_3	medium_shot	false	action	person§commander	blocks		person§villian 3
+1272_4	medium_shot	false	action	person§villian 3	strikes out at		person§commander
+1272_5	medium_shot	false	action	person§commander	immobilzes the villian with his		object§shield
+1272_6	medium_shot	false	says	person§commander	Sten!	person§witch
+1272_7	medium_shot	false	action	person§commander	stabs		person§villian 3
+1404_1	american_shot	false	introduce	person§villian 4	
+1404_2	american_shot	false	action	person§warrior	hits		person§villian 4
+1404_3	american_shot	false	action	person§villian 4	dies	
+1404_4	american_shot	false	introduce	person§villian 5	
+1404_5	american_shot	false	action	person§warrior	stabs		person§villian 5
+1504_1	medium_shot	false	action	person§warrior	hacks at		person§villian 5
+1580_1	american_shot	false	action	person§warrior	leaps forward	
+1580_2	american_shot	false	introduce	person§villian 6	
+1580_3	american_shot	false	introduce	person§villian 7	
+1580_4	american_shot	false	action	person§warrior	pushes		person§villian 6
+1697_1	long_shot	false	introduce	person§villian 8	
+1697_2	long_shot	false	introduce	person§villian 9	
+1697_3	long_shot	false	introduce	object§cliff	
+1697_4	long_shot	false	action	person§warrior	pushes		person§villian 6
+1697_5	long_shot	false	action	person§villian 9	falls from the		object§cliff
+1697_6	long_shot	false	action	person§villian 8	falls from the		object§cliff
+1731_1	full_shot	false	action	person§villian 7	falls from the		object§cliff
+1731_2	full_shot	false	action	person§warrior	kicks		person§villian 6
+1731_3	full_shot	false	action	person§villian 6	falls from the		object§cliff
+1731_4	full_shot	false	action	person§commander	hurrys onwards	
+1731_5	full_shot	false	action	person§witch	hurrys onwards	
+1731_6	full_shot	false	action	person§archer	hurrys onwards	
+1731_7	full_shot	false	action	person§warrior	looks down the		object§cliff
+1731_8	full_shot	false	action	person§warrior	hurrys onwards	
+1902_1	extreme_long_shot	false	action	person§commander	runs forward	
+1902_2	extreme_long_shot	false	action	person§witch	runs forward	
+1902_3	extreme_long_shot	false	action	person§archer	runs forward	
+1902_4	extreme_long_shot	false	action	person§warrior	runs forward	
+1902_5	extreme_long_shot	true	introduce	person§firemage
+1902_6	extreme_long_shot	false	introduce	object§fireball	
+1902_7	extreme_long_shot	false	action	person§firemage	fires		object§fireball
+1902_8	extreme_long_shot	false	says	person§commander	bla	person§warrior	person§witch	person§archer
+1902_9	extreme_long_shot	false	action	person§warrior	stops	
+1902_10	extreme_long_shot	false	action	person§firemage	explodes the		object§fireball
+2104_1	medium_shot	false	action	person§commander	stands up	
+2104_2	medium_shot	false	introduce	person§skeleton 1	
+2104_3	medium_shot	false	introduce	person§skeleton 2	
+2104_4	medium_shot	false	action	person§skeleton 2	runs to		person§commander
+2104_5	medium_shot	false	action	person§skeleton 1	runs to		person§commander
+2154_1	american_shot	false	show	person§firemage	
+2154_2	american_shot	false	introduce	person§villian 10	
+2154_3	american_shot	false	introduce	person§villian 11	
+2220_1	full_shot	false	action	person§commander	stands up	
+2220_2	full_shot	false	says	person§commander	bla	person§witch
+2220_3	full_shot	false	action	person§witch	runs forward	
+2275_1	medium_shot	false	action	person§witch	stabs		person§skeleton 1
+2275_2	medium_shot	false	action	person§witch	jumps forward	
+2275_3	medium_shot	false	action	person§witch	stabs		person§skeleton 2
+2275_4	medium_shot	false	action	person§witch	rolls on the floor	
+2275_5	medium_shot	false	action	person§witch	runs	
+2275_6	medium_shot	false	introduce	object§bow	
+2275_7	medium_shot	false	action	person§witch	pulls		object§bow
+2275_8	medium_shot	false	introduce	person§villian 12	
+2275_9	medium_shot	false	action	person§witch	shoots		person§villian 12
+2275_10	medium_shot	false	introduce	person§villian 13	
+2275_11	medium_shot	false	action	person§witch	shoots		person§villian 13
+2275_12	medium_shot	false	action	person§witch	jumps very high	
+2527_1	closeup	false	says	person§witch	bla	person§firemage
+2527_2	closeup	false	expresses	person§witch	determination
+2527_3	closeup	false	action	person§witch	pulls her		object§bow
+2527_4	closeup	false	action	person§witch	releases	
+2710_1	long_shot	false	action	person§witch	shoots	
+2768_1	medium_shot	false	action	person§firemage	gets hit by the		person§witch
+2768_2	medium_shot	false	action	person§firemage	falls	
+2841_1	closeup	false	says	person§commander	bla	person§archer
+2841_2	closeup	false	expresses	person§commander	grimness
+2927_1	american_shot	false	introduce	person§skeleton 3	
+2927_2	american_shot	false	action	person§skeleton 3	attacks the		person§commander
+2927_3	american_shot	false	action	person§commander	stabs		person§skeleton 3
+2962_1	full_shot	false	introduce	person§skeleton 4	
+2962_2	full_shot	false	action	person§commander	strikes down		person§skeleton 4
+2989_1	american_shot	false	action	person§archer	strikes		person§villian 10
+3014_1	medium_shot	false	action	person§villian 11	attacks		person§commander
+3014_2	medium_shot	false	action	person§commander	pushes away		person§villian 11
+3054_1	american_shot	false	introduce	person§villian 14	
+3054_2	american_shot	false	action	person§villian 14	attacks		person§commander
+3054_3	american_shot	false	action	person§commander	blocks		person§villian 14
+3054_4	american_shot	false	introduce	person§villian 15	
+3054_5	american_shot	false	action	person§commander	stabs		person§villian 15
+3089_1	american_shot	false	action	person§archer	hits		person§villian 11
+3112_1	full_shot	false	introduce	person§villian 16	
+3112_2	full_shot	false	action	person§witch	fights		person§villian 16
+3134_1	medium_shot	false	action	person§witch	turns around		person§villian 16
+3134_2	medium_shot	false	action	person§witch	burns magically		person§villian 16
+3250_1	full_shot	false	introduce	person§villian 17	
+3250_2	full_shot	false	introduce	person§villian 18	
+3250_3	full_shot	false	introduce	person§villian 19	
+3250_4	full_shot	false	action	person§villian 16	stumbles forward	
+3250_5	full_shot	false	action	person§villian 17	storms to		person§witch
+3250_6	full_shot	false	action	person§villian 18	storms to		person§witch
+3250_7	full_shot	false	action	person§villian 19	storms to		person§witch
+3250_8	full_shot	false	action	person§villian 16	explodes	
+3340_1	closeup	false	expresses	person§witch	joy
+3340_2	closeup	false	action	person§witch	laughs	
+3340_3	closeup	false	action	person§witch	runs away	
+3487_1	long_shot	false	introduce	person§villian 20	
+3487_2	long_shot	false	introduce	person§villian 21	
+3487_3	long_shot	false	introduce	person§villian 22	
+3487_4	long_shot	false	introduce	person§villian 23	
+3487_5	long_shot	false	action	person§witch	runs to		person§villian 20
+3538_1	long_shot	false	action	person§witch	rolls on the ground	
+3538_2	long_shot	false	action	person§witch	jumps high	
+3538_3	long_shot	false	action	person§witch	transforms into a spider	
+3538_4	long_shot	false	action	person§witch	crushes		person§villian 20
+3538_5	long_shot	false	action	person§witch	attacks		person§villian 21
+3656_1	closeup	false	action	person§villian 21	crawls forward	
+3656_2	closeup	false	expresses	person§villian 21	helplessness
+3656_3	closeup	false	action	person§witch	kills		person§villian 21
+3699_1	full_shot	false	action	person§witch	jumps forward	
+3716_1	long_shot	false	action	person§witch	crushes		person§villian 22
+3716_2	long_shot	false	action	person§villian 23	flees	
+3822_1	medium_shot	false	action	person§witch	hacks at		person§villian 21
+3822_2	medium_shot	false	expresses	person§witch	cruelty
+3887_1	full_shot	false	introduce	person§dragon	
+3887_2	full_shot	false	action	person§dragon	flies towards		person§commander
+3887_3	full_shot	false	says	person§dragon	Rooaaaar	person§commander
+3887_4	full_shot	false	action	person§dragon	turns towards		person§witch
+4080_1	long_shot	false	action	person§dragon	spits fire	
+4205_1	medium_shot	false	action	person§commander	runs	
+4205_2	medium_shot	false	action	person§warrior	runs	
+4205_3	medium_shot	false	says	person§commander	bla	person§warrior
+4205_4	medium_shot	false	action	person§warrior	nods	
+4273_1	extreme_long_shot	false	action	person§dragon	flies to		person§commander
+4273_2	extreme_long_shot	false	action	person§dragon	crushes		person§villian 23
+4273_3	extreme_long_shot	false	action	person§dragon	lands	
+4273_4	extreme_long_shot	false	says	person§dragon	Rooaaaar	person§commander
+4577_1	long_shot	false	action	person§commander	circles the		person§dragon
+4631_1	full_shot	false	action	person§dragon	bites at		person§commander
+4631_2	full_shot	false	action	person§commander	evades the		person§dragon
+4631_3	full_shot	false	says	person§witch	bla	person§dragon
+4765_1	extreme_long_shot	false	action	person§witch	shoots at		person§dragon
+4765_2	extreme_long_shot	false	action	person§witch	shoots at		person§dragon
+4765_3	extreme_long_shot	false	action	person§dragon	turns towards		person§witch
+4796_1	full_shot	false	action	person§witch	shoots at		person§dragon
+4796_2	full_shot	false	action	person§witch	shoots at		person§dragon
+4796_3	full_shot	false	action	person§dragon	hits at	with his tail	person§witch
+4796_4	full_shot	false	action	person§witch	jumps away	
+4887_1	long_shot	false	action	person§witch	jumps away	
+4961_1	medium_shot	false	action	person§witch	shoots at		person§dragon
+4961_2	medium_shot	false	action	person§witch	shoots at		person§dragon
+4961_3	medium_shot	false	says	person§dragon	Rooaaaar	person§witch
+4999_1	american_shot	false	action	person§warrior	runs forward towards the		person§dragon
+5033_1	medium_shot	false	action	person§warrior	jumps at the		person§dragon
+5033_2	medium_shot	false	action	person§warrior	plants his sword in the side of the		person§dragon
+5133_1	extreme_long_shot	false	says	person§dragon	Rooaaaar	person§witch
+5133_2	extreme_long_shot	false	says	person§witch	bla	person§dragon
+5133_3	extreme_long_shot	false	action	person§witch	casts a spell at		person§dragon
+5133_4	extreme_long_shot	false	action	person§dragon	falls	
+5519_1	closeup	false	expresses	person§dragon	death
+5667_1	closeup	false	show	person§dragon	
+5667_2	closeup	false	expresses	person§commander	fury
+5667_3	closeup	false	action	person§commander	stabs		person§dragon
