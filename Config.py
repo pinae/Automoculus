@@ -38,6 +38,7 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv",
                "The Woman in the Window - Familienszene.csv",
                "The Woman in the Window - Mord.csv",
                "Rage - Intro.csv",
+               "Warhammer Online - Trailer.csv",
                "Wings of Liberty - Kerrygans Rettung.csv",
                "Warcraft III - Arthas betrayal.csv"]
 

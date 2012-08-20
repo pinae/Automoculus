@@ -1,0 +1,183 @@
+#Film:	Warhammer Online
+#Scene:	Trailer
+#FPS:	30
+#Context:	
+#EntityList:	person§storyteller, object§gobelin, object§wall, person§catapult, place§battlefield, person§orc 1, person§orc 2, person§orc 3, person§orc 4, object§siegetower, person§evil master, object§big magical bullet, object§city gate, person§goblin, person§monster, object§goblin's sword, person§dwarf, person§orc 5, person§firemage, person§orc 6, person§orc 7, person§orc 8, person§chaos warrior, person§high elf, object§mutated arm, person§ice sorcress, person§soldier 1, person§soldier 2, object§horn, person§victim, person§ugly dragon, 
+0_1	detail	true	introduce	person§storyteller
+0_2	detail	false	introduce	object§gobelin	
+0_3	detail	false	introduce	object§wall	
+0_4	detail	true	says	person§storyteller	bla
+0_5	detail	true	introduce	person§catapult
+0_6	detail	false	action	person§catapult	destroys		object§wall
+1101_1	extreme_long_shot	false	introduce	place§battlefield	
+1101_2	extreme_long_shot	true	says	person§storyteller	bla
+1101_3	extreme_long_shot	false	action	person§catapult	fires	
+1441_1	long_shot	false	show	place§battlefield	
+1441_2	long_shot	true	says	person§storyteller	bla
+1441_3	long_shot	false	introduce	person§orc 1	
+1441_4	long_shot	false	introduce	person§orc 2	
+1441_5	long_shot	false	introduce	person§orc 3	
+1441_6	long_shot	false	introduce	person§orc 4	
+1441_7	long_shot	false	introduce	object§siegetower	
+1441_8	long_shot	false	introduce	person§evil master	
+1880_1	medium_shot	false	show	person§orc 1	
+1880_2	medium_shot	false	expresses	person§orc 1	foolheartedness
+1880_3	medium_shot	true	action	person§catapult	fires	
+1880_4	medium_shot	false	introduce	object§big magical bullet	
+1971_1	long_shot	false	introduce	object§city gate	
+1971_2	long_shot	false	action	person§catapult	destroys		object§city gate
+1971_3	long_shot	false	action	person§orc 1	storms through the		object§city gate
+2172_1	american_shot	false	introduce	person§goblin	
+2172_2	american_shot	false	says	person§goblin	yaaaaaaa!	object§city gate
+2172_3	american_shot	false	action	person§goblin	turns around	
+2319_1	medium_shot	false	action	person§goblin	grabs into his pocket	
+2319_2	medium_shot	false	introduce	person§monster	
+2319_3	medium_shot	false	action	person§goblin	throws to the ground		person§monster
+2319_4	medium_shot	false	action	person§monster	grows	
+2431_1	full_shot	false	introduce	object§goblin's sword	
+2431_2	full_shot	false	action	person§goblin	pulls		object§goblin's sword
+2431_3	full_shot	false	action	person§goblin	hits		person§monster
+2431_4	full_shot	false	action	person§monster	grows	
+2431_5	full_shot	false	action	person§goblin	hits		person§monster
+2431_6	full_shot	false	action	person§monster	grows	
+2431_7	full_shot	false	action	person§goblin	hits		person§monster
+2431_8	full_shot	false	action	person§monster	grows	
+2539_1	american_shot	false	action	person§monster	roars	
+2539_2	american_shot	false	action	person§goblin	waves	
+2539_3	american_shot	false	says	person§goblin	yaaaaaaa!	person§monster
+2539_4	american_shot	false	action	person§monster	wolfes down		person§goblin
+2539_5	american_shot	false	action	person§monster	jumps away	
+2539_6	american_shot	false	show	place§battlefield	
+2784_1	long_shot	false	action	person§monster	jumps	
+2885_1	closeup	false	action	person§goblin	looks out of		person§monster
+2885_2	closeup	false	expresses	person§goblin	excitement
+2923_1	long_shot	false	action	person§orc 1	storms	
+2923_2	long_shot	false	action	person§orc 2	storms	
+2923_3	long_shot	true	introduce	person§dwarf
+2923_4	long_shot	false	action	person§dwarf	shoots		person§orc 2
+2923_5	long_shot	false	action	person§orc 2	falls down	
+2923_6	long_shot	false	action	person§orc 4	storms	
+2923_7	long_shot	false	action	person§orc 3	storms	
+2923_8	long_shot	false	introduce	person§orc 5	
+2923_9	long_shot	false	action	person§orc 5	storms	
+3019_1	long_shot	false	action	person§dwarf	shoots		person§orc 1
+3019_2	long_shot	false	action	person§dwarf	shoots		person§orc 4
+3019_3	long_shot	false	action	person§dwarf	shoots	
+3019_4	long_shot	false	action	person§dwarf	shoots	
+3136_1	american_shot	false	action	person§dwarf	shoots	
+3136_2	american_shot	false	expresses	person§dwarf	surprise
+3171_1	long_shot	false	action	person§orc 3	goes for the		person§dwarf
+3171_2	long_shot	false	action	person§dwarf	shoots		person§orc 3
+3171_3	long_shot	false	show	person§monster	
+3171_4	long_shot	false	action	person§monster	jumps on		person§dwarf
+3270_1	closeup	false	action	person§goblin	cries	
+3270_2	closeup	false	expresses	person§goblin	insanity
+3317_1	long_shot	true	introduce	person§firemage
+3317_2	long_shot	false	action	person§firemage	burns		person§monster
+3317_3	long_shot	false	action	person§monster	jumps away	
+3317_4	long_shot	false	action	person§monster	burns	
+3317_5	long_shot	false	action	person§goblin	cries	
+3317_6	long_shot	false	action	person§monster	dies	
+3407_1	closeup	false	show	person§firemage	
+3407_2	closeup	false	expresses	person§firemage	coolness
+3552_1	long_shot	false	introduce	person§orc 6	
+3552_2	long_shot	false	introduce	person§orc 7	
+3552_3	long_shot	false	introduce	person§orc 8	
+3552_4	long_shot	false	action	person§orc 5	storms to the		person§firemage
+3552_5	long_shot	false	action	person§orc 8	storms to the		person§firemage
+3552_6	long_shot	false	action	person§orc 6	storms to the		person§firemage
+3552_7	long_shot	false	action	person§orc 7	storms to the		person§firemage
+3587_1	closeup	false	action	person§firemage	breathes	
+3587_2	closeup	false	expresses	person§firemage	tension
+3642_1	long_shot	false	action	person§firemage	throws fire	
+3728_1	closeup	false	action	person§firemage	breathes	
+3728_2	closeup	false	expresses	person§firemage	contempt
+3728_3	closeup	false	introduce	person§chaos warrior	
+3728_4	closeup	false	action	person§chaos warrior	stabs		person§firemage
+3728_5	closeup	true	introduce	person§high elf
+3728_6	closeup	false	action	person§high elf	shoots		person§chaos warrior
+4033_1	long_shot	false	show	person§high elf	
+4064_1	closeup	false	expresses	person§high elf	contempt
+4136_1	closeup	false	action	person§chaos warrior	spots		person§high elf
+4136_2	closeup	false	action	person§chaos warrior	removes arrows	
+4136_3	closeup	false	action	person§chaos warrior	follows		person§high elf
+4223_1	full_shot	false	action	person§chaos warrior	searches for		person§high elf
+4223_2	full_shot	false	action	person§high elf	comes to the ground	
+4331_1	full_shot	false	action	person§high elf	turns around	
+4331_2	full_shot	false	expresses	person§chaos warrior	anger
+4415_1	detail	false	action	person§chaos warrior	mutates	
+4415_2	detail	false	introduce	object§mutated arm	
+4508_1	closeup	false	expresses	person§high elf	readyness
+4552_1	full_shot	false	action	person§chaos warrior	attacks		person§high elf
+4583_1	american_shot	false	action	person§high elf	blocks		person§chaos warrior
+4583_2	american_shot	false	action	person§chaos warrior	stabs for		person§high elf
+4583_3	american_shot	false	action	person§high elf	evades		person§chaos warrior
+4583_4	american_shot	false	action	person§high elf	jumps to the back of the		person§chaos warrior
+4583_5	american_shot	false	action	person§high elf	hits the		person§chaos warrior
+4676_1	american_shot	false	action	person§chaos warrior	searches for		person§high elf
+4676_2	american_shot	false	action	person§chaos warrior	hits in the direction of		person§high elf
+4676_3	american_shot	false	action	person§high elf	evades		person§chaos warrior
+4676_4	american_shot	false	action	person§high elf	hits		person§chaos warrior
+4676_5	american_shot	false	action	person§chaos warrior	attacks with his		object§mutated arm
+4676_6	american_shot	false	action	person§high elf	evades	
+4676_7	american_shot	false	action	person§high elf	stabs		person§chaos warrior
+4676_8	american_shot	false	action	person§high elf	removes his		object§mutated arm
+4939_1	detail	false	action	person§high elf	cuts	to the ground	object§mutated arm
+4950_1	american_shot	false	action	person§high elf	stabs		person§chaos warrior
+4950_2	american_shot	false	action	person§high elf	stabs		person§chaos warrior
+4950_3	american_shot	false	action	person§high elf	turns around	
+5004_1	medium_shot	false	action	person§chaos warrior	turns around	
+5004_2	medium_shot	false	expresses	person§chaos warrior	readyness
+5149_1	closeup	false	says	person§chaos warrior	Uaaaaaa!	person§high elf
+5149_2	closeup	false	action	person§high elf	shoots	into the eye	person§chaos warrior
+5149_3	closeup	false	action	person§chaos warrior	falls down	
+5187_1	closeup	false	action	person§high elf	turns around	
+5187_2	closeup	false	expresses	person§high elf	surprise
+5338_1	detail	true	introduce	person§ice sorcress
+5338_2	detail	false	action	person§ice sorcress	freezes		person§high elf
+5338_3	detail	false	show	person§ice sorcress	
+5522_1	closeup	false	expresses	person§ice sorcress	mercylessness
+5579_1	american_shot	false	action	person§ice sorcress	walks to		person§high elf
+5579_2	american_shot	false	introduce	person§soldier 1	
+5579_3	american_shot	false	action	person§soldier 1	attacks		person§ice sorcress
+5579_4	american_shot	false	action	person§ice sorcress	freezes		person§soldier 1
+5579_5	american_shot	false	action	person§soldier 1	explodes	
+5579_6	american_shot	false	introduce	person§soldier 2	
+5579_7	american_shot	false	action	person§soldier 2	attacks		person§ice sorcress
+5579_8	american_shot	false	action	person§ice sorcress	freezes		person§soldier 2
+5579_9	american_shot	false	action	person§ice sorcress	hits		person§soldier 2
+5579_10	american_shot	false	action	person§soldier 2	explodes	
+5771_1	medium_shot	false	action	person§ice sorcress	casts a spell	
+5771_2	medium_shot	true	introduce	object§horn
+5771_3	medium_shot	true	action	person§evil master	sounds a		object§horn
+5771_4	medium_shot	false	expresses	person§ice sorcress	obedience
+5771_5	medium_shot	false	action	person§ice sorcress	turns away	
+5925_1	full_shot	false	introduce	person§victim	
+5925_2	full_shot	false	action	person§orc 8	hits		person§victim
+5925_3	full_shot	false	action	person§orc 8	stops while he hears the		object§horn
+5925_4	full_shot	false	action	person§orc 8	stabs		person§victim
+5925_5	full_shot	false	action	person§orc 8	turns to go	
+6179_1	extreme_long_shot	false	says	person§orc 7	Wuaaaaaa!	person§orc 6
+6179_2	extreme_long_shot	false	action	person§orc 5	runs away	
+6179_3	extreme_long_shot	false	action	person§orc 8	runs away	
+6179_4	extreme_long_shot	false	action	person§orc 6	runs away	
+6300_1	closeup	false	action	person§ice sorcress	blows a kiss to		person§high elf
+6300_2	closeup	false	expresses	person§ice sorcress	coolness
+6300_3	closeup	false	action	person§ice sorcress	turns to go	
+6300_4	closeup	false	expresses	person§high elf	relief
+6540_1	american_shot	false	action	person§firemage	defrosts		person§high elf
+6647_1	long_shot	false	action	person§goblin	laughs	
+6647_2	long_shot	false	action	person§high elf	shoots		person§goblin
+6647_3	long_shot	false	show	person§evil master	
+6647_4	long_shot	false	action	person§evil master	strides 	
+6856_1	full_shot	false	action	person§firemage	goes forward	
+6856_2	full_shot	false	expresses	person§firemage	determination
+6856_3	full_shot	false	action	person§high elf	goes forward	
+6856_4	full_shot	false	expresses	person§high elf	determination
+6856_5	full_shot	false	action	person§dwarf	goes forward	
+6856_6	full_shot	false	expresses	person§dwarf	determination
+6958_1	closeup	false	expresses	person§evil master	coolness
+7053_1	full_shot	false	action	person§evil master	stomps	
+7053_2	full_shot	false	introduce	person§ugly dragon	
+7285_1	extreme_long_shot	false	show	person§ugly dragon	
+7285_2	extreme_long_shot	false	action	person§ugly dragon	cries	
