@@ -268,7 +268,8 @@ def main():
     reference_data, _ = getDataMatrix(TRAIN_FILES)
     scaler = preprocessing.Scaler()
     scaler.fit(reference_data)
-    ParallelXValidation(TRAIN_FILES, scaler, True, C=2582.61517656, gamma=0.00036375303213)
+    #ParallelXValidation(TRAIN_FILES, scaler, True, C=2582.61517656, gamma=0.00036375303213)
+    ParallelXValidation(TRAIN_FILES, scaler, True, C=2583.31718583, gamma=0.00191943088336)
 
 if __name__ == "__main__":
     main()
