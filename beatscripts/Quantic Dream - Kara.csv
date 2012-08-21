@@ -1,0 +1,163 @@
+#Film:	Quantic Dream
+#Scene:	Kara
+#FPS:	24
+#Context:	
+#EntityList:	person§Kara, person§assembly line, object§Kara's body, place§factory, person§operator, object§Kara's arms, object§Kara's legs, object§Kara's clothes, 
+0_1	detail	false	introduce	person§Kara	
+0_2	detail	false	introduce	person§assembly line	
+0_3	detail	false	action	person§assembly line	transports		person§Kara
+0_4	detail	false	introduce	object§Kara's body	
+0_5	detail	false	action	person§assembly line	attaches	to her body	person§Kara
+1127_1	long_shot	false	introduce	place§factory	
+1127_2	long_shot	false	action	person§assembly line	assembles		person§Kara
+1127_3	long_shot	true	introduce	person§operator
+1127_4	long_shot	true	says	person§operator	bla	person§Kara
+1337_1	closeup	false	action	person§Kara	wakes up	
+1337_2	closeup	false	expresses	person§Kara	attentiveness
+1337_3	closeup	false	says	person§Kara	yes	person§operator
+1337_4	closeup	true	says	person§operator	id?	person§Kara
+1473_1	detail	false	says	person§Kara	bla	person§operator
+1473_2	detail	true	says	person§operator	bla	person§Kara
+1596_1	closeup	false	action	person§Kara	moves her head	
+1596_2	closeup	true	says	person§operator	bla	person§Kara
+1807_1	detail	false	action	person§Kara	moves her eyes	
+1807_2	detail	true	says	person§operator	bla	person§Kara
+2024_1	medium_shot	false	expresses	person§Kara	curiosity
+2024_2	medium_shot	true	says	person§operator	bla	person§Kara
+2127_1	full_shot	false	says	person§Kara	bla	person§operator
+2127_2	full_shot	false	introduce	object§Kara's arms	
+2127_3	full_shot	false	action	person§assembly line	attaches		object§Kara's arms
+2317_1	closeup	false	action	person§Kara	looks at		person§assembly line
+2317_2	closeup	false	says	person§Kara	bla	person§operator
+2387_1	detail	false	action	person§assembly line	assemples		person§Kara
+2387_2	detail	true	says	person§Kara	bla	person§operator
+2599_1	full_shot	false	says	person§Kara	bla	person§operator
+2599_2	full_shot	false	action	person§assembly line	assemples		person§Kara
+2782_1	closeup	false	says	person§Kara	bla	person§operator
+2850_1	medium_shot	true	says	person§operator	bla	person§Kara
+2984_1	closeup	false	expresses	person§Kara	joy
+2984_2	closeup	false	says	person§Kara	My name is Kara.	person§operator
+2984_3	closeup	true	says	person§operator	bla	person§Kara
+3236_1	detail	false	action	person§Kara	moves her arms	
+3236_2	detail	true	says	person§operator	bla	person§Kara
+3686_1	closeup	false	says	person§Kara	bla	person§operator
+3790_1	long_shot	false	action	person§assembly line	assemples		person§Kara
+3790_2	long_shot	false	says	person§Kara	bla	person§operator
+3837_1	detail	false	introduce	object§Kara's legs	
+3837_2	detail	false	action	person§assembly line	attaches		object§Kara's legs
+3837_3	detail	true	says	person§Kara	bla	person§operator
+3960_1	medium_shot	true	says	person§operator	bla	person§Kara
+3978_1	closeup	false	says	person§Kara	bla	person§operator
+4144_1	american_shot	false	action	person§assembly line	assemples		person§Kara
+4144_2	american_shot	true	says	person§operator	Ok.	person§Kara
+4249_1	medium_shot	true	says	person§operator	bla	person§Kara
+4249_2	medium_shot	false	expresses	person§Kara	surprise
+4309_1	american_shot	false	says	person§Kara	bla	person§operator
+4540_1	medium_shot	false	says	person§Kara	bla	person§operator
+4719_1	medium_shot	false	says	person§Kara	bla	person§operator
+4858_1	closeup	false	expresses	person§Kara	satisfaction
+4949_1	extreme_long_shot	false	action	person§assembly line	puts	on her feet	person§Kara
+4949_2	extreme_long_shot	true	says	person§operator	bla	person§Kara
+5076_1	closeup	false	expresses	person§Kara	contempt
+5076_2	closeup	true	says	person§operator	bla	person§Kara
+5187_1	long_shot	false	action	person§Kara	takes some steps	carefully
+5425_1	closeup	false	expresses	person§Kara	joy
+5526_1	american_shot	false	action	person§Kara	dances some steps	
+5526_2	american_shot	true	says	person§operator	bla	person§Kara
+5895_1	closeup	false	expresses	person§Kara	excitement
+5895_2	closeup	false	says	person§Kara	bla	person§operator
+5980_1	long_shot	true	says	person§operator	bla	person§Kara
+5980_2	long_shot	false	introduce	object§Kara's clothes	
+5980_3	long_shot	false	action	person§assembly line	prepares		object§Kara's clothes
+6056_1	american_shot	false	action	person§assembly line	clothes		person§Kara
+6056_2	american_shot	false	expresses	person§Kara	concern
+6056_3	american_shot	false	says	person§Kara	Sold?	person§operator
+6135_1	full_shot	false	action	person§assembly line	clothes		person§Kara
+6154_1	closeup	false	says	person§Kara	bla	person§operator
+6154_2	closeup	false	expresses	person§Kara	discomfort
+6154_3	closeup	true	says	person§operator	bla	person§Kara
+6274_1	long_shot	true	says	person§operator	bla	person§Kara
+6398_1	closeup	true	says	person§operator	bla	person§Kara
+6398_2	closeup	false	expresses	person§Kara	disappointment
+6398_3	closeup	false	says	person§Kara	bla	person§operator
+6606_1	medium_shot	true	says	person§operator	You thought?	person§Kara
+6606_2	medium_shot	false	expresses	person§Kara	shame
+6666_1	closeup	false	expresses	person§Kara	willpower
+6666_2	closeup	true	says	person§operator	bla	person§Kara
+6753_1	long_shot	false	action	person§assembly line	positions itself	
+6831_1	detail	false	expresses	person§Kara	disappointment
+6831_2	detail	true	says	person§operator	bla	person§Kara
+7101_1	long_shot	true	says	person§operator	bla	person§Kara
+7101_2	long_shot	false	action	person§assembly line	begins to move on		person§Kara
+7189_1	detail	true	says	person§operator	bla	person§Kara
+7189_2	detail	false	action	person§assembly line	begins to disassemble		person§Kara
+7237_1	medium_shot	false	expresses	person§Kara	fear
+7298_1	closeup	false	says	person§Kara	bla	person§operator
+7298_2	closeup	true	says	person§operator	bla	person§Kara
+7357_1	medium_shot	false	action	person§assembly line	disassembles		person§Kara
+7371_1	detail	false	action	person§assembly line	disassembles		person§Kara
+7410_1	medium_shot	false	expresses	person§Kara	terror
+7410_2	medium_shot	true	says	person§operator	bla	person§Kara
+7410_3	medium_shot	false	action	person§Kara	fights		person§assembly line
+7410_4	medium_shot	false	says	person§Kara	bla	person§operator
+7564_1	detail	false	action	person§assembly line	removes		object§Kara's arms
+7593_1	closeup	false	says	person§Kara	bla	person§operator
+7619_1	detail	false	action	person§assembly line	disassembles		person§Kara
+7639_1	detail	false	action	person§assembly line	disassembles		person§Kara
+7654_1	closeup	false	expresses	person§Kara	courage
+7654_2	closeup	false	says	person§Kara	bla	person§operator
+7717_1	american_shot	true	says	person§operator	bla	person§Kara
+7717_2	american_shot	false	action	person§assembly line	disassembles		person§Kara
+7753_1	medium_shot	true	says	person§operator	bla	person§Kara
+7753_2	medium_shot	false	action	person§assembly line	disassembles		person§Kara
+7783_1	medium_shot	false	says	person§Kara	bla	person§operator
+7806_1	closeup	false	says	person§Kara	bla	person§operator
+7806_2	closeup	true	says	person§operator	bla	person§Kara
+7880_1	american_shot	true	says	person§operator	bla	person§Kara
+7880_2	american_shot	false	action	person§assembly line	disassembles		person§Kara
+7939_1	closeup	false	expresses	person§Kara	fear
+7939_2	closeup	true	says	person§operator	bla	person§Kara
+8028_1	american_shot	false	action	person§assembly line	disassembles		person§Kara
+8028_2	american_shot	false	says	person§Kara	bla	person§operator
+8063_1	closeup	false	expresses	person§Kara	terror
+8073_1	detail	true	says	person§Kara	bla	person§operator
+8073_2	detail	false	show	object§Kara's body	
+8111_1	full_shot	false	action	person§assembly line	removes		object§Kara's legs
+8111_2	full_shot	false	says	person§Kara	bla	person§operator
+8167_1	closeup	false	expresses	person§Kara	desparateness
+8167_2	closeup	false	says	person§Kara	bla	person§operator
+8192_1	long_shot	false	action	person§Kara	fights for her life	
+8216_1	closeup	false	expresses	person§Kara	despair
+8216_2	closeup	false	says	person§Kara	bla	person§operator
+8281_1	closeup	false	expresses	person§Kara	terror
+8281_2	closeup	false	says	person§Kara	bla	person§operator
+8335_1	closeup	false	says	person§Kara	bla	person§operator
+8375_1	long_shot	false	action	person§assembly line	stops	
+8566_1	medium_shot	false	says	person§Kara	I want to live.	person§operator
+8566_2	medium_shot	false	expresses	person§Kara	pleadiness
+8667_1	closeup	false	expresses	person§Kara	helplessness
+8667_2	closeup	false	says	person§Kara	bla	person§operator
+8755_1	long_shot	false	action	person§assembly line	moves	
+8922_1	closeup	false	action	person§Kara	sheds some tears	
+8922_2	closeup	false	action	person§assembly line	assembles		person§Kara
+8922_3	closeup	false	expresses	person§Kara	gladness
+9126_1	detail	false	action	person§assembly line	completes		object§Kara's body
+9199_1	medium_shot	false	expresses	person§Kara	thoughtful relief
+9487_1	detail	false	action	person§assembly line	puts	on her feet	person§Kara
+9559_1	long_shot	false	action	person§assembly line	completes		person§Kara
+9669_1	medium_shot	false	expresses	person§Kara	relief
+9669_2	medium_shot	false	action	person§assembly line	clothes		person§Kara
+9817_1	closeup	false	expresses	person§Kara	gratitude
+9935_1	american_shot	true	says	person§operator	bla	person§Kara
+9935_2	american_shot	false	action	person§Kara	turns to go	
+10095_1	long_shot	false	action	person§Kara	turns	
+10133_1	medium_shot	false	action	person§Kara	walks	
+10175_1	extreme_long_shot	false	action	person§Kara	leaves the		person§assembly line
+10175_2	extreme_long_shot	true	says	person§operator	bla	person§Kara
+10642_1	closeup	false	expresses	person§Kara	thankfulness
+10642_2	closeup	false	says	person§Kara	Thanks.	person§operator
+10822_1	medium_shot	false	action	person§Kara	stand in line	
+10822_2	medium_shot	false	action	person§assembly line	packages		person§Kara
+10989_1	closeup	false	expresses	person§Kara	thoughtfulness
+11090_1	full_shot	false	action	person§assembly line	moves	away	person§Kara
+11090_2	full_shot	true	says	person§operator	My god.	person§operator
