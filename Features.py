@@ -1597,7 +1597,7 @@ class X_DialogueAnswerWasExpected(Feature):
                 else: return [1, 0]
             elif len(context["BygoneBlocks"][-1]) >= 2 and context["BygoneBlocks"][-1][-1].type == EXPRESS and\
                  context["BygoneBlocks"][-1][-2].type == SAYS and context["BygoneBlocks"][-1][-2].linetarget and\
-                 not block[-2].linetarget in previous_subjects:
+                 (len(block) < 2 or not block[-2].linetarget in previous_subjects):
                 if context["BygoneBlocks"][-1][-2].linetarget and\
                    context["BygoneBlocks"][-1][-2].linetarget in answering_subjects:
                     return [2, 1]
