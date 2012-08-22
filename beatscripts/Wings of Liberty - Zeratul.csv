@@ -1,0 +1,90 @@
+#Film:	Wings of Liberty
+#Scene:	Zeratul
+#FPS:	24
+#Context:	
+#EntityList:	object§reliefs of the zerg, person§Zeratul, object§reliefs of fighting protoss, object§reliefs of x'el naga, place§ancient cave, person§hydralisk, person§hydralisk 2, person§hydralisk 3, person§hydralisk 4, person§hydralisk 5, object§claw, person§Kerrygan, object§Kerrygan's wing, person§hydralisk 6, 
+0_1	detail	false	introduce	object§reliefs of the zerg	
+0_2	detail	true	introduce	person§Zeratul
+0_3	detail	true	says	person§Zeratul	bla
+589_1	detail	true	says	person§Zeratul	bla
+589_2	detail	false	introduce	object§reliefs of fighting protoss	
+937_1	detail	false	introduce	object§reliefs of x'el naga	
+937_2	detail	true	says	person§Zeratul	bla
+1409_1	medium_shot	false	show	person§Zeratul	
+1409_2	medium_shot	false	says	person§Zeratul	bla
+1409_3	medium_shot	false	action	person§Zeratul	inspects		object§reliefs of x'el naga
+1409_4	medium_shot	false	action	person§Zeratul	turns	
+1673_1	american_shot	false	action	person§Zeratul	walks forward	
+1911_1	extreme_long_shot	false	introduce	place§ancient cave	
+1911_2	extreme_long_shot	false	show	person§Zeratul	
+1911_3	extreme_long_shot	false	action	person§Zeratul	walks through the		place§ancient cave
+2274_1	full_shot	false	action	person§Zeratul	searches for something	
+2473_1	medium_shot	false	expresses	person§Zeratul	awareness
+2473_2	medium_shot	false	introduce	person§hydralisk	
+2473_3	medium_shot	false	action	person§hydralisk	attacks		person§Zeratul
+2608_1	american_shot	false	action	person§Zeratul	strikes at		person§hydralisk
+2625_1	full_shot	false	action	person§hydralisk	falls apart	
+2625_2	full_shot	false	introduce	person§hydralisk 2	
+2625_3	full_shot	false	action	person§Zeratul	hits		person§hydralisk 2
+2625_4	full_shot	false	action	person§hydralisk 2	falls	
+2625_5	full_shot	false	introduce	person§hydralisk 3	
+2625_6	full_shot	false	action	person§Zeratul	jumps from		person§hydralisk 2
+2625_7	full_shot	false	action	person§Zeratul	kills		person§hydralisk 3
+2625_8	full_shot	false	introduce	person§hydralisk 4	
+2625_9	full_shot	false	action	person§hydralisk 4	attacks		person§Zeratul
+2833_1	american_shot	false	action	person§Zeratul	struggles in the grip of		person§hydralisk 4
+2833_2	american_shot	false	action	person§Zeratul	kills		person§hydralisk 4
+2833_3	american_shot	false	action	person§hydralisk 4	falls	
+2833_4	american_shot	false	introduce	person§hydralisk 5	
+2833_5	american_shot	false	action	person§Zeratul	strikes at		person§hydralisk 5
+2982_1	detail	false	introduce	object§claw	
+2982_2	detail	false	action	person§hydralisk 5	looses a		object§claw
+2982_3	detail	false	action	person§Zeratul	grabs the		object§claw
+3115_1	full_shot	false	action	person§Zeratul	nails	to the ground	person§hydralisk 5
+3115_2	full_shot	true	introduce	person§Kerrygan
+3115_3	full_shot	true	says	person§Kerrygan	hahahaha	person§Zeratul
+3115_4	full_shot	false	action	person§Zeratul	looks to		person§Kerrygan
+3390_1	closeup	false	show	person§Kerrygan	
+3390_2	closeup	false	says	person§Kerrygan	bla	person§Zeratul
+3579_1	full_shot	false	says	person§Zeratul	bla	person§Kerrygan
+3738_1	closeup	false	expresses	person§Kerrygan	ignorance
+3738_2	closeup	false	says	person§Kerrygan	bla	person§Zeratul
+3996_1	closeup	false	expresses	person§Zeratul	seriousness
+3996_2	closeup	false	says	person§Zeratul	bla	person§Kerrygan
+3996_3	closeup	false	action	person§Zeratul	dissolves	
+4121_1	closeup	false	expresses	person§Kerrygan	awareness
+4192_1	full_shot	false	action	person§Zeratul	materializes	
+4192_2	full_shot	false	says	person§Zeratul	bla	person§Kerrygan
+4192_3	full_shot	false	action	person§Zeratul	jumps at		person§Kerrygan
+4357_1	american_shot	false	action	person§Kerrygan	casts a spell	
+4357_2	american_shot	false	expresses	person§Kerrygan	anger
+4399_1	long_shot	false	action	person§Zeratul	gets hit by the spell of		person§Kerrygan
+4399_2	long_shot	false	action	person§Kerrygan	stops	in mid air	person§Zeratul
+4479_1	closeup	false	expresses	person§Kerrygan	contempt
+4479_2	closeup	false	says	person§Kerrygan	bla	person§Zeratul
+4696_1	medium_shot	true	says	person§Kerrygan	bla	person§Zeratul
+4696_2	medium_shot	false	expresses	person§Zeratul	pain
+4696_3	medium_shot	false	action	person§Zeratul	fights his immobilization	
+4817_1	detail	true	says	person§Kerrygan	bla	person§Zeratul
+4817_2	detail	false	action	person§Zeratul	activates his blade	
+4954_1	full_shot	false	action	person§Zeratul	attacks		person§Kerrygan
+4985_1	extreme_long_shot	false	action	person§Zeratul	jumps away	
+4985_2	extreme_long_shot	false	action	person§Kerrygan	stumbles	
+5172_1	closeup	false	action	person§Kerrygan	looses her wing	
+5172_2	closeup	false	introduce	object§Kerrygan's wing	
+5255_1	detail	false	action	person§Kerrygan	lets	fall	object§Kerrygan's wing
+5419_1	closeup	false	expresses	person§Kerrygan	coolness
+5507_1	extreme_long_shot	false	show	person§Kerrygan	
+5507_2	extreme_long_shot	false	action	person§Zeratul	dissolves	
+5657_1	american_shot	false	action	person§Zeratul	rematerializes	
+5657_2	american_shot	false	action	person§Zeratul	holds his arm	
+5657_3	american_shot	false	expresses	person§Zeratul	exhaustion
+5931_1	medium_shot	false	introduce	person§hydralisk 6	
+5931_2	medium_shot	false	action	person§Kerrygan	strokes		person§hydralisk 6
+5931_3	medium_shot	false	says	person§Kerrygan	bla	person§Zeratul
+6258_1	long_shot	false	says	person§Kerrygan	bla	person§Zeratul
+6258_2	long_shot	false	action	person§Kerrygan	grows a new		object§Kerrygan's wing
+6258_3	long_shot	false	action	person§Kerrygan	walks away	
+6777_1	medium_shot	false	expresses	person§Zeratul	concern
+6777_2	medium_shot	false	says	person§Zeratul	bla
+6777_3	medium_shot	false	action	person§Zeratul	climbs away	

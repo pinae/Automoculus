@@ -48,6 +48,7 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv",
                "Dragon Age Origins - Sacred Ashes.csv",
                "Warhammer Online - Trailer.csv",
                "Wings of Liberty - Kerrygans Rettung.csv",
+               "Wings of Liberty - Zeratul.csv",
                "World of Warcraft - Wrath of the Lich King.csv",
                "Warcraft III - Arthas betrayal.csv"]
 
