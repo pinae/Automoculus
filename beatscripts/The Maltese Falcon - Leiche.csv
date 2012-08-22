@@ -1,0 +1,47 @@
+#Film:	The Maltese Falcon
+#Scene:	Leiche
+#FPS:	24
+#Context:	person§Sam Spade, 
+#EntityList:	place§crimscene, object§taxi, person§policeman, object§fence, object§dead Miles Archer, person§forensican, person§photographer, person§commissar, object§gun, person§Sam Spade, 
+0_1	long_shot	false	introduce	place§crimscene	
+0_2	long_shot	false	introduce	object§taxi	
+0_3	long_shot	false	action	person§Sam Spade	arrives with a		object§taxi
+0_4	long_shot	false	show	person§Sam Spade	
+0_5	long_shot	false	action	person§Sam Spade	walks to the		place§crimscene
+0_6	long_shot	false	introduce	person§policeman	
+0_7	long_shot	false	says	person§policeman	bla	person§Sam Spade
+0_8	long_shot	false	says	person§Sam Spade	bla	person§policeman
+498_1	full_shot	false	introduce	object§fence	
+498_2	full_shot	false	action	person§Sam Spade	walks to the		object§fence
+498_3	full_shot	false	action	person§Sam Spade	looks down	
+605_1	american_shot	false	introduce	object§dead Miles Archer	
+605_2	american_shot	false	introduce	person§forensican	
+605_3	american_shot	false	introduce	person§photographer	
+605_4	american_shot	false	action	person§photographer	takes a photo of		object§dead Miles Archer
+686_1	full_shot	false	action	person§Sam Spade	tests	with his foot	object§fence
+686_2	full_shot	false	introduce	person§commissar	
+909_1	full_shot	false	action	person§commissar	climbs up to		person§Sam Spade
+909_2	full_shot	false	says	person§commissar	Hello Sam.	person§Sam Spade
+1011_1	medium_shot	false	expresses	person§Sam Spade	coolness
+1011_2	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1011_3	medium_shot	false	introduce	object§gun	
+1011_4	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1011_5	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1199_1	detail	false	show	object§gun	
+1199_2	detail	false	says	person§commissar	bla	person§Sam Spade
+1233_1	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1233_2	medium_shot	false	says	person§commissar	Just one.	person§Sam Spade
+1233_3	medium_shot	false	says	person§Sam Spade	Let's see.	person§commissar
+1423_1	full_shot	false	action	person§Sam Spade	walks around		person§commissar
+1423_2	full_shot	false	says	person§Sam Spade	bla	person§commissar
+1662_1	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1662_2	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1662_3	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1662_4	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1662_5	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1662_6	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1662_7	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1662_8	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1662_9	medium_shot	false	says	person§commissar	bla	person§Sam Spade
+1662_10	medium_shot	false	says	person§Sam Spade	bla	person§commissar
+1662_11	medium_shot	false	action	person§Sam Spade	walks away	

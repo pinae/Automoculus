@@ -1,0 +1,26 @@
+#Film:	The Maltese Falcon
+#Scene:	Verfolgung
+#FPS:	24
+#Context:	person§Sam Spade, 
+#EntityList:	place§street, person§follower, place§hidingplace, object§taxi, person§another taxidriver, object§second taxi, person§Sam Spade, 
+0_1	full_shot	false	show	person§Sam Spade	
+0_2	full_shot	false	introduce	place§street	
+0_3	full_shot	false	action	person§Sam Spade	walks along the		place§street
+0_4	full_shot	false	introduce	person§follower	
+0_5	full_shot	false	action	person§follower	follows		person§Sam Spade
+328_1	american_shot	false	action	person§Sam Spade	spots		person§follower
+328_2	american_shot	false	expresses	person§Sam Spade	calmness
+328_3	american_shot	false	action	person§follower	follows		person§Sam Spade
+512_1	long_shot	false	introduce	place§hidingplace	
+512_2	long_shot	false	action	person§Sam Spade	hides in		place§hidingplace
+512_3	long_shot	false	action	person§follower	looses		person§Sam Spade
+643_1	medium_shot	false	expresses	person§Sam Spade	curiosity
+643_2	medium_shot	false	action	person§Sam Spade	walks on	
+714_1	full_shot	false	introduce	object§taxi	
+714_2	full_shot	false	action	person§Sam Spade	enters the		object§taxi
+841_1	american_shot	false	action	person§follower	spots		person§Sam Spade
+841_2	american_shot	false	introduce	person§another taxidriver	
+841_3	american_shot	false	introduce	object§second taxi	
+841_4	american_shot	false	action	person§follower	signs		person§another taxidriver
+841_5	american_shot	false	action	person§another taxidriver	enters his		object§second taxi
+841_6	american_shot	false	action	person§follower	enters the		object§second taxi

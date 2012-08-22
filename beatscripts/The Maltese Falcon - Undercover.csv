@@ -1,0 +1,75 @@
+#Film:	The Maltese Falcon
+#Scene:	Undercover
+#FPS:	24
+#Context:	person§Sam Spade, 
+#EntityList:	object§sign of the hotel, place§Hotel Belvedere, place§lobby of Hotel Belvedere, object§telephone, person§spy, person§girl at the desk, person§Luke, object§desk, person§assistant, person§Sam Spade, 
+0_1	detail	false	introduce	object§sign of the hotel	
+0_2	detail	false	introduce	place§Hotel Belvedere	
+77_1	long_shot	false	introduce	place§lobby of Hotel Belvedere	
+77_2	long_shot	false	show	person§Sam Spade	
+77_3	long_shot	false	action	person§Sam Spade	crosses the		place§lobby of Hotel Belvedere
+77_4	long_shot	false	introduce	object§telephone	
+77_5	long_shot	false	action	person§Sam Spade	takes the		object§telephone
+77_6	long_shot	false	says	person§Sam Spade	I want to talk to Mr. Cairo. John Cairo.	object§telephone
+378_1	full_shot	false	introduce	person§spy	
+422_1	medium_shot	false	says	person§Sam Spade	Oh, thanks.	object§telephone
+422_2	medium_shot	false	expresses	person§Sam Spade	curiosity
+422_3	medium_shot	false	action	person§Sam Spade	walks towards		person§spy
+497_1	american_shot	false	action	person§Sam Spade	sits down next to		person§spy
+497_2	american_shot	false	says	person§Sam Spade	bla	person§spy
+497_3	american_shot	false	says	person§spy	bla	person§Sam Spade
+497_4	american_shot	false	expresses	person§spy	being stressed
+497_5	american_shot	false	says	person§Sam Spade	bla	person§spy
+497_6	american_shot	false	says	person§spy	bla	person§Sam Spade
+497_7	american_shot	false	says	person§Sam Spade	bla	person§spy
+497_8	american_shot	false	says	person§spy	bla	person§Sam Spade
+497_9	american_shot	false	says	person§Sam Spade	bla	person§spy
+497_10	american_shot	false	says	person§spy	bla	person§Sam Spade
+497_11	american_shot	false	says	person§Sam Spade	bla	person§spy
+497_12	american_shot	false	says	person§spy	bla	person§Sam Spade
+497_13	american_shot	false	expresses	person§Sam Spade	anger
+497_14	american_shot	false	says	person§Sam Spade	bla	person§spy
+497_15	american_shot	false	action	person§Sam Spade	walks away	
+1649_1	medium_shot	false	action	person§Sam Spade	gestures	
+1716_1	american_shot	false	introduce	person§girl at the desk	
+1716_2	american_shot	false	introduce	person§Luke	
+1716_3	american_shot	false	introduce	object§desk	
+1716_4	american_shot	false	action	person§girl at the desk	calls attention of		person§Luke
+1716_5	american_shot	false	says	person§girl at the desk	Look.	person§Luke
+1716_6	american_shot	false	action	person§Luke	turns to		person§Sam Spade
+1780_1	american_shot	false	says	person§Luke	bla	person§Sam Spade
+1780_2	american_shot	false	says	person§Sam Spade	bla	person§Luke
+1780_3	american_shot	false	says	person§Luke	bla	person§Sam Spade
+1780_4	american_shot	false	says	person§Sam Spade	bla	person§Luke
+1780_5	american_shot	false	says	person§Sam Spade	bla	person§Luke
+1780_6	american_shot	false	says	person§Luke	bla	person§spy
+1780_7	american_shot	false	action	person§spy	stands up	
+1780_8	american_shot	false	says	person§Luke	bla	person§spy
+2535_1	medium_shot	false	expresses	person§Sam Spade	winner's joy
+2535_2	medium_shot	false	action	person§Sam Spade	blows smoke at		person§spy
+2535_3	medium_shot	false	says	person§spy	I won't forget you guys.	person§Sam Spade	person§Luke
+2751_1	american_shot	false	action	person§spy	walks away	
+2751_2	american_shot	false	says	person§Luke	bla	person§Sam Spade
+2751_3	american_shot	false	says	person§Sam Spade	bla	person§Luke
+2751_4	american_shot	false	expresses	person§Luke	sympathy
+2751_5	american_shot	false	says	person§Luke	bla	person§Sam Spade
+2751_6	american_shot	false	says	person§Sam Spade	bla	person§Luke
+2751_7	american_shot	false	action	person§Sam Spade	walks away	
+3094_1	medium_shot	false	introduce	person§assistant	
+3094_2	medium_shot	false	action	person§assistant	walks to the		object§desk
+3094_3	medium_shot	false	action	person§Sam Spade	comes to		person§assistant
+3094_4	medium_shot	false	says	person§Sam Spade	bla	person§assistant
+3094_5	medium_shot	false	says	person§assistant	bla	person§Sam Spade
+3094_6	medium_shot	false	says	person§Sam Spade	bla	person§assistant
+3094_7	medium_shot	false	says	person§assistant	bla	person§Sam Spade
+3094_8	medium_shot	false	says	person§Sam Spade	bla	person§assistant
+3094_9	medium_shot	false	says	person§assistant	bla	person§Sam Spade
+3672_1	medium_shot	false	says	person§Sam Spade	bla	person§assistant
+3798_1	medium_shot	false	action	person§assistant	rubs his head	
+3798_2	medium_shot	false	says	person§assistant	bla	person§Sam Spade
+3798_3	medium_shot	false	says	person§Sam Spade	bla	person§assistant
+3798_4	medium_shot	false	says	person§assistant	bla	person§Sam Spade
+4143_1	american_shot	false	says	person§Sam Spade	bla	person§assistant
+4143_2	american_shot	false	says	person§assistant	bla	person§Sam Spade
+4143_3	american_shot	false	says	person§Sam Spade	bla	person§assistant
+4143_4	american_shot	false	action	person§Sam Spade	walks away	

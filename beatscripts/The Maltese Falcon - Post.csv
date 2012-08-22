@@ -1,0 +1,29 @@
+#Film:	The Maltese Falcon
+#Scene:	Post
+#FPS:	24
+#Context:	person§Sam Spade, 
+#EntityList:	place§hotel entrance, object§hotel, object§packet, place§lobby, object§desk, person§garderobier, object§billet, object§pencil, object§couvert, object§postbox, person§Sam Spade, 
+0_1	long_shot	false	introduce	place§hotel entrance	
+0_2	long_shot	false	introduce	object§hotel	
+0_3	long_shot	false	show	person§Sam Spade	
+0_4	long_shot	false	introduce	object§packet	
+0_5	long_shot	false	action	person§Sam Spade	enters the		object§hotel
+176_1	full_shot	false	introduce	place§lobby	
+176_2	full_shot	false	action	person§Sam Spade	passes the		place§lobby
+176_3	full_shot	false	introduce	object§desk	
+176_4	full_shot	false	introduce	person§garderobier	
+176_5	full_shot	false	action	person§Sam Spade	walks to the		object§desk
+176_6	full_shot	false	action	person§Sam Spade	gives the	to the garderobier	object§packet
+336_1	medium_shot	false	action	person§garderobier	gives	a billet	person§Sam Spade
+336_2	medium_shot	false	introduce	object§billet	
+336_3	medium_shot	false	says	person§Sam Spade	bla	person§garderobier
+336_4	medium_shot	false	says	person§garderobier	Sure.	person§Sam Spade
+336_5	medium_shot	false	introduce	object§pencil	
+336_6	medium_shot	false	action	person§garderobier	gives Sam his		object§pencil
+336_7	medium_shot	false	action	person§garderobier	carrys away the		object§packet
+336_8	medium_shot	false	action	person§Sam Spade	notes something with the		object§pencil
+609_1	detail	false	introduce	object§couvert	
+609_2	detail	false	action	person§Sam Spade	puts the billet into the		object§couvert
+805_1	american_shot	false	action	person§Sam Spade	walks through the		place§lobby
+805_2	american_shot	false	introduce	object§postbox	
+805_3	american_shot	false	action	person§Sam Spade	puts	into the postbox	object§couvert
