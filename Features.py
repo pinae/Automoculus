@@ -1662,7 +1662,7 @@ class X_CutInTheSentence(Feature):
                     last_say_subject = beat.subject
         cut_in_the_sentence = 0
         for beat in block:
-            if not beat.type in [SAYS, EXPRESS]:
+            if not beat.type in [SAYS, EXPRESS] and not beat.invisible:
                 last_say_subject = None
             if beat.type == SAYS:
                 if beat.subject == last_say_subject:
