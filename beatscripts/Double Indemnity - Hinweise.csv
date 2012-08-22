@@ -1,0 +1,32 @@
+#Film:	Double Indemnity
+#Scene:	Hinweise
+#FPS:	24
+#Context:	person§Keyes, person§Walter, 
+#EntityList:	place§lobby, person§Keyes, person§Walter, 
+0_1	long_shot	false	introduce	place§lobby	
+0_2	long_shot	false	show	person§Keyes	
+0_3	long_shot	false	action	person§Keyes	searches for cigars	
+0_4	long_shot	false	show	person§Walter	
+0_5	long_shot	false	action	person§Walter	enters the		place§lobby
+0_6	long_shot	false	action	person§Keyes	gestures to		person§Walter
+0_7	long_shot	false	says	person§Keyes	bla	person§Walter
+0_8	long_shot	false	action	person§Walter	walks to		person§Keyes
+0_9	long_shot	false	expresses	person§Walter	tension
+0_10	long_shot	false	says	person§Walter	bla	person§Keyes
+0_11	long_shot	false	says	person§Keyes	bla	person§Walter
+0_12	long_shot	false	says	person§Walter	bla	person§Keyes
+0_13	long_shot	false	says	person§Keyes	bla	person§Walter
+0_14	long_shot	false	says	person§Walter	bla	person§Keyes
+0_15	long_shot	false	says	person§Keyes	bla	person§Walter
+0_16	long_shot	false	says	person§Walter	bla	person§Keyes
+685_1	medium_shot	false	says	person§Keyes	bla	person§Walter
+685_2	medium_shot	false	says	person§Walter	bla	person§Keyes
+685_3	medium_shot	false	says	person§Keyes	bla	person§Walter
+685_4	medium_shot	false	says	person§Walter	bla	person§Keyes
+685_5	medium_shot	false	says	person§Keyes	bla	person§Walter
+685_6	medium_shot	false	says	person§Walter	bla	person§Keyes
+685_7	medium_shot	false	action	person§Walter	gives fire for		person§Keyes
+685_8	medium_shot	false	says	person§Keyes	bla	person§Walter
+685_9	medium_shot	false	action	person§Keyes	leaves the		place§lobby
+1330_1	medium_shot	false	expresses	person§Walter	fear
+1330_2	medium_shot	false	action	person§Walter	walks back through the		place§lobby
