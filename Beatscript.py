@@ -124,8 +124,9 @@ def isSplittingPoint(block, nextBeat):
     lastBeat = block[-1]
     if lastBeat.shotId != nextBeat.shotId: return True
     if lastBeat.type in [INTRODUCE, SHOW]: return False
-    if lastBeat.type in [SAYS, ACTION]: return True
+    if lastBeat.type in [SAYS, ACTION] and not lastBeat.invisible: return True
     # lastBeat.type == EXPRESS
+   # return False
     if (nextBeat.type in [SAYS, ACTION] and
         lastBeat.subject == nextBeat.subject): return False
     else: return True
