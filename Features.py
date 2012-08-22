@@ -1653,6 +1653,61 @@ class X_KnownSubjectsInBlock(Feature):
                 "Anteil Beats mit vorher bekannten Subjects"]
 
 
+class X_CutInTheSentence(Feature):
+    def calculateNumbers(self, context, block):
+        last_say_subject = None
+        if len(context["BygoneBlocks"]) >= 1:
+            for beat in context["BygoneBlocks"][-1]:
+                if beat.type == SAYS:
+                    last_say_subject = beat.subject
+        cut_in_the_sentence = 0
+        for beat in block:
+            if not beat.type in [SAYS, EXPRESS]:
+                last_say_subject = None
+            if beat.type == SAYS:
+                if beat.subject == last_say_subject:
+                    cut_in_the_sentence = 1
+                else:
+                    last_say_subject = beat.subject
+        return [cut_in_the_sentence]
+
+    def getText(self):
+        if self.numbers[0]: return "Es gab eine Unterbrechung im Satz."
+        else: return "Es gab keine Unterbechung im Satz."
+
+    def getNames(self):
+        return ["Unterbrechung im Satz?"]
+
+
+class X_ChangeInExpression(Feature):
+    def calculateNumbers(self, context, block):
+        expressers = {}
+        for i in range(len(block)):
+            beat = block[-i]
+            if beat.type == EXPRESS:
+                if beat.subject in expressers:
+                    expressers[beat.subject] += 1
+                else: expressers[beat.subject] = 0
+        results = [len([x for x in expressers if x > 0])]
+        if len(context["BygoneBlocks"]) >= 1:
+            for i in range(len(context["BygoneBlocks"][-1])):
+                beat = context["BygoneBlocks"][-1][-i]
+                if beat.type == EXPRESS:
+                    if beat.subject in expressers:
+                        expressers[beat.subject] += 1
+                    else: expressers[beat.subject] = 0
+        results.append(len([x for x in expressers if x > 0]))
+        return results
+
+    def getText(self):
+        return str(self.numbers[0]) + " Personen haben ihre Expression im aktuellen Block verändert und " + str(
+            self.numbers[1]) + " Personen seit dem vorherigen Block."
+
+    def getNames(self):
+        return ["Anzahl Subjects die ihre Expression im aktuellen Block geändert haben.",
+                "Anzahl Subjects die ihre Expression seit dem vorherigen Block geändert haben."]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
