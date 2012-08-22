@@ -200,6 +200,7 @@ class A03_Climax(Feature):
         subjects = set()
         linetargets = set()
         conflict_subject = None
+        conflict_position = -1
         if not context["ThereWasNoEstablishingShot"]:
             express_subject = None
             express_position = -1
@@ -271,6 +272,7 @@ class B01_DramaturgicalFactor(Feature):
         subjects = set()
         linetargets = set()
         conflict_subject = None
+        conflict_position = -1
         there_was_an_establishing_shot = False
         for bygone_block in context["BygoneBlocks"]:
             for beat in bygone_block:
@@ -347,6 +349,7 @@ class B02_MiniDramaturgyFactor(Feature):
         subjects = set()
         linetargets = set()
         conflict_subject = None
+        conflict_position = -1
         there_was_an_establishing_shot = False
         for bygone_block in context["BygoneBlocks"]:
             for beat in bygone_block:
