@@ -1,0 +1,40 @@
+#Film:	Halo 3
+#Scene:	Trailer
+#FPS:	24
+#Context:	
+#EntityList:	place§meadow, person§boy, person§girl, object§helmet, place§warzone, person§rocket, person§soldier, object§gun, person§mission control, object§shield generator, person§villian 1, person§villian 2, person§villian 3, person§villian 4, 
+0_1	long_shot	false	introduce	place§meadow	
+0_2	long_shot	false	introduce	person§boy	
+0_3	long_shot	false	introduce	person§girl	
+0_4	long_shot	false	says	person§boy	bla	person§girl
+0_5	long_shot	false	says	person§girl	bla	person§boy
+74_1	full_shot	false	says	person§boy	bla	person§girl
+140_1	medium_shot	false	says	person§girl	bla	person§boy
+140_2	medium_shot	false	action	person§girl	turns to		person§boy
+209_1	full_shot	false	says	person§girl	bla	person§boy
+251_1	detail	false	introduce	object§helmet	
+276_1	detail	false	show	object§helmet	
+276_2	detail	false	introduce	place§warzone	
+276_3	detail	false	introduce	person§rocket	
+276_4	detail	true	introduce	person§soldier
+276_5	detail	false	action	person§soldier	puts on		object§helmet
+399_1	full_shot	false	show	person§soldier	
+399_2	full_shot	false	action	person§soldier	kneels down	
+399_3	full_shot	false	introduce	object§gun	
+399_4	full_shot	false	action	person§soldier	spots		object§gun
+510_1	american_shot	false	action	person§soldier	stands up	
+510_2	american_shot	true	introduce	person§mission control
+510_3	american_shot	true	says	person§mission control	bla	person§soldier
+569_1	closeup	false	says	person§soldier	not yet	person§mission control
+569_2	closeup	false	introduce	object§shield generator	
+569_3	closeup	false	action	person§soldier	activates		object§shield generator
+618_1	full_shot	false	action	person§soldier	throws	on the ground	object§shield generator
+644_1	long_shot	false	action	person§rocket	explodes	
+654_1	medium_shot	false	action	person§soldier	runs	
+712_1	american_shot	false	action	person§soldier	pulls his		object§gun
+752_1	extreme_long_shot	false	action	person§soldier	jumps	
+752_2	extreme_long_shot	false	introduce	person§villian 1	
+752_3	extreme_long_shot	false	introduce	person§villian 2	
+752_4	extreme_long_shot	false	introduce	person§villian 3	
+752_5	extreme_long_shot	false	introduce	person§villian 4	
+820_1	full_shot	false	action	person§soldier	lands	

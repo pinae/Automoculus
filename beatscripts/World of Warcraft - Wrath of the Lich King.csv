@@ -1,0 +1,61 @@
+#Film:	World of Warcraft
+#Scene:	Wrath of the Lich King
+#FPS:	24
+#Context:	
+#EntityList:	person§the old king, person§Arthas, place§icy lands, object§snow, object§Frostmourne, object§magical snowflakes, person§dragon, object§cliff, person§army of the dead, 
+0_1	full_shot	true	introduce	person§the old king
+0_2	full_shot	true	says	person§the old king	bla
+0_3	full_shot	false	introduce	person§Arthas	
+693_1	medium_shot	true	says	person§the old king	bla
+693_2	medium_shot	false	action	person§Arthas	awakes	
+1000_1	extreme_long_shot	false	introduce	place§icy lands	
+1000_2	extreme_long_shot	true	says	person§the old king	bla
+1190_1	extreme_long_shot	true	says	person§the old king	bla
+1190_2	extreme_long_shot	false	show	place§icy lands	
+1190_3	extreme_long_shot	false	show	person§Arthas	
+1396_1	detail	false	introduce	object§snow	
+1396_2	detail	true	says	person§the old king	bla
+1396_3	detail	false	action	person§Arthas	wipes some		object§snow
+1710_1	medium_shot	true	says	person§the old king	bla
+1710_2	medium_shot	false	expresses	person§Arthas	thoughtfulness
+1710_3	medium_shot	false	action	person§Arthas	stands up	
+1848_1	american_shot	true	says	person§the old king	bla
+1848_2	american_shot	false	introduce	object§Frostmourne	
+1951_1	detail	true	says	person§the old king	bla
+1951_2	detail	false	action	person§Arthas	pulls		object§Frostmourne
+2072_1	medium_shot	true	says	person§the old king	bla
+2072_2	medium_shot	false	action	person§Arthas	holds		object§Frostmourne
+2278_1	long_shot	true	says	person§the old king	bla
+2278_2	long_shot	false	show	person§Arthas	
+2464_1	medium_shot	true	says	person§the old king	bla
+2464_2	medium_shot	false	introduce	object§magical snowflakes	
+2464_3	medium_shot	false	action	person§Arthas	enchants		object§Frostmourne
+2464_4	medium_shot	false	action	person§Arthas	lifts		object§Frostmourne
+2712_1	closeup	false	action	person§Arthas	stabs		place§icy lands
+2738_1	detail	false	action	person§Arthas	rams	into the ice	object§Frostmourne
+2760_1	long_shot	false	action	person§Arthas	magically blows away the		object§snow
+2849_1	extreme_long_shot	false	action	person§Arthas	breaks		place§icy lands
+2961_1	medium_shot	false	action	person§Arthas	stands up	
+2961_2	medium_shot	false	introduce	person§dragon	
+2961_3	medium_shot	false	action	person§dragon	comes out of the		place§icy lands
+3112_1	detail	false	action	person§dragon	rises	
+3183_1	detail	false	action	person§dragon	rises	
+3258_1	detail	false	action	person§dragon	lifts a paw	
+3358_1	medium_shot	false	expresses	person§Arthas	coolness
+3358_2	medium_shot	false	action	person§dragon	stands up	
+3450_1	detail	false	action	person§dragon	fills with magic	
+3583_1	full_shot	false	introduce	object§cliff	
+3583_2	full_shot	false	action	person§dragon	walks to the		object§cliff
+3583_3	full_shot	false	action	person§dragon	prepares to fly	
+3789_1	extreme_long_shot	false	action	person§dragon	starts to fly	
+3789_2	extreme_long_shot	false	introduce	person§army of the dead	
+3789_3	extreme_long_shot	true	says	person§the old king	bla
+3789_4	extreme_long_shot	false	action	person§army of the dead	looks at		person§dragon
+4076_1	medium_shot	false	action	person§dragon	flies	
+4076_2	medium_shot	false	says	person§dragon	Roooaaar!	person§army of the dead
+4220_1	extreme_long_shot	true	says	person§the old king	bla
+4220_2	extreme_long_shot	false	says	person§army of the dead	Roooaaar!	person§Arthas
+4229_1	american_shot	true	says	person§the old king	bla
+4229_2	american_shot	false	action	person§Arthas	stands at the		object§cliff
+4446_1	closeup	true	says	person§the old king	bla
+4446_2	closeup	false	expresses	person§Arthas	coldheartedness

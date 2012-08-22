@@ -39,9 +39,11 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv",
                "The Woman in the Window - Mord.csv",
                "Quantic Dream - Kara.csv",
                "Rage - Intro.csv",
+               "Halo 3 - Trailer.csv",
                "Dragon Age Origins - Sacred Ashes.csv",
                "Warhammer Online - Trailer.csv",
                "Wings of Liberty - Kerrygans Rettung.csv",
+               "World of Warcraft - Wrath of the Lich King.csv",
                "Warcraft III - Arthas betrayal.csv"]
 
 PROJECT_PATH = path.dirname(path.abspath(__file__))
