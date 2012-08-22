@@ -1696,7 +1696,7 @@ class X_ChangeInExpression(Feature):
                     if beat.subject in expressers:
                         expressers[beat.subject] += 1
                     else: expressers[beat.subject] = 0
-        results.append(len([x for x in expressers if x > 0]))
+        results.append(len([expressers[x] for x in expressers if expressers[x] > 0]))
         return results
 
     def getText(self):
