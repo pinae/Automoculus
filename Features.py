@@ -162,6 +162,7 @@ class A02_ConflictIntroduction(Feature):
     """
     def calculateNumbers(self, context, block):
         context["BeforeWasNoConflictIntroduction"] = context["NoConflictIntroduction"]
+        context["PositionOfConflictIntroduction"] = -1
         if not context["ThereWasNoEstablishingShot"]:
             if EXPRESS in [beat.type for beat in block]:
                 express_subject = None
@@ -205,29 +206,8 @@ class A03_Climax(Feature):
         there_was_a_climax = 0
         subjects = set()
         linetargets = set()
-        conflict_subject = None
-        conflict_position = -1
-        if not context["ThereWasNoEstablishingShot"]:
-            express_subject = None
-            express_position = -1
-            i = len(context["BeatList"])-len(block)-1
-            while i>=0:
-                beat = context["BeatList"][i]
-                if beat.type == EXPRESS:
-                    if i-1 >= 0 and context["BeatList"][i-1].type in [SAYS, ACTION]:
-                        conflict_subject = beat.subject
-                        conflict_position = i
-                        break
-                    express_subject = beat.subject
-                    express_position = i
-                if express_subject and beat.type in [SAYS, ACTION] and\
-                   beat.linetarget and beat.linetarget == express_subject:
-                    conflict_subject = express_subject
-                    conflict_position = express_position
-                    break
-                i -= 1
-        if conflict_subject: #there was a conflict introduction
-            for i in range(conflict_position,len(context["BeatList"])):
+        if not context["NoConflictIntroduction"]:
+            for i in range(context["PositionOfConflictIntroduction"],len(context["BeatList"])):
                 beat = context["BeatList"][i]
                 subjects.add(beat.subject)
                 if beat.linetarget: linetargets.add(beat.linetarget)
@@ -235,7 +215,7 @@ class A03_Climax(Feature):
                     there_was_a_climax = 1
         if there_was_a_climax:
             context["NoConflictIntroduction"] = True
-            context["PositionOfConflictIntroduction"] = 1000000
+            context["PositionOfConflictIntroduction"] = -1
             context["BeforeWasNoConflictIntroduction"] = True
         return [there_was_a_climax,len(subjects),len(linetargets)]
 
