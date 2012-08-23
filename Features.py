@@ -165,18 +165,24 @@ class A02_ConflictIntroduction(Feature):
         if not context["ThereWasNoEstablishingShot"]:
             if EXPRESS in [beat.type for beat in block]:
                 express_subject = None
-                for i in range(1,len(context["BeatList"])+1):
-                    beat = context["BeatList"][-i]
-                    if beat.type == EXPRESS and not express_subject:
+                express_position = -1
+                i = len(context["BeatList"])-len(block)-1
+                while i>=0:
+                    beat = context["BeatList"][i]
+                    if beat.type == EXPRESS:
                         express_subject = beat.subject
-                        if i+1 <= len(context["BeatList"]) and context["BeatList"][-i-1].type in [SAYS, ACTION]:
+                        if i-1 >= 0 and context["BeatList"][i-1].type in [SAYS, ACTION]:
                             context["NoConflictIntroduction"] = False
+                            context["PositionOfConflictIntroduction"] = i
                             return [1]
-                        else: continue
+                        else:
+                            express_position = i
                     if express_subject and beat.type in [SAYS, ACTION] and\
                        beat.linetarget and beat.linetarget == express_subject:
                         context["NoConflictIntroduction"] = False
+                        context["PositionOfConflictIntroduction"] = express_position
                         return [1]
+                    i -= 1
         return [0]
 
     def getText(self):
@@ -229,6 +235,7 @@ class A03_Climax(Feature):
                     there_was_a_climax = 1
         if there_was_a_climax:
             context["NoConflictIntroduction"] = True
+            context["PositionOfConflictIntroduction"] = 1000000
             context["BeforeWasNoConflictIntroduction"] = True
         return [there_was_a_climax,len(subjects),len(linetargets)]
 
