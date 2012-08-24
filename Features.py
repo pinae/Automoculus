@@ -544,145 +544,21 @@ class X_SameSubjectPairs(Feature):
             out = "Die letzten beiden Subjects sind gleich.\t"
         else:
             out = "Die letzten beiden Subjects sind nicht gleich.\t"
-        if self.numbers[1]:
-            out += "Subjects -1 und -3 sind gleich.\t"
-        else:
-            out += "Subjects -1 und -3 sind nicht gleich.\t"
-        if self.numbers[2]:
-            out += "Subjects -2 und -3 sind gleich.\t"
-        else:
-            out += "Subjects -2 und -3 sind nicht gleich.\t"
-        if self.numbers[3]:
-            out += "Subjects -1 und -4 sind gleich.\t"
-        else:
-            out += "Subjects -1 und -4 sind nicht gleich.\t"
-        if self.numbers[4]:
-            out += "Subjects -2 und -4 sind gleich.\t"
-        else:
-            out += "Subjects -2 und -4 sind nicht gleich.\t"
-        if self.numbers[5]:
-            out += "Subjects -3 und -4 sind gleich.\t"
-        else:
-            out += "Subjects -3 und -4 sind nicht gleich.\t"
-        if self.numbers[6]:
-            out += "Subjects -1 und -5 sind gleich.\t"
-        else:
-            out += "Subjects -1 und -5 sind nicht gleich.\t"
-        if self.numbers[7]:
-            out += "Subjects -2 und -5 sind gleich.\t"
-        else:
-            out += "Subjects -2 und -5 sind nicht gleich.\t"
-        if self.numbers[8]:
-            out += "Subjects -3 und -5 sind gleich.\t"
-        else:
-            out += "Subjects -3 und -5 sind nicht gleich.\t"
-        if self.numbers[9]:
-            out += "Subjects -4 und -5 sind gleich.\t"
-        else:
-            out += "Subjects -4 und -5 sind nicht gleich.\t"
-        if self.numbers[10]:
-            out += "Subjects -1 und -6 sind gleich.\t"
-        else:
-            out += "Subjects -1 und -6 sind nicht gleich.\t"
-        if self.numbers[11]:
-            out += "Subjects -2 und -6 sind gleich.\t"
-        else:
-            out += "Subjects -2 und -6 sind nicht gleich.\t"
-        if self.numbers[12]:
-            out += "Subjects -3 und -6 sind gleich.\t"
-        else:
-            out += "Subjects -3 und -6 sind nicht gleich.\t"
-        if self.numbers[13]:
-            out += "Subjects -4 und -6 sind gleich.\t"
-        else:
-            out += "Subjects -4 und -6 sind nicht gleich.\t"
-        if self.numbers[14]:
-            out += "Subjects -5 und -6 sind gleich.\t"
-        else:
-            out += "Subjects -5 und -6 sind nicht gleich.\t"
-        if self.numbers[15]:
-            out += "Subjects -1 und -7 sind gleich.\t"
-        else:
-            out += "Subjects -1 und -7 sind nicht gleich.\t"
-        if self.numbers[16]:
-            out += "Subjects -2 und -7 sind gleich.\t"
-        else:
-            out += "Subjects -2 und -7 sind nicht gleich.\t"
-        if self.numbers[17]:
-            out += "Subjects -3 und -7 sind gleich.\t"
-        else:
-            out += "Subjects -3 und -7 sind nicht gleich.\t"
-        if self.numbers[18]:
-            out += "Subjects -4 und -7 sind gleich.\t"
-        else:
-            out += "Subjects -4 und -7 sind nicht gleich.\t"
-        if self.numbers[19]:
-            out += "Subjects -5 und -7 sind gleich.\t"
-        else:
-            out += "Subjects -5 und -7 sind nicht gleich.\t"
-        if self.numbers[20]:
-            out += "Subjects -6 und -7 sind gleich.\t"
-        else:
-            out += "Subjects -6 und -7 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -1 und -8 sind gleich.\t"
-        else:
-            out += "Subjects -1 und -8 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -2 und -8 sind gleich.\t"
-        else:
-            out += "Subjects -2 und -8 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -3 und -8 sind gleich.\t"
-        else:
-            out += "Subjects -3 und -8 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -4 und -8 sind gleich.\t"
-        else:
-            out += "Subjects -4 und -8 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -5 und -8 sind gleich.\t"
-        else:
-            out += "Subjects -5 und -8 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -6 und -8 sind gleich.\t"
-        else:
-            out += "Subjects -6 und -8 sind nicht gleich.\t"
-        if self.numbers[21]:
-            out += "Subjects -7 und -8 sind gleich."
-        else:
-            out += "Subjects -7 und -8 sind nicht gleich."
-        return out
+        text = ["Subjects","und","sind","nicht","gleich."]
+        i = 1
+        for b in range(-3, -9, -1):
+            for a in range(-1, b, -1):
+                out += " ".join([([text[0]] + [str(a)] + [text[1]] + [str(b)] + text[2:])[x] for x in range(7) if
+                                 (x + 2) % 6 * self.numbers[i] - 1]) + "\t"
+                i += 1
+        return out.rstrip("\t")
 
     def getNames(self):
-        return ["Die letzten beiden Subjects sind gleich?",
-                "Subjects -1 und -3 sind gleich?",
-                "Subjects -2 und -3 sind gleich?",
-                "Subjects -1 und -4 sind gleich?",
-                "Subjects -2 und -4 sind gleich?",
-                "Subjects -3 und -4 sind gleich?",
-                "Subjects -1 und -5 sind gleich?",
-                "Subjects -2 und -5 sind gleich?",
-                "Subjects -3 und -5 sind gleich?",
-                "Subjects -4 und -5 sind gleich?",
-                "Subjects -1 und -6 sind gleich?",
-                "Subjects -2 und -6 sind gleich?",
-                "Subjects -3 und -6 sind gleich?",
-                "Subjects -4 und -6 sind gleich?",
-                "Subjects -5 und -6 sind gleich?",
-                "Subjects -1 und -7 sind gleich?",
-                "Subjects -2 und -7 sind gleich?",
-                "Subjects -3 und -7 sind gleich?",
-                "Subjects -4 und -7 sind gleich?",
-                "Subjects -5 und -7 sind gleich?",
-                "Subjects -6 und -7 sind gleich?",
-                "Subjects -1 und -8 sind gleich?",
-                "Subjects -2 und -8 sind gleich?",
-                "Subjects -3 und -8 sind gleich?",
-                "Subjects -4 und -8 sind gleich?",
-                "Subjects -5 und -8 sind gleich?",
-                "Subjects -6 und -8 sind gleich?",
-                "Subjects -7 und -8 sind gleich?"]
+        name_array = ["Die letzten beiden Subjects sind gleich?"]
+        for b in range(-3,-9,-1):
+            for a in range(-1,b,-1):
+                name_array.append("Subjects "+str(a)+" und "+str(b)+" sind gleich?")
+        return name_array
 
 
 class X_InvisibleCount(Feature):
