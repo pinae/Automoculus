@@ -1646,16 +1646,16 @@ class X_BackgroundAction(Feature):
             if subjects[subject] >= main_count:
                 main_count = subjects[subject]
                 main_subject = subject
-        background_acter = None
+        background_actor = None
         for beat in block:
             if beat.type == ACTION and beat.subject != main_subject:
-                background_acter = beat.subject
-        if background_acter:
+                background_actor = beat.subject
+        if background_actor:
             for beat in block:
                 if beat.type == ACTION and beat.linetarget and\
                    beat.linetarget != background_acter and not beat.invisible:
-                    background_acter = None
-        if background_acter: return [1]
+                    background_actor = None
+        if background_actor: return [1]
         else: return [0]
 
     def getText(self):
