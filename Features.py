@@ -1626,6 +1626,47 @@ class X_ChangeInExpression(Feature):
                 "Anzahl Subjects die ihre Expression seit dem vorherigen Block geändert haben."]
 
 
+class X_BackgroundAction(Feature):
+    def calculateNumbers(self, context, block):
+        subjects = {}
+        if len(context["BygoneBlocks"]) >= 1:
+            for beat in context["BygoneBlocks"][-1]:
+                if beat.type == ACTION:
+                    if beat.subject in subjects:
+                        subjects[beat.subject] += 1
+                    else: subjects[beat.subject] = 1
+        for beat in block:
+            if beat.type == ACTION:
+                if beat.subject in subjects:
+                    subjects[beat.subject] += 1
+                else: subjects[beat.subject] = 1
+        main_count = 0
+        main_subject = None
+        for subject in subjects:
+            if subjects[subject] >= main_count:
+                main_count = subjects[subject]
+                main_subject = subject
+        background_action = 0
+        background_acter = None
+        for beat in block:
+            if beat.type == ACTION and beat.subject != main_subject:
+                background_action = 1
+                background_acter = beat.subject
+        if background_action:
+            for beat in block:
+                if beat.type == ACTION and beat.linetarget and\
+                   beat.linetarget != background_acter and not beat.invisible:
+                    background_action = 0
+        return [background_action]
+
+    def getText(self):
+        if self.numbers[0]: return "Im aktuellen Block gibt es Handlung im Hintergrund."
+        else: "Im aktuellen Block gibt es keine Handlung im Hintergrund."
+
+    def getNames(self):
+        return ["Handlung im Hintergrund?"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
