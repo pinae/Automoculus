@@ -270,7 +270,8 @@ def main():
     scaler.fit(reference_data)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2582.61517656, gamma=0.00036375303213)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2583.31718583, gamma=0.00191943088336)
-    ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.53147506, gamma=2.60057621686e-05)
+    #ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.53147506, gamma=2.60057621686e-05)
+    ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.61614258, gamma=2.15704131861e-05)
 
 if __name__ == "__main__":
     main()
