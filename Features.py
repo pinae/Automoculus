@@ -1653,7 +1653,7 @@ class X_BackgroundAction(Feature):
         if background_actor:
             for beat in block:
                 if beat.type == ACTION and beat.linetarget and\
-                   beat.linetarget != background_acter and not beat.invisible:
+                   beat.linetarget != background_actor and not beat.invisible:
                     background_actor = None
         if background_actor: return [1]
         else: return [0]
