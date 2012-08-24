@@ -1660,8 +1660,8 @@ class X_BackgroundAction(Feature):
         return [background_action]
 
     def getText(self):
-        text = ["Im aktuellen Block gibt es ","keine ","Handlung im Hintergrund."]
-        return "".join([text[x] for x in range(3) if not x%2*self.numbers[0]])
+        text = ["Im aktuellen Block gibt es","keine","Handlung im Hintergrund."]
+        return " ".join([text[x] for x in range(3) if not x%2*self.numbers[0]])
 
     def getNames(self):
         return ["Handlung im Hintergrund?"]
