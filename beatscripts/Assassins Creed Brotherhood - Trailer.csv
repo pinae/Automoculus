@@ -1,0 +1,157 @@
+#Film:	Assassins Creed Brotherhood
+#Scene:	Trailer
+#FPS:	24
+#Context:	
+#EntityList:	place§Rome, place§plaza, person§spectators, object§carriage, person§pope, person§templar, person§Ezio, person§sniper, person§second assassin, person§armed guard 1, person§armed guard 2, person§armed guard 3, person§armed guard 4, object§hidden blades, person§guard with spear 1, person§guard with spear 2, person§guard with spear 3, person§guard with spear 4, person§guard with spear 5, person§guard with spear 6, person§guard with spear 7, person§guard with spear 8, person§guard with spear 9, person§guard with spear 10, person§guard with spear 11, person§guard with spear 12, object§feather, person§hawk, person§rider 1, person§rider 2, person§guards, object§templar's sword, person§third assassin, person§fourth assassin, person§fifth assassin, 
+0_1	extreme_long_shot	false	introduce	place§Rome	
+339_1	extreme_long_shot	false	introduce	place§plaza	
+339_2	extreme_long_shot	false	introduce	person§spectators	
+584_1	american_shot	false	introduce	object§carriage	
+584_2	american_shot	false	introduce	person§pope	
+730_1	medium_shot	false	introduce	person§templar	
+730_2	medium_shot	false	expresses	person§templar	arrogance
+856_1	medium_shot	false	introduce	person§Ezio	
+856_2	medium_shot	false	action	person§Ezio	looks at the		place§plaza
+929_1	closeup	false	show	person§Ezio	
+929_2	closeup	false	action	person§Ezio	walks forward	
+1015_1	detail	false	action	person§Ezio	walks to the		place§plaza
+1079_1	american_shot	false	introduce	person§sniper	
+1079_2	american_shot	false	action	person§sniper	spots		person§Ezio
+1079_3	american_shot	false	action	person§Ezio	walks over the		place§plaza
+1149_1	medium_shot	false	action	person§sniper	aims at		person§Ezio
+1213_1	american_shot	false	action	person§Ezio	walks	ignorantly
+1277_1	closeup	true	introduce	person§second assassin
+1277_2	closeup	false	action	person§second assassin	casts a shadow on the		person§sniper
+1277_3	closeup	false	action	person§sniper	becomes aware of		person§second assassin
+1277_4	closeup	false	expresses	person§sniper	surprise
+1338_1	medium_shot	false	action	person§Ezio	strides	
+1338_2	medium_shot	false	introduce	person§armed guard 1	
+1338_3	medium_shot	false	action	person§armed guard 1	gestures	to stop	person§Ezio
+1338_4	medium_shot	false	action	person§armed guard 1	heads for		person§Ezio
+1338_5	medium_shot	false	action	person§armed guard 1	gets shot	
+1338_6	medium_shot	false	introduce	person§armed guard 2	
+1338_7	medium_shot	false	action	person§armed guard 2	gets shot	
+1465_1	full_shot	false	action	person§Ezio	strides	
+1465_2	full_shot	false	action	person§spectators	give way	
+1528_1	american_shot	false	introduce	person§armed guard 3	
+1528_2	american_shot	false	introduce	person§armed guard 4	
+1528_3	american_shot	false	action	person§Ezio	strides	
+1528_4	american_shot	false	action	person§spectators	give way	
+1572_1	detail	false	introduce	object§hidden blades	
+1572_2	detail	false	action	person§Ezio	arms		object§hidden blades
+1591_1	medium_shot	false	action	person§Ezio	kills		person§armed guard 3
+1591_2	medium_shot	false	action	person§Ezio	kills		person§armed guard 4
+1591_3	medium_shot	false	expresses	person§Ezio	mercylessness
+1608_1	american_shot	false	introduce	person§guard with spear 1	
+1608_2	american_shot	false	introduce	person§guard with spear 2	
+1608_3	american_shot	false	action	person§guard with spear 1	spots		person§Ezio
+1608_4	american_shot	false	action	person§guard with spear 1	readies for defending		person§Ezio
+1645_1	medium_shot	false	action	person§Ezio	throws knifes at		person§guard with spear 1
+1645_2	medium_shot	false	action	person§Ezio	throws knifes at		person§guard with spear 2
+1709_1	detail	false	show	person§Ezio	
+1748_1	full_shot	false	action	person§Ezio	steps forward	
+1748_2	full_shot	false	introduce	person§guard with spear 3	
+1748_3	full_shot	false	introduce	person§guard with spear 4	
+1748_4	full_shot	false	introduce	person§guard with spear 5	
+1748_5	full_shot	false	introduce	person§guard with spear 6	
+1748_6	full_shot	false	action	person§guard with spear 4	walks around		person§Ezio
+1748_7	full_shot	false	action	person§guard with spear 5	walks around		person§Ezio
+1748_8	full_shot	false	introduce	person§guard with spear 7	
+1748_9	full_shot	false	action	person§guard with spear 3	walks around		person§Ezio
+1748_10	full_shot	false	introduce	person§guard with spear 8	
+1748_11	full_shot	false	introduce	person§guard with spear 9	
+1748_12	full_shot	false	introduce	person§guard with spear 10	
+1748_13	full_shot	false	introduce	person§guard with spear 11	
+1748_14	full_shot	false	introduce	person§guard with spear 12	
+1748_15	full_shot	false	action	person§guard with spear 3	threatens		person§Ezio
+1748_16	full_shot	false	action	person§guard with spear 4	threatens		person§Ezio
+1748_17	full_shot	false	action	person§guard with spear 5	threatens		person§Ezio
+1748_18	full_shot	false	action	person§guard with spear 6	threatens		person§Ezio
+1748_19	full_shot	false	action	person§guard with spear 7	threatens		person§Ezio
+1748_20	full_shot	false	action	person§guard with spear 8	threatens		person§Ezio
+1748_21	full_shot	false	action	person§guard with spear 9	threatens		person§Ezio
+1748_22	full_shot	false	action	person§guard with spear 10	threatens		person§Ezio
+1748_23	full_shot	false	action	person§guard with spear 11	threatens		person§Ezio
+1748_24	full_shot	false	action	person§guard with spear 12	threatens		person§Ezio
+1845_1	closeup	false	action	person§templar	leaves		object§carriage
+1845_2	closeup	false	expresses	person§templar	amusement
+1845_3	closeup	false	says	person§templar	Ezio Auditore...	person§Ezio
+1906_1	medium_shot	true	says	person§templar	...bla...	person§Ezio
+1906_2	medium_shot	false	action	person§Ezio	makes a gesture to		person§second assassin
+1960_1	american_shot	false	says	person§templar	...bla	person§Ezio
+2018_1	detail	false	introduce	object§feather	in Ezios hand
+2050_1	closeup	false	expresses	person§templar	hate
+2050_2	closeup	false	says	person§templar	... Assassin!	person§Ezio
+2082_1	closeup	false	expresses	person§Ezio	self assuredness
+2115_1	extreme_long_shot	false	show	place§plaza	
+2115_2	extreme_long_shot	false	introduce	person§hawk	
+2156_1	closeup	false	action	person§Ezio	looks up	
+2156_2	closeup	false	expresses	person§Ezio	contempt
+2156_3	closeup	false	action	person§Ezio	nods	
+2216_1	american_shot	false	action	person§guard with spear 6	gets shot	
+2216_2	american_shot	false	action	person§guard with spear 8	gets shot	
+2216_3	american_shot	false	action	person§guard with spear 11	gets shot	
+2216_4	american_shot	false	action	person§guard with spear 5	gets shot	
+2216_5	american_shot	false	action	person§guard with spear 10	gets shot	
+2216_6	american_shot	false	action	person§guard with spear 9	gets shot	
+2216_7	american_shot	false	action	person§guard with spear 4	gets shot	
+2216_8	american_shot	false	action	person§guard with spear 7	gets shot	
+2216_9	american_shot	false	action	person§guard with spear 12	gets shot	
+2216_10	american_shot	false	action	person§guard with spear 3	gets shot	
+2274_1	long_shot	false	action	person§guard with spear 11	falls down	
+2274_2	long_shot	false	action	person§guard with spear 5	falls down	
+2274_3	long_shot	false	action	person§guard with spear 10	falls down	
+2274_4	long_shot	false	action	person§guard with spear 12	falls down	
+2274_5	long_shot	false	action	person§guard with spear 3	falls down	
+2274_6	long_shot	false	action	person§guard with spear 6	falls down	
+2274_7	long_shot	false	action	person§guard with spear 9	falls down	
+2274_8	long_shot	false	action	person§guard with spear 4	falls down	
+2274_9	long_shot	false	action	person§guard with spear 8	falls down	
+2274_10	long_shot	false	action	person§guard with spear 7	falls down	
+2274_11	long_shot	false	action	person§Ezio	points at		person§templar
+2343_1	medium_shot	false	action	person§Ezio	pushes		person§guard with spear 7
+2343_2	medium_shot	false	action	person§guard with spear 7	falls down	
+2385_1	medium_shot	false	expresses	person§templar	furiousness
+2385_2	medium_shot	false	action	person§templar	steps to the side	
+2413_1	full_shot	false	introduce	person§rider 1	
+2413_2	full_shot	false	introduce	person§rider 2	
+2413_3	full_shot	false	action	person§templar	gestures	to go	person§rider 1
+2413_4	full_shot	false	action	person§rider 1	rides towards		person§Ezio
+2413_5	full_shot	false	action	person§rider 2	rides towards		person§Ezio
+2445_1	long_shot	false	action	person§rider 1	gallopps at		person§Ezio
+2468_1	full_shot	false	action	person§Ezio	hits		person§rider 1
+2468_2	full_shot	false	action	person§rider 1	falls	
+2502_1	american_shot	false	action	person§rider 2	passes		person§Ezio
+2502_2	american_shot	false	action	person§Ezio	evades and kills		person§rider 2
+2514_1	full_shot	false	action	person§rider 2	falls	
+2581_1	long_shot	true	introduce	person§guards
+2581_2	long_shot	false	says	person§templar	Guards!	person§guards
+2614_1	closeup	false	expresses	person§templar	evilness
+2641_1	medium_shot	false	show	person§guards	
+2641_2	medium_shot	false	action	person§guards	head to		person§templar
+2683_1	american_shot	false	action	person§guards	march fast	
+2722_1	closeup	false	expresses	person§Ezio	no fear
+2762_1	extreme_long_shot	false	action	person§guards	take position	
+2762_2	extreme_long_shot	false	show	person§Ezio	
+2830_1	american_shot	false	action	person§templar	pulls his sword	
+2830_2	american_shot	false	introduce	object§templar's sword	
+2830_3	american_shot	false	action	person§templar	kisses		object§templar's sword
+2992_1	medium_shot	false	show	person§Ezio	
+2992_2	medium_shot	false	show	person§second assassin	
+2992_3	medium_shot	false	introduce	person§third assassin	
+3132_1	full_shot	false	introduce	person§fourth assassin	
+3132_2	full_shot	false	introduce	person§fifth assassin	
+3148_1	closeup	false	action	person§pope	looks out of the		object§carriage
+3148_2	closeup	false	expresses	person§pope	fear
+3237_1	full_shot	false	action	person§Ezio	runs for		person§templar
+3237_2	full_shot	false	action	person§second assassin	runs for		person§guards
+3237_3	full_shot	false	action	person§third assassin	runs for		person§guards
+3237_4	full_shot	false	action	person§fourth assassin	runs for		person§guards
+3237_5	full_shot	false	action	person§fifth assassin	runs for		person§guards
+3287_1	full_shot	false	action	person§templar	runs for		person§Ezio
+3287_2	full_shot	false	action	person§guards	run for		person§second assassin
+3337_1	long_shot	false	action	person§Ezio	attacks		person§templar
+3337_2	long_shot	false	action	person§second assassin	attacks		person§guards
+3337_3	long_shot	false	action	person§templar	attacks		person§Ezio
+3337_4	long_shot	false	action	person§guards	attack		person§third assassin
+3377_1	medium_shot	false	action	person§Ezio	stabs	
