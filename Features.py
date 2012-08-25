@@ -1542,6 +1542,21 @@ class X_BackgroundAction(Feature):
         return ["Handlung im Hintergrund?"]
 
 
+class X_BlockOfOneSubject(Feature):
+    def calculateNumbers(self, context, block):
+        block_subject = block[0].subject
+        for beat in block:
+            if beat.subject != block_subject: return [0]
+        return [1]
+
+    def getText(self):
+        if self.numbers[0]: return "Im Block kommt nur ein Subject vor."
+        else: return "Im Block kommen verschiedene Subjects vor."
+
+    def getNames(self):
+        return ["Im Block kommt nur ein Subject vor?"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
