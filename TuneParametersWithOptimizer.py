@@ -16,7 +16,7 @@ def tuneParametersForSVM(files, scaler, reference_data, fake_decisions=False):
     #start_vector = np.array([len(reference_data), 1.0/len(reference_data[0])])
     print("C default: "+str(len(reference_data)))
     print("gamma default: "+str(1.0/len(reference_data[0])))
-    start_vector = np.array([2585.81448898, 1.73105463456e-05])
+    start_vector = np.array([2000, 1e-06])
     print("Starting optimization.")
     tuned_parameters = opt.fmin_powell(func=fitnessFunction, x0=start_vector, args=(files, scaler, fake_decisions))
     print("____________________________________")
