@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import sys
+import os
+
 from sklearn import preprocessing
 import numpy as np
 from pylab import *
@@ -27,5 +30,19 @@ def main():
     file.writelines(lines)
     file.close()
 
+def specific_line(number):
+    files = TRAIN_FILES[:5]
+    reference_data, _ = getDataMatrix(files)
+    scaler = preprocessing.Scaler()
+    scaler.fit(reference_data)
+    C = [1,10,100,1000,2000,3000,4000,5000,7000,10000]
+    for gamma in [10,1,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6,1e-7,1e-8]:
+        os.system("wget http://www.pinae.net/automoculus/getText.php?text=C is " + str(C[number]) + " gamma is " + str(
+            gamma) + " Result is " + str(ParallelXValidation(files, scaler, True, C=C[number], gamma=gamma)))
+        os.system("rm getText*")
+
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) >= 2:
+        specific_line(int(sys.argv[1]))
+    else:
+        main()
