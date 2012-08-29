@@ -11,6 +11,8 @@ from XValidation import ParallelXValidation
 
 def tuneParametersForSVM(files, scaler, reference_data, fake_decisions=False):
     def fitnessFunction(parameters, files, scaler, fake_decisions):
+        print("C="+str(max(0.0,parameters[0])))
+        print("gamma="+str(max(1e-323,parameters[1])))
         return ParallelXValidation(files, scaler, fake_decisions, C=max(0.0,parameters[0]), gamma=max(1e-323,parameters[1]))
 
     #start_vector = np.array([len(reference_data), 1.0/len(reference_data[0])])
