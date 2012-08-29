@@ -6,7 +6,6 @@ import os
 
 from sklearn import preprocessing
 import numpy as np
-from pylab import *
 
 from Classify import getDataMatrix
 from Config import TRAIN_FILES
