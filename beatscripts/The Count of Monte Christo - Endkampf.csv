@@ -1,0 +1,200 @@
+#Film:	The Count of Monte Christo
+#Scene:	Endkampf
+#FPS:	24
+#Context:	person§Mondego, place§fields, object§ruined house, object§gun, person§Dantés, person§Mercedes, person§boy, person§manservant, 
+#EntityList:	place§way of defeat, object§Mondego's rapier, object§Danté's mantle, object§Danté's rapier, object§stone, person§Mondego, place§fields, object§ruined house, object§gun, person§Dantés, person§Mercedes, person§boy, person§manservant, 
+0_1	extreme_long_shot	false	show	place§fields	
+0_2	extreme_long_shot	false	show	person§Mondego	
+0_3	extreme_long_shot	false	show	object§ruined house	
+0_4	extreme_long_shot	false	action	person§Mondego	rides away from the		object§ruined house
+0_5	extreme_long_shot	false	action	person§Mondego	stops	
+151_1	extreme_long_shot	false	introduce	place§way of defeat	
+204_1	medium_shot	false	expresses	person§Mondego	thoughtfulness
+322_1	extreme_long_shot	false	show	place§way of defeat	
+368_1	medium_shot	false	action	person§Mondego	throws away his		object§gun
+368_2	medium_shot	false	expresses	person§Mondego	determination
+368_3	medium_shot	false	introduce	object§Mondego's rapier	
+368_4	medium_shot	false	action	person§Mondego	pulls		object§Mondego's rapier
+368_5	medium_shot	false	action	person§Mondego	rides back to		object§ruined house
+788_1	medium_shot	false	show	person§Dantés	
+788_2	medium_shot	false	introduce	object§Danté's mantle	
+788_3	medium_shot	false	show	person§boy	
+788_4	medium_shot	false	show	person§manservant	
+788_5	medium_shot	false	show	person§Mercedes	
+788_6	medium_shot	true	says	person§Mondego	bla	person§Dantés
+788_7	medium_shot	false	action	person§Dantés	looks up	
+788_8	medium_shot	false	says	person§Mercedes	ah	person§Dantés
+788_9	medium_shot	false	expresses	person§Dantés	fear
+849_1	long_shot	false	show	person§Mondego	
+849_2	long_shot	false	says	person§Mondego	bla	person§Dantés
+890_1	closeup	false	expresses	person§Dantés	fear
+923_1	medium_shot	false	action	person§boy	holds		person§Mercedes
+923_2	medium_shot	false	says	person§Mercedes	bla	person§Dantés
+961_1	closeup	false	expresses	person§Dantés	thoughtfulness
+1015_1	medium_shot	false	expresses	person§Mercedes	pain
+1015_2	medium_shot	false	says	person§Mercedes	bla	person§Dantés
+1067_1	closeup	false	expresses	person§Dantés	thoughtfulness
+1067_2	closeup	false	action	person§manservant	walks to		person§Dantés
+1067_3	closeup	false	introduce	object§Danté's rapier	
+1067_4	closeup	false	says	person§manservant	bla	person§Dantés
+1067_5	closeup	false	action	person§manservant	hands	to Dantés	object§Danté's rapier
+1155_1	medium_shot	false	action	person§boy	looks up	
+1155_2	medium_shot	true	says	person§manservant	bla	person§Dantés
+1216_1	closeup	false	says	person§manservant	bla	person§Dantés
+1216_2	closeup	false	expresses	person§Dantés	decidedness
+1293_1	closeup	false	expresses	person§Mercedes	misery
+1331_1	closeup	false	says	person§manservant	bla	person§Dantés
+1416_1	american_shot	false	says	person§Mondego	bla	person§Dantés
+1416_2	american_shot	false	expresses	person§Mondego	anger
+1445_1	closeup	false	action	person§Dantés	takes of		object§Danté's mantle
+1445_2	closeup	false	action	person§Dantés	kneels down to		person§Mercedes
+1502_1	medium_shot	false	action	person§Dantés	puts his mantle over		person§Mercedes
+1558_1	closeup	false	action	person§Dantés	kisses		person§Mercedes
+1569_1	medium_shot	false	action	person§Dantés	hugs		person§boy
+1569_2	medium_shot	false	action	person§Dantés	stands up	
+1631_1	closeup	false	action	person§Dantés	takes		object§Danté's rapier
+1677_1	long_shot	false	action	person§Dantés	leaves		object§ruined house
+1677_2	long_shot	false	action	person§Dantés	walks towards		person§Mondego
+1677_3	long_shot	false	action	person§Mondego	observes		person§Dantés
+1946_1	american_shot	false	action	person§Dantés	steps on the		place§fields
+1946_2	american_shot	false	action	person§Mondego	observes		person§Dantés
+2028_1	medium_shot	false	expresses	person§Dantés	determination
+2077_1	medium_shot	false	expresses	person§Mondego	determination
+2077_2	medium_shot	false	says	person§Mondego	bla	person§Dantés
+2077_3	medium_shot	false	action	person§Mondego	rides towards		person§Dantés
+2236_1	long_shot	false	action	person§Mondego	rides for		person§Dantés
+2236_2	long_shot	false	action	person§Dantés	redies himself	
+2266_1	full_shot	false	action	person§Dantés	redies himself	
+2289_1	long_shot	false	action	person§Mondego	rides for		person§Dantés
+2311_1	long_shot	false	action	person§Mondego	rides	
+2335_1	american_shot	false	action	person§Mondego	hacks at		person§Dantés
+2352_1	american_shot	false	action	person§Dantés	blocks		person§Mondego
+2364_1	detail	false	action	person§Mondego	looses		object§Mondego's rapier
+2391_1	long_shot	false	action	person§Mondego	falls from his horse	
+2433_1	medium_shot	false	action	person§Dantés	looks at		object§Mondego's rapier
+2433_2	medium_shot	false	action	person§Dantés	looks at		person§Mondego
+2469_1	full_shot	false	action	person§Mondego	stands up	
+2469_2	full_shot	false	expresses	person§Mondego	confusion
+2567_1	american_shot	false	action	person§Dantés	runs to		person§Dantés
+2604_1	american_shot	false	action	person§Mondego	runs to		person§Mondego
+2641_1	extreme_long_shot	false	show	place§fields	
+2641_2	extreme_long_shot	false	action	person§Dantés	runs to		person§Mondego
+2641_3	extreme_long_shot	false	action	person§Mondego	runs to		person§Dantés
+2658_1	american_shot	false	action	person§Dantés	hits		person§Mondego
+2678_1	detail	false	show	person§Mondego	in the grass
+2699_1	medium_shot	false	action	person§Dantés	hits		person§Mondego
+2715_1	closeup	false	action	person§Mondego	evades	
+2715_2	closeup	false	expresses	person§Mondego	awareness
+2734_1	medium_shot	false	action	person§Dantés	hits		person§Mondego
+2783_1	long_shot	false	action	person§Mondego	stands up	
+2783_2	long_shot	false	action	person§Dantés	kicks		person§Mondego
+2840_1	medium_shot	false	action	person§Mondego	brawls with		person§Dantés
+2840_2	medium_shot	false	action	person§Dantés	brawls with		person§Mondego
+2840_3	medium_shot	false	action	person§Mondego	falls down	
+2885_1	american_shot	false	action	person§Dantés	runs	
+2898_1	long_shot	false	action	person§manservant	leaves		object§ruined house
+2936_1	american_shot	false	action	person§Mondego	brawls with		person§Dantés
+2936_2	american_shot	false	action	person§Dantés	brawls with		person§Mondego
+3000_1	closeup	false	action	person§Mondego	finds		object§Mondego's rapier
+3033_1	medium_shot	false	action	person§Dantés	runs	
+3044_1	medium_shot	false	action	person§Mondego	hits		person§Dantés
+3053_1	medium_shot	false	action	person§Dantés	evades	
+3087_1	long_shot	false	action	person§Dantés	moves away from		person§Mondego
+3087_2	long_shot	false	action	person§Mondego	stands up	
+3103_1	full_shot	false	expresses	person§Dantés	woundedness
+3103_2	full_shot	false	action	person§Dantés	runs for		object§Danté's rapier
+3132_1	full_shot	false	action	person§Mondego	runs for		person§Dantés
+3190_1	full_shot	false	action	person§Dantés	runs through		place§fields
+3211_1	full_shot	false	action	person§Mondego	runs through		place§fields
+3233_1	full_shot	false	action	person§Dantés	searches for		object§Danté's rapier
+3263_1	full_shot	false	action	person§Mondego	runs for		person§Dantés
+3286_1	medium_shot	false	expresses	person§Dantés	fear
+3286_2	medium_shot	false	action	person§Dantés	searches		object§Danté's rapier
+3318_1	detail	false	introduce	object§stone	
+3318_2	detail	false	action	person§Dantés	grabs		object§stone
+3330_1	full_shot	false	action	person§Dantés	throws at		person§Mondego
+3352_1	full_shot	false	action	person§Mondego	gets hit by the		object§stone
+3352_2	full_shot	false	action	person§Mondego	goes for		person§Dantés
+3422_1	long_shot	false	action	person§Dantés	searches		object§Danté's rapier
+3437_1	medium_shot	false	action	person§Dantés	finds		object§Danté's rapier
+3484_1	american_shot	false	action	person§Mondego	hits at		person§Dantés
+3496_1	long_shot	false	action	person§Dantés	blocks	
+3496_2	long_shot	false	action	person§Dantés	stabs at		person§Mondego
+3535_1	full_shot	false	action	person§Mondego	stumbles backwards	
+3570_1	american_shot	false	action	person§Dantés	stumbles	too
+3592_1	long_shot	false	action	person§boy	leaves		object§ruined house
+3592_2	long_shot	false	action	person§manservant	observes	
+3592_3	long_shot	false	action	person§boy	observes	
+3626_1	medium_shot	false	action	person§Mondego	hits		person§Dantés
+3643_1	american_shot	false	action	person§Dantés	blocks		person§Mondego
+3643_2	american_shot	false	action	person§Dantés	turns around	
+3643_3	american_shot	false	action	person§Dantés	attacks		person§Mondego
+3685_1	long_shot	false	action	person§Dantés	attacks		person§Mondego
+3685_2	long_shot	false	action	person§Mondego	blocks		person§Dantés
+3685_3	long_shot	false	action	person§Dantés	attacks		person§Mondego
+3685_4	long_shot	false	action	person§Mondego	blocks		person§Dantés
+3725_1	full_shot	false	action	person§Dantés	attacks		person§Mondego
+3725_2	full_shot	false	action	person§Mondego	blocks		person§Dantés
+3750_1	american_shot	false	action	person§boy	walks towards		person§Dantés
+3750_2	american_shot	false	action	person§manservant	grabs		person§boy
+3750_3	american_shot	false	action	person§manservant	pulls	back	person§boy
+3775_1	full_shot	false	action	person§Dantés	attacks		person§Mondego
+3811_1	american_shot	false	action	person§Mondego	blocks		person§Dantés
+3811_2	american_shot	false	action	person§Mondego	counterattacks		person§Dantés
+3829_1	medium_shot	false	expresses	person§Mondego	enragement
+3829_2	medium_shot	false	action	person§Mondego	attacks		person§Dantés
+3853_1	american_shot	false	action	person§Dantés	blocks	easily	person§Mondego
+3884_1	medium_shot	false	action	person§Dantés	counterattacks		person§Mondego
+3917_1	long_shot	false	action	person§Dantés	hits		person§Mondego
+3917_2	long_shot	false	action	person§Mondego	blocks		person§Dantés
+3917_3	long_shot	false	action	person§Dantés	hits		person§Mondego
+3917_4	long_shot	false	action	person§Mondego	blocks		person§Dantés
+3945_1	closeup	false	expresses	person§Dantés	concentration
+3945_2	closeup	false	action	person§Dantés	hits		person§Mondego
+3945_3	closeup	false	action	person§Mondego	blocks		person§Dantés
+3965_1	full_shot	false	action	person§Dantés	hits		person§Mondego
+3965_2	full_shot	false	action	person§Mondego	blocks		person§Dantés
+3965_3	full_shot	false	action	person§Dantés	hits		person§Mondego
+3965_4	full_shot	false	action	person§Mondego	blocks		person§Dantés
+3993_1	closeup	false	expresses	person§Dantés	rage
+3993_2	closeup	false	action	person§Dantés	hits		person§Mondego
+3993_3	closeup	false	action	person§Mondego	blocks		person§Dantés
+4011_1	detail	false	show	object§Danté's rapier	
+4011_2	detail	false	action	person§Dantés	leaves		object§Danté's rapier
+4046_1	closeup	false	expresses	person§Dantés	fear
+4065_1	medium_shot	false	expresses	person§Mondego	determination
+4065_2	medium_shot	false	action	person§Mondego	arms himself with		object§Danté's rapier
+4094_1	medium_shot	false	action	person§Dantés	faces		person§Mondego
+4116_1	medium_shot	false	expresses	person§Mondego	mad joy
+4116_2	medium_shot	false	action	person§Mondego	threatens		person§Dantés
+4132_1	long_shot	false	action	person§Mondego	hits at		person§Dantés
+4132_2	long_shot	false	action	person§Dantés	evades		object§Mondego's rapier
+4132_3	long_shot	false	action	person§Mondego	slashes for		person§Dantés
+4132_4	long_shot	false	action	person§Dantés	ducks away from		person§Mondego
+4132_5	long_shot	false	action	person§Dantés	grabs		person§Mondego
+4191_1	american_shot	false	action	person§Dantés	grabs		object§Mondego's rapier
+4191_2	american_shot	false	action	person§Dantés	turns around	
+4203_1	medium_shot	false	action	person§Mondego	hits the air	
+4203_2	medium_shot	false	expresses	person§Mondego	surprise
+4214_1	closeup	false	expresses	person§Dantés	furor
+4214_2	closeup	false	action	person§Mondego	grabs		person§Dantés
+4226_1	closeup	false	expresses	person§Mondego	surprise
+4258_1	closeup	false	expresses	person§Dantés	seriousness
+4258_2	closeup	false	action	person§Mondego	looks to		person§Mercedes
+4258_3	closeup	false	expresses	person§Mondego	consternation
+4437_1	medium_shot	false	action	person§Dantés	stands up	
+4437_2	medium_shot	false	expresses	person§Dantés	carefulness
+4484_1	medium_shot	false	action	person§Mondego	falls into the		place§fields
+4506_1	american_shot	false	action	person§manservant	lets go of		person§boy
+4506_2	american_shot	false	expresses	person§boy	surprise
+4550_1	american_shot	false	says	person§Mondego	Why haven't you mercy?	person§Dantés
+4781_1	medium_shot	false	says	person§Dantés	I'm a count not a saint.	person§Mondego
+4781_2	medium_shot	false	expresses	person§Dantés	touchedness
+4837_1	american_shot	false	action	person§Mondego	dies	
+5041_1	closeup	false	expresses	person§Dantés	severity
+5086_1	american_shot	false	action	person§boy	runs to		person§Mondego
+5086_2	american_shot	false	expresses	person§boy	disappointment
+5191_1	extreme_long_shot	false	show	place§fields	
+5191_2	extreme_long_shot	false	show	person§Mondego	
+5191_3	extreme_long_shot	false	action	person§boy	falls to his knees	
+5191_4	extreme_long_shot	false	action	person§Dantés	runs to		person§Mercedes
