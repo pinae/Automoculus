@@ -1557,6 +1557,31 @@ class X_BlockOfOneSubject(Feature):
         return ["Im Block kommt nur ein Subject vor?"]
 
 
+class X_ObjectAct(Feature):
+    def calculateNumbers(self, context, block):
+        showing_object = 0
+        detail_possible = 1
+        act_count = 0
+        for beat in block:
+            if beat.type in [INTRODUCE, SHOW] and not beat.invisible and beat.subject.type == OBJECT:
+                showing_object += 1
+            if showing_object and beat.type == ACTION and not beat.invisible: act_count += 1
+            if not beat.invisible and (
+            (beat.type in [INTRODUCE, SHOW] and beat.subject != OBJECT) or (beat.type in [EXPRESS, SAYS]) or (
+            beat.type == ACTION and act_count >= 2)):
+                detail_possible = 0
+        return [showing_object, detail_possible]
+
+    def getText(self):
+        if self.numbers[0]: out = "Im Block wird ein Objekt gezeigt.\t"
+        else: out = "Im Block wird kein Objekt gezeigt.\t"
+        if self.numbers[1]: return out+"Es gibt keine Beats die vermuten lassen, dass kein Detail gezeigt wird."
+        else: return out+"Es gibt aber Beats die vermutel lassen dass kein Detail gezeigt wird."
+
+    def getNames(self):
+        return ["Wird ein Objekt gezeigt?", "Detail zeigen möglich?"]
+
+
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
