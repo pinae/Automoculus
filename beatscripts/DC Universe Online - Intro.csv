@@ -1,0 +1,195 @@
+#Film:	DC Universe Online
+#Scene:	Intro
+#FPS:	24
+#Context:	
+#EntityList:	place§ruined city, person§Superwoman, person§Lex Luthor, person§giantess, person§Green Lantern, person§Black Adam, person§Bat Man, person§Flash, person§Cyborg, place§tower, person§Zatanna, object§rockets, person§Nightwing, person§mech, person§Joker, person§Harlequin, object§rocketlauncher, object§rope, object§big explosion, object§green lantern, place§space, person§Superman, object§kryptonite, object§spear with kryptonite, object§alien spaceships, 
+0_1	long_shot	false	introduce	place§ruined city	
+0_2	long_shot	false	introduce	person§Superwoman	
+0_3	long_shot	true	introduce	person§Lex Luthor
+0_4	long_shot	false	action	person§Lex Luthor	throws		person§Superwoman
+0_5	long_shot	false	action	person§Superwoman	hits a wall in the		place§ruined city
+0_6	long_shot	false	show	person§Lex Luthor	
+0_7	long_shot	false	says	person§Lex Luthor	Come on!	person§Superwoman
+816_1	long_shot	false	action	person§Lex Luthor	attacks		person§Superwoman
+816_2	long_shot	false	action	person§Superwoman	evades		person§Lex Luthor
+816_3	long_shot	false	action	person§Superwoman	grabs		person§Lex Luthor
+816_4	long_shot	false	action	person§Superwoman	throws		person§Lex Luthor
+816_5	long_shot	false	introduce	person§giantess	
+816_6	long_shot	true	introduce	person§Green Lantern
+816_7	long_shot	false	action	person§Green Lantern	shoots a rocket at		person§giantess
+816_8	long_shot	false	action	person§giantess	falls down into the		place§ruined city
+816_9	long_shot	false	show	person§Green Lantern	
+816_10	long_shot	false	introduce	person§Black Adam	
+816_11	long_shot	false	action	person§Green Lantern	hovers next to		person§giantess
+816_12	long_shot	false	action	person§Black Adam	flies to		person§Green Lantern
+816_13	long_shot	false	says	person§Black Adam	Lantern! Pick on someone your own size!	person§Green Lantern
+816_14	long_shot	false	action	person§Black Adam	flies away	
+816_15	long_shot	false	action	person§Green Lantern	follows		person§Black Adam
+1525_1	closeup	false	introduce	person§Bat Man	
+1525_2	closeup	false	expresses	person§Bat Man	discontent
+1571_1	long_shot	false	introduce	person§Flash	
+1571_2	long_shot	false	introduce	person§Cyborg	
+1571_3	long_shot	false	action	person§Cyborg	fires his gun somewhere into the		place§ruined city
+1571_4	long_shot	false	action	person§Flash	runs away	
+1571_5	long_shot	false	says	person§Bat Man	Cyborg, concentrate Fire on Luthor, while I call down some Artillery	person§Cyborg
+1571_6	long_shot	false	action	person§Cyborg	nods	
+1571_7	long_shot	false	action	person§Cyborg	walks forward	
+1810_1	extreme_long_shot	false	introduce	place§tower	
+1810_2	extreme_long_shot	false	action	person§Cyborg	shoots at		place§tower
+1810_3	extreme_long_shot	false	introduce	person§Zatanna	
+1810_4	extreme_long_shot	false	action	person§Zatanna	casts lightning into the		place§ruined city
+1863_1	medium_shot	false	introduce	object§rockets	
+1863_2	medium_shot	false	action	person§Bat Man	looks at		object§rockets
+1863_3	medium_shot	false	action	person§Cyborg	looks at		object§rockets
+1904_1	detail	false	show	object§rockets	
+1918_1	full_shot	false	show	place§tower	
+1918_2	full_shot	false	action	person§Lex Luthor	shilds against the		object§rockets
+1918_3	full_shot	false	introduce	person§Nightwing	
+1918_4	full_shot	false	says	person§Lex Luthor	bla	person§Zatanna	person§Nightwing
+1918_5	full_shot	false	action	person§Nightwing	walks towards the		place§ruined city
+1918_6	full_shot	false	action	person§Zatanna	casts lightening into the		place§ruined city
+1918_7	full_shot	false	action	person§Lex Luthor	fires into the		place§ruined city
+2130_1	full_shot	false	introduce	person§mech	
+2130_2	full_shot	false	action	person§mech	attacks		person§Superwoman
+2130_3	full_shot	false	action	person§Superwoman	evades		person§mech
+2130_4	full_shot	false	action	person§mech	attacks		person§Superwoman
+2130_5	full_shot	false	action	person§Superwoman	grabs		person§mech
+2130_6	full_shot	false	action	person§Superwoman	throws		person§mech
+2130_7	full_shot	false	action	person§Superwoman	jumps onto		person§mech
+2259_1	american_shot	false	action	person§Superwoman	grabs		person§mech
+2259_2	american_shot	false	action	person§Superwoman	rips apart		person§mech
+2259_3	american_shot	false	action	person§Superwoman	beheades		person§mech
+2259_4	american_shot	false	action	person§Nightwing	attacks		person§Superwoman
+2513_1	full_shot	false	introduce	person§Joker	
+2513_2	full_shot	false	introduce	person§Harlequin	
+2513_3	full_shot	false	introduce	object§rocketlauncher	
+2513_4	full_shot	false	says	person§Joker	Come on! We've got lots of murdering to do.	person§Harlequin
+2513_5	full_shot	false	action	person§Harlequin	hands	to the Joker	object§rocketlauncher
+2513_6	full_shot	false	action	person§Joker	aims with		object§rocketlauncher
+2513_7	full_shot	false	action	person§Harlequin	holds		person§Joker
+2513_8	full_shot	false	action	person§Joker	shoots at		person§Flash
+2657_1	long_shot	false	action	person§Flash	runs	
+2774_1	closeup	false	expresses	person§Harlequin	surprise
+2843_1	long_shot	false	action	person§Black Adam	lands	
+2977_1	full_shot	false	action	person§Green Lantern	lifts		person§Black Adam
+2977_2	full_shot	false	action	person§Green Lantern	hits		person§Black Adam
+2977_3	full_shot	false	action	person§Black Adam	crashes into the		place§ruined city
+3136_1	medium_shot	false	action	person§Nightwing	hits		person§Superwoman
+3136_2	medium_shot	false	action	person§Superwoman	counterattacks		person§Nightwing
+3157_1	long_shot	false	action	person§Superwoman	kicks		person§Nightwing
+3157_2	long_shot	false	action	person§Nightwing	lands in the		place§ruined city
+3157_3	long_shot	false	action	person§Superwoman	jumps at		person§Nightwing
+3157_4	long_shot	false	action	person§Nightwing	stands up	
+3292_1	medium_shot	false	action	person§Superwoman	attacks		person§Nightwing
+3292_2	medium_shot	false	action	person§Nightwing	blocks		person§Superwoman
+3292_3	medium_shot	false	action	person§Nightwing	hits at		person§Superwoman
+3292_4	medium_shot	false	action	person§Superwoman	blocks		person§Nightwing
+3344_1	medium_shot	false	action	person§Superwoman	misses	with her hit	person§Nightwing
+3344_2	medium_shot	false	expresses	person§Superwoman	discontent
+3387_1	closeup	false	introduce	object§rope	
+3387_2	closeup	false	says	person§Nightwing	Loosed something?	person§Superwoman
+3387_3	closeup	false	action	person§Nightwing	ducks down	
+3387_4	closeup	false	says	person§Zatanna	Greetings, sister.	person§Superwoman
+3387_5	closeup	false	action	person§Zatanna	casts lightening at		person§Superwoman
+3486_1	long_shot	false	action	person§Green Lantern	creates a shied against		person§Black Adam
+3486_2	long_shot	false	action	person§Black Adam	smashes the shield of		person§Green Lantern
+3486_3	long_shot	false	action	person§Green Lantern	creates a shied against		person§Black Adam
+3486_4	long_shot	false	action	person§Black Adam	smashes the shield of		person§Green Lantern
+3486_5	long_shot	false	action	person§Green Lantern	creates a shied against		person§Black Adam
+3486_6	long_shot	false	action	person§Black Adam	smashes the shield of		person§Green Lantern
+3712_1	american_shot	false	action	person§Black Adam	smashes	into the ground	person§Green Lantern
+3712_2	american_shot	false	action	person§Green Lantern	pushes against		person§Black Adam
+3793_1	medium_shot	false	action	person§Black Adam	pushes against		person§Green Lantern
+3793_2	medium_shot	false	action	person§Green Lantern	pushes against		person§Black Adam
+3793_3	medium_shot	false	says	person§Green Lantern	Aaaargh!	person§Black Adam
+3858_1	closeup	false	expresses	person§Flash	awareness
+3896_1	full_shot	false	action	person§Flash	runs to		person§Black Adam
+3896_2	full_shot	false	action	person§Black Adam	pushes against		person§Green Lantern
+3896_3	full_shot	false	action	person§Green Lantern	pushes against		person§Black Adam
+3952_1	closeup	false	expresses	person§Green Lantern	eshaustion
+4015_1	medium_shot	false	expresses	person§Flash	seriousness
+4015_2	medium_shot	false	action	person§Flash	runs	
+4080_1	closeup	false	expresses	person§Black Adam	tension
+4112_1	long_shot	false	action	person§Flash	reaches		person§Black Adam
+4112_2	long_shot	false	action	person§Black Adam	explodes	
+4112_3	long_shot	false	introduce	object§big explosion	
+4161_1	extreme_long_shot	false	show	place§ruined city	
+4161_2	extreme_long_shot	false	show	object§big explosion	
+4260_1	full_shot	false	action	person§Lex Luthor	fals to shield against		object§big explosion
+4332_1	long_shot	false	action	person§Bat Man	gets thrown by the		object§big explosion
+4453_1	detail	false	introduce	object§green lantern	
+4500_1	extreme_long_shot	false	show	place§ruined city	
+4681_1	american_shot	false	action	person§Bat Man	stands up	
+4681_2	american_shot	false	action	person§Nightwing	throws a rope at		person§Bat Man
+4800_1	medium_shot	false	action	person§Bat Man	gets pulled by		person§Nightwing
+4800_2	medium_shot	false	action	person§Bat Man	kicks		person§Nightwing
+4900_1	full_shot	false	action	person§Nightwing	pulls up		person§Bat Man
+5078_1	medium_shot	false	action	person§Joker	pushes	away	person§Harlequin
+5078_2	medium_shot	false	action	person§Joker	stands up	
+5078_3	medium_shot	false	action	person§Joker	turns to the		place§ruined city
+5254_1	long_shot	true	says	person§Joker	What's this?	person§Harlequin
+5254_2	long_shot	false	action	person§Nightwing	hits		person§Bat Man
+5322_1	american_shot	false	says	person§Joker	Noone kills the bat but me!	person§Harlequin
+5322_2	american_shot	false	action	person§Joker	grabs the		object§rocketlauncher
+5322_3	american_shot	false	action	person§Joker	aims at		person§Bat Man
+5322_4	american_shot	false	action	person§Joker	shoots	
+5418_1	medium_shot	false	action	person§Bat Man	explodes	
+5418_2	medium_shot	false	show	person§Superwoman	
+5418_3	medium_shot	false	action	person§Lex Luthor	grabs		person§Superwoman
+5418_4	medium_shot	false	action	person§Lex Luthor	lifts		person§Superwoman
+5642_1	medium_shot	false	says	person§Lex Luthor	bla	person§Superwoman
+5642_2	medium_shot	false	expresses	person§Lex Luthor	anger
+5642_3	medium_shot	false	expresses	person§Superwoman	misery
+5642_4	medium_shot	false	action	person§Superwoman	suffers from		person§Zatanna
+5871_1	extreme_long_shot	false	introduce	place§space	
+5871_2	extreme_long_shot	false	introduce	person§Superman	
+5937_1	closeup	false	expresses	person§Superman	anger
+5937_2	closeup	false	action	person§Superman	flies away	
+5982_1	extreme_long_shot	false	action	person§Superman	flies to		place§ruined city
+6092_1	medium_shot	false	action	person§Lex Luthor	lets go of		person§Superwoman
+6092_2	medium_shot	false	says	person§Lex Luthor	Yes!	person§Lex Luthor
+6092_3	medium_shot	false	action	person§Lex Luthor	looks at		person§Superman
+6218_1	extreme_long_shot	false	action	person§Superman	flies to		person§Lex Luthor
+6323_1	detail	false	action	person§Superman	lands in		place§ruined city
+6407_1	closeup	false	expresses	person§Superman	anger
+6407_2	closeup	false	says	person§Superman	Bat Man!	person§Bat Man
+6527_1	closeup	false	expresses	person§Lex Luthor	anger
+6527_2	closeup	false	says	person§Lex Luthor	bla	person§Superman
+6551_1	medium_shot	false	action	person§Superman	looks to		person§Lex Luthor
+6551_2	medium_shot	false	action	person§Superman	flies to		person§Lex Luthor
+6572_1	long_shot	false	action	person§Superman	crushes		person§Lex Luthor
+6583_1	american_shot	false	action	person§Black Adam	hits		person§Superman
+6583_2	american_shot	false	action	person§Black Adam	hits		person§Superman
+6583_3	american_shot	false	action	person§Black Adam	hits		person§Superman
+6583_4	american_shot	false	action	person§Superman	blocks		person§Black Adam
+6780_1	medium_shot	false	action	person§Superman	twists the hand of		person§Black Adam
+6780_2	medium_shot	false	says	person§Black Adam	Oooh!	person§Superman
+6780_1	closeup	false	expresses	person§Superman	anger
+6780_2	closeup	false	action	person§Superman	lasers		person§Black Adam
+6932_1	long_shot	false	action	person§Lex Luthor	fires at		person§Superman
+6932_2	long_shot	false	action	person§Superman	flies to		person§Lex Luthor
+6709_1	american_shot	false	action	person§Superman	rips	apart	person§Lex Luthor
+6709_2	american_shot	false	says	person§Superman	You don't deserve to live!	person§Lex Luthor
+6709_3	american_shot	false	action	person§Superman	throws	away	person§Lex Luthor
+7109_1	long_shot	false	action	person§Lex Luthor	hits the ground somewhere in the		place§ruined city
+7180_1	medium_shot	false	action	person§Superman	knees down at		person§Superwoman
+7180_2	medium_shot	false	expresses	person§Superman	care
+7180_3	medium_shot	false	action	person§Superman	lifts		person§Superwoman
+7180_4	medium_shot	false	says	person§Superman	Diana!	person§Superwoman
+7180_5	medium_shot	false	introduce	object§kryptonite	
+7180_6	medium_shot	false	expresses	person§Superman	misery
+7180_7	medium_shot	false	action	person§Superman	holds his breast	
+7575_1	long_shot	false	action	person§Superman	struggles with		object§kryptonite
+7575_2	long_shot	false	action	person§Lex Luthor	approaches		person§Superwoman
+7657_1	american_shot	false	says	person§Lex Luthor	Beaten by a mere man!	person§Superman
+7657_2	american_shot	false	introduce	object§spear with kryptonite	
+7657_3	american_shot	false	action	person§Lex Luthor	arms		object§spear with kryptonite
+7759_1	closeup	false	expresses	person§Superman	anger
+7759_2	closeup	false	says	person§Superman	No. You've lost everything!	person§Lex Luthor
+7919_1	american_shot	false	says	person§Lex Luthor	I beat you! Lex Luthor!	person§Superman
+7919_2	american_shot	false	action	person§Lex Luthor	stabs		person§Superman
+7919_3	american_shot	false	action	person§Superman	dies	
+8177_1	american_shot	false	action	person§Lex Luthor	steps back from		person§Superman
+8223_1	closeup	false	expresses	person§Lex Luthor	thoughtfulness
+8223_2	closeup	false	action	person§Lex Luthor	looks up	
+8351_1	extreme_long_shot	false	introduce	object§alien spaceships	
