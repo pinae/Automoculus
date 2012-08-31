@@ -46,6 +46,7 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv",
                "Quantic Dream - Kara.csv",
                "Assassins Creed Brotherhood - Trailer.csv",
                "Rage - Intro.csv",
+               "Dawn of War - Intro.csv",
                "Halo 3 - Trailer.csv",
                "Dragon Age Origins - Sacred Ashes.csv",
                "Warhammer Online - Trailer.csv",
@@ -57,6 +58,3 @@ TRAIN_FILES = ["Berg der Versuchung - Schwere Stelle.csv",
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 
 TRAIN_FILES = [path.abspath(path.join(PROJECT_PATH, "beatscripts", f)) for f in TRAIN_FILES]
-
-
-

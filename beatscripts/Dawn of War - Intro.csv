@@ -1,0 +1,144 @@
+#Film:	Dawn of War
+#Scene:	Intro
+#FPS:	24
+#Context:	
+#EntityList:	place§battlefield, person§aircraft 1, object§watchtower, person§aircraft 2, person§marine 1, person§marine 2, person§commander, person§orc turret, person§orc 1, person§orc 2, person§orc with axe, object§axe, person§mech, person§marine 3, person§marine 4, person§another orc with axe, person§orc 3, person§orc 4, person§orc 5, person§orc 6, person§orc 7, person§orc 8, person§orc 9, person§orc 10, person§orc 11, person§orc with flamethrower, object§banner, object§logo, 
+0_1	extreme_long_shot	false	introduce	place§battlefield	
+0_2	extreme_long_shot	false	introduce	person§aircraft 1	
+0_3	extreme_long_shot	false	introduce	object§watchtower	
+0_4	extreme_long_shot	false	action	person§aircraft 1	flies towards		object§watchtower
+0_5	extreme_long_shot	false	introduce	person§aircraft 2	
+174_1	full_shot	false	introduce	person§marine 1	
+174_2	full_shot	false	introduce	person§marine 2	
+174_3	full_shot	false	introduce	person§commander	
+174_4	full_shot	false	action	person§commander	recieves orders	
+379_1	long_shot	false	introduce	person§orc turret	
+379_2	long_shot	false	introduce	person§orc 1	
+379_3	long_shot	false	introduce	person§orc 2	
+379_4	long_shot	false	introduce	person§orc with axe	
+379_5	long_shot	false	introduce	object§axe	
+379_6	long_shot	false	action	person§orc with axe	waves		object§axe
+487_1	medium_shot	false	expresses	person§commander	realization
+487_2	medium_shot	false	introduce	person§mech	
+487_3	medium_shot	false	action	person§commander	looks at		person§mech
+519_1	full_shot	false	action	person§orc 1	signals the attack	
+519_2	full_shot	false	action	person§orc 2	moves forward	
+519_3	full_shot	false	action	person§orc with axe	moves forward	
+519_4	full_shot	false	action	person§orc 1	moves forward	
+658_1	american_shot	false	action	person§marine 1	fires at		person§orc 1
+658_2	american_shot	false	action	person§marine 2	fires at		person§orc 2
+658_3	american_shot	false	says	person§marine 1	bla	person§marine 2
+689_1	medium_shot	false	action	person§commander	moves to the frontline	
+689_2	medium_shot	false	expresses	person§commander	seriousness
+773_1	full_shot	false	action	person§orc 1	moves at		person§marine 1
+773_2	full_shot	false	action	person§marine 1	fires at		person§orc 1
+773_3	full_shot	false	action	person§orc 2	moves at		person§marine 2
+773_4	full_shot	false	action	person§marine 2	fires at		person§orc 2
+773_5	full_shot	false	action	person§orc with axe	jumps at		person§marine 2
+773_6	full_shot	false	action	person§mech	stops	in mid air	person§orc with axe
+855_1	full_shot	false	action	person§commander	lokks at		person§mech
+855_2	full_shot	false	show	person§mech	
+967_1	medium_shot	false	action	person§mech	shoots over the		place§battlefield
+1040_1	closeup	false	expresses	person§commander	furiosity
+1040_2	closeup	false	says	person§commander	bla	person§marine 1	person§marine 2
+1089_1	long_shot	false	action	person§commander	storms forward onto the		place§battlefield
+1089_2	long_shot	false	action	person§marine 1	storms forward onto the		place§battlefield
+1089_3	long_shot	false	action	person§marine 2	storms forward onto the		place§battlefield
+1089_4	long_shot	false	introduce	person§marine 3	
+1089_5	long_shot	false	action	person§marine 3	storms forward onto the		place§battlefield
+1089_6	long_shot	false	introduce	person§marine 4	
+1089_7	long_shot	false	action	person§marine 4	storms forward onto the		place§battlefield
+1089_8	long_shot	false	action	person§mech	moves forward onto the		place§battlefield
+1089_9	long_shot	false	show	place§battlefield	
+1236_1	medium_shot	false	introduce	person§another orc with axe	
+1236_2	medium_shot	false	action	person§another orc with axe	observes		place§battlefield
+1302_1	long_shot	false	action	person§another orc with axe	lifts his axe	
+1302_2	long_shot	false	introduce	person§orc 3	
+1302_3	long_shot	false	says	person§another orc with axe	bla	person§orc 3
+1302_4	long_shot	false	introduce	person§orc 4	
+1302_5	long_shot	false	introduce	person§orc 5	
+1302_6	long_shot	false	introduce	person§orc 6	
+1302_7	long_shot	false	introduce	person§orc 7	
+1302_8	long_shot	false	introduce	person§orc 8	
+1302_9	long_shot	false	introduce	person§orc 9	
+1302_10	long_shot	false	introduce	person§orc 10	
+1302_11	long_shot	false	introduce	person§orc 11	
+1395_1	american_shot	false	show	person§orc 11	
+1395_2	american_shot	false	show	person§orc 10	
+1395_3	american_shot	false	show	person§orc 7	
+1395_4	american_shot	false	show	person§orc 5	
+1395_5	american_shot	false	show	person§orc 9	
+1395_6	american_shot	false	show	person§orc 8	
+1395_7	american_shot	false	action	person§commander	storms towards		person§another orc with axe
+1477_1	extreme_long_shot	false	show	place§battlefield	
+1477_2	extreme_long_shot	false	action	person§commander	storms forward onto the		place§battlefield
+1477_3	extreme_long_shot	false	action	person§marine 1	storms forward onto the		place§battlefield
+1477_4	extreme_long_shot	false	action	person§marine 2	storms forward onto the		place§battlefield
+1477_5	extreme_long_shot	false	action	person§marine 3	storms forward onto the		place§battlefield
+1477_6	extreme_long_shot	false	action	person§marine 4	storms forward onto the		place§battlefield
+1477_7	extreme_long_shot	false	action	person§mech	moves forward onto the		place§battlefield
+1477_8	extreme_long_shot	false	action	person§orc 11	storms onto the		place§battlefield
+1477_9	extreme_long_shot	false	action	person§orc 10	storms onto the		place§battlefield
+1477_10	extreme_long_shot	false	action	person§orc 9	storms onto the		place§battlefield
+1477_11	extreme_long_shot	false	action	person§orc 8	storms onto the		place§battlefield
+1477_12	extreme_long_shot	false	action	person§orc 7	storms onto the		place§battlefield
+1477_13	extreme_long_shot	false	action	person§orc 6	storms onto the		place§battlefield
+1477_14	extreme_long_shot	false	action	person§orc 5	storms onto the		place§battlefield
+1477_15	extreme_long_shot	false	action	person§orc 4	storms onto the		place§battlefield
+1538_1	long_shot	false	action	person§commander	storms forward onto the		place§battlefield
+1538_2	long_shot	false	action	person§marine 3	storms forward onto the		place§battlefield
+1538_3	long_shot	false	action	person§marine 4	storms forward onto the		place§battlefield
+1538_4	long_shot	false	action	person§marine 1	storms forward onto the		place§battlefield
+1538_5	long_shot	false	action	person§marine 2	storms forward onto the		place§battlefield
+1538_6	long_shot	false	action	person§mech	moves forward onto the		place§battlefield
+1538_7	long_shot	false	action	person§orc 11	storms onto the		place§battlefield
+1538_8	long_shot	false	action	person§orc 10	storms onto the		place§battlefield
+1538_9	long_shot	false	action	person§orc 9	storms onto the		place§battlefield
+1538_10	long_shot	false	action	person§orc 8	storms onto the		place§battlefield
+1598_1	medium_shot	false	action	person§orc 8	hits		person§marine 1
+1598_2	medium_shot	false	expresses	person§orc 8	furor
+1626_1	american_shot	false	action	person§commander	kills		person§orc 11
+1626_2	american_shot	false	expresses	person§commander	furor
+1645_1	full_shot	false	action	person§marine 2	moves forward	
+1645_2	full_shot	false	action	person§orc 10	hits		person§marine 2
+1645_3	full_shot	false	action	person§marine 2	falls down	
+1681_1	american_shot	false	action	person§marine 2	falls down	
+1681_2	american_shot	false	action	person§orc 9	jumps from marine 2 at		person§marine 3
+1681_3	american_shot	false	action	person§orc 9	kills		person§marine 3
+1734_1	full_shot	false	action	person§orc 9	searches for enemys	
+1752_1	american_shot	false	action	person§marine 4	shoots		person§orc 9
+1790_1	medium_shot	false	introduce	person§orc with flamethrower	
+1790_2	medium_shot	false	action	person§orc with flamethrower	burns		place§battlefield
+1790_3	medium_shot	false	expresses	person§orc with flamethrower	joy
+1840_1	long_shot	false	action	person§mech	grbs		person§orc 5
+1840_2	long_shot	false	action	person§mech	kills		person§orc 5
+1942_1	american_shot	false	action	person§commander	shoots		person§orc 6
+1942_2	american_shot	false	action	person§orc 7	hits		person§commander
+1942_3	american_shot	false	action	person§commander	turns around	
+1942_4	american_shot	false	action	person§commander	hits		person§orc 7
+2078_1	american_shot	false	action	person§orc 4	sneaks at		person§mech
+2078_2	american_shot	false	show	place§battlefield	
+2078_3	american_shot	false	action	person§another orc with axe	runs at		place§battlefield
+2078_4	american_shot	false	action	person§orc 4	sneaks at		person§mech
+2200_1	long_shot	false	action	person§orc 9	hits at		person§marine 4
+2200_2	long_shot	false	action	person§mech	explodes	
+2231_1	extreme_long_shot	false	action	person§mech	explodes	
+2300_1	american_shot	false	action	person§commander	stands up	
+2300_2	american_shot	false	introduce	object§banner	
+2300_3	american_shot	false	action	person§commander	grabs		object§banner
+2300_4	american_shot	false	action	person§commander	runs over the		place§battlefield
+2400_1	full_shot	false	action	person§orc 4	shoots at		person§commander
+2400_2	full_shot	false	action	person§orc 5	shoots at		person§commander
+2577_1	long_shot	false	action	person§commander	runs over the		place§battlefield
+2577_2	long_shot	true	action	person§orc 4	shoots at		person§commander
+2577_3	long_shot	true	action	person§orc 5	shoots at		person§commander
+2577_4	long_shot	false	action	person§commander	runs over the		place§battlefield
+2577_5	long_shot	true	action	person§orc 4	shoots at		person§commander
+2577_6	long_shot	true	action	person§orc 5	shoots at		person§commander
+2577_7	long_shot	false	action	person§commander	runs over the		place§battlefield
+2700_1	medium_shot	false	action	person§commander	gets hit	
+2700_2	medium_shot	false	action	person§commander	falls to his knees	
+2700_3	medium_shot	false	action	person§commander	plants the	in the ground	object§banner
+2847_1	extreme_long_shot	false	show	object§banner	
+2847_2	extreme_long_shot	false	show	place§battlefield	
+3438_1	detail	false	introduce	object§logo	
