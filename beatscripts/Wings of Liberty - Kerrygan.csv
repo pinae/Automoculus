@@ -1,0 +1,92 @@
+#Film:	Wings of Liberty
+#Scene:	Kerrygan
+#FPS:	24
+#Context:	
+#EntityList:	object§sign, person§Kerrygan, place§New Gettysburg on Tarsonis, object§cover, object§Kerrygan's gun, person§Arcturus Mensk, object§handwatch, person§Raynor, person§Zergling 1, person§Zergling 2, person§Zergling 3, person§Hydralisk, object§Tarsonis, object§Zerg vision, person§Zergling 4, person§Zergling 5, person§Zergling 6, person§Zergling 7, person§Zergling 8, person§Zergling 9, person§Zergling 10, person§Zergling 11, person§Zergling 12, 
+0_1	detail	false	introduce	object§sign	
+0_2	detail	false	introduce	person§Kerrygan	
+472_1	american_shot	false	introduce	place§New Gettysburg on Tarsonis	
+472_2	american_shot	false	introduce	object§cover	
+472_3	american_shot	false	action	person§Kerrygan	ducks behind		object§cover
+472_4	american_shot	false	introduce	object§Kerrygan's gun	
+472_5	american_shot	true	introduce	person§Arcturus Mensk
+472_6	american_shot	false	says	person§Kerrygan	bla	person§Arcturus Mensk
+791_1	detail	false	introduce	object§handwatch	
+791_2	detail	false	action	person§Arcturus Mensk	closes		object§handwatch
+900_1	closeup	false	show	person§Arcturus Mensk	
+900_2	closeup	false	says	person§Arcturus Mensk	bla
+900_3	closeup	false	expresses	person§Arcturus Mensk	coldheartedness
+1005_1	closeup	false	introduce	person§Raynor	
+1005_2	closeup	false	expresses	person§Raynor	appal
+1005_3	closeup	false	says	person§Raynor	bla	person§Arcturus Mensk
+1100_1	medium_shot	false	says	person§Arcturus Mensk	bla
+1185_1	medium_shot	false	action	person§Kerrygan	aims at advancing Zerg in		place§New Gettysburg on Tarsonis
+1185_2	medium_shot	false	introduce	person§Zergling 1	
+1185_3	medium_shot	false	introduce	person§Zergling 2	
+1185_4	medium_shot	false	action	person§Kerrygan	shoots at		person§Zergling 1
+1185_5	medium_shot	false	action	person§Zergling 1	falls	
+1185_6	medium_shot	false	introduce	person§Zergling 3	
+1185_7	medium_shot	false	action	person§Kerrygan	shoots at		person§Zergling 2
+1185_8	medium_shot	false	action	person§Zergling 2	falls	
+1185_9	medium_shot	false	action	person§Zergling 3	jumps over		object§cover
+1185_10	medium_shot	false	action	person§Kerrygan	turns to		person§Zergling 3
+1185_11	medium_shot	false	action	person§Kerrygan	shoots		person§Zergling 3
+1185_12	medium_shot	true	introduce	person§Hydralisk
+1185_13	medium_shot	false	action	person§Hydralisk	shoots at		person§Kerrygan
+1185_14	medium_shot	false	action	person§Kerrygan	turns towards		person§Hydralisk
+1185_15	medium_shot	false	action	person§Kerrygan	hides behind		object§cover
+1185_16	medium_shot	false	action	person§Kerrygan	shoots blindly at		person§Hydralisk
+1185_17	medium_shot	false	action	person§Kerrygan	flees	
+1579_1	closeup	false	expresses	person§Kerrygan	toughness
+1579_2	closeup	false	action	person§Kerrygan	flees, ducking behind		object§cover
+1579_3	closeup	false	action	person§Kerrygan	shoots blindly at		person§Hydralisk
+1579_4	closeup	false	action	person§Kerrygan	stops	
+1680_1	full_shot	false	action	person§Hydralisk	breaks through		object§cover
+1765_1	american_shot	false	action	person§Hydralisk	turns towards		person§Kerrygan
+1765_2	american_shot	false	says	person§Hydralisk	Roooaaar!	person§Kerrygan
+1918_1	closeup	false	expresses	person§Kerrygan	dreamlike toughness
+1918_2	closeup	false	action	person§Kerrygan	fires at		person§Hydralisk
+1972_1	closeup	false	action	person§Hydralisk	looses a jaw	
+1972_2	closeup	false	action	person§Kerrygan	fires at		person§Hydralisk
+2002_1	full_shot	false	action	person§Kerrygan	shoots		person§Hydralisk
+2002_2	full_shot	false	action	person§Hydralisk	falls	
+2265_1	closeup	false	expresses	person§Kerrygan	relief
+2265_2	closeup	false	says	person§Kerrygan	bla	person§Arcturus Mensk
+2487_1	closeup	true	says	person§Raynor	bla	person§Arcturus Mensk
+2487_2	closeup	false	says	person§Arcturus Mensk	bla	person§Raynor
+2487_3	closeup	false	says	person§Arcturus Mensk	bla
+2487_4	closeup	false	introduce	object§Tarsonis	
+2948_1	closeup	false	expresses	person§Kerrygan	confusion
+2948_2	closeup	false	says	person§Kerrygan	bla	person§Arcturus Mensk
+3140_1	extreme_long_shot	false	show	place§New Gettysburg on Tarsonis	
+3140_2	extreme_long_shot	false	show	person§Kerrygan	
+3236_1	closeup	false	expresses	person§Kerrygan	fear
+3236_2	closeup	false	introduce	object§Zerg vision	
+3236_3	closeup	false	action	person§Kerrygan	uses		object§Zerg vision
+3424_1	long_shot	false	introduce	person§Zergling 4	
+3424_2	long_shot	false	introduce	person§Zergling 5	
+3424_3	long_shot	false	introduce	person§Zergling 6	
+3424_4	long_shot	false	action	person§Zergling 6	runs towards		person§Kerrygan
+3424_5	long_shot	false	action	person§Zergling 4	runs towards		person§Kerrygan
+3424_6	long_shot	false	action	person§Zergling 5	runs towards		person§Kerrygan
+3548_1	long_shot	false	introduce	person§Zergling 7	
+3548_2	long_shot	false	introduce	person§Zergling 8	
+3548_3	long_shot	false	introduce	person§Zergling 9	
+3548_4	long_shot	false	action	person§Zergling 9	runs towards		person§Kerrygan
+3548_5	long_shot	false	action	person§Zergling 7	runs towards		person§Kerrygan
+3548_6	long_shot	false	action	person§Zergling 8	runs towards		person§Kerrygan
+3548_7	long_shot	false	introduce	person§Zergling 10	
+3548_8	long_shot	false	introduce	person§Zergling 11	
+3548_9	long_shot	false	introduce	person§Zergling 12	
+3548_10	long_shot	false	action	person§Zergling 12	runs towards		person§Kerrygan
+3548_11	long_shot	false	action	person§Zergling 10	runs towards		person§Kerrygan
+3548_12	long_shot	false	action	person§Zergling 11	runs towards		person§Kerrygan
+3629_1	closeup	false	action	person§Kerrygan	looks around	
+3629_2	closeup	false	action	person§Kerrygan	removes		object§Zerg vision
+3629_3	closeup	false	expresses	person§Kerrygan	giveup
+3629_4	closeup	false	action	person§Kerrygan	closes her eyes	
+3985_1	detail	false	action	person§Kerrygan	lets	fall to the ground	object§Kerrygan's gun
+4095_1	detail	false	action	person§Kerrygan	lets	fall to the ground	object§Kerrygan's gun
+4271_1	closeup	false	expresses	person§Kerrygan	wisdom of the unevitable death
+4271_2	closeup	false	action	person§Kerrygan	looks up to the sky	
+4398_1	extreme_long_shot	false	action	person§Kerrygan	gets surroundes by	and all the other Zerg	person§Zergling 12
