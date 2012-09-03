@@ -13,9 +13,8 @@ for filename in hostname_files:
     h_file = open(filename, 'r')
     for line in h_file.readlines():
         if len(line) > 3:
-            hosts.append(line)
+            hosts.append(line.rstrip("\n"))
     h_file.close()
-print(hosts)
 print(str(len(hosts))+" Rechner werden angepingt...")
 running_machines = []
 for host in hosts:
