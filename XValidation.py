@@ -273,7 +273,8 @@ def main():
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.53147506, gamma=2.60057621686e-05)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.61614258, gamma=2.15704131861e-05)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.81448898, gamma=1.73105463456e-05)
-    ParallelXValidation(TRAIN_FILES, scaler, True, C=1999.62466242, gamma=1.62885637292e-06)
+    #ParallelXValidation(TRAIN_FILES, scaler, True, C=1999.62466242, gamma=1.62885637292e-06)
+    ParallelXValidation(TRAIN_FILES, scaler, True, C=1999.32984556, gamma=3.03787358388e-07)
 
 if __name__ == "__main__":
     main()
