@@ -42,7 +42,7 @@ def specific_line(number):
         os.system("rm getText*")
 
 
-def calculate_missing(filename):
+def calculate_missing(filename,partno,parts):
     files = TRAIN_FILES
     reference_data, _ = getDataMatrix(files)
     scaler = preprocessing.Scaler()
@@ -52,7 +52,8 @@ def calculate_missing(filename):
     for line in m_file.readlines():
         joblist.append((float(line.split(";")[0]),float(line.split(";")[1])))
     m_file.close()
-    for C, gamma in joblist:
+    chunk_size = len(joblist)/parts
+    for C, gamma in joblist[partno*chunk_size:][:chunk_size]:
         os.system("wget http://www.pinae.net/automoculus/getText.php?text=C_is_" + str(C) + "_gamma_is_" + str(
             gamma) + "_Result_is_" + str(ParallelXValidation(files, scaler, True, C=C, gamma=gamma)))
         os.system("rm getText*")
@@ -61,8 +62,8 @@ def calculate_missing(filename):
 
 if __name__ == "__main__":
     if len(sys.argv) >= 2:
-        if sys.argv[1] == "missing" and len(sys.argv) >= 3:
-            calculate_missing(sys.argv[2])
+        if sys.argv[1] == "missing" and len(sys.argv) >= 5:
+            calculate_missing(sys.argv[2],int(sys.argv[3]),int(sys.argv[4]))
         else:
             specific_line(int(sys.argv[1]))
     else:
