@@ -1,0 +1,191 @@
+#Film:	Deus Ex
+#Scene:	Human Revolution
+#FPS:	30
+#Context:	
+#EntityList:	place§renaissance medical room, person§dream doctors, person§JC Denton, person§Icarus, object§Sun, place§appartment, object§Denton's mechanical arms, object§lighter, object§cigarette, place§city, object§Deonton's mechanical eye, person§invisible woman, place§dark street, place§street, person§policemen, person§protesters, object§jet, object§tv, object§advertizement column, person§news reporter, object§skyscraper, place§loft, person§millionaire, person§villian, person§villian 2, person§villian 3, object§medical machine, place§laboratory, person§doctor, object§dollar, person§villian 4, object§security console, object§villian 4's gun, person§police robot, person§villian 5, person§villian 6, person§villian 7, person§big guy, object§rocket launcher, person§rocket, 
+0_1	full_shot	false	introduce	place§renaissance medical room	
+0_2	full_shot	false	introduce	person§dream doctors	
+0_3	full_shot	false	introduce	person§JC Denton	
+0_4	full_shot	false	action	person§dream doctors	walk to		person§JC Denton
+60_1	full_shot	false	introduce	person§Icarus	
+80_1	full_shot	false	action	person§dream doctors	examine		person§JC Denton
+103_1	long_shot	false	action	person§Icarus	flies to the light	
+103_2	long_shot	false	introduce	object§Sun	
+124_1	full_shot	false	action	person§dream doctors	examine		person§JC Denton
+154_1	medium_shot	false	action	person§Icarus	flies towards the		object§Sun
+169_1	full_shot	false	action	person§dream doctors	examine		person§JC Denton
+206_1	detail	false	show	object§Sun	
+225_1	medium_shot	false	show	person§JC Denton	
+244_1	medium_shot	false	action	person§Icarus	wings melt because of the		object§Sun
+256_1	american_shot	false	action	person§Icarus	wings melt because of the		object§Sun
+271_1	american_shot	false	action	person§dream doctors	examine		person§JC Denton
+308_1	long_shot	false	action	person§Icarus	looses his wings	
+328_1	closeup	false	expresses	person§Icarus	pain
+340_1	american_shot	false	action	person§Icarus	falls	
+347_1	closeup	false	expresses	person§Icarus	fear
+354_1	medium_shot	false	action	person§JC Denton	wakes up	
+354_2	medium_shot	false	introduce	place§appartment	
+354_3	medium_shot	false	introduce	object§Denton's mechanical arms	
+461_1	closeup	false	action	person§JC Denton	looks at		object§Denton's mechanical arms
+461_2	closeup	true	says	person§JC Denton	bla
+633_1	detail	false	introduce	object§lighter	
+656_1	detail	false	introduce	object§cigarette	
+656_2	detail	false	action	person§JC Denton	lights		object§cigarette
+700_1	american_shot	false	action	person§JC Denton	relaxes with his		object§cigarette
+793_1	extreme_long_shot	false	introduce	place§city	
+793_2	extreme_long_shot	true	says	person§JC Denton	bla
+858_1	long_shot	false	show	place§appartment	
+858_2	long_shot	true	says	person§JC Denton	bla
+940_1	detail	false	introduce	object§Deonton's mechanical eye	
+940_2	detail	true	says	person§JC Denton	bla
+970_1	extreme_long_shot	false	show	place§city	
+970_2	extreme_long_shot	true	says	person§JC Denton	bla
+1038_1	american_shot	false	introduce	person§invisible woman	
+1038_2	american_shot	false	introduce	place§dark street	
+1038_3	american_shot	true	says	person§JC Denton	bla
+1038_4	american_shot	false	action	person§invisible woman	walks the		place§dark street
+1038_5	american_shot	false	action	person§invisible woman	gets visible	
+1096_1	detail	false	show	object§Denton's mechanical arms	
+1096_2	detail	false	action	person§JC Denton	morphs		object§Denton's mechanical arms
+1096_3	detail	false	action	person§JC Denton	shoots with		object§Denton's mechanical arms
+1208_1	long_shot	false	introduce	place§street	
+1208_2	long_shot	false	introduce	person§policemen	
+1208_3	long_shot	false	action	person§policemen	advance in the		place§street
+1242_1	american_shot	false	introduce	person§protesters	
+1242_2	american_shot	false	action	person§policemen	suppress		person§protesters
+1302_1	detail	false	introduce	object§jet	
+1328_1	long_shot	false	action	person§JC Denton	flies		object§jet
+1389_1	extreme_long_shot	false	show	place§city	
+1389_2	extreme_long_shot	true	says	person§JC Denton	bla
+1389_3	extreme_long_shot	false	action	person§JC Denton	flies		object§jet
+1498_1	detail	false	introduce	object§tv	
+1563_1	long_shot	false	introduce	object§advertizement column	
+1563_2	long_shot	false	introduce	person§news reporter	
+1563_3	long_shot	false	says	person§news reporter	bla...
+1671_1	long_shot	false	action	person§JC Denton	walks in the		place§dark street
+1671_2	long_shot	true	says	person§news reporter	...bla
+1671_3	long_shot	false	introduce	object§skyscraper	
+1791_1	detail	false	show	object§skyscraper	
+1826_1	long_shot	false	introduce	place§loft	
+1826_2	long_shot	false	introduce	person§millionaire	
+1826_3	long_shot	false	action	person§millionaire	looks at		place§city
+1826_4	long_shot	false	says	person§millionaire	These people, they're like ghosts.	person§JC Denton
+1961_1	american_shot	false	show	person§JC Denton	
+1961_2	american_shot	false	says	person§millionaire	bla	person§JC Denton
+2028_1	closeup	false	expresses	person§millionaire	disgust
+2028_2	closeup	false	says	person§millionaire	bla	person§JC Denton
+2099_1	medium_shot	false	says	person§millionaire	bla	person§JC Denton
+2099_2	medium_shot	false	action	person§JC Denton	looks at		person§millionaire
+2150_1	long_shot	false	action	person§JC Denton	flies away with		object§jet
+2150_2	long_shot	false	action	person§millionaire	looks at		place§city
+2200_1	extreme_long_shot	false	action	person§JC Denton	lands		object§jet
+2200_2	extreme_long_shot	true	says	person§JC Denton	bla
+2289_1	american_shot	false	show	person§JC Denton	
+2289_2	american_shot	false	show	object§Denton's mechanical arms	
+2305_1	closeup	false	introduce	person§villian	
+2305_2	closeup	false	action	person§JC Denton	hits		person§villian
+2320_1	american_shot	false	show	person§JC Denton	
+2320_2	american_shot	false	show	object§Denton's mechanical arms	
+2334_1	closeup	false	action	person§JC Denton	hits		person§villian
+2350_1	american_shot	false	show	person§JC Denton	
+2350_2	american_shot	false	show	object§Denton's mechanical arms	
+2366_1	full_shot	false	introduce	person§villian 2	
+2366_2	full_shot	false	action	person§villian 2	falls through a window	
+2388_1	american_shot	false	introduce	person§villian 3	
+2388_2	american_shot	false	action	person§villian 3	flees from		person§JC Denton
+2388_3	american_shot	false	action	person§JC Denton	grabs		person§villian 3
+2398_1	medium_shot	false	action	person§JC Denton	pulls up		person§villian 3
+2417_1	medium_shot	false	says	person§villian 3	Aaaah!	person§villian 2
+2435_1	closeup	false	expresses	person§villian 3	fear
+2457_1	detail	false	introduce	object§medical machine	
+2469_1	long_shot	false	introduce	place§laboratory	
+2469_2	long_shot	false	introduce	person§doctor	
+2484_1	full_shot	false	action	person§doctor	woks at		person§JC Denton
+2503_1	american_shot	false	action	person§doctor	woks at		person§JC Denton
+2525_1	detail	false	show	object§medical machine	
+2537_1	full_shot	false	action	person§doctor	woks at		person§JC Denton
+2537_2	full_shot	false	expresses	person§JC Denton	pain
+2592_1	detail	false	show	object§Denton's mechanical arms	
+2650_1	closeup	false	show	person§JC Denton	
+2650_2	closeup	false	expresses	person§JC Denton	determination
+2700_1	detail	false	introduce	object§dollar	
+2836_1	long_shot	false	action	person§JC Denton	makes himself invisible	
+2836_2	long_shot	false	show	place§dark street	
+2836_3	long_shot	false	introduce	person§villian 4	
+2895_1	full_shot	false	introduce	object§security console	
+2895_2	full_shot	false	action	person§villian 4	hacks		object§security console
+2924_1	closeup	false	action	person§villian 4	turns around	
+2924_2	closeup	false	introduce	object§villian 4's gun	
+2924_3	closeup	false	action	person§villian 4	pulls		object§villian 4's gun
+2939_1	medium_shot	false	action	person§JC Denton	makes himself visible	
+2939_2	medium_shot	false	expresses	person§JC Denton	determination
+2973_1	closeup	false	action	person§villian 4	looses control of his hands	
+2973_2	closeup	false	action	person§villian 4	threatens himself with		object§villian 4's gun
+2973_3	closeup	false	says	person§villian 4	Help!	person§JC Denton
+3012_1	medium_shot	false	action	person§JC Denton	tries to grab		object§villian 4's gun
+3035_1	closeup	false	expresses	person§villian 4	terror
+3035_2	closeup	false	action	person§villian 4	shoots himself with		object§villian 4's gun
+3060_1	medium_shot	false	action	person§JC Denton	uses		object§security console
+3081_1	detail	false	show	object§security console	
+3108_1	american_shot	false	action	person§JC Denton	stabs		person§villian
+3150_1	medium_shot	false	action	person§JC Denton	hits		person§villian 2
+3170_1	american_shot	false	action	person§JC Denton	kicks		person§villian 2
+3190_1	closeup	false	expresses	person§JC Denton	coolness
+3210_1	medium_shot	false	action	person§JC Denton	hits		person§villian 3
+3214_1	detail	false	show	object§Denton's mechanical arms	
+3224_1	medium_shot	false	action	person§JC Denton	readies		object§Denton's mechanical arms
+3224_2	medium_shot	false	show	object§Denton's mechanical arms	
+3263_1	american_shot	false	action	person§JC Denton	throws and rotates		person§villian 3
+3330_1	closeup	false	expresses	person§JC Denton	coldheartedness
+3359_1	long_shot	false	show	place§street	
+3359_2	long_shot	false	show	person§protesters	
+3388_1	long_shot	false	action	person§policemen	fight		person§protesters
+3388_2	long_shot	false	action	person§protesters	fight		person§policemen
+3427_1	full_shot	false	action	person§policemen	shoot		person§protesters
+3427_2	full_shot	false	introduce	person§police robot	
+3427_3	full_shot	false	action	person§protesters	throw molotow cocktails at		person§police robot
+3427_4	full_shot	false	action	person§police robot	shoots at		person§protesters
+3551_1	american_shot	false	show	place§dark street	
+3551_2	american_shot	false	introduce	person§villian 5	
+3551_3	american_shot	false	action	person§JC Denton	shoots		person§villian 5
+3570_1	closeup	false	expresses	person§JC Denton	coolness
+3570_2	closeup	false	action	person§JC Denton	shoots	
+3586_1	full_shot	false	action	person§villian 5	falls	
+3586_2	full_shot	false	introduce	person§villian 6	
+3586_3	full_shot	false	introduce	person§villian 7	
+3600_1	american_shot	false	action	person§JC Denton	stabs		person§villian 6
+3679_1	long_shot	false	show	place§street	
+3679_2	long_shot	false	action	person§protesters	flee	
+3702_1	full_shot	false	action	person§policemen	use gas against		person§protesters
+3739_1	medium_shot	false	introduce	person§big guy	
+3739_2	medium_shot	false	action	person§big guy	headbutts		person§JC Denton
+3800_1	closeup	false	action	person§big guy	lifts		person§JC Denton
+3800_2	closeup	false	says	person§big guy	I take you to hell!	person§JC Denton
+3835_1	american_shot	false	show	place§street	
+3835_2	american_shot	false	action	person§policemen	shoot		person§protesters
+3835_3	american_shot	false	action	person§protesters	fall	
+3835_4	american_shot	true	says	person§news reporter	bla
+3909_1	long_shot	false	action	person§policemen	wave at		person§police robot
+3909_2	long_shot	false	action	person§policemen	shoot at		person§protesters
+3946_1	long_shot	false	show	place§dark street	
+3946_2	long_shot	false	action	person§big guy	throws		person§JC Denton
+3980_1	medium_shot	false	action	person§big guy	fires at		person§JC Denton
+4022_1	american_shot	false	action	person§big guy	jumps at		person§JC Denton
+4050_1	long_shot	false	action	person§big guy	lands on		person§JC Denton
+4050_2	long_shot	false	action	person§big guy	hits		person§JC Denton
+4080_1	detail	false	introduce	object§rocket launcher	
+4100_1	long_shot	false	show	object§jet	
+4100_2	long_shot	false	introduce	person§rocket	
+4100_3	long_shot	false	action	person§rocket	hits		object§jet
+4134_1	detail	false	show	object§jet	
+4154_1	full_shot	false	action	person§rocket	bobs jet into the		place§city
+4187_1	medium_shot	false	action	person§JC Denton	jumps out of		object§jet
+4204_1	detail	false	show	object§jet	exploding
+4209_1	long_shot	false	action	person§JC Denton	lands in		place§dark street
+4241_1	closeup	false	action	person§JC Denton	stands up	
+4241_2	closeup	false	expresses	person§JC Denton	coolness
+4241_3	closeup	true	says	person§JC Denton	bla
+4318_1	closeup	false	action	person§JC Denton	runs	
+4337_1	medium_shot	false	action	person§JC Denton	hits a wall	
+4550_1	american_shot	false	action	person§JC Denton	kills		person§villian 7
+4550_2	american_shot	false	action	person§JC Denton	walks away	
