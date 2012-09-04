@@ -1,0 +1,226 @@
+#Film:	Star Wars The Old Republic
+#Scene:	Jedi vs Sith
+#FPS:	30
+#Context:	
+#EntityList:	place§space, object§Coruscant, person§spaceship, person§sith lord, place§jedi council, person§sith apprentice, person§guards, object§sith lord's lightsaber, person§other guards, person§headhuntress, object§headhuntresses helmet, place§great hall, person§jedi 1, person§jedi 2, person§jedi 3, person§third group of guards, object§headhuntresses radar, person§jedi master, person§jedi 4, person§jedi 5, object§jedi master's lightsaber, person§helping sith, person§other sith, person§droid, object§tie fighter, 
+0_1	extreme_long_shot	false	introduce	place§space	
+0_2	extreme_long_shot	false	introduce	object§Coruscant	
+0_3	extreme_long_shot	false	introduce	person§spaceship	
+0_4	extreme_long_shot	false	action	person§spaceship	flies towards		object§Coruscant
+0_5	extreme_long_shot	true	introduce	person§sith lord
+0_6	extreme_long_shot	true	says	person§sith lord	Our time has come.
+279_1	extreme_long_shot	false	introduce	place§jedi council	
+279_2	extreme_long_shot	true	says	person§sith lord	300 years we prepared. We were strong.
+434_1	long_shot	true	says	person§sith lord	While you rested in your cradle.
+434_2	long_shot	false	show	person§sith lord	
+434_3	long_shot	false	introduce	person§sith apprentice	
+434_4	long_shot	false	action	person§sith lord	walks to		place§jedi council
+434_5	long_shot	false	action	person§sith apprentice	walks to		place§jedi council
+604_1	long_shot	true	says	person§sith lord	Believing you people...
+604_2	long_shot	false	action	person§sith lord	walks to		place§jedi council
+604_3	long_shot	false	action	person§sith apprentice	walks to		place§jedi council
+604_4	long_shot	false	introduce	person§guards	
+719_1	full_shot	true	says	person§sith lord	... were protected.
+719_2	full_shot	false	action	person§guards	threaten		person§sith lord
+798_1	medium_shot	false	action	person§sith apprentice	attacks		person§guards
+798_2	medium_shot	false	introduce	object§sith lord's lightsaber	
+798_3	medium_shot	false	action	person§sith lord	kills		person§guards
+878_1	medium_shot	false	introduce	person§other guards	
+878_2	medium_shot	false	action	person§other guards	aim at		person§sith lord
+878_3	medium_shot	false	action	person§sith lord	kills		person§other guards
+898_1	full_shot	false	action	person§sith lord	catches		object§sith lord's lightsaber
+898_2	full_shot	false	action	person§sith lord	enters		place§jedi council
+898_3	full_shot	false	action	person§sith apprentice	enters		place§jedi council
+921_1	medium_shot	false	introduce	person§headhuntress	
+921_2	medium_shot	false	action	person§headhuntress	nods to		person§sith lord
+1000_1	closeup	false	introduce	object§headhuntresses helmet	
+1000_2	closeup	false	action	person§headhuntress	puts on		object§headhuntresses helmet
+1089_1	long_shot	false	action	person§headhuntress	flies to the top of the		place§jedi council
+1089_2	long_shot	false	action	person§headhuntress	enters		place§jedi council
+1255_1	long_shot	true	says	person§sith lord	You were trusted to lead the republic.
+1255_2	long_shot	false	introduce	place§great hall	
+1255_3	long_shot	false	action	person§sith lord	walks into the		place§great hall
+1255_4	long_shot	false	action	person§sith apprentice	walks into the		place§great hall
+1374_1	extreme_long_shot	true	says	person§sith lord	But you were decieved.
+1374_2	extreme_long_shot	false	action	person§sith lord	walks into the		place§great hall
+1374_3	extreme_long_shot	false	action	person§sith apprentice	walks into the		place§great hall
+1374_4	extreme_long_shot	false	introduce	person§jedi 1	
+1374_5	extreme_long_shot	false	introduce	person§jedi 2	
+1374_6	extreme_long_shot	false	introduce	person§jedi 3	
+1467_1	american_shot	false	action	person§headhuntress	steps forward	
+1467_2	american_shot	false	introduce	person§third group of guards	
+1467_3	american_shot	false	action	person§headhuntress	shoots		person§third group of guards
+1521_1	full_shot	false	action	person§headhuntress	shoots		person§third group of guards
+1522_1	detail	false	introduce	object§headhuntresses radar	
+1628_1	long_shot	false	introduce	person§jedi master	
+1628_2	long_shot	false	introduce	person§jedi 4	
+1628_3	long_shot	false	introduce	person§jedi 5	
+1628_4	long_shot	false	action	person§jedi 1	arms himself with a lightsaber	
+1628_5	long_shot	false	action	person§jedi 3	arms himself with a lightsaber	
+1628_6	long_shot	false	introduce	object§jedi master's lightsaber	
+1628_7	long_shot	false	action	person§jedi 2	arms himself with a lightsaber	
+1772_1	closeup	false	expresses	person§jedi master	determination
+1811_1	detail	false	show	person§spaceship	
+1855_1	closeup	false	action	person§jedi 1	steps back	
+1855_2	closeup	false	action	person§jedi 3	steps back	
+1855_3	closeup	false	expresses	person§jedi master	concern
+1906_1	full_shot	false	action	person§spaceship	hits		place§jedi council
+1913_1	full_shot	false	action	person§spaceship	penetrates the		place§great hall
+1965_1	long_shot	false	action	person§spaceship	goes down in the		place§great hall
+1987_1	extreme_long_shot	false	action	person§spaceship	goes down in the		place§great hall
+2014_1	full_shot	false	action	person§jedi 4	flees from		person§spaceship
+2036_1	long_shot	false	action	person§spaceship	goes down in the		place§great hall
+2059_1	american_shot	false	action	person§spaceship	goes down in the		place§great hall
+2130_1	long_shot	false	action	person§spaceship	demolishes the		place§great hall
+2186_1	long_shot	false	action	person§spaceship	comes to a halt behind		person§sith lord
+2186_2	long_shot	true	says	person§sith lord	You assumed, no force could challenge you.
+2432_1	american_shot	false	action	person§sith lord	activates		object§sith lord's lightsaber
+2504_1	long_shot	false	introduce	person§helping sith	
+2504_2	long_shot	false	action	person§helping sith	steps forward	
+2504_3	long_shot	false	introduce	person§other sith	
+2504_4	long_shot	false	action	person§other sith	activate their lightsabers	
+2660_1	closeup	false	says	person§sith lord	Finally, we have returned.
+2764_1	extreme_long_shot	false	action	person§other sith	attack		person§jedi 1
+2764_2	extreme_long_shot	false	action	person§jedi 1	storms towards		person§other sith
+2764_3	extreme_long_shot	false	action	person§other sith	attack		person§jedi 2
+2764_4	extreme_long_shot	false	action	person§jedi 2	storms towards		person§other sith
+2764_5	extreme_long_shot	false	action	person§other sith	attack		person§jedi 3
+2764_6	extreme_long_shot	false	action	person§jedi 3	storms towards		person§other sith
+2764_7	extreme_long_shot	false	action	person§other sith	attack		person§jedi 4
+2764_8	extreme_long_shot	false	action	person§jedi 4	storms towards		person§other sith
+2764_9	extreme_long_shot	false	action	person§jedi 5	storms towards		person§helping sith
+2879_1	american_shot	false	action	person§jedi 5	fights	
+2879_2	american_shot	false	action	person§other sith	fight	
+2879_3	american_shot	false	action	person§jedi 2	fights	
+2879_4	american_shot	false	action	person§helping sith	fights	
+2879_5	american_shot	false	action	person§jedi 4	fights	
+2879_6	american_shot	false	action	person§sith apprentice	fights	
+2879_7	american_shot	false	action	person§jedi 3	fights	
+2949_1	full_shot	false	action	person§jedi 1	attacks		person§sith apprentice
+2949_2	full_shot	false	action	person§sith apprentice	evades		person§jedi 1
+2979_1	full_shot	false	action	person§sith lord	fights		person§jedi 3
+3022_1	american_shot	false	action	person§jedi 2	hits		person§helping sith
+3028_1	medium_shot	false	action	person§jedi 4	ducks away from		person§other sith
+3028_2	medium_shot	false	action	person§headhuntress	shoots at		person§jedi 5
+3049_1	full_shot	false	action	person§jedi master	kills		person§helping sith
+3049_2	full_shot	false	action	person§jedi master	hits		person§other sith
+3127_1	american_shot	false	action	person§sith lord	kills		person§jedi 5
+3140_1	medium_shot	false	action	person§jedi 4	slashes at		person§sith lord
+3140_2	medium_shot	false	action	person§sith lord	jumps over the attack of		person§jedi 4
+3189_1	american_shot	false	action	person§sith lord	runs to		person§jedi master
+3249_1	medium_shot	false	action	person§sith apprentice	gets shot	
+3296_1	american_shot	false	action	person§jedi 4	attacks		person§sith apprentice
+3310_1	medium_shot	false	action	person§sith lord	moves	with the force	person§jedi 4
+3365_1	full_shot	false	action	person§jedi 4	falls down	
+3378_1	american_shot	false	action	person§headhuntress	shoots at		person§jedi 4
+3410_1	closeup	false	action	person§sith lord	casts lightning	
+3410_2	closeup	false	expresses	person§sith lord	frenzy
+3476_1	medium_shot	false	action	person§headhuntress	turns around	
+3498_1	long_shot	false	action	person§headhuntress	throws flames at		person§jedi 2
+3498_2	long_shot	false	action	person§headhuntress	throws flames at		person§jedi 3
+3498_3	long_shot	false	action	person§headhuntress	throws flames at		person§jedi 1
+3529_1	american_shot	false	action	person§jedi master	kills		person§headhuntress
+3576_1	closeup	false	introduce	person§droid	
+3576_2	closeup	false	says	person§droid	01001001010	person§jedi master
+3576_3	closeup	false	action	person§jedi master	looks backwards	
+3576_4	closeup	false	expresses	person§jedi master	tension
+3703_1	medium_shot	false	action	person§sith lord	grabs		person§jedi 1
+3703_2	medium_shot	false	action	person§sith lord	lifts		person§jedi 1
+3735_1	american_shot	false	action	person§jedi master	attacks		person§sith lord
+3735_2	american_shot	false	action	person§sith lord	evades		person§jedi master
+3735_3	american_shot	false	action	person§sith lord	hits		person§jedi master
+3735_4	american_shot	false	action	person§jedi master	blocks		person§sith lord
+3856_1	full_shot	false	action	person§sith lord	hits		person§jedi master
+3856_2	full_shot	false	action	person§jedi master	blocks		person§sith lord
+3856_3	full_shot	false	action	person§jedi master	hits		person§sith lord
+3856_4	full_shot	false	action	person§sith lord	blocks		person§jedi master
+3856_5	full_shot	false	action	person§sith lord	hits		person§jedi master
+3856_6	full_shot	false	action	person§jedi master	evades		person§sith lord
+3911_1	long_shot	false	action	person§sith lord	hits		person§jedi master
+3911_2	long_shot	false	action	person§jedi master	blocks		person§sith lord
+3911_3	long_shot	false	action	person§jedi master	hits		person§sith lord
+3911_4	long_shot	false	action	person§sith lord	blocks		person§jedi master
+3911_5	long_shot	false	action	person§sith lord	hits		person§jedi master
+3911_6	long_shot	false	action	person§jedi master	evades		person§sith lord
+3911_7	long_shot	false	action	person§jedi master	makes a salto	
+3911_8	long_shot	false	action	person§sith lord	kicks		person§jedi master
+4000_1	full_shot	false	action	person§jedi master	kills		person§other sith
+4000_2	full_shot	false	action	person§jedi master	faces		person§sith lord
+4024_1	full_shot	false	action	person§jedi master	hits		person§sith lord
+4024_2	full_shot	false	action	person§sith lord	blocks		person§jedi master
+4024_3	full_shot	false	action	person§sith lord	hits		person§jedi master
+4024_4	full_shot	false	action	person§jedi master	evades		person§sith lord
+4024_5	full_shot	false	action	person§sith lord	hits		person§jedi master
+4024_6	full_shot	false	action	person§jedi master	blocks		person§sith lord
+4024_7	full_shot	false	action	person§jedi master	hits		person§sith lord
+4024_8	full_shot	false	action	person§sith lord	blocks		person§jedi master
+4056_1	american_shot	false	action	person§jedi master	hits		person§sith lord
+4056_2	american_shot	false	action	person§sith lord	blocks		person§jedi master
+4056_3	american_shot	false	action	person§sith lord	hits		person§jedi master
+4056_4	american_shot	false	action	person§jedi master	evades		person§sith lord
+4056_5	american_shot	false	action	person§sith lord	hits		person§jedi master
+4056_6	american_shot	false	action	person§jedi master	blocks		person§sith lord
+4056_7	american_shot	false	action	person§jedi master	hits		person§sith lord
+4056_8	american_shot	false	action	person§sith lord	blocks		person§jedi master
+4129_1	long_shot	false	action	person§sith lord	throws	with the force	person§jedi master
+4165_1	long_shot	false	action	person§jedi master	hits the grond	
+4165_2	long_shot	false	action	person§sith lord	jumps after		person§jedi master
+4165_3	long_shot	false	says	person§sith lord	Aaaaaaa!	person§jedi master
+4286_1	american_shot	false	action	person§jedi master	jumps away	
+4286_2	american_shot	false	action	person§sith lord	stabs the ground	
+4300_1	full_shot	false	action	person§jedi master	attacks		person§sith lord
+4388_1	closeup	false	expresses	person§jedi master	determination
+4402_1	long_shot	false	action	person§sith lord	stands up	
+4402_2	long_shot	false	action	person§jedi master	runs at		person§sith lord
+4416_1	full_shot	false	action	person§jedi master	jumps at		person§sith lord
+4416_2	full_shot	false	action	person§sith lord	blocks		person§jedi master
+4416_3	full_shot	false	action	person§sith lord	hits		person§jedi master
+4416_4	full_shot	false	action	person§jedi master	evades		person§sith lord
+4416_5	full_shot	false	action	person§sith lord	hits		person§jedi master
+4416_6	full_shot	false	action	person§jedi master	blocks		person§sith lord
+4416_7	full_shot	false	action	person§jedi master	hits		person§sith lord
+4416_8	full_shot	false	action	person§sith lord	blocks		person§jedi master
+4416_9	full_shot	false	action	person§sith lord	hits		person§jedi master
+4416_10	full_shot	false	action	person§jedi master	evades		person§sith lord
+4416_11	full_shot	false	action	person§sith lord	hits		person§jedi master
+4416_12	full_shot	false	action	person§jedi master	blocks		person§sith lord
+4416_13	full_shot	false	action	person§jedi master	hits		person§sith lord
+4416_14	full_shot	false	action	person§sith lord	blocks		person§jedi master
+4503_1	long_shot	false	action	person§jedi master	hits		person§sith lord
+4503_2	long_shot	false	action	person§sith lord	blocks		person§jedi master
+4503_3	long_shot	false	action	person§sith lord	hits		person§jedi master
+4503_4	long_shot	false	action	person§jedi master	evades		person§sith lord
+4503_5	long_shot	false	action	person§sith lord	hits		person§jedi master
+4503_6	long_shot	false	action	person§jedi master	blocks		person§sith lord
+4503_7	long_shot	false	action	person§jedi master	hits		person§sith lord
+4503_8	long_shot	false	action	person§sith lord	blocks		person§jedi master
+4574_1	medium_shot	false	action	person§sith lord	hits		person§jedi master
+4574_2	medium_shot	false	action	person§jedi master	evades		person§sith lord
+4574_3	medium_shot	false	action	person§sith lord	hits		person§jedi master
+4574_4	medium_shot	false	action	person§jedi master	blocks		person§sith lord
+4574_5	medium_shot	false	action	person§jedi master	hits		person§sith lord
+4574_6	medium_shot	false	action	person§sith lord	blocks		person§jedi master
+4619_1	long_shot	false	action	person§jedi master	hits		person§sith lord
+4619_2	long_shot	false	action	person§sith lord	evades		person§jedi master
+4638_1	american_shot	false	action	person§jedi master	hits		person§sith lord
+4638_2	american_shot	false	action	person§sith lord	blocks		person§jedi master
+4638_3	american_shot	false	action	person§sith lord	hits		person§jedi master
+4638_4	american_shot	false	action	person§jedi master	evades		person§sith lord
+4638_5	american_shot	false	action	person§sith lord	hits		person§jedi master
+4638_6	american_shot	false	action	person§jedi master	blocks		person§sith lord
+4638_7	american_shot	false	action	person§jedi master	hits		person§sith lord
+4638_8	american_shot	false	action	person§sith lord	blocks		person§jedi master
+4650_1	closeup	false	action	person§sith lord	stabs		person§jedi master
+4650_2	closeup	false	expresses	person§jedi master	pain
+4650_3	closeup	false	says	person§sith lord	You were decieved.	person§jedi master
+4758_1	detail	false	show	object§jedi master's lightsaber	
+4758_2	detail	true	says	person§sith lord	And now, your republic...	person§jedi master
+4892_1	closeup	false	expresses	person§jedi master	misery and pain
+4892_2	closeup	true	says	person§sith lord	... shall fall.	person§jedi master
+4975_1	long_shot	false	action	person§sith lord	turns waway from		person§jedi master
+5062_1	extreme_long_shot	false	action	person§jedi master	falls to his knees	
+5062_2	extreme_long_shot	false	action	person§jedi master	falls to the ground	
+5062_3	extreme_long_shot	false	show	object§Coruscant	
+5062_4	extreme_long_shot	false	introduce	object§tie fighter	
+5247_1	extreme_long_shot	false	show	place§jedi council	destroyed
+5354_1	long_shot	false	action	person§sith lord	walks away	
