@@ -29,6 +29,7 @@ def main():
     file.writelines(lines)
     file.close()
 
+
 def specific_line(number):
     files = TRAIN_FILES
     reference_data, _ = getDataMatrix(files)
@@ -57,8 +58,6 @@ def calculate_missing(filename,partno,parts):
         os.system("wget http://www.pinae.net/automoculus/getText.php?text=C_is_" + str(C) + "_gamma_is_" + str(
             gamma) + "_Result_is_" + str(ParallelXValidation(files, scaler, True, C=C, gamma=gamma)))
         os.system("rm getText*")
-
-
 
 if __name__ == "__main__":
     if len(sys.argv) >= 2:
