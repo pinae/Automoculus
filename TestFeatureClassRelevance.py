@@ -13,7 +13,7 @@ from Features import getAllFeatureClasses
 from TuneParametersWithOptimizer import tuneParametersForSVM
 
 def TestFeatureClassRelevance(number = None):
-    files = TRAIN_FILES[:2]
+    files = TRAIN_FILES
     feature_Classes = getAllFeatureClasses()
     results = []
     if number:
