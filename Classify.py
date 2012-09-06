@@ -13,14 +13,14 @@ from Config import ACTION, SAYS, INTRODUCE, EXPRESS, SHOW
 
 # =============================== Methods ======================================
 
-def getDataMatrix(file_set, shot=True):
+def getDataMatrix(file_set, shot=True, leave_out_class=None):
     """
     Returns an Numpy-Array with the feature_lines converted from all the beatscripts mentioned in files.
     """
     matrix = []
     classes = []
     for file in file_set:
-        feature_lines = getFeatureLinesFromFile(file, shot)
+        feature_lines = getFeatureLinesFromFile(file, shot, leave_out_class=leave_out_class)
         for line in feature_lines:
             classes.append(SHOT_NAMES.index(line.pop()))
             matrix.append(np.array(line))

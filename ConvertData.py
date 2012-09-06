@@ -30,7 +30,7 @@ def createDataLine(context, block, leaveout=-1):
     return dataLine
 
 
-def getFeatureLine(context, block, shot, lastShotId, leave_out=-1):
+def getFeatureLine(context, block, shot, lastShotId, leave_out_class=None):
     """
     This function creates a featureLine. This is done by calculating getNumbers() for all Feature-Classes in
      Features.py and appending the desired class. A featureLine consists of several Numbers and a String at the
@@ -39,11 +39,9 @@ def getFeatureLine(context, block, shot, lastShotId, leave_out=-1):
     line = []
     featureClassList = Features.getAllFeatureClasses()
     context = Features.createBeatList(context, block)
-    for featureClass in featureClassList:
+    for featureClass in [x for x in featureClassList if x != leave_out_class]:
         feature = featureClass(context, block)
         line += feature.getNumbers()
-    if leave_out >= 0:
-        line.pop(leave_out)
     if shot:
         line.append(SHOT_NAMES[block[0].shot])
     else:#is there a cut?
@@ -51,24 +49,22 @@ def getFeatureLine(context, block, shot, lastShotId, leave_out=-1):
     return line
 
 
-def getFeatureNames(leave_out=-1):
+def getFeatureNames(leave_out_class=None):
     names = []
     featureClassList = Features.getAllFeatureClasses()
     context = createContext()
     dummy_beat = Beat("0_1\tfull_shot\tfalse\tintroduce\tperson§Nobody", context)
     context = Features.createBeatList(context, [dummy_beat])
     Features.initializeContextVars(context)
-    for featureClass in featureClassList:
+    for featureClass in [x for x in featureClassList if x != leave_out_class]:
         feature = featureClass(context, [dummy_beat])
         names += feature.getNames()
         #print(len(names))
     #print(names[0])
-    if leave_out >= 0:
-        names.pop(leave_out)
     return names
 
 
-def createFeatureLines(context, beatList, shot, leave_out=-1):
+def createFeatureLines(context, beatList, shot, leave_out_class=None):
     """
     Returns the list of featureLines converted from the Beats in beatList
     """
@@ -77,18 +73,18 @@ def createFeatureLines(context, beatList, shot, leave_out=-1):
     Features.initializeContextVars(context)
     lastShotId = -1
     for block in blockList:
-        featureLines.append(getFeatureLine(context, block, shot, lastShotId, leave_out))
+        featureLines.append(getFeatureLine(context, block, shot, lastShotId, leave_out_class))
         context["BygoneBlocks"].append(block)
         lastShotId = block[-1].shotId
     return featureLines
 
 
-def getFeatureLinesFromFile(file, shot, leave_out=-1):
+def getFeatureLinesFromFile(file, shot, leave_out_class=None):
     """
     Returns a list of featureLines converted from the beatscript given in file.
     """
     context, beatList = getContextAndBeatListFromFile(file)
-    return createFeatureLines(context, beatList, shot, leave_out)
+    return createFeatureLines(context, beatList, shot, leave_out_class)
 
 
 def getFeatureLinesFromFileAndModify(file, shot, leave_out=-1):
@@ -134,15 +130,16 @@ def applyDecisionsToBeatscript(context, blockList, decisions):
     return lastShotId, context, blockList
 
 
-def getSingleFeatureLineFromFile(file, decisions, shot, leave_out=-1):
+def getSingleFeatureLineFromFile(file, decisions, shot, leave_out_class=None):
     beatList, context = getContextAndBeatListFromFile(file)
     blockList = coalesceBeats(beatList)
     Features.initializeContextVars(context)
     lastShotId, context, blockList = applyDecisionsToBeatscript(context, blockList, decisions)
-    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
+    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out_class)
     return featureLine
 
-def getSingleFeatureLine(context, blockList, decisions, shot, leave_out=-1):
+
+def getSingleFeatureLine(context, blockList, decisions, shot, leave_out_class=None):
     """
     Returns a featureLine based on the context and the decisions.
     """
@@ -155,7 +152,7 @@ def getSingleFeatureLine(context, blockList, decisions, shot, leave_out=-1):
     #    for beat in block:
     #        sout += SHOT_NAMES[beat.shot] + ",\t"
     #    print(sout)
-    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out)
+    featureLine = getFeatureLine(context, blockList[len(decisions)], shot, lastShotId, leave_out_class)
     return featureLine
 
 

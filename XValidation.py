@@ -13,12 +13,13 @@ from Config import TRAIN_FILES, SHOT_NAMES
 from ConvertData import getSingleFeatureLine
 
 
-def calculateDistributionAndClassification(classifier, context, blocks, decisions, scaler, shot_or_cut=True, returnQueue=None):
+def calculateDistributionAndClassification(classifier, context, blocks, decisions, scaler, shot_or_cut=True,
+                                           returnQueue=None, leave_out_class=None):
     """
     Calculates a distribution using the given classifier. From that distribution the highest Value is selected as
      classification. Both distribution and classification are returned.
     """
-    feature_line = getSingleFeatureLine(context, blocks, decisions, shot_or_cut)
+    feature_line = getSingleFeatureLine(context, blocks, decisions, shot_or_cut, leave_out_class=leave_out_class)
     feature_line.pop()
     #feature_vector = np.array(feature_line, dtype=np.float64)
     feature_vector = scaler.transform(np.array([feature_line]))
@@ -33,13 +34,13 @@ def calculateDistributionAndClassification(classifier, context, blocks, decision
     return distribution, classification
 
 
-def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=None, gamma=None):
+def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=None, gamma=None, leave_out_class=None):
     """
     This function trains with all files in files except file, which is used for testing. The performance of the test
     is returned.
     """
     training_set = [f for f in files if f != file]
-    training_data, training_data_classes = getDataMatrix(training_set)
+    training_data, training_data_classes = getDataMatrix(training_set, leave_out_class=leave_out_class)
     training_data = scaler.transform(training_data, training_data_classes)
     trained_svm = trainSVM(training_data, training_data_classes, C=C, gamma=gamma)
     context, beatList = getContextAndBeatListFromFile(file)
@@ -58,7 +59,8 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=No
             decisions = []
             for i in range(len(part_blockList)-1):
                 decisions.append(part_blockList[i][-1].shot)
-        svm_distribution, svm_classification = calculateDistributionAndClassification(trained_svm, deepcopy(context), part_blockList, decisions, scaler, True)
+        svm_distribution, svm_classification = calculateDistributionAndClassification(trained_svm, deepcopy(context),
+            part_blockList, decisions, scaler, shot_or_cut=True, leave_out_class=leave_out_class)
         boost_classification = svm_classification
         if not fake_decisions:
             decisions.append(boost_classification)
@@ -84,7 +86,7 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=No
     return_queue.close()
 
 
-def ParallelXValidation(files, scaler, fake_decisions = False, C=None, gamma=None):
+def ParallelXValidation(files, scaler, fake_decisions = False, C=None, gamma=None, leave_out_class=None):
     """
     Since the decisions of the classifiers during classifying a beatscript are used this is not a classical
      cross-validation. Instead the training is done with all but one Training files and the remaining beatscript
@@ -103,7 +105,7 @@ def ParallelXValidation(files, scaler, fake_decisions = False, C=None, gamma=Non
     print("Initialized Data. Performing parallel tests for all files.")
     for file in files:
         return_queues.append(Queue(maxsize=1))
-        test_processes.append(Process(target=testAllButFile, args=(file, files, scaler, return_queues[-1], fake_decisions, C, gamma)))
+        test_processes.append(Process(target=testAllButFile, args=(file, files, scaler, return_queues[-1], fake_decisions, C, gamma, leave_out_class)))
         test_processes[-1].start()
     for i, process in enumerate(test_processes):
         file_correct_histogram, file_guessed_histogram, file_performance, file_medium_shot_performance, file_pint_sum = return_queues[i].get()
