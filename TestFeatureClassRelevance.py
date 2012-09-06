@@ -31,9 +31,9 @@ def TestFeatureClassRelevance(number = None):
             results.append((feature_Classes[number], ParallelXValidation(files, scaler, True, leave_out_class=feature_Classes[number])))
     for result_class, result in results:
         print(str(result_class).split(".")[1]+":"+"\t".join(["" for _ in range(int(round((50-len(str(result_class).split(".")[1]))/8.0)))])+str(result))
-        #os.system("wget http://www.pinae.net/automoculus/getText.php?text=FeatureClass_is_" +
-        #          str(result_class).split(".")[1] + "_Result_is_" + str(result))
-        #os.system("rm getText*")
+        os.system("wget http://www.pinae.net/automoculus/getText.php?text=FeatureClass_is_" +
+                  str(result_class).split(".")[1] + "_Result_is_" + str(result))
+        os.system("rm getText*")
 
 if __name__ == "__main__":
     print("If you give a number it should be in the range 3,43.")
