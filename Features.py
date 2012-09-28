@@ -160,7 +160,7 @@ class A02_ConflictIntroduction(Feature):
     an EXPRESS in the current block, it searches for the ACT- or SAY-beat which gave the decisive information. This is
     either a SAY or ACT directly before the EXPRESS or a SAY or ACT with the figure in linetargets.
     """
-    def calculateNumbers(self, context, block):
+    def calculateNumbers(self, context, block): # TODO: Nur Hauptpersonen können Konflikte etabliern.
         context["BeforeWasNoConflictIntroduction"] = context["NoConflictIntroduction"]
         context["PositionOfConflictIntroduction"] = -1
         if not context["ThereWasNoEstablishingShot"]:
@@ -203,7 +203,7 @@ class A03_Climax(Feature):
     reaction by the subject of the conflict introduction. Before that EXPRESS there needs to be a minimum of one other
     figure to ACT or SAY something. Otherwise the conflict could not have been acted out.
     """
-    def calculateNumbers(self, context, block):
+    def calculateNumbers(self, context, block): # TODO: Nur Personen die Konflikte gestartet haben können sie auch beenden.
         there_was_a_climax = 0.0
         subjects = set()
         linetargets = set()
@@ -235,7 +235,7 @@ class A04_DramaturgicalFactor(Feature):
     """
     In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
     Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
-    Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
+    Figur eine Reaktion auf die Handlung einer anderen Figur sein könnte. Gezählt
     werden Actions, Expressions und Says.
     """
     def calculateNumbers(self, context, block):
@@ -274,7 +274,7 @@ class A05_MiniDramaturgyFactor(Feature):
     """
     In vielen Fällen entsteht Spannung durch die Interaktion zwischen den Figuren.
     Daher wird der Dramaturgische Faktor immer hochgezählt, wenn eine Handlung einer
-    Figur eine Reaktion auf die Handlung einer anderen Gigur sein könnte. Gezählt
+    Figur eine Reaktion auf die Handlung einer anderen Figur sein könnte. Gezählt
     werden Actions, Expressions und Says. Während einer Höhepunktphase wird nichts
     erhöht, da sich dann die Spannung nicht mehr steigern kann.
     """
@@ -342,6 +342,10 @@ class X_Dialogue(Feature):
 
 class X_EmotionalDialogueReaction(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 1.0 if a persons reacts with a EXPRESS to a SAYS of another person before that. If the current
+        block has a minimum of two beats another SAYS of the person who spoke before can follow.
+        """
         last_say_subject =None
         dialogue = False
         act_counter = 0
@@ -392,6 +396,9 @@ class X_EmotionalDialogueReaction(Feature):
 
 class X_BlockChangeBeatType(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature gives the type of the last Beat of the last bygone block and the current block.
+        """
         bygone_type = -1
         if len(context["BygoneBlocks"]) > 0:
             bygone_type = context["BygoneBlocks"][-1][-1].type
@@ -411,6 +418,9 @@ class X_BlockChangeBeatType(Feature):
 
 class X_BlockChangeTargetChange(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 1.0 if the target changes from the last block to the current block.
+        """
         bygoneTarget = -1
         if len(context["BygoneBlocks"]) > 0:
             bygoneTarget = context["BygoneBlocks"][-1][-1].subject
@@ -428,6 +438,9 @@ class X_BlockChangeTargetChange(Feature):
 
 class X_PreviousBlockChangeTargetChange(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 1.0 if the target changes from the previous last block to the last block.
+        """
         if len(context["BygoneBlocks"]) >= 2:
             if context["BygoneBlocks"][-1][-1].subject == context["BygoneBlocks"][-2][-1].subject: return [0.0]
             else: return [1.0]
@@ -447,6 +460,10 @@ class X_PreviousBlockChangeTargetChange(Feature):
 
 class X_PreviousBlockToNowTargetPair(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 1.0 if the last target of the previous lastblock and the first target of the current block is
+        the same.
+        """
         bygoneTarget = -1
         if len(context["BygoneBlocks"]) >= 2:
             bygoneTarget = context["BygoneBlocks"][-2][-1].subject
@@ -465,6 +482,9 @@ class X_PreviousBlockToNowTargetPair(Feature):
 
 class X_LastTwelveBeatTypes(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Gives the type of the last twelve beats. If there are less than twelve beats -1 is returned.
+        """
         types = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
         for i in range(len(types),0,-1):
             if len(context["BeatList"]) >= i:
@@ -490,6 +510,10 @@ class X_LastTwelveBeatTypes(Feature):
 
 class X_SameSubjectPairs(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Since it makes no sense to encode persons by name in the feature-vector, this feature tells us if the subjects
+        of the last twelve beats are the same. There are 28 Numbers because auf 28 possible pairings.
+        """
         beat_list = copy(context["BeatList"])
         prev = None
         for beat in beat_list:
@@ -565,6 +589,10 @@ class X_SameSubjectPairs(Feature):
 
 class X_InvisibleCount(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Counts the number of invisible beats in the current block and gives the proportion to the number of beats in
+        this block.
+        """
         i = 0.0
         for beat in block:
             if beat.invisible: i += 1.0
@@ -579,6 +607,12 @@ class X_InvisibleCount(Feature):
 
 class C01_PersonAnalyzer(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This Feature counts the persons, determines which ones of them were the subjects of more than half the beats
+        and which person was the subject of most of the beats, which is propably the protagonist. The proportion of
+        beats with the protagonist as subject is calculates. If the protagonist changes this could be a decisive
+        moment, so this is noted, and the Feature also determines which of the last tree beats featured the protagonist.
+        """
         person_histogram = {}
         person_beat_count = 0
         for beat in context["BeatList"]:
@@ -665,6 +699,11 @@ class C01_PersonAnalyzer(Feature):
 
 class X_DecidedShots(Feature):
     def calculateNumbers(self, context, block):
+        """
+        In order to choose the correct shot, it's crucial to know which shots were selected before. This feature lists
+        the last four shots, the number of beats in the last three and the current block and the number of subjects in
+        the last and the current block. For the last shot and the current block a histogram of shot types is calculted.
+        """
         last_shot_id = context["BeatList"][-1].shotId
         beat_count = 1.0
         beat_counts = []
@@ -771,8 +810,10 @@ class X_DecidedShots(Feature):
 
 class X_ShotHistogram(Feature):
     def calculateNumbers(self, context, block):
+        """
+        For statistical usage a histogram of shots is calculated for all shots in the scene.
+        """
         shot_histogram = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        #shot_histogram[context["BeatList"][0].shot] += 1
         total = 0
         for block in context["BygoneBlocks"]:
                 shot_histogram[block[-1].shot] += 1.0
@@ -795,6 +836,9 @@ class X_ShotHistogram(Feature):
 
 class X_PersonsInTheShot(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Counts the number of different Persons who act, speak or show emotions in the last shot.
+        """
         beat_list = copy(context["BeatList"])
         last_shot_id = beat_list[-1].shotId
         emo_persons = {}
@@ -867,6 +911,9 @@ class X_PersonsInTheShot(Feature):
 
 class X_ShowingObject(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 0 if not only Objects are showed in the current block. If the last shot is DETAIL it's -1.
+        """
         showing_only_objects = True
         no_visible_beats = True
         for beat in block:
@@ -897,6 +944,10 @@ class X_ShowingObject(Feature):
 
 class X_ShowingPlace(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 0 if not only Places are showed in the current block. If the last shot is FULL_SHOT or greater
+        it's -1.
+        """
         showing_no_place = True
         no_visible_beats = True
         for beat in block:
@@ -927,6 +978,9 @@ class X_ShowingPlace(Feature):
 
 class X_ShowingPerson(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature is 0 if not only one Person is showed in the current block.
+        """
         showingOnlyOnePerson = True
         noVisibleBeats = True
         person = False
@@ -958,6 +1012,11 @@ class X_ShowingPerson(Feature):
 
 class C02_Linetargets(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature determines the last linetarget and checks in which of the last 8 beats the last lintarget was the
+        subject. The feature also calculates the number of linetargets, if the last linetarget was no person, if it was
+        one of the main characters and if it was the protagonist.
+        """
         person_histogram = {}
         person_beat_count = 0
         for beat in context["BeatList"]:
@@ -1039,6 +1098,22 @@ class C02_Linetargets(Feature):
 
 class X_HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! Ist alles um einen Block verschoben? - Nein, shot wird benutzt.
     def calculateNumbers(self, context, block):
+        """
+        This feature was originally an algorithm to predict situation where a cut should be made. However the criterias
+        seem to make sense as part of the feature-vector.
+        The first criterium tests if the subject changed from the previous to the last shot, that previous shot was a
+        MEDIUM_SHOT or wider and the cut was justified by a SAY- or ACT-beat at the beginning of the last shot or the
+        previous shot was no DETAIL and the last shot began with a SAY-beat.
+        The second criterium tests if the last shot and the previous one hat the same shot and if that was the case
+        tests if the newer block features subjects who aren't in the old block.
+        The third criterium tests if the last shot was MEDIUM_SHOT or wider and the previous shot was AMERICAN_SHOT or
+        wider. If either one of the subjects of the last block wasn't also a subject in the three previous blocks or if
+        the last block has a SHOW- or INTRODUCE-beat and isn't one of the four first blocks, the criterium is 1.
+        The fourth criterium checks if the subject of the last two bygone blocks start with the same subject and with
+        SAY-Beats.
+        The fifth criterium checks if the previous last shot was DETAIL.
+        The sixth and last criterium checks if the last block began with an EXPRESS-beat.
+        """
         cut_criteria = []
         if len(context["BygoneBlocks"]) >= 2:
             if context["BygoneBlocks"][-1][0].subject == context["BygoneBlocks"][-2][-1].subject and (
@@ -1114,6 +1189,11 @@ class X_HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen
 
 class D01_ExpositoryPhaseOfTheScene(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature gathers a set of persons mentioned in the beatscript until the place was introduced. If all of
+        these persons had a SHOW or EXPRESS the expository phase ends or after 15 beats. If the expository phase has
+        ended the test is skipped.
+        """
         if context["ExpositoryPhase"]:
             shown_place = False
             emotionally_situated_persons = set()
@@ -1132,10 +1212,10 @@ class D01_ExpositoryPhaseOfTheScene(Feature):
             else:
                 return [1.0]
         else:
-            return [1.0]
+            return [-1.0]
 
     def getText(self):
-        if self.numbers[0]:
+        if self.numbers[0] > 0:
             return "Wir sind in der Expositionsphase der Szene."
         else:
             return "Wir sind in der Handlungsentwicklungsphase der Szene."
@@ -1146,11 +1226,15 @@ class D01_ExpositoryPhaseOfTheScene(Feature):
 
 class X_TalkersGoSilent(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature implements a value of the number of expresses since the last action + 5 which indicates how likely
+        this action silenced the persons who were subject of the SAYS.
+        """
         talkers_go_silent_value = max(context["TalkersGoSilentValue"]-1,0)
         if block[-1].type == EXPRESS:
             beat_list = context["BeatList"]
             i = 1
-            expresses = 1
+            expresses = 0
             actor = None
             while len(beat_list) > i:
                 i += 1
@@ -1159,6 +1243,7 @@ class X_TalkersGoSilent(Feature):
                     continue
                 if beat_list[-i].type == ACTION:
                     actor = beat_list[-i].subject
+                    expresses = 0
                     continue
                 if actor:
                     if (beat_list[-i].type == SAYS) and (beat_list[-i].subject != actor):
@@ -1178,6 +1263,10 @@ class X_TalkersGoSilent(Feature):
 
 class X_WhatDidSubjectDo(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature calculates a histogram of the beat types where the last subject of the current block was also
+        subject. It also counts how often this subject was a linetraget.
+        """
         beats_with_this_subject_count = [0.0, 0.0, 0.0, 0.0, 0.0]
         subject_was_linetarget_count = 0.0
         for beat in context["BeatList"]:
@@ -1201,6 +1290,10 @@ class X_WhatDidSubjectDo(Feature):
 
 class X_BlockSimilarity(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This feature compares the similarity of bygone blocks with the current one. Each beat of the same type increases
+        the similarity factor by one.
+        """
         similarity_factors = []
         blocks_to_compare = 7
         for i in range(1, min(blocks_to_compare, len(context["BygoneBlocks"]))):
@@ -1238,6 +1331,9 @@ class X_BlockSimilarity(Feature):
 
 class X_SameShotSince(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Counts how many blocks featured the same shot.
+        """
         lastShot = None
         if len(context["BygoneBlocks"]) >= 1:
             lastShot = context["BygoneBlocks"][-1][0].shot
@@ -1255,6 +1351,10 @@ class X_SameShotSince(Feature):
 
 class X_AppearanceAnalyzer(Feature):
     def calculateNumbers(self, context, block):
+        """
+        The appearance analyzer counts how many persons were introduced in the scene and how long ago the last
+        INTRODUCE was.
+        """
         introduce_since = 0.0
         appearance_counter = 0.0
         for bygone_block in context["BygoneBlocks"]:
@@ -1288,6 +1388,10 @@ class X_AppearanceAnalyzer(Feature):
 
 class X_ShowAnalyzer(Feature):
     def calculateNumbers(self, context, block):
+        """
+        The show analyzer counts how many persons were showed by SHOW-beats in the scene and how long ago the last
+        of these SHOW-beats was.
+        """
         shows_since = 0.0
         shows_counter = 0.0
         for bygone_block in context["BygoneBlocks"]:
@@ -1321,22 +1425,30 @@ class X_ShowAnalyzer(Feature):
 
 class X_DialogueBlocks(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This class determines if the last blocks are dialogues. A dialogue block is a block where only two persons
+        interact and at last one of them speaks.
+        """
         dialogue_blocks = []
         subjects = set()
+        was_say = False
         for beat in block:
             subjects.add(beat.subject)
+            if beat.type == SAYS: was_say = True
             if beat.linetarget and beat.linetarget.type == PERSON:
                 subjects.add(beat.linetarget)
-        if len(subjects) == 2: dialogue_blocks.append(1.0)
+        if len(subjects) == 2 and was_say: dialogue_blocks.append(1.0)
         else: dialogue_blocks.append(0.0)
         for i in range(-1,-4,-1):
             if len(context["BygoneBlocks"]) >= -i:
                 subjects = set()
+                was_say = False
                 for beat in context["BygoneBlocks"][i]:
                     subjects.add(beat.subject)
+                    if beat.type == SAYS: was_say = True
                     if beat.linetarget and beat.linetarget.type == PERSON:
                         subjects.add(beat.linetarget)
-                if len(subjects) == 2: dialogue_blocks.append(1.0)
+                if len(subjects) == 2 and was_say: dialogue_blocks.append(1.0)
                 else: dialogue_blocks.append(0.0)
             else: dialogue_blocks.append(0.0)
         return dialogue_blocks
@@ -1357,6 +1469,11 @@ class X_DialogueBlocks(Feature):
 
 class X_DialogueAnswerExpected(Feature):
     def calculateNumbers(self, context, block):
+        """
+        An answer is expected if the last beat of the block is a SAYS-beat and the linetarget wasn't visible in the
+        block. We could also expect an answer when the last beat in the block is an EXPRESS and the SAYS is before that
+        with a linetarget which was not in the block. This class calculates the expectation for the current block.
+        """
         subjects = set()
         for beat in block:
             subjects.add(beat.subject)
@@ -1377,6 +1494,12 @@ class X_DialogueAnswerExpected(Feature):
 
 class X_DialogueAnswerWasExpected(Feature):
     def calculateNumbers(self, context, block):
+        """
+        An answer is expected if the last beat of the block is a SAYS-beat and the linetarget wasn't visible in the
+        block. We could also expect an answer when the last beat in the block is an EXPRESS and the SAYS is before that
+        with a linetarget which was not in the block. This class calculates the expectation for the last bygone block
+        and checks if the expectation was correct.
+        """
         if len(context["BygoneBlocks"]) >= 1:
             answering_subjects = set()
             for beat in block:
@@ -1414,6 +1537,9 @@ class X_DialogueAnswerWasExpected(Feature):
 
 class X_NumberOfPersonInTheBlock(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Calculates the number of persons in the block and calculates the ratio of persons to beats.
+        """
         persons = set()
         for beat in block:
             if beat.subject.type == PERSON: persons.add(beat.subject)
@@ -1430,6 +1556,10 @@ class X_NumberOfPersonInTheBlock(Feature):
 
 class X_KnownSubjectsInBlock(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Calculates the number of persons in the block which were known before and calculates the ratio of persons to
+        beats.
+        """
         subjects = set()
         for bygone_block in context["BygoneBlocks"]:
             for beat in bygone_block:
@@ -1451,6 +1581,10 @@ class X_KnownSubjectsInBlock(Feature):
 
 class X_CutInTheSentence(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This is 1 if a speaking person was interrupted by another beat at the end of the last block and continues in
+        the current block.
+        """
         last_say_subject = None
         if len(context["BygoneBlocks"]) >= 1:
             for beat in context["BygoneBlocks"][-1]:
@@ -1477,6 +1611,9 @@ class X_CutInTheSentence(Feature):
 
 class X_ChangeInExpression(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Returns the number of persons who change their expression in the current block and since the last block.
+        """
         expressers = {}
         for i in range(len(block)):
             beat = block[-i]
@@ -1506,6 +1643,11 @@ class X_ChangeInExpression(Feature):
 
 class X_BackgroundAction(Feature):
     def calculateNumbers(self, context, block):
+        """
+        This Feature determines which person was the subject of most of the beats in the last and the current block.
+        If another person acts in the current block and if the main subject doesn't interact with that person then this
+        is a background action.
+        """
         subjects = {}
         if len(context["BygoneBlocks"]) >= 1:
             for beat in context["BygoneBlocks"][-1]:
@@ -1530,8 +1672,7 @@ class X_BackgroundAction(Feature):
                 background_actor = beat.subject
         if background_actor:
             for beat in block:
-                if beat.type == ACTION and beat.linetarget and\
-                   beat.linetarget != background_actor and not beat.invisible:
+                if beat.linetarget and beat.linetarget == background_actor and not beat.invisible:
                     background_actor = None
         if background_actor: return [1.0]
         else: return [0.0]
@@ -1546,6 +1687,9 @@ class X_BackgroundAction(Feature):
 
 class X_BlockOfOneSubject(Feature):
     def calculateNumbers(self, context, block):
+        """
+        Checks if there's only one subject in the current block.
+        """
         block_subject = block[0].subject
         for beat in block:
             if beat.subject != block_subject: return [0.0]
@@ -1561,6 +1705,9 @@ class X_BlockOfOneSubject(Feature):
 
 class X_ObjectAct(Feature):
     def calculateNumbers(self, context, block):
+        """
+        The feature checks if an object is showed and if nothing more is done than ACT-beats with this object.
+        """
         showing_object = 0.0
         detail_possible = 1.0
         act_count = 0
