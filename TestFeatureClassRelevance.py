@@ -21,6 +21,7 @@ def TestFeatureClassRelevance(number = None):
         scaler = preprocessing.Scaler()
         scaler.fit(reference_data)
         optimized_parameters = tuneParametersForSVM(files, scaler, reference_data, True, leave_out_class=feature_Classes[number])
+        #optimized_parameters = (1910.41398886, 9.88131291682e-324)
         results.append((feature_Classes[number], ParallelXValidation(files, scaler, True,
             C=max(0.0,optimized_parameters[0]),
             gamma=max(1e-323,optimized_parameters[1]), leave_out_class=feature_Classes[number])))
