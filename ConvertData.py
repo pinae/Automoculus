@@ -40,6 +40,7 @@ def getFeatureLine(context, block, shot, lastShotId, leave_out_class=None):
     featureClassList = Features.getAllFeatureClasses()
     context = Features.createBeatList(context, block)
     for featureClass in [x for x in featureClassList if x != leave_out_class]:
+    #for featureClass in [featureClassList[x] for x in range(len(featureClassList)) if x not in [0,1,2,3,4]]:
         feature = featureClass(context, block)
         line += feature.getNumbers()
     if shot:
