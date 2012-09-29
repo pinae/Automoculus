@@ -6,6 +6,9 @@ from multiprocessing import Process, Queue
 
 import numpy as np
 from sklearn import svm
+from sklearn import neighbors
+from sklearn import tree
+from sklearn import linear_model
 
 from ConvertData import getSingleFeatureLine, getFeatureLinesFromFile, getFeatureLine
 from Config import SHOT_NAMES, DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT
@@ -60,7 +63,12 @@ def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None, 
     """
     if C and gamma:
         svm_classifier = svm.SVC(probability = True, C=C, gamma=gamma)
-    else: svm_classifier = svm.SVC(probability = True)
+        #svm_classifier = neighbors.KNeighborsClassifier(n_neighbors=C)
+    else:
+        svm_classifier = svm.SVC(probability = True)
+        #svm_classifier = neighbors.KNeighborsClassifier()
+        #svm_classifier = tree.DecisionTreeClassifier()
+        #svm_classifier = linear_model.Perceptron()
     svm_classifier.fit(training_data, training_data_classes)
     if returnQueue:
         returnQueue.put(svm_classifier)
