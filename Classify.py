@@ -9,6 +9,7 @@ from sklearn import svm
 from sklearn import neighbors
 from sklearn import tree
 from sklearn import linear_model
+from sklearn import naive_bayes
 
 from ConvertData import getSingleFeatureLine, getFeatureLinesFromFile, getFeatureLine
 from Config import SHOT_NAMES, DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT
@@ -69,6 +70,7 @@ def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None, 
         #svm_classifier = neighbors.KNeighborsClassifier()
         #svm_classifier = tree.DecisionTreeClassifier()
         #svm_classifier = linear_model.Perceptron()
+        #svm_classifier = naive_bayes.GaussianNB()
     svm_classifier.fit(training_data, training_data_classes)
     if returnQueue:
         returnQueue.put(svm_classifier)
