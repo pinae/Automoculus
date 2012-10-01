@@ -25,8 +25,8 @@ def calculateDistributionAndClassification(classifier, context, blocks, decision
     feature_vector = scaler.transform(np.array([feature_line]))
     distribution = classifier.predict_proba(feature_vector)
     #distribution = [0,0,0,0,0,0,0]
-    #print(distribution.tolist())
-    classification = distribution.tolist().index(max(distribution.tolist()))
+    #print(distribution[0].tolist())
+    classification = distribution[0].tolist().index(max(distribution[0].tolist()))
     #classification = int(classifier.predict(feature_vector)[0])
     #print(classifier.predict(feature_vector))
     if returnQueue:
