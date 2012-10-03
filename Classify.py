@@ -63,10 +63,10 @@ def trainSVM(training_data, training_data_classes, returnQueue=None, lock=None, 
     The lock is used for printing and nothing else.
     """
     if C and gamma:
-        svm_classifier = svm.SVC(probability = True, C=C, gamma=gamma)
+        svm_classifier = svm.SVC(probability = True, C=C, gamma=gamma, cache_size=1000.0)
         #svm_classifier = neighbors.KNeighborsClassifier(n_neighbors=C)
     else:
-        svm_classifier = svm.SVC(probability = True)
+        svm_classifier = svm.SVC(probability = True, cache_size=1000.0)
         #svm_classifier = neighbors.KNeighborsClassifier()
         #svm_classifier = tree.DecisionTreeClassifier()
         #svm_classifier = linear_model.Perceptron()
