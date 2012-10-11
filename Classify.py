@@ -6,10 +6,10 @@ from multiprocessing import Process, Queue
 
 import numpy as np
 from sklearn import svm
-from sklearn import neighbors
-from sklearn import tree
-from sklearn import linear_model
-from sklearn import naive_bayes
+#from sklearn import neighbors
+#from sklearn import tree
+#from sklearn import linear_model
+#from sklearn import naive_bayes
 
 from ConvertData import getSingleFeatureLine, getFeatureLinesFromFile, getFeatureLine
 from Config import SHOT_NAMES, DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT
