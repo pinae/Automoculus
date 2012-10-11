@@ -85,6 +85,7 @@ class AutomoculusCameraman(bpy.types.Operator):
     def calculateForNewBeats(self, classificationProcess, shot, frame, last_cut, initial_cut, scenicContext):
         # New Beats! That changes the situation: what's the distribution now?
         dist = getShotDistribution(classificationProcess)
+        print(dist)
 
         # For new beats we have to update the targets
         target, linetarget = getTargets(classificationProcess)
@@ -100,7 +101,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         best_shot_candidate = shot
         no_cut_ratio = 0
         no_cut_config = (self.camera.location, self.camera.rotation_euler)
-        correction = [141, 42, 59, 130, 130, 130, 130]
+        correction = [100, 114, 81, 100, 109, 150, 200]
         #correction = [100, 100, 100, 100, 100, 100, 100]
         shots = [s for s in range(len(SHOT_NAMES)) if dist[s] > 0.1 or s == shot]
         print("Es kommen folgende Einstellungsgrößen in Frage: " + ", ".join([SHOT_NAMES[s] for s in shots]))
@@ -121,7 +122,7 @@ class AutomoculusCameraman(bpy.types.Operator):
         # Should we Cut?
         if best_ratio - 0.1 > no_cut_ratio or initial_cut or cut: # We want to cut, the ratio gets much better
             shot = best_shot_candidate
-            if (best_config[0] - self.camera.location).length < 0.8:
+            if (best_config[0] - self.camera.location).length < 1.8:
                 new_configuration = self.springConfigurator(best_config)
                 #new_configuration = best_config
                 print("Es sollte geschnitten werden, die Abweichung war jedoch zu gering. Wir bleiben bei " +

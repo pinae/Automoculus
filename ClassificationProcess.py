@@ -9,29 +9,20 @@ import sys
 from sklearn import preprocessing
 
 from Config import TRAIN_FILES, PERSON, OBJECT, PLACE
-from Classify import getDataMatrix, trainSVM, classifyForShot
+from Classify import getDataMatrix, trainSVM, classifyForShot, classifyForCut
 from Beatscript import readContext, readBeatscript, getBeatsBetweenFrames
 import Features
 
 # =============================== Methods ======================================
 def trainWithAllExamples(shot):
-    #if shot: domain = getDomain(orange.EnumVariable(name="Shot", values=SHOT_NAMES))
-    #else: domain = getDomain(orange.EnumVariable(name="Cut", values=['True', 'False']))
-    #trainingData = getTrainingExamples(domain, TRAIN_FILES, shot)
-    #means, vars = getNormalizationTerms(trainingData)
     training_data, training_data_classes = getDataMatrix(TRAIN_FILES, shot)
     scaler = preprocessing.Scaler()
     training_data = scaler.fit_transform(training_data, training_data_classes)
     lock = Lock()
-    #treeReturnQueue = Queue()
-    #treeLearningProcess = Process(target=trainTree, args=(training_data, training_data_classes, treeReturnQueue, lock))
-    #treeLearningProcess.start()
     svmReturnQueue = Queue()
     svmLearningProcess = Process(target=trainSVM, args=(training_data, training_data_classes, svmReturnQueue, lock))
     svmLearningProcess.start()
-    #treeClassifier = treeReturnQueue.get()
     svmClassifier = svmReturnQueue.get()
-    #treeLearningProcess.join()
     svmLearningProcess.join()
     return (svmClassifier,), scaler
 
@@ -108,6 +99,7 @@ def main():
         return 1
     # Initialization and Training
     classifiers, scaler = trainWithAllExamples(True)
+    cutClassifiers, cutScaler = trainWithAllExamples(False)
     try:
         beatscript_file = open(sys.argv[1], "r")
     except IOError:
@@ -126,9 +118,7 @@ def main():
     sys.stdout.flush()
     # Get Distribution
     dist = classifyForShot(lastBlock, context, classifiers, scaler)
-    #cutBeforeThisClassification = classifyForCut(
-    #                getDomain(orange.EnumVariable(name="Cut", values=['True', 'False'])), lastBlock, context,
-    #                cutClassifiers, means, vars)
+    cutBeforeThisClassification = classifyForCut(lastBlock, context, cutClassifiers, cutScaler)
     #sys.stdout.write(distToStr(dist) + "\n")
     #sys.stdout.flush()
     while True:
@@ -153,8 +143,8 @@ def main():
             #else:
             #        keepingPropability = 1.0
             #if cutBeforeThisBlock(blockList, decisions, keepingPropability):
-            if True:
-            #if cutBeforeThisClassification[0] > cutBeforeThisClassification[1]:
+            #if True:
+            if cutBeforeThisClassification[0] < cutBeforeThisClassification[1]:
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")
@@ -167,7 +157,7 @@ def main():
                 context["BygoneBlocks"].append(lastBlock)
                 lastBlock = beatList
                 dist = classifyForShot(lastBlock, context, classifiers, scaler)
-                #cutBeforeThisClassification = classifyForCut(cut_domain, lastBlock, context, cutClassifiers, means, vars)
+                cutBeforeThisClassification = classifyForCut(lastBlock, context, cutClassifiers, cutScaler)
                 sys.stdout.write("yes\n")
             else:
                 sys.stdout.write("no\n")

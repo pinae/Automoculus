@@ -41,7 +41,7 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=No
     is returned.
     """
     training_set = [f for f in files if f != file]
-    training_data, training_data_classes = getDataMatrix(training_set, leave_out_class=leave_out_class)
+    training_data, training_data_classes = getDataMatrix(training_set, leave_out_class=leave_out_class, shot=True)
     training_data = scaler.transform(training_data, training_data_classes)
     trained_svm = trainSVM(training_data, training_data_classes, C=C, gamma=gamma)
     context, beatList = getContextAndBeatListFromFile(file)
@@ -53,8 +53,11 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=No
     metric_sum = 0
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    #correct_histogram = [0, 0]
+    #guessed_histogram = [0, 0]
+    #last_block = None
     for block in blockList:
-        # prepare blocklist and decision-list
+        # prepare block-list and decision-list
         part_blockList.append(block)
         if fake_decisions:
             decisions = []
@@ -67,7 +70,12 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=No
             decisions.append(boost_classification)
         guessed_histogram[boost_classification] += 1
         correct_histogram[block[-1].shot] += 1
+        #is_shot = True
+        #if last_block:
+        #    is_shot = block[-1].shotId != last_block[-1].shotId
+        #correct_histogram[int(is_shot)] += 1
         if boost_classification == block[-1].shot:
+        #if boost_classification == int(is_shot):
             correct_classification_count += 1
         if block[-1].shot == 2: medium_shot_count += 1
         if len(part_blockList) >= 2:
@@ -81,6 +89,7 @@ def testAllButFile(file, files, scaler, return_queue, fake_decisions=False, C=No
                 previous_guessed_class = decisions[-1]
             else: previous_guessed_class = previous_correct_class
         metric_sum += pointMetric(svm_classification, block[-1].shot, previous_guessed_class, previous_correct_class)
+        #last_block = block
     performance = float(correct_classification_count)/len(blockList)
     medium_shot_performance = float(medium_shot_count)/len(blockList)
     return_queue.put((correct_histogram, guessed_histogram, performance, medium_shot_performance, float(metric_sum)/len(blockList)))
@@ -98,6 +107,8 @@ def ParallelXValidation(files, scaler, fake_decisions = False, C=None, gamma=Non
     """
     correct_histogram = [0, 0, 0, 0, 0, 0, 0]
     guessed_histogram = [0, 0, 0, 0, 0, 0, 0]
+    #correct_histogram = [0, 0]
+    #guessed_histogram = [0, 0]
     performances = []
     allover_point_sum = 0.0
     medium_shot_performances = []
@@ -118,6 +129,9 @@ def ParallelXValidation(files, scaler, fake_decisions = False, C=None, gamma=Non
         performances.append(file_performance)
         medium_shot_performances.append(file_medium_shot_performance)
         allover_point_sum += file_pint_sum
+
+    print(correct_histogram)
+    print(guessed_histogram)
 
     performance_sum = 0
     performance_best = 0
@@ -268,7 +282,7 @@ def XValidation(files, fake_decisions = False):
 # =============================== Main =========================================
 def main():
     #XValidation(TRAIN_FILES, True)
-    reference_data, _ = getDataMatrix(TRAIN_FILES)
+    reference_data, _ = getDataMatrix(TRAIN_FILES, shot=True)
     scaler = preprocessing.Scaler()
     scaler.fit(reference_data)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2582.61517656, gamma=0.00036375303213)
@@ -278,7 +292,7 @@ def main():
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=2585.81448898, gamma=1.73105463456e-05)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=1999.62466242, gamma=1.62885637292e-06)
     #ParallelXValidation(TRAIN_FILES, scaler, True, C=1999.32984556, gamma=3.03787358388e-07)
-    ParallelXValidation(TRAIN_FILES, scaler, True, C=1999.85770959, gamma=6.30930490772e-07)
+    ParallelXValidation(TRAIN_FILES, scaler, False, C=1999.85770959, gamma=6.30930490772e-07)
 
 if __name__ == "__main__":
     main()

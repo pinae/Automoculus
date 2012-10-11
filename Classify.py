@@ -26,7 +26,10 @@ def getDataMatrix(file_set, shot=True, leave_out_class=None):
     for file in file_set:
         feature_lines = getFeatureLinesFromFile(file, shot, leave_out_class=leave_out_class)
         for line in feature_lines:
-            classes.append(SHOT_NAMES.index(line.pop()))
+            if shot:
+                classes.append(SHOT_NAMES.index(line.pop()))
+            else:
+                classes.append(int(line.pop()=="True"))
             matrix.append(np.array(line))
     return np.array(matrix, dtype=np.float64), np.array(classes)
 
