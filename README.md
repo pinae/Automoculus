@@ -27,21 +27,21 @@ Open the menu (space-bar) and type "Automoculus - Cameraman"
 Cross-validation
 ================
 
-To run a cross-validation on the data type "python X-Validation.py" while you're in the Automoculus directory.
+To run a cross-validation on the data enter "python X-Validation.py" while you're in the Automoculus directory.
 
 Real world usage
 ================
 
 If you want to use Automoculus in your own blendfiles, copy the script part from one of the example files in 
-blenderfiles/ into a new script in your own blendfile. Change the filename of the beatscript to your Script.
+blenderfiles/ into a new script in your own blendfile. Change the filename of the beatscript to your script.
 Don't forget to run this script so the "Automoculus - Cameraman" is registered. Make sure for all persons, 
-objects and places in the beatscript, that there is an object in your blendfile with the exact same name. Make
-sure you have a activated camera of the scene. This camera will be positioned. Move your camera to a roughly 
+objects and places in the beatscript, that there is an object in your blendfile with exactly the same name. Make
+sure you have a camera activated for the scene. This camera will be positioned. Move your camera to a roughly
 correct starting position because the camera will try to stay on that side of the line for the rest of the scene.
 If your scene is set up in that way, run "Automoculus - Cameraman".
 
-It is a good idea to start blender from a console because the output fron the script is printed there. If you 
-encounter problems check that output and compare it with the examples.
+It is a good idea to start blender from a console because the output of the script is printed there. If you
+encounter problems check that output and compare it to the examples.
 
 If you don't like the result you can change the set of training-data in Config.py. The result will be influenced 
 by the data in the training-set so you can tweak your output by erasing data from the set which is definitely not 
