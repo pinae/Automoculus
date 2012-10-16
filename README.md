@@ -7,7 +7,7 @@ Installation instructions
 =========================
 
 Install sklearn:
-on Ubuntu type "sudo apt-get intall python-sklearn"
+on Ubuntu type "sudo apt-get install python-sklearn"
 
 Load this repository.
 

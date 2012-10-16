@@ -3,13 +3,9 @@
 
 # =============================== Imports ======================================
 from __future__ import division
-import cProfile
-import pstats
 from pylab import *
 import numpy as np
 from math import sqrt, pi
-import tempfile
-import os
 
 # ================================ constants =====================================
 SHOT_LIMITS = [
@@ -29,8 +25,9 @@ E = np.array([1, 0, 0])
 def personFitnessByImage(x, y):
     x2 = x * x
     y2 = y * y
-    return (np.exp(-0.5 * x2 ** 5 - 0.5 * y2 ** 5) *
-            (((7 * x2 - 4.5) * x2 - 9) + ((10 * y2 - 4.5) * y2 - 2 * y - 9)) + 21.2) * (1 + (abs(x) + abs(y)) * 0.1)
+    return (np.exp(-0.5 * x2 ** 5 - 0.5 * y2 ** 5) * (
+    ((7 * x2 - 4.5) * x2 - 9) + ((10 * y2 - 4.5) * y2 - 2 * y - 9)) + 21.2) * (
+           1 + (abs(x) + abs(y)) * 0.1)
 
 
 def distanceFitnessByRange(x):
@@ -106,7 +103,8 @@ def getShotLimits(cameraOptimizer, shot):
 def getPersonQuality(cameraOptimizer, genome, person, intensity):
     ax, ay = getImageAngles(genome, person)
     x = ax * 2.0 / cameraOptimizer.camera.aperture_angle
-    y = ay * 2.0 * cameraOptimizer.camera.resolution_x / (cameraOptimizer.camera.aperture_angle * cameraOptimizer.camera.resolution_y)
+    y = ay * 2.0 * cameraOptimizer.camera.resolution_x / (
+    cameraOptimizer.camera.aperture_angle * cameraOptimizer.camera.resolution_y)
     occultation = 0
     for object in cameraOptimizer.objectlist:
         occultation += occultationWeight(getVisibilityFactor(genome, person, object))
@@ -119,7 +117,8 @@ def getObjectQuality(cameraOptimizer, genome, object):
     angles = getImageAngles(genome, object)
     if angles[0] > cameraOptimizer.camera.aperture_angle / 2.0 or\
        angles[1] > cameraOptimizer.camera.aperture_angle / 2.0 *\
-                   cameraOptimizer.camera.resolution_y / cameraOptimizer.camera.resolution_x:
+                   cameraOptimizer.camera.resolution_y /\
+                   cameraOptimizer.camera.resolution_x:
         return 4 + 0.01 * angles[0] + 0.01 * angles[1]
     else:
         return 0.01 * angles[0] + 0.01 * angles[1]
@@ -138,11 +137,16 @@ def getXAngleQuality(genome):
     return range0to1(genome[3] / pi)
 
 def getLineQuality(cameraOptimizer, genome):
-    if not cameraOptimizer.linetarget or cameraOptimizer.target is cameraOptimizer.linetarget: return 0
-    if (cameraOptimizer.target.location == location(genome)).all(): return 10000
-    targettolinetarget = cameraOptimizer.linetarget.location - cameraOptimizer.target.location
+    if not cameraOptimizer.linetarget or\
+       cameraOptimizer.target is cameraOptimizer.linetarget:
+        return 0
+    if (cameraOptimizer.target.location == location(genome)).all():
+        return 10000
+    targettolinetarget = cameraOptimizer.linetarget.location -\
+                         cameraOptimizer.target.location
     normalvector = np.cross(np.array([0, 0, -1]), targettolinetarget)
-    olddiffvector = cameraOptimizer.target.location - location(cameraOptimizer.oldConfiguration)
+    olddiffvector = cameraOptimizer.target.location - location(
+        cameraOptimizer.oldConfiguration)
     angletoold = angle(olddiffvector, normalvector)
     diffvector = cameraOptimizer.target.location - location(genome)
     lineangle = angle(diffvector, normalvector)
@@ -157,10 +161,13 @@ def fitness(genome, cameraOptimizer):
     #Personen im Bild
     for person in cameraOptimizer.personlist:
         targetFactor = 1.0 if person is cameraOptimizer.target else 0.1
-        quality += targetFactor * getPersonQuality(cameraOptimizer, genome, person, targetFactor * 12)
-        quality += targetFactor * getPersonQuality(cameraOptimizer, genome, person.eye_L, targetFactor * 12)
-        quality += targetFactor * getPersonQuality(cameraOptimizer, genome, person.eye_R, targetFactor * 12)
-        #Objekte im Bild
+        quality += targetFactor * getPersonQuality(cameraOptimizer, genome, person,
+            targetFactor * 12)
+        quality += targetFactor * getPersonQuality(cameraOptimizer, genome, person.eye_L,
+            targetFactor * 12)
+        quality += targetFactor * getPersonQuality(cameraOptimizer, genome, person.eye_R,
+            targetFactor * 12)
+    #Objekte im Bild
     #for object in self.objectlist:
     #    quality += getObjectQuality(cameraOptimizer, genome, object)
     #Entfernung zur Kamera

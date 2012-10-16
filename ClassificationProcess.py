@@ -20,20 +20,22 @@ def trainWithAllExamples(shot):
     training_data = scaler.fit_transform(training_data, training_data_classes)
     lock = Lock()
     svmReturnQueue = Queue()
-    svmLearningProcess = Process(target=trainSVM, args=(training_data, training_data_classes, svmReturnQueue, lock))
+    svmLearningProcess = Process(target=trainSVM,
+        args=(training_data, training_data_classes, svmReturnQueue, lock))
     svmLearningProcess.start()
     svmClassifier = svmReturnQueue.get()
     svmLearningProcess.join()
     return (svmClassifier,), scaler
 
-
 # =============================== Interactions =========================================
 def printListOfEntities(context):
-    persons = [entity for name, entity in context["Entities"].items() if entity.type == PERSON]
-    objects = [entity for name, entity in context["Entities"].items() if entity.type == OBJECT]
-    places = [entity for name, entity in context["Entities"].items() if entity.type == PLACE]
-    pickle.dump({"Persons" : persons, "Objects" : objects, "Places": places}, sys.stdout)
-
+    persons = [entity for name, entity in context["Entities"].items() if
+               entity.type == PERSON]
+    objects = [entity for name, entity in context["Entities"].items() if
+               entity.type == OBJECT]
+    places = [entity for name, entity in context["Entities"].items() if
+              entity.type == PLACE]
+    pickle.dump({"Persons": persons, "Objects": objects, "Places": places}, sys.stdout)
 
 # =============================== Main =========================================
 def determine_targets(context, current_block):
@@ -67,7 +69,8 @@ def determine_targets(context, current_block):
                     linetarget = t
                     break
         else:
-            # trying to get persons as linetargets, because objects and places aren't as important
+            # trying to get persons as linetargets, because objects and places
+            # aren't as important
             linetarget = targets[-1]
             for t in reversed(targets):
                 if t.type == PERSON :
@@ -118,9 +121,8 @@ def main():
     sys.stdout.flush()
     # Get Distribution
     dist = classifyForShot(lastBlock, context, classifiers, scaler)
-    cutBeforeThisClassification = classifyForCut(lastBlock, context, cutClassifiers, cutScaler)
-    #sys.stdout.write(distToStr(dist) + "\n")
-    #sys.stdout.flush()
+    cutBeforeThisClassification = classifyForCut(lastBlock, context, cutClassifiers,
+        cutScaler)
     while True:
         choice = raw_input("")
         if choice == "e":
@@ -138,12 +140,6 @@ def main():
                 decisions.append(block[0].shot)
             blockList.append(lastBlock)
             decisions.append(dist.index(max(dist)))
-            #if len(decisions) >= 2:
-            #        keepingPropability = dist[SHOT_NAMES.index(str(decisions[-2]))]
-            #else:
-            #        keepingPropability = 1.0
-            #if cutBeforeThisBlock(blockList, decisions, keepingPropability):
-            #if True:
             if cutBeforeThisClassification[0] < cutBeforeThisClassification[1]:
                 sys.stdout.write("yes\n")
             else:

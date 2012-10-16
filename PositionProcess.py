@@ -25,6 +25,7 @@ class CameraOptimizer:
     def optimize(self):
         def runoptimizer(function, startvector, returnqueue):
             o = opt.fmin_powell(func=function, x0=startvector, args=(self,))
+            # These optimizers turned out to be slower than powell
             #o = opt.fmin_cg(f=function, x0=startvector)
             #o = opt.fmin_bfgs(f=function, x0=startvector)
             #o = opt.anneal(func=function, x0=startvector)
@@ -40,9 +41,11 @@ class CameraOptimizer:
             old_diff_vector = self.target.location - self.oldConfiguration[:3]
             angle_to_old = angle(old_diff_vector, normal_vector)
             if angle_to_old > np.pi / 2:
-                new_start_position = 0.3 * self.linetarget.location + 0.7 * self.target.location + 0.2 * normal_vector
+                new_start_position = 0.3 * self.linetarget.location +\
+                                     0.7 * self.target.location + 0.2 * normal_vector
             else:
-                new_start_position = 0.3 * self.linetarget.location + 0.7 * self.target.location - 0.2 * normal_vector
+                new_start_position = 0.3 * self.linetarget.location +\
+                                     0.7 * self.target.location - 0.2 * normal_vector
             start = np.hstack((new_start_position, self.oldConfiguration[3:5]))
         else:
             start = np.array([0, 0, 0, self.oldConfiguration[3], self.oldConfiguration[4]])

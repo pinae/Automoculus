@@ -102,7 +102,8 @@ class X_PlaceShowingBlock(Feature):
     def calculateNumbers(self, context, block):
         place_showing_block = 0.0
         for beat in block:
-            if beat.subject.type == PLACE and beat.type in [INTRODUCE, SHOW] and not beat.invisible:
+            if beat.subject.type == PLACE and beat.type in [INTRODUCE,
+                                                            SHOW] and not beat.invisible:
                 place_showing_block = 1.0
         return [place_showing_block]
 
@@ -116,8 +117,9 @@ class X_PlaceShowingBlock(Feature):
 
 class A01_EstablishingShot(Feature):
     """
-    If you want to know if there was an establishing shot you have to check if there was a block with a INTRODUCE
-    or SHOW-beat which shows a place. This shot should have been classified as FULL-SHOT or wider, otherwise the
+    If you want to know if there was an establishing shot you have to check if
+    there was a block with a INTRODUCE or SHOW-beat which shows a place. This
+    shot should have been classified as FULL-SHOT or wider, otherwise the
     audience couldn't have gained a sense of orientation in that place.
     """
     def calculateNumbers(self, context, block):
@@ -128,7 +130,8 @@ class A01_EstablishingShot(Feature):
                 if beat.type in [INTRODUCE, SHOW]:
                     if beat.subject.type == PLACE and not beat.invisible:
                         introduce_place = True
-            if (context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT, EXTREME_LONG_SHOT + 1)) and introduce_place:
+            if (context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT,
+                EXTREME_LONG_SHOT + 1)) and introduce_place:
                 context["ThereWasNoEstablishingShot"] = False
                 return [1.0]
             else:
@@ -150,17 +153,20 @@ class A01_EstablishingShot(Feature):
 
 class A02_ConflictIntroduction(Feature):
     """
-    If you want to know if the block is in a phase of conflict introduction or climax you have to check if there
-    was an establishing shot.
-    A conflict is usually showed to the audience which has more information than the figures. When the figure realizes
-    that there is a conflict the audience already knows of it. The realization of the figure is marked by an EXPRESS-
-    Beat. But when the figure expresses the realization there must have been something that happened or was said so the
-    figure got additional information.
-    So this algorithm searches for EXPRESS-Beats in the current block if there was an establishing shot. When there is
-    an EXPRESS in the current block, it searches for the ACT- or SAY-beat which gave the decisive information. This is
-    either a SAY or ACT directly before the EXPRESS or a SAY or ACT with the figure in linetargets.
+    If you want to know if the block is in a phase of conflict introduction or
+    climax you have to check if there was an establishing shot.
+    A conflict is usually showed to the audience which has more information than
+    the figures. When the figure realizes that there is a conflict the audience
+    already knows of it. The realization of the figure is marked by an EXPRESS-
+    Beat. But when the figure expresses the realization there must have been
+    something that happened or was said so the figure got additional information.
+    So this algorithm searches for EXPRESS-Beats in the current block if there
+    was an establishing shot. When there is an EXPRESS in the current block, it
+    searches for the ACT- or SAY-beat which gave the decisive information. This
+    is either a SAY or ACT directly before the EXPRESS or a SAY or ACT with the
+    figure in linetargets.
     """
-    def calculateNumbers(self, context, block): # TODO: Nur Hauptpersonen können Konflikte etabliern.
+    def calculateNumbers(self, context, block):
         context["BeforeWasNoConflictIntroduction"] = context["NoConflictIntroduction"]
         context["PositionOfConflictIntroduction"] = -1
         if not context["ThereWasNoEstablishingShot"]:
@@ -199,16 +205,19 @@ class A02_ConflictIntroduction(Feature):
 
 class A03_Climax(Feature):
     """
-    After an establishing shot and a conflict introduction there could be a climax. A climax provokes an emotional
-    reaction by the subject of the conflict introduction. Before that EXPRESS there needs to be a minimum of one other
-    figure to ACT or SAY something. Otherwise the conflict could not have been acted out.
+    After an establishing shot and a conflict introduction there could be a climax.
+    A climax provokes an emotional reaction by the subject of the conflict
+    introduction. Before that EXPRESS there needs to be a minimum of one other
+    figure to ACT or SAY something. Otherwise the conflict could not have been
+    acted out.
     """
-    def calculateNumbers(self, context, block): # TODO: Nur Personen die Konflikte gestartet haben können sie auch beenden.
+    def calculateNumbers(self, context, block):
         there_was_a_climax = 0.0
         subjects = set()
         linetargets = set()
         if not context["NoConflictIntroduction"]:
-            for i in range(context["PositionOfConflictIntroduction"],len(context["BeatList"])):
+            for i in range(context["PositionOfConflictIntroduction"],
+                len(context["BeatList"])):
                 beat = context["BeatList"][i]
                 subjects.add(beat.subject)
                 if beat.linetarget: linetargets.add(beat.linetarget)
@@ -225,10 +234,12 @@ class A03_Climax(Feature):
         if not self.numbers[0]:
             return "Keine Höhepunktphase."
         else:
-            return "Höhepunktphase mit "+str(self.numbers[1])+" Akteuren und "+str(self.numbers[2])+" Bezugspersonen."
+            return "Höhepunktphase mit " + str(self.numbers[1]) + " Akteuren und " + str(
+                self.numbers[2]) + " Bezugspersonen."
 
     def getNames(self):
-        return ["Höhepunktphase?", "Anzahl Subjects in der Phase", "Anzahl Linetargets in der Phase"]
+        return ["Höhepunktphase?", "Anzahl Subjects in der Phase",
+                "Anzahl Linetargets in der Phase"]
 
 
 class A04_DramaturgicalFactor(Feature):
@@ -312,8 +323,8 @@ class A05_MiniDramaturgyFactor(Feature):
 class X_Dialogue(Feature):
     def calculateNumbers(self, context, block):
         """
-        Dialogue returns 1 if there were two SAY-Beats from different subjects and not more than one ACT-Beat in
-        between.
+        Dialogue returns 1 if there were two SAY-Beats from different subjects and
+        not more than one ACT-Beat in between.
         """
         i = -1
         act_counter = 0
@@ -325,7 +336,8 @@ class X_Dialogue(Feature):
             if act_counter >= 2: return [0.0] # Too many ACTS
             if beat.type == SAYS:
                 if say_subject and say_subject != beat.subject:
-                    return [1.0] # Found the second SAYS and there were not more than one ACT
+                    # Found the second SAYS and there were not more than one ACT
+                    return [1.0]
                 else: say_subject = beat.subject
             i -= 1
         return [0.0] # There were
@@ -343,8 +355,9 @@ class X_Dialogue(Feature):
 class X_EmotionalDialogueReaction(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature is 1.0 if a persons reacts with a EXPRESS to a SAYS of another person before that. If the current
-        block has a minimum of two beats another SAYS of the person who spoke before can follow.
+        This feature is 1.0 if a persons reacts with a EXPRESS to a SAYS of
+        another person before that. If the current block has a minimum of two
+        beats another SAYS of the person who spoke before can follow.
         """
         last_say_subject =None
         dialogue = False
@@ -369,15 +382,19 @@ class X_EmotionalDialogueReaction(Feature):
             for i in range(0, len(context["BeatList"]) - 2):
                 if context["BeatList"][i].type == SAYS:
                     lastsayer = context["BeatList"][i].subject
-            if context["BeatList"][-3].type == SAYS and context["BeatList"][-2].type == EXPRESS and\
-               not context["BeatList"][-2].invisible and context["BeatList"][-1].type == SAYS and\
+            if context["BeatList"][-3].type == SAYS and\
+               context["BeatList"][-2].type == EXPRESS and\
+               not context["BeatList"][-2].invisible and\
+               context["BeatList"][-1].type == SAYS and\
                context["BeatList"][-2].subject != context["BeatList"][-1].subject and\
-               context["BeatList"][-3].subject == context["BeatList"][-1].subject and len(block) >= 2:
+               context["BeatList"][-3].subject == context["BeatList"][-1].subject and\
+               len(block) >= 2:
                 return [1.0]
-            elif context["BeatList"][-1].type == EXPRESS and not context["BeatList"][-1].invisible and\
+            elif context["BeatList"][-1].type == EXPRESS and\
+                 not context["BeatList"][-1].invisible and\
                  context["BeatList"][-2].type == SAYS and\
-                 context["BeatList"][-2].subject != context["BeatList"][-1].subject and dialogue and\
-                 context["BeatList"][-1].subject == lastsayer:
+                 context["BeatList"][-2].subject != context["BeatList"][-1].subject and\
+                 dialogue and context["BeatList"][-1].subject == lastsayer:
                 return [1.0]
             else:
                 return [0.0]
@@ -397,7 +414,8 @@ class X_EmotionalDialogueReaction(Feature):
 class X_BlockChangeBeatType(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature gives the type of the last Beat of the last bygone block and the current block.
+        This feature gives the type of the last Beat of the last bygone block
+        and the current block.
         """
         bygone_type = -1
         if len(context["BygoneBlocks"]) > 0:
@@ -408,9 +426,10 @@ class X_BlockChangeBeatType(Feature):
         if self.numbers[0] < 0:
             bygonePart = "Es gab keinen vorherigen Beat."
         else:
-            bygonePart = "Der Typ des vorherigen Beats ist " + BEAT_TYPE_NAMES[int(self.numbers[0])]
-        return bygonePart + "\t Der Typ des ersten Beat des aktuellen Blocks ist " + BEAT_TYPE_NAMES[
-                                                                                     int(self.numbers[1])]
+            bygonePart = "Der Typ des vorherigen Beats ist " + BEAT_TYPE_NAMES[
+                                                               int(self.numbers[0])]
+        return bygonePart + "\t Der Typ des ersten Beat des aktuellen Blocks ist " +\
+               BEAT_TYPE_NAMES[int(self.numbers[1])]
 
     def getNames(self):
         return ["Typ des vorherigen Beats", "Typ des ersten Beats des aktuellen Blocks"]
@@ -419,7 +438,8 @@ class X_BlockChangeBeatType(Feature):
 class X_BlockChangeTargetChange(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature is 1.0 if the target changes from the last block to the current block.
+        This feature is 1.0 if the target changes from the last block to the
+        current block.
         """
         bygoneTarget = -1
         if len(context["BygoneBlocks"]) > 0:
@@ -439,10 +459,13 @@ class X_BlockChangeTargetChange(Feature):
 class X_PreviousBlockChangeTargetChange(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature is 1.0 if the target changes from the previous last block to the last block.
+        This feature is 1.0 if the target changes from the previous last block
+        to the last block.
         """
         if len(context["BygoneBlocks"]) >= 2:
-            if context["BygoneBlocks"][-1][-1].subject == context["BygoneBlocks"][-2][-1].subject: return [0.0]
+            if context["BygoneBlocks"][-1][-1].subject == context["BygoneBlocks"][-2][
+                                                          -1].subject:
+                return [0.0]
             else: return [1.0]
         else: return [-1.0]
 
@@ -461,8 +484,8 @@ class X_PreviousBlockChangeTargetChange(Feature):
 class X_PreviousBlockToNowTargetPair(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature is 1.0 if the last target of the previous lastblock and the first target of the current block is
-        the same.
+        This feature is 1.0 if the last target of the previous lastblock and the
+        first target of the current block is the same.
         """
         bygoneTarget = -1
         if len(context["BygoneBlocks"]) >= 2:
@@ -474,7 +497,8 @@ class X_PreviousBlockToNowTargetPair(Feature):
         if self.numbers[0]:
             return "Target des vorletzten und des aktuellen Blocks stimmen überein."
         else:
-            return "Targets des vorletzten Blocks und des aktuellen Blocks sind unterschiedlich."
+            return "Targets des vorletzten Blocks und des aktuellen Blocks" +\
+                   "sind unterschiedlich."
 
     def getNames(self):
         return ["Target des vorletzten Blocks und des aktuellen Blocks stimmen überein"]
@@ -483,7 +507,8 @@ class X_PreviousBlockToNowTargetPair(Feature):
 class X_LastTwelveBeatTypes(Feature):
     def calculateNumbers(self, context, block):
         """
-        Gives the type of the last twelve beats. If there are less than twelve beats -1 is returned.
+        Gives the type of the last twelve beats. If there are less than twelve
+        beats -1 is returned.
         """
         types = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
         for i in range(len(types),0,-1):
@@ -497,7 +522,8 @@ class X_LastTwelveBeatTypes(Feature):
             if self.numbers[-i] < 0:
                 out += "Der " + str(i) + ".letzte Beat existiert nicht.\t"
             else:
-                out += "Typ des " + str(i) + ".letzten Beats: " + BEAT_TYPE_NAMES[int(self.numbers[-i])] + "\t"
+                out += "Typ des " + str(i) + ".letzten Beats: " +\
+                       BEAT_TYPE_NAMES[int(self.numbers[-i])] + "\t"
         return out + "Typ des letzten Beats: " + BEAT_TYPE_NAMES[int(self.numbers[-1])]
 
     def getNames(self):
@@ -511,8 +537,9 @@ class X_LastTwelveBeatTypes(Feature):
 class X_SameSubjectPairs(Feature):
     def calculateNumbers(self, context, block):
         """
-        Since it makes no sense to encode persons by name in the feature-vector, this feature tells us if the subjects
-        of the last twelve beats are the same. There are 28 Numbers because auf 28 possible pairings.
+        Since it makes no sense to encode persons by name in the feature-vector,
+        this feature tells us if the subjects of the last twelve beats are the
+        same. There are 28 Numbers because auf 28 possible pairings.
         """
         beat_list = copy(context["BeatList"])
         prev = None
@@ -521,13 +548,14 @@ class X_SameSubjectPairs(Feature):
                 del beat
                 continue
             if prev:
-                if beat.type == prev.type and beat.subject == prev.subject and beat.type in [ACTION, SAYS]:
+                if beat.type == prev.type and beat.subject == prev.subject and\
+                   beat.type in [ACTION, SAYS]:
                     del beat
                     continue
             prev = beat
-        #pairings = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        pairings = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        pairings = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0]
         if len(beat_list) >= 2:
             if beat_list[-1].subject == beat_list[-2].subject: pairings[0] = 1.0
         if len(beat_list) >= 3:
@@ -574,8 +602,9 @@ class X_SameSubjectPairs(Feature):
         i = 1
         for b in range(-3, -9, -1):
             for a in range(-1, b, -1):
-                out += " ".join([([text[0]] + [str(a)] + [text[1]] + [str(b)] + text[2:])[x] for x in range(7) if
-                                 (x + 2) % 6 * int(self.numbers[i]) - 1]) + "\t"
+                out += " ".join(
+                    [([text[0]] + [str(a)] + [text[1]] + [str(b)] + text[2:])[x] for x in
+                     range(7) if (x + 2) % 6 * int(self.numbers[i]) - 1]) + "\t"
                 i += 1
         return out.rstrip("\t")
 
@@ -590,8 +619,8 @@ class X_SameSubjectPairs(Feature):
 class X_InvisibleCount(Feature):
     def calculateNumbers(self, context, block):
         """
-        Counts the number of invisible beats in the current block and gives the proportion to the number of beats in
-        this block.
+        Counts the number of invisible beats in the current block and gives the
+        proportion to the number of beats in this block.
         """
         i = 0.0
         for beat in block:
@@ -599,19 +628,24 @@ class X_InvisibleCount(Feature):
         return [i, 100*i/len(block)]
 
     def getText(self):
-        return "Im Block sind " + str(self.numbers[0]) + " unsichtbare beats, also "+str(self.numbers[1])+"%."
+        return "Im Block sind " + str(self.numbers[0]) + " unsichtbare beats, also " +\
+               str(self.numbers[1])+"%."
 
     def getNames(self):
-        return ["Anzahl unsichtbarer Beats im aktuellen Block", "Anteil unsichtbarer Beats im aktuellen Block"]
+        return ["Anzahl unsichtbarer Beats im aktuellen Block",
+                "Anteil unsichtbarer Beats im aktuellen Block"]
 
 
 class C01_PersonAnalyzer(Feature):
     def calculateNumbers(self, context, block):
         """
-        This Feature counts the persons, determines which ones of them were the subjects of more than half the beats
-        and which person was the subject of most of the beats, which is propably the protagonist. The proportion of
-        beats with the protagonist as subject is calculates. If the protagonist changes this could be a decisive
-        moment, so this is noted, and the Feature also determines which of the last tree beats featured the protagonist.
+        This Feature counts the persons, determines which ones of them were
+        the subjects of more than half the beats and which person was the
+        subject of most of the beats, which is propably the protagonist. The
+        proportion of beats with the protagonist as subject is calculates.
+        If the protagonist changes this could be a decisive moment, so this
+        is noted, and the Feature also determines which of the last tree
+        beats featured the protagonist.
         """
         person_histogram = {}
         person_beat_count = 0
@@ -654,23 +688,28 @@ class C01_PersonAnalyzer(Feature):
         if context["BeatList"][-1].subject == protagonist:
             lastBeatsFeatureProtagonist[2] = 1.0
         protagonist_ratio = 0.0
-        if person_beat_count > 0: protagonist_ratio = float(protagonist_beat_count) / person_beat_count
+        if person_beat_count > 0:
+            protagonist_ratio = float(protagonist_beat_count) / person_beat_count
         return [float(len(person_histogram)), float(len(main_characters)),
                 float(main_character_block_beat_count) / len(block),
                 protagonist_ratio, protagonistChange,
-                float(protagonist_block_beat_count) / len(block)] + lastBeatsFeatureProtagonist
+                float(protagonist_block_beat_count) / len(block)] +\
+               lastBeatsFeatureProtagonist
 
 
     def getText(self):
         out = "Bisher kamen " + str(self.numbers[0]) + " Figuren vor.\t"
         out += "Es gibt " + str(self.numbers[1]) + " Hauptfiguren.\t"
-        out += str(round(self.numbers[2]*100)) + "% der Beats im aktuellen Block handeln von Hauptfiguren.\t"
-        out += "Der Protagonist kommt in " + str(round(self.numbers[3]*100)) + "% der Beats vor.\t"
+        out += str(round(self.numbers[2]*100)) +\
+               "% der Beats im aktuellen Block handeln von Hauptfiguren.\t"
+        out += "Der Protagonist kommt in " + str(round(self.numbers[3]*100)) +\
+               "% der Beats vor.\t"
         if self.numbers[4]:
             out += "Der Protagonist hat sich in diesem Block geändert.\t"
         else:
             out += "Es ist der gleiche Protagonist wie bisher.\t"
-        out += "Der Protagonist kommt in " + str(round(self.numbers[5]*100)) + "% der Beats des aktuellen Blocks vor.\t"
+        out += "Der Protagonist kommt in " + str(round(self.numbers[5]*100)) +\
+               "% der Beats des aktuellen Blocks vor.\t"
         if self.numbers[6]:
             out += "Der Protagonist kommt im 3.letzten Beat vor.\t"
         else:
@@ -700,9 +739,11 @@ class C01_PersonAnalyzer(Feature):
 class X_DecidedShots(Feature):
     def calculateNumbers(self, context, block):
         """
-        In order to choose the correct shot, it's crucial to know which shots were selected before. This feature lists
-        the last four shots, the number of beats in the last three and the current block and the number of subjects in
-        the last and the current block. For the last shot and the current block a histogram of shot types is calculted.
+        In order to choose the correct shot, it's crucial to know which shots
+        were selected before. This feature lists the last four shots, the
+        number of beats in the last three and the current block and the number
+        of subjects in the last and the current block. For the last shot and
+        the current block a histogram of shot types is calculated.
         """
         last_shot_id = context["BeatList"][-1].shotId
         beat_count = 1.0
@@ -716,7 +757,8 @@ class X_DecidedShots(Feature):
         subjects = [context["BeatList"][-1].subject]
         subject_counts = []
         for i in range(len(context["BeatList"]) - 2, -1, -1):
-            if context["BeatList"][i].shotId != last_shot_id and abs(context["BeatList"][i].shot - last_shot) >= 2:
+            if context["BeatList"][i].shotId != last_shot_id and\
+               abs(context["BeatList"][i].shot - last_shot) >= 2:
                 beat_counts.append(beat_count)
                 beat_count = 1.0
                 last_shot = context["BeatList"][i].shot
@@ -747,47 +789,65 @@ class X_DecidedShots(Feature):
         subject_counts.reverse()
         while len(beat_histograms) < 2: beat_histograms.append([0.0, 0.0, 0.0, 0.0, 0.0])
         while len(subject_histograms) < 2: subject_histograms.append([0.0, 0.0, 0.0])
-        return shots + beat_counts + subject_counts + beat_histograms[0] + subject_histograms[0] +\
-               beat_histograms[1] + subject_histograms[1]
+        return shots + beat_counts + subject_counts + beat_histograms[0] +\
+               subject_histograms[0] + beat_histograms[1] + subject_histograms[1]
 
     def getText(self):
         if self.numbers[0] < 0:
             out = "Es gab noch keine 4.letzte Einstellungsgröße.\t"
         else:
-            out = "Die 4.letzte Einstellungsgröße war: " + SHOT_NAMES[int(self.numbers[0])] + "\t"
+            out = "Die 4.letzte Einstellungsgröße war: " +\
+                  SHOT_NAMES[int(self.numbers[0])] + "\t"
         if self.numbers[1] < 0:
             out += "Es gab noch keine 3.letzte Einstellungsgröße.\t"
         else:
-            out += "Die 3.letzte Einstellungsgröße war: " + SHOT_NAMES[int(self.numbers[1])] + "\t"
+            out += "Die 3.letzte Einstellungsgröße war: " +\
+                   SHOT_NAMES[int(self.numbers[1])] + "\t"
         if self.numbers[2] < 0:
             out += "Es gab noch keine 2.letzte Einstellungsgröße.\t"
         else:
-            out += "Die 2.letzte Einstellungsgröße war: " + SHOT_NAMES[int(self.numbers[2])] + "\t"
+            out += "Die 2.letzte Einstellungsgröße war: " +\
+                   SHOT_NAMES[int(self.numbers[2])] + "\t"
         if self.numbers[3] < 0:
             out += "Es gab noch keine letzte Einstellungsgröße.\t"
         else:
-            out += "Die letzte Einstellungsgröße war: " + SHOT_NAMES[int(self.numbers[3])] + "\t"
-        out += "Der letzte Schnitt liegt " + str(self.numbers[4]) + " Beats in der Vergangenheit.\t"
-        out += "Die vorletzte Einstellung war " + str(self.numbers[5]) + " Beats lang.\t"
-        out += "Die 2.letzte Einstellung war " + str(self.numbers[6]) + " Beats lang.\t"
-        out += "Die 3.letzte Einstellung war " + str(self.numbers[7]) + " Beats lang.\t"
-        out += "In der letzten Einstellung waren " + str(self.numbers[8]) + " Subjects zu sehen.\t"
-        out += "Seit dem letzten Schnitt müssen " + str(self.numbers[9]) + " Subjects zu sehen sein.\t"
+            out += "Die letzte Einstellungsgröße war: " +\
+                   SHOT_NAMES[int(self.numbers[3])] + "\t"
+        out += "Der letzte Schnitt liegt " + str(self.numbers[4]) +\
+               " Beats in der Vergangenheit.\t"
+        out += "Die vorletzte Einstellung war " + str(self.numbers[5]) +\
+               " Beats lang.\t"
+        out += "Die 2.letzte Einstellung war " + str(self.numbers[6]) +\
+               " Beats lang.\t"
+        out += "Die 3.letzte Einstellung war " + str(self.numbers[7]) +\
+               " Beats lang.\t"
+        out += "In der letzten Einstellung waren " + str(self.numbers[8]) +\
+               " Subjects zu sehen.\t"
+        out += "Seit dem letzten Schnitt müssen " + str(self.numbers[9]) +\
+               " Subjects zu sehen sein.\t"
         for i in range(0, 5):
-            out += str(self.numbers[10 + i]) + " mal " + BEAT_TYPE_NAMES[i] + " seit dem letzten Schnitt.\t"
+            out += str(self.numbers[10 + i]) + " mal " + BEAT_TYPE_NAMES[i] +\
+                   " seit dem letzten Schnitt.\t"
         for i in range(0, 3):
-            out += str(self.numbers[15 + i]) + " " + DEMONSTRAT_TYPE_NAMES[i] + " seit dem letzten Schnitt.\t"
+            out += str(self.numbers[15 + i]) + " " + DEMONSTRAT_TYPE_NAMES[i] +\
+                   " seit dem letzten Schnitt.\t"
         for i in range(0, 5):
-            out += str(self.numbers[18 + i]) + " mal " + BEAT_TYPE_NAMES[i] + " in der vorherigen Einstellung.\t"
+            out += str(self.numbers[18 + i]) + " mal " + BEAT_TYPE_NAMES[i] +\
+                   " in der vorherigen Einstellung.\t"
         for i in range(0, 3):
-            out += str(self.numbers[23 + i]) + " " + DEMONSTRAT_TYPE_NAMES[i] + " in der vorherigen Einstellung.\t"
+            out += str(self.numbers[23 + i]) + " " + DEMONSTRAT_TYPE_NAMES[i] +\
+                   " in der vorherigen Einstellung.\t"
         return out.strip("\t")
 
     def getNames(self):
-        return ["Typ der 4.letzten Einstellungsgröße", "Typ der 3.letzten Einstellungsgröße",
-                "Typ der 2.letzten Einstellungsgröße", "Typ der letzten Einstellungsgröße",
-                "Anzahl der Beats seit dem letzten Schnitt", "Länge der vorletzten Einstellung",
-                "Länge der 2.letzten Einstellung", "Länge der 3.letzten Einstellung",
+        return ["Typ der 4.letzten Einstellungsgröße",
+                "Typ der 3.letzten Einstellungsgröße",
+                "Typ der 2.letzten Einstellungsgröße",
+                "Typ der letzten Einstellungsgröße",
+                "Anzahl der Beats seit dem letzten Schnitt",
+                "Länge der vorletzten Einstellung",
+                "Länge der 2.letzten Einstellung",
+                "Länge der 3.letzten Einstellung",
                 "Anzahl der Subjekte in der letzten Einstellung",
                 "Anzahl der Subjekte in den Beats seit dem letzten Schnitt",
                 "Anzahl " + BEAT_TYPE_NAMES[0] + " seit dem letzten Schnitt",
@@ -811,7 +871,8 @@ class X_DecidedShots(Feature):
 class X_ShotHistogram(Feature):
     def calculateNumbers(self, context, block):
         """
-        For statistical usage a histogram of shots is calculated for all shots in the scene.
+        For statistical usage a histogram of shots is calculated for all
+        shots in the scene.
         """
         shot_histogram = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         total = 0
@@ -829,15 +890,17 @@ class X_ShotHistogram(Feature):
         return out.strip("\t")
 
     def getNames(self):
-        return ["Anteil " + SHOT_NAMES[0], "Anteil " + SHOT_NAMES[1], "Anteil " + SHOT_NAMES[2],
-                "Anteil " + SHOT_NAMES[3], "Anteil " + SHOT_NAMES[4], "Anteil " + SHOT_NAMES[5],
+        return ["Anteil " + SHOT_NAMES[0], "Anteil " + SHOT_NAMES[1],
+                "Anteil " + SHOT_NAMES[2], "Anteil " + SHOT_NAMES[3],
+                "Anteil " + SHOT_NAMES[4], "Anteil " + SHOT_NAMES[5],
                 "Anteil " + SHOT_NAMES[6]]
 
 
 class X_PersonsInTheShot(Feature):
     def calculateNumbers(self, context, block):
         """
-        Counts the number of different Persons who act, speak or show emotions in the last shot.
+        Counts the number of different Persons who act, speak or show
+        emotions in the last shot.
         """
         beat_list = copy(context["BeatList"])
         last_shot_id = beat_list[-1].shotId
@@ -888,36 +951,41 @@ class X_PersonsInTheShot(Feature):
     def getText(self):
         out = ""
         for i in range(0, 5):
-            out += "Die " + str(i) + ".letzte Figur hat seit dem letzten Schnitt " + str(
-                self.numbers[i]) + " mal Emotionen gezeigt.\t"
+            out += "Die " + str(i) + ".letzte Figur hat seit dem letzten Schnitt " +\
+                   str(self.numbers[i]) + " mal Emotionen gezeigt.\t"
         for i in range(5, 10):
-            out += "Die " + str(i - 5) + ".letzte Figur hat seit dem letzten Schnitt " + str(
-                self.numbers[i]) + " mal geredet.\t"
+            out += "Die " + str(i - 5) + ".letzte Figur hat seit dem letzten Schnitt " +\
+                   str(self.numbers[i]) + " mal geredet.\t"
         for i in range(10, 15):
-            out += "Die " + str(i - 10) + ".letzte Figur hat seit dem letzten Schnitt " + str(
-                self.numbers[i]) + " mal gehandelt.\t"
+            out += "Die " + str(i - 10) + ".letzte Figur hat seit dem letzten Schnitt " +\
+                   str(self.numbers[i]) + " mal gehandelt.\t"
         return out.strip("\t")
 
     def getNames(self):
         names = []
         for i in range(0, 5):
-            names.append("Anzahl der Emotionalen Beats der " + str(i) + ".letzten Figur seit dem letzten Schnitt")
+            names.append("Anzahl der Emotionalen Beats der " + str(i) +\
+                         ".letzten Figur seit dem letzten Schnitt")
         for i in range(0, 5):
-            names.append("Anzahl der Speak-Beats der " + str(i) + ".letzten Figur seit dem letzten Schnitt")
+            names.append("Anzahl der Speak-Beats der " + str(i) +\
+                         ".letzten Figur seit dem letzten Schnitt")
         for i in range(0, 5):
-            names.append("Anzahl der Act-Beats der " + str(i) + ".letzten Figur seit dem letzten Schnitt")
+            names.append("Anzahl der Act-Beats der " + str(i) +\
+                         ".letzten Figur seit dem letzten Schnitt")
         return names
 
 
 class X_ShowingObject(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature is 0 if not only Objects are showed in the current block. If the last shot is DETAIL it's -1.
+        This feature is 0 if not only Objects are showed in the current block.
+        If the last shot is DETAIL it's -1.
         """
         showing_only_objects = True
         no_visible_beats = True
         for beat in block:
-            if not((beat.type in [INTRODUCE, SHOW] and beat.subject.type == OBJECT) or beat.invisible):
+            if not((beat.type in [INTRODUCE, SHOW] and
+                    beat.subject.type == OBJECT) or beat.invisible):
                 showing_only_objects = False
             if beat.type in [INTRODUCE, SHOW] and not beat.invisible:
                 no_visible_beats = False
@@ -945,19 +1013,21 @@ class X_ShowingObject(Feature):
 class X_ShowingPlace(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature is 0 if not only Places are showed in the current block. If the last shot is FULL_SHOT or greater
-        it's -1.
+        This feature is 0 if not only Places are showed in the current block.
+        If the last shot is FULL_SHOT or greater it's -1.
         """
         showing_no_place = True
         no_visible_beats = True
         for beat in block:
-            if not((beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE) or beat.invisible):
+            if not((beat.type in [INTRODUCE, SHOW] and
+                    beat.subject.type == PLACE) or beat.invisible):
                 showing_no_place = False
             if beat.type in [INTRODUCE, SHOW] and not beat.invisible:
                 no_visible_beats = False
         if showing_no_place and not no_visible_beats:
             if len(context["BygoneBlocks"]) > 0:
-                if context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT,EXTREME_LONG_SHOT+1):
+                if context["BygoneBlocks"][-1][-1].shot in range(FULL_SHOT,
+                    EXTREME_LONG_SHOT + 1):
                     return [2.0]
                 else:
                     return [-1.0]
@@ -1013,9 +1083,11 @@ class X_ShowingPerson(Feature):
 class C02_Linetargets(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature determines the last linetarget and checks in which of the last 8 beats the last lintarget was the
-        subject. The feature also calculates the number of linetargets, if the last linetarget was no person, if it was
-        one of the main characters and if it was the protagonist.
+        This feature determines the last linetarget and checks in which of the
+        last 8 beats the last lintarget was the subject. The feature also
+        calculates the number of linetargets, if the last linetarget was no
+        person, if it was one of the main characters and if it was the
+        protagonist.
         """
         person_histogram = {}
         person_beat_count = 0
@@ -1050,36 +1122,49 @@ class C02_Linetargets(Feature):
                 else: last_linetarget_is_subjects.append(0.0)
             else: last_linetarget_is_subjects.append(0.0)
         if last_linetarget:
-            return last_linetarget_is_subjects + [number_of_linetargets, float(last_linetarget.type != PERSON),
-                                               float(last_linetarget in main_characters),
-                                               float(last_linetarget == protagonist)]
+            return last_linetarget_is_subjects +\
+                   [number_of_linetargets, float(last_linetarget.type != PERSON),
+                    float(last_linetarget in main_characters),
+                    float(last_linetarget == protagonist)]
         else:
-            return last_linetarget_is_subjects + [number_of_linetargets, 0.0, float(last_linetarget in main_characters),
-                                               float(last_linetarget == protagonist)]
+            return last_linetarget_is_subjects +\
+                   [number_of_linetargets, 0.0, float(last_linetarget in main_characters),
+                    float(last_linetarget == protagonist)]
 
     def getText(self):
-        if self.numbers[0]: out = "Das Linetarget ist gleich dem Subjekt des letzten Beats.\t"
+        if self.numbers[0]:
+            out = "Das Linetarget ist gleich dem Subjekt des letzten Beats.\t"
         else: out = "Das Linetarget ist nicht Subjekt des letzten Beats.\t"
-        if self.numbers[1]: out = "Das Linetarget ist gleich dem Subjekt des 2. letzten Beats.\t"
+        if self.numbers[1]:
+            out = "Das Linetarget ist gleich dem Subjekt des 2. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 2. letzten Beats.\t"
-        if self.numbers[2]: out += "Das Linetarget ist gleich dem Subjekt des 3. letzten Beats.\t"
+        if self.numbers[2]:
+            out += "Das Linetarget ist gleich dem Subjekt des 3. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 3. letzten Beats.\t"
-        if self.numbers[3]: out += "Das Linetarget ist gleich dem Subjekt des 4. letzten Beats.\t"
+        if self.numbers[3]:
+            out += "Das Linetarget ist gleich dem Subjekt des 4. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 4. letzten Beats.\t"
-        if self.numbers[4]: out += "Das Linetarget ist gleich dem Subjekt des 5. letzten Beats.\t"
+        if self.numbers[4]:
+            out += "Das Linetarget ist gleich dem Subjekt des 5. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 5. letzten Beats.\t"
-        if self.numbers[5]: out += "Das Linetarget ist gleich dem Subjekt des 6. letzten Beats.\t"
+        if self.numbers[5]:
+            out += "Das Linetarget ist gleich dem Subjekt des 6. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 6. letzten Beats.\t"
-        if self.numbers[6]: out += "Das Linetarget ist gleich dem Subjekt des 7. letzten Beats.\t"
+        if self.numbers[6]:
+            out += "Das Linetarget ist gleich dem Subjekt des 7. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 7. letzten Beats.\t"
-        if self.numbers[7]: out += "Das Linetarget ist gleich dem Subjekt des 8. letzten Beats.\t"
+        if self.numbers[7]:
+            out += "Das Linetarget ist gleich dem Subjekt des 8. letzten Beats.\t"
         else: out += "Das Linetarget ist nicht Subjekt des 8. letzten Beats.\t"
         out += "Im Aktuellen Block gibt es " + str(self.numbers[8]) + " linetargets.\t"
-        if self.numbers[9]: out += "Das letzte Linetarget im Block war keine Person.\t"
+        if self.numbers[9]:
+            out += "Das letzte Linetarget im Block war keine Person.\t"
         else: out += "Das letzte Linetarget im Block war eine Person.\t"
-        if self.numbers[10]: out += "Das letzte Linetarget im Block war eine Hauptperson.\t"
+        if self.numbers[10]:
+            out += "Das letzte Linetarget im Block war eine Hauptperson.\t"
         else: out += "Das letzte Linetarget im Block war nicht unter den Hauptpersonen.\t"
-        if self.numbers[11]: out += "Das letzte Linetarget im Block war der Protagonist."
+        if self.numbers[11]:
+            out += "Das letzte Linetarget im Block war der Protagonist."
         else: out += "Das letzte Linetarget im Block war nicht der Protagonist."
         return out
 
@@ -1092,34 +1177,45 @@ class C02_Linetargets(Feature):
                 "Das Linetarget ist gleich dem Subjekt des 6. letzten Beats?",
                 "Das Linetarget ist gleich dem Subjekt des 7. letzten Beats?",
                 "Das Linetarget ist gleich dem Subjekt des 8. letzten Beats?",
-                "Anzahl der Linetargets im aktuellen Block", "Ist das letzte Linetarget im Block eine Person?",
-                "Ist das letzte Linetarget im Block eine Hauptperson?", "War das letzte Linetarget der Protagonist?"]
+                "Anzahl der Linetargets im aktuellen Block",
+                "Ist das letzte Linetarget im Block eine Person?",
+                "Ist das letzte Linetarget im Block eine Hauptperson?",
+                "War das letzte Linetarget der Protagonist?"]
 
 
-class X_HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen! Ist alles um einen Block verschoben? - Nein, shot wird benutzt.
+class X_HandwrittenCutCriteria(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature was originally an algorithm to predict situation where a cut should be made. However the criterias
-        seem to make sense as part of the feature-vector.
-        The first criterium tests if the subject changed from the previous to the last shot, that previous shot was a
-        MEDIUM_SHOT or wider and the cut was justified by a SAY- or ACT-beat at the beginning of the last shot or the
-        previous shot was no DETAIL and the last shot began with a SAY-beat.
-        The second criterium tests if the last shot and the previous one hat the same shot and if that was the case
-        tests if the newer block features subjects who aren't in the old block.
-        The third criterium tests if the last shot was MEDIUM_SHOT or wider and the previous shot was AMERICAN_SHOT or
-        wider. If either one of the subjects of the last block wasn't also a subject in the three previous blocks or if
-        the last block has a SHOW- or INTRODUCE-beat and isn't one of the four first blocks, the criterium is 1.
-        The fourth criterium checks if the subject of the last two bygone blocks start with the same subject and with
-        SAY-Beats.
+        This feature was originally an algorithm to predict situation where a
+        cut should be made. However the criterias seem to make sense as part
+        of the feature-vector.
+        The first criterium tests if the subject changed from the previous to
+        the last shot, that previous shot was a MEDIUM_SHOT or wider and the
+        cut was justified by a SAY- or ACT-beat at the beginning of the last
+        shot or the previous shot was no DETAIL and the last shot began with
+        a SAY-beat.
+        The second criterium tests if the last shot and the previous one hat
+        the same shot and if that was the case tests if the newer block
+        features subjects who aren't in the old block.
+        The third criterium tests if the last shot was MEDIUM_SHOT or wider
+        and the previous shot was AMERICAN_SHOT or wider. If either one of
+        the subjects of the last block wasn't also a subject in the three
+        previous blocks or if the last block has a SHOW- or INTRODUCE-beat
+        and isn't one of the four first blocks, the criterium is 1.
+        The fourth criterium checks if the subject of the last two bygone
+        blocks start with the same subject and with SAY-Beats.
         The fifth criterium checks if the previous last shot was DETAIL.
-        The sixth and last criterium checks if the last block began with an EXPRESS-beat.
+        The sixth and last criterium checks if the last block began with an
+        EXPRESS-beat.
         """
         cut_criteria = []
         if len(context["BygoneBlocks"]) >= 2:
-            if context["BygoneBlocks"][-1][0].subject == context["BygoneBlocks"][-2][-1].subject and (
-                context["BygoneBlocks"][-2][-1].shot >= MEDIUM_SHOT and
-                context["BygoneBlocks"][-1][0].type in [SAYS, ACTION]) or (
-                context["BygoneBlocks"][-2][-1].shot >= CLOSEUP and context["BygoneBlocks"][-1][0].type == SAYS):
+            if context["BygoneBlocks"][-1][0].subject == context["BygoneBlocks"][-2][
+                                                         -1].subject and (
+                   context["BygoneBlocks"][-2][-1].shot >= MEDIUM_SHOT and
+                   context["BygoneBlocks"][-1][0].type in [SAYS, ACTION]) or (
+                   context["BygoneBlocks"][-2][-1].shot >= CLOSEUP and
+                   context["BygoneBlocks"][-1][0].type == SAYS):
                 cut_criteria.append(0.0)
             else:
                 cut_criteria.append(1.0)
@@ -1157,8 +1253,10 @@ class X_HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen
                 if cut: cut_criteria.append(1.0)
                 else: cut_criteria.append(0.0)
             else: cut_criteria.append(1.0)
-            if context["BygoneBlocks"][-1][0].subject != context["BygoneBlocks"][-2][0].subject and\
-               context["BygoneBlocks"][-1][0].type == SAYS and context["BygoneBlocks"][-2][0].type == SAYS:
+            if context["BygoneBlocks"][-1][0].subject != context["BygoneBlocks"][-2][
+                                                         0].subject and\
+               context["BygoneBlocks"][-1][0].type == SAYS and\
+               context["BygoneBlocks"][-2][0].type == SAYS:
                 cut_criteria.append(1.0)
             else: cut_criteria.append(0.0)
         else:
@@ -1182,16 +1280,20 @@ class X_HandwrittenCutCriteria(Feature): #TODO: aktuellen Block berücksichtigen
         return "Die Handarbeit sagt " + str(self.numbers)
 
     def getNames(self):
-        return ["Handgeschriebenes Schnittkriterium 1.", "Handgeschriebenes Schnittkriterium 2.",
-                "Handgeschriebenes Schnittkriterium 3.", "Handgeschriebenes Schnittkriterium 4.",
-                "Handgeschriebenes Schnittkriterium 5.", "Handgeschriebenes Schnittkriterium 6."]
+        return ["Handgeschriebenes Schnittkriterium 1.",
+                "Handgeschriebenes Schnittkriterium 2.",
+                "Handgeschriebenes Schnittkriterium 3.",
+                "Handgeschriebenes Schnittkriterium 4.",
+                "Handgeschriebenes Schnittkriterium 5.",
+                "Handgeschriebenes Schnittkriterium 6."]
 
 
 class D01_ExpositoryPhaseOfTheScene(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature gathers a set of persons mentioned in the beatscript until the place was introduced. If all of
-        these persons had a SHOW or EXPRESS the expository phase ends or after 15 beats. If the expository phase has
+        This feature gathers a set of persons mentioned in the beatscript until
+        the place was introduced. If all of these persons had a SHOW or EXPRESS
+        the expository phase ends or after 15 beats. If the expository phase has
         ended the test is skipped.
         """
         if context["ExpositoryPhase"]:
@@ -1202,11 +1304,15 @@ class D01_ExpositoryPhaseOfTheScene(Feature):
             beat_list = copy(context["BeatList"])
             for beat in beat_list:
                 all_persons.add(beat.subject)
-                if beat.linetarget and beat.linetarget.type == PERSON: all_persons.add(beat.linetarget)
+                if beat.linetarget and beat.linetarget.type == PERSON:
+                    all_persons.add(beat.linetarget)
                 if beat.type == EXPRESS: emotionally_situated_persons.add(beat.subject)
-                if beat.type == SHOW and beat.subject.type == PERSON: emotionally_situated_persons.add(beat.subject)
-                if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE: shown_place = True
-            if (shown_place and emotionally_situated_persons is all_persons) or (shown_place and len(beat_list) > 15):
+                if beat.type == SHOW and beat.subject.type == PERSON:
+                    emotionally_situated_persons.add(beat.subject)
+                if beat.type in [INTRODUCE, SHOW] and beat.subject.type == PLACE:
+                    shown_place = True
+            if (shown_place and emotionally_situated_persons is all_persons) or\
+               (shown_place and len(beat_list) > 15):
                 context["ExpositoryPhase"] = False
                 return [0.0]
             else:
@@ -1227,8 +1333,9 @@ class D01_ExpositoryPhaseOfTheScene(Feature):
 class X_TalkersGoSilent(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature implements a value of the number of expresses since the last action + 5 which indicates how likely
-        this action silenced the persons who were subject of the SAYS.
+        This feature implements a value of the number of expresses since the
+        last action + 5 which indicates how likely this action silenced the
+        persons who were subject of the SAYS.
         """
         talkers_go_silent_value = max(context["TalkersGoSilentValue"]-1,0)
         if block[-1].type == EXPRESS:
@@ -1264,8 +1371,9 @@ class X_TalkersGoSilent(Feature):
 class X_WhatDidSubjectDo(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature calculates a histogram of the beat types where the last subject of the current block was also
-        subject. It also counts how often this subject was a linetraget.
+        This feature calculates a histogram of the beat types where the last
+        subject of the current block was also subject. It also counts how
+        often this subject was a linetraget.
         """
         beats_with_this_subject_count = [0.0, 0.0, 0.0, 0.0, 0.0]
         subject_was_linetarget_count = 0.0
@@ -1284,15 +1392,16 @@ class X_WhatDidSubjectDo(Feature):
         return out + "Das letzte Subject war " + str(self.numbers[5]) + " mal Linetarget."
 
     def getNames(self):
-        return ["Anzahl " + type + "-Beats, in denen das letzte Subject auch Subject war" for type in
-                BEAT_TYPE_NAMES] + ["Anzahl Beats in denen das Subject des letzten Beats Linetarget war"]
+        return ["Anzahl " + type + "-Beats, in denen das letzte Subject auch Subject war"
+                for type in BEAT_TYPE_NAMES] + [
+                   "Anzahl Beats in denen das Subject des letzten Beats Linetarget war"]
 
 
 class X_BlockSimilarity(Feature):
     def calculateNumbers(self, context, block):
         """
-        This feature compares the similarity of bygone blocks with the current one. Each beat of the same type increases
-        the similarity factor by one.
+        This feature compares the similarity of bygone blocks with the current one.
+        Each beat of the same type increases the similarity factor by one.
         """
         similarity_factors = []
         blocks_to_compare = 7
@@ -1300,17 +1409,21 @@ class X_BlockSimilarity(Feature):
             factor = 0
             block_index = 0
             bygone_index = 0
-            while len(block) > block_index and len(context["BygoneBlocks"][-i]) > bygone_index:
-                if block[block_index].type == context["BygoneBlocks"][-i][bygone_index].type:
+            while len(block) > block_index and\
+                  len(context["BygoneBlocks"][-i]) > bygone_index:
+                if block[block_index].type == context["BygoneBlocks"][-i][
+                                              bygone_index].type:
                     factor += 1
                     block_index += 1
                     bygone_index += 1
                 else:
                     if len(context["BygoneBlocks"][-i]) > bygone_index + 1 and\
-                       block[block_index].type == context["BygoneBlocks"][-i][bygone_index + 1].type:
+                       block[block_index].type == context["BygoneBlocks"][-i][
+                                                  bygone_index + 1].type:
                         bygone_index += 1
                     elif len(block) > block_index + 1 and\
-                         block[block_index + 1].type == context["BygoneBlocks"][-i][bygone_index].type:
+                         block[block_index + 1].type == context["BygoneBlocks"][-i][
+                                                        bygone_index].type:
                         block_index += 1
                     else:
                         block_index += 1
@@ -1322,11 +1435,13 @@ class X_BlockSimilarity(Feature):
     def getText(self):
         out = ""
         for i, factor in enumerate(self.numbers):
-            out += "Der " + str(i) + ". letzte Block hat eine Ähnlichkeit von " + str(factor) + "\t"
+            out += "Der " + str(i) + ". letzte Block hat eine Ähnlichkeit von " +\
+                   str(factor) + "\t"
         return out.strip("\t")
 
     def getNames(self):
-        return ["Ähnlichkeit des " + str(x) + ". letzten Blocks zum aktuellen Block" for x in range(self.numbers)]
+        return ["Ähnlichkeit des " + str(x) + ". letzten Blocks zum aktuellen Block" for x
+                in range(self.numbers)]
 
 
 class X_SameShotSince(Feature):
@@ -1338,12 +1453,14 @@ class X_SameShotSince(Feature):
         if len(context["BygoneBlocks"]) >= 1:
             lastShot = context["BygoneBlocks"][-1][0].shot
         count = 1
-        while len(context["BygoneBlocks"]) > count and context["BygoneBlocks"][-1 * count - 1][0].shot == lastShot:
+        while len(context["BygoneBlocks"]) > count and\
+              context["BygoneBlocks"][-1 * count - 1][0].shot == lastShot:
             count += 1
         return [float(count)]
 
     def getText(self):
-        return "Eine andere Einstellungsgröße liegt " + str(self.numbers[0]) + " Blöcke zurück."
+        return "Eine andere Einstellungsgröße liegt " + str(self.numbers[0]) +\
+               " Blöcke zurück."
 
     def getNames(self):
         return ["Anzahl Blöcke seit denen die letzte Einstellungsgröße zu sehen war"]
@@ -1352,8 +1469,8 @@ class X_SameShotSince(Feature):
 class X_AppearanceAnalyzer(Feature):
     def calculateNumbers(self, context, block):
         """
-        The appearance analyzer counts how many persons were introduced in the scene and how long ago the last
-        INTRODUCE was.
+        The appearance analyzer counts how many persons were introduced in the
+        scene and how long ago the last INTRODUCE was.
         """
         introduce_since = 0.0
         appearance_counter = 0.0
@@ -1389,8 +1506,8 @@ class X_AppearanceAnalyzer(Feature):
 class X_ShowAnalyzer(Feature):
     def calculateNumbers(self, context, block):
         """
-        The show analyzer counts how many persons were showed by SHOW-beats in the scene and how long ago the last
-        of these SHOW-beats was.
+        The show analyzer counts how many persons were showed by SHOW-beats in the
+        scene and how long ago the last of these SHOW-beats was.
         """
         shows_since = 0.0
         shows_counter = 0.0
@@ -1416,8 +1533,9 @@ class X_ShowAnalyzer(Feature):
         return [shows_counter, shows_since]
 
     def getText(self):
-        return "Es gab "+str(self.numbers[0])+" Blöcke mit Show-Beats.\tDer Show-Beat liegt "+\
-               str(self.numbers[1])+" Blöcke zurück."
+        return "Es gab " + str(self.numbers[0]) +\
+               " Blöcke mit Show-Beats.\tDer Show-Beat liegt " +\
+               str(self.numbers[1]) + " Blöcke zurück."
 
     def getNames(self):
         return ["Anzahl Blöcke mit Show-Beat", "Anzahl Blöcke seit letztem Show-Beat"]
@@ -1426,8 +1544,8 @@ class X_ShowAnalyzer(Feature):
 class X_DialogueBlocks(Feature):
     def calculateNumbers(self, context, block):
         """
-        This class determines if the last blocks are dialogues. A dialogue block is a block where only two persons
-        interact and at last one of them speaks.
+        This class determines if the last blocks are dialogues. A dialogue block
+        is a block where only two persons interact and at last one of them speaks.
         """
         dialogue_blocks = []
         subjects = set()
@@ -1456,37 +1574,46 @@ class X_DialogueBlocks(Feature):
     def getText(self):
         if self.numbers[0]: out = "Der aktuelle Block ist ein Dialogblock."
         else: out = "Der aktuelle Block ist kein Dialogblock."
-        for i in range(1,len(self.numbers)):
-            if self.numbers[i]: out += "\tDer "+str(i)+". letzte Block war ein Dialogblock."
-            else: out += "\tDer "+str(i)+". letzte Block war kein Dialogblock."
+        for i in range(1, len(self.numbers)):
+            if self.numbers[i]: out += "\tDer " + str(i) +\
+                                       ". letzte Block war ein Dialogblock."
+            else: out += "\tDer " + str(i) + ". letzte Block war kein Dialogblock."
         return out
 
     def getNames(self):
         names = ["Aktueller Block ist Dialogblock?"]
-        for i in range(1,len(self.numbers)): names.append(str(i)+". letzter Block war Dialogblock?")
+        for i in range(1, len(self.numbers)):
+            names.append(str(i) + ". letzter Block war Dialogblock?")
         return names
 
 
 class X_DialogueAnswerExpected(Feature):
     def calculateNumbers(self, context, block):
         """
-        An answer is expected if the last beat of the block is a SAYS-beat and the linetarget wasn't visible in the
-        block. We could also expect an answer when the last beat in the block is an EXPRESS and the SAYS is before that
-        with a linetarget which was not in the block. This class calculates the expectation for the current block.
+        An answer is expected if the last beat of the block is a SAYS-beat and the
+        linetarget wasn't visible in the block. We could also expect an answer when
+        the last beat in the block is an EXPRESS and the SAYS is before that with a
+        linetarget which was not in the block. This class calculates the expectation
+        for the current block.
         """
         subjects = set()
         for beat in block:
             subjects.add(beat.subject)
-        if block[-1].type == SAYS and block[-1].linetarget and not block[-1].linetarget in subjects:
+        if block[-1].type == SAYS and block[-1].linetarget and\
+           not block[-1].linetarget in subjects:
             return [1.0]
-        elif len(block) >= 2 and block[-1].type == EXPRESS and block[-2].type == SAYS and block[-2].linetarget and\
-            not block[-2].linetarget in subjects:
+        elif len(block) >= 2 and block[-1].type == EXPRESS and\
+             block[-2].type == SAYS and block[-2].linetarget and\
+             not block[-2].linetarget in subjects:
             return [2.0]
         else: return [0.0]
 
     def getText(self):
-        if self.numbers[0]: return "Der aktuelle Block lässt eine Antwort im Dialog erwarten."
-        else: return "Die Struktur des aktuellen Blocks lässt nicht unbedingt eine Antwort in einem Dialog erwarten."
+        if self.numbers[0]:
+            return "Der aktuelle Block lässt eine Antwort im Dialog erwarten."
+        else:
+            return "Die Struktur des aktuellen Blocks lässt nicht unbedingt eine" +\
+                   " Antwort in einem Dialog erwarten."
 
     def getNames(self):
         return ["Aktueller Block lässt Antwort erwarten?"]
@@ -1495,10 +1622,12 @@ class X_DialogueAnswerExpected(Feature):
 class X_DialogueAnswerWasExpected(Feature):
     def calculateNumbers(self, context, block):
         """
-        An answer is expected if the last beat of the block is a SAYS-beat and the linetarget wasn't visible in the
-        block. We could also expect an answer when the last beat in the block is an EXPRESS and the SAYS is before that
-        with a linetarget which was not in the block. This class calculates the expectation for the last bygone block
-        and checks if the expectation was correct.
+        An answer is expected if the last beat of the block is a SAYS-beat and
+        the linetarget wasn't visible in the block. We could also expect an answer
+        when the last beat in the block is an EXPRESS and the SAYS is before that
+        with a linetarget which was not in the block. This class calculates the
+        expectation for the last bygone block and checks if the expectation was
+        correct.
         """
         if len(context["BygoneBlocks"]) >= 1:
             answering_subjects = set()
@@ -1508,14 +1637,17 @@ class X_DialogueAnswerWasExpected(Feature):
             previous_subjects = set()
             for beat in context["BygoneBlocks"][-1]:
                 previous_subjects.add(beat.subject)
-            if context["BygoneBlocks"][-1][-1].type == SAYS and context["BygoneBlocks"][-1][-1].linetarget and\
+            if context["BygoneBlocks"][-1][-1].type == SAYS and\
+               context["BygoneBlocks"][-1][-1].linetarget and\
                not context["BygoneBlocks"][-1][-1].linetarget in previous_subjects:
                 if context["BygoneBlocks"][-1][-1].linetarget and\
                    context["BygoneBlocks"][-1][-1].linetarget in answering_subjects:
                     return [1.0, 1.0]
                 else: return [1.0, 0.0]
-            elif len(context["BygoneBlocks"][-1]) >= 2 and context["BygoneBlocks"][-1][-1].type == EXPRESS and\
-                 context["BygoneBlocks"][-1][-2].type == SAYS and context["BygoneBlocks"][-1][-2].linetarget and\
+            elif len(context["BygoneBlocks"][-1]) >= 2 and\
+                 context["BygoneBlocks"][-1][-1].type == EXPRESS and\
+                 context["BygoneBlocks"][-1][-2].type == SAYS and\
+                 context["BygoneBlocks"][-1][-2].linetarget and\
                  (len(block) < 2 or not block[-2].linetarget in previous_subjects):
                 if context["BygoneBlocks"][-1][-2].linetarget and\
                    context["BygoneBlocks"][-1][-2].linetarget in answering_subjects:
@@ -1526,39 +1658,46 @@ class X_DialogueAnswerWasExpected(Feature):
 
     def getText(self):
         if self.numbers[0] and self.numbers[1]:
-            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten und diese Antwort kommt im aktuellen Block."
+            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten" +\
+                   " und diese Antwort kommt im aktuellen Block."
         elif self.numbers[0] and not self.numbers[1]:
-            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten, was aber durch den aktuellen Block als falsche Annahme entlarvt wird."
-        else: return "Die Struktur des letzten vergangenen Blocks lässt ohnehin nicht unbedingt eine Antwort in einem Dialog erwarten."
+            return "Der letzte vergangene Block lässt eine Antwort im Dialog erwarten," +\
+                   " was aber durch den aktuellen Block als falsche Annahme entlarvt wird."
+        else: return "Die Struktur des letzten vergangenen Blocks lässt ohnehin nicht" +\
+                     " unbedingt eine Antwort in einem Dialog erwarten."
 
     def getNames(self):
-        return ["Letzter vergangener Block lässt Antwort erwarten?", "Erwartete Antwort wird im aktuellen Block gegeben?"]
+        return ["Letzter vergangener Block lässt Antwort erwarten?",
+                "Erwartete Antwort wird im aktuellen Block gegeben?"]
 
 
 class X_NumberOfPersonInTheBlock(Feature):
     def calculateNumbers(self, context, block):
         """
-        Calculates the number of persons in the block and calculates the ratio of persons to beats.
+        Calculates the number of persons in the block and calculates the ratio
+        of persons to beats.
         """
         persons = set()
         for beat in block:
             if beat.subject.type == PERSON: persons.add(beat.subject)
-            if beat.linetarget and beat.linetarget.type == PERSON: persons.add(beat.linetarget)
+            if beat.linetarget and beat.linetarget.type == PERSON:
+                persons.add(beat.linetarget)
         return [float(len(persons)),float(len(persons)*100)/len(block)]
 
     def getText(self):
-        return "Im aktuellen Block kommen "+str(self.numbers[0])+" Personen vor. Das sind " + str(
-            self.numbers[1]) + "% der Beatzahl."
+        return "Im aktuellen Block kommen " + str(self.numbers[0]) +\
+               " Personen vor. Das sind " + str(self.numbers[1]) + "% der Beatzahl."
 
     def getNames(self):
-        return ["Anzahl Personen im aktuellen Block", "Anteil Personenzahl an den Gesamtbeats"]
+        return ["Anzahl Personen im aktuellen Block",
+                "Anteil Personenzahl an den Gesamtbeats"]
 
 
 class X_KnownSubjectsInBlock(Feature):
     def calculateNumbers(self, context, block):
         """
-        Calculates the number of persons in the block which were known before and calculates the ratio of persons to
-        beats.
+        Calculates the number of persons in the block which were known before
+        and calculates the ratio of persons to beats.
         """
         subjects = set()
         for bygone_block in context["BygoneBlocks"]:
@@ -1566,13 +1705,15 @@ class X_KnownSubjectsInBlock(Feature):
                 subjects.add(beat.subject)
         number_of_beats_with_known_subjects_in_the_block = 0.0
         for beat in block:
-            if beat.subject in subjects: number_of_beats_with_known_subjects_in_the_block += 1.0
+            if beat.subject in subjects:
+                number_of_beats_with_known_subjects_in_the_block += 1.0
         return [number_of_beats_with_known_subjects_in_the_block,
                 100.0 * number_of_beats_with_known_subjects_in_the_block / len(block)]
 
     def getText(self):
         return "Im aktuellen Block handeln " + str(
-            self.numbers[0]) + " Beats von vorher bekannten Personen, was " + str(self.numbers[1]) + "% der Beats sind."
+            self.numbers[0]) + " Beats von vorher bekannten Personen, was " +\
+               str(self.numbers[1]) + "% der Beats sind."
 
     def getNames(self):
         return ["Anzahl Beats im aktuellen Block mit vorher bekannten Subjects",
@@ -1582,8 +1723,8 @@ class X_KnownSubjectsInBlock(Feature):
 class X_CutInTheSentence(Feature):
     def calculateNumbers(self, context, block):
         """
-        This is 1 if a speaking person was interrupted by another beat at the end of the last block and continues in
-        the current block.
+        This is 1 if a speaking person was interrupted by another beat at the end
+        of the last block and continues in the current block.
         """
         last_say_subject = None
         if len(context["BygoneBlocks"]) >= 1:
@@ -1612,7 +1753,8 @@ class X_CutInTheSentence(Feature):
 class X_ChangeInExpression(Feature):
     def calculateNumbers(self, context, block):
         """
-        Returns the number of persons who change their expression in the current block and since the last block.
+        Returns the number of persons who change their expression in the current
+        block and since the last block.
         """
         expressers = {}
         for i in range(len(block)):
@@ -1633,19 +1775,22 @@ class X_ChangeInExpression(Feature):
         return results
 
     def getText(self):
-        return str(self.numbers[0]) + " Personen haben ihre Expression im aktuellen Block verändert und " + str(
-            self.numbers[1]) + " Personen seit dem vorherigen Block."
+        return str(self.numbers[0]) + " Personen haben ihre Expression im" +\
+               " aktuellen Block verändert und " + str(self.numbers[1]) +\
+               " Personen seit dem vorherigen Block."
 
     def getNames(self):
         return ["Anzahl Subjects die ihre Expression im aktuellen Block geändert haben.",
-                "Anzahl Subjects die ihre Expression seit dem vorherigen Block geändert haben."]
+                "Anzahl Subjects die ihre Expression seit dem" +\
+                " vorherigen Block geändert haben."]
 
 
 class X_BackgroundAction(Feature):
     def calculateNumbers(self, context, block):
         """
-        This Feature determines which person was the subject of most of the beats in the last and the current block.
-        If another person acts in the current block and if the main subject doesn't interact with that person then this
+        This Feature determines which person was the subject of most of the beats
+        in the last and the current block. If another person acts in the current
+        block and if the main subject doesn't interact with that person then this
         is a background action.
         """
         subjects = {}
@@ -1672,7 +1817,8 @@ class X_BackgroundAction(Feature):
                 background_actor = beat.subject
         if background_actor:
             for beat in block:
-                if beat.linetarget and beat.linetarget == background_actor and not beat.invisible:
+                if beat.linetarget and beat.linetarget == background_actor and\
+                   not beat.invisible:
                     background_actor = None
         if background_actor: return [1.0]
         else: return [0.0]
@@ -1706,26 +1852,34 @@ class X_BlockOfOneSubject(Feature):
 class X_ObjectAct(Feature):
     def calculateNumbers(self, context, block):
         """
-        The feature checks if an object is showed and if nothing more is done than ACT-beats with this object.
+        The feature checks if an object is showed and if nothing more is done
+        than ACT-beats with this object.
         """
         showing_object = 0.0
         detail_possible = 1.0
         act_count = 0
         for beat in block:
-            if beat.type in [INTRODUCE, SHOW] and not beat.invisible and beat.subject.type == OBJECT:
+            if beat.type in [INTRODUCE, SHOW] and not beat.invisible and\
+               beat.subject.type == OBJECT:
                 showing_object += 1.0
-            if showing_object and beat.type == ACTION and not beat.invisible: act_count += 1
-            if not beat.invisible and (
-            (beat.type in [INTRODUCE, SHOW] and beat.subject != OBJECT) or (beat.type in [EXPRESS, SAYS]) or (
-            beat.type == ACTION and act_count >= 2)):
+            if showing_object and beat.type == ACTION and not beat.invisible:
+                act_count += 1
+            if not beat.invisible and\
+               ((beat.type in [INTRODUCE, SHOW] and
+                 beat.subject != OBJECT) or
+                (beat.type in [EXPRESS, SAYS]) or
+                (beat.type == ACTION and act_count >= 2)):
                 detail_possible = 0.0
         return [showing_object, detail_possible]
 
     def getText(self):
         if self.numbers[0]: out = "Im Block wird ein Objekt gezeigt.\t"
         else: out = "Im Block wird kein Objekt gezeigt.\t"
-        if self.numbers[1]: return out+"Es gibt keine Beats die vermuten lassen, dass kein Detail gezeigt wird."
-        else: return out+"Es gibt aber Beats die vermutel lassen dass kein Detail gezeigt wird."
+        if self.numbers[1]:
+            return out+"Es gibt keine Beats die vermuten lassen," +\
+                   " dass kein Detail gezeigt wird."
+        else: return out+"Es gibt aber Beats die vermuten lassen," +\
+                     " dass kein Detail gezeigt wird."
 
     def getNames(self):
         return ["Wird ein Objekt gezeigt?", "Detail zeigen möglich?"]
@@ -1734,7 +1888,8 @@ class X_ObjectAct(Feature):
 # =============================== Helper Methods ===============================
 def getAllFeatureClasses():
     """
-    Returns a list of all subclasses of Feature defined in, or imported into this module.
+    Returns a list of all subclasses of Feature defined in, or imported into
+    this module.
     """
     featureClassList = []
     for name, obj in inspect.getmembers(CURRENT_MODULE):
@@ -1745,9 +1900,11 @@ def getAllFeatureClasses():
 
 def createBeatList(context, block):
     """
-    This function reconstructs a beatList from the BygoneBlocks in the context and the given new block.
-    The beatList is saved in the context. It is necessary to do this before calculating a featureLine,
-     because otherwise there is no correct BeatList in the context, which is used by the Feature-Classes.
+    This function reconstructs a beatList from the BygoneBlocks in the context
+    and the given new block.
+    The beatList is saved in the context. It is necessary to do this before
+    calculating a featureLine, because otherwise there is no correct BeatList
+    in the context, which is used by the Feature-Classes.
     """
     context["BeatList"] = [b for b in itertools.chain(*context["BygoneBlocks"])] + block
     return context

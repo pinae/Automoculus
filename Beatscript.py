@@ -3,7 +3,8 @@
 
 from Config import PERSON, OBJECT, PLACE, DEMONSTRAT_TYPE_NAMES, BEAT_TYPE_NAMES
 from Config import INTRODUCE, EXPRESS, SAYS, ACTION, SHOW
-from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT, LONG_SHOT, EXTREME_LONG_SHOT
+from Config import DETAIL, CLOSEUP, MEDIUM_SHOT, AMERICAN_SHOT, FULL_SHOT
+from Config import LONG_SHOT, EXTREME_LONG_SHOT
 
 class Entity:
     entityType = {"person": PERSON, "object": OBJECT, "place": PLACE}
@@ -21,11 +22,11 @@ class Entity:
 
 
 class Beat:
-    beatType = {"introduce": INTRODUCE, "expresses": EXPRESS, "says": SAYS, "action": ACTION,
-                "show": SHOW}
+    beatType = {"introduce": INTRODUCE, "expresses": EXPRESS, "says": SAYS,
+                "action": ACTION, "show": SHOW}
     shotType = {"detail": DETAIL, "closeup": CLOSEUP, "medium_shot": MEDIUM_SHOT,
-                "american_shot": AMERICAN_SHOT, "full_shot": FULL_SHOT, "long_shot": LONG_SHOT,
-                "extreme_long_shot": EXTREME_LONG_SHOT}
+                "american_shot": AMERICAN_SHOT, "full_shot": FULL_SHOT,
+                "long_shot": LONG_SHOT, "extreme_long_shot": EXTREME_LONG_SHOT}
 
     def __init__(self, text, context):
         splitText = text.split("\t", 5)
@@ -70,7 +71,8 @@ def entityFactory(entityText, context):
     return context["Entities"][newEntity.name]
 
 def createContext():
-    context = {"Entities": {}, "KnownEntities": set(), "BygoneBlocks": [], "protagonist": False, "MainCharacters": [],
+    context = {"Entities": {}, "KnownEntities": set(), "BygoneBlocks": [],
+               "protagonist": False, "MainCharacters": [],
                "ExpositoryPhase": True, "TalkersGoSilentValue": 0}
     return context
 
@@ -116,7 +118,8 @@ def readBeatscript(textFile, context):
 def isSplittingPoint(block, nextBeat):
     """
     There is certainly a splitting point, where the shotId changes.
-    If there was an introduce or a show-Beat before and the shotId is the same, there is no split.
+    If there was an introduce or a show-Beat before and the shotId is
+    the same, there is no split.
     If there was speech or action before, then there is a split.
     If speech or action is coming and the subjects change, there is a split.
     """
@@ -133,10 +136,11 @@ def isSplittingPoint(block, nextBeat):
 
 def coalesceBeats(beatList):
     """
-    Returns a blockList for a given beatList. This function uses isSplittingPoint which tries to determine which
-    Beats in a row can be collected into the same block. This is never the case if the Beats share the same shotId.
-    If the shotId is the same, the Blocks are only split if there was speech or action before or if speech or
-    action is coming and the subjects change.
+    Returns a blockList for a given beatList. This function uses isSplittingPoint
+    which tries to determine which Beats in a row can be collected into the same
+    block. This is never the case if the Beats share the same shotId.
+    If the shotId is the same, the Blocks are only split if there was speech or
+    action before or if speech or action is coming and the subjects change.
     """
     blockList = []
     block = []
@@ -151,7 +155,8 @@ def coalesceBeats(beatList):
 
 def getContextAndBeatListFromFile(file):
     """
-    This function reads the file, extracts a context with readContext and a beatList with readBeatscript.
+    This function reads the file, extracts a context with readContext and a
+    beatList with readBeatscript.
     context and beatList is returned.
     """
     beatscript_file = open(file, "r")
@@ -166,7 +171,8 @@ def getBlockList(lines, context):
 
 def getBeatsBetweenFrames(beatscript, start_frame, end_frame):
     """
-    Get all beats in a given beatscript between start_frame (exclusive) and end_frame (inclusive).
+    Get all beats in a given beatscript between start_frame (exclusive) and
+    end_frame (inclusive).
     And set all the shots to DETAIL to prevent cheating.
     """
     beat_list = [beat for beat in beatscript if start_frame < beat.shotId <= end_frame]
